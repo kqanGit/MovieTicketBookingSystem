@@ -2,7 +2,14 @@
 - Dự án gốc: https://www.codewithc.com/movie-ticket-booking-system-in-c-with-mysql/
 
 ### Mô tả đồ án 
-- Hệ thống đặt vé xem phim được thiết kế theo hướng đối tượng (OOP), hỗ trợ người dùng đặt vé, chọn cụm rạp, giờ chiếu, ghế ngồi, combo bắp nước, và thanh toán. Ngoài ra, hệ thống còn có giao diện quản lý phim, rạp, lịch chiếu và doanh thu dành cho admin.
+- Hệ thống đặt vé xem phim được xây dựng theo hướng đối tượng (OOP), cho phép người dùng (guest, customer) dễ dàng:
++ Xem thông tin phim
++ Tìm kiếm phim theo tên, thể loại hoặc đánh giá
++ Đặt vé với lựa chọn suất chiếu, ghế ngồi và combo bắp nước
++ Thực hiện thanh toán và áp dụng mã giảm giá
++ Đăng nhập, đánh giá phim, và quản lý lịch sử đặt vé
++ Quản trị viên (Admin) có thể quản lý phim, rạp chiếu, và suất chiếu thông qua các chức năng riêng biệt.
+
 
 ## CÁC ĐỀ XUẤT VÀ DỰ ĐỊNH THỰC HIỆN
 
@@ -30,13 +37,14 @@
 - Ngôn ngữ: C++
 - IDE: Visual Studio Code
 - Hệ điều hành: Window
-- Build: CMake / g++ compiler
+- Build: g++ compiler
 
 ### Kiến trúc phần mềm
 - 3 Layer architecture
     - UI: Qt (nếu không kết hợp được github codespaces thì chuyển qua làm console)
     - Business logic: Xử lý đặt vé, kiểm tra ghế trống, áp dụng mã giảm giá...
     - Data access: SQL (nếu không tích hợp được thì dùng file .txt thay thế)
+- SOLID architecture
 
 - Design pattern: Factory 
 
@@ -46,4 +54,4 @@
 ### Thành viên
 - Trương Thành Phát - 23120319
 - Bửu Huỳnh Vĩnh Phúc - 23120328
-- Bùi Minh Quân - 23120337
+- Bùi Minh Quân - 23120337 (Trưởng nhóm)

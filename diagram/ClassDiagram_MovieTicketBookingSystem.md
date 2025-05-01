@@ -36,33 +36,18 @@ classDiagram
 
     class IMovieRepository {
         <<interface>>
-        +getallMovies()
-        +getMovieById(id)
-        +addMovie(movie)
-        +updateMovie(movie)
-        +deleteMovie(id)
+        +getAllMovies() : List~IMovie~
+        +getMovieById(id) : IMovie
     }
 
     class MovieRepositorySQL {
         -dbConn : DatabaseConnection
         +getAllMovies()
         +getMovieById(id)
-        +addMovie(movie)
-        +updateMovie(movie)
-        +deleteMovie(id)
-    }
-
-    class MovieListDTO {
-        <<DTO>>
-        +string title
-        +string genre
-        +float rating
     }
 
     IMovie <|.. Movie
     IMovieRepository <|.. MovieRepositorySQL
-    Movie <.. MovieListDTO
     DatabaseConnection <.. MovieRepositorySQL : use
-    IMovieRepository <.. IMovie
 
 ```

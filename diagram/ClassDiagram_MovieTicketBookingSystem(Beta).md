@@ -14,13 +14,6 @@ classDiagram
     %% Movie Entity & Interface
     class IMovie {
         <<interface>>
-        +int id()
-        +string title()
-        +string genre()
-        +int duration()
-        +string description()
-        +float rating()
-        +viewShowTime()
     }
 
     class Movie {
