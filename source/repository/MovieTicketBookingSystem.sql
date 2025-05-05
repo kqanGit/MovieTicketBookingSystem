@@ -137,3 +137,30 @@ FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
 ALTER TABLE BOOKING
 ADD CONSTRAINT FK_BOOKING_ACCOUNT
 FOREIGN KEY (UserID) REFERENCES ACCOUNT(UserID);
+
+
+INSERT INTO MOVIE VALUES 
+('M01', N'Avengers', N'Hành động', N'Biệt đội siêu anh hùng', 8.5),
+('M02', N'Titanic', N'Tình cảm', N'Chuyện tình trên biển', 9.0);
+
+INSERT INTO SHOWTIME VALUES 
+('S01', 'M01', '2025-05-10', '18:00', '20:30'),
+('S02', 'M02', '2025-05-11', '20:00', '22:15');
+
+INSERT INTO SEAT VALUES 
+('A1', N'Đơn'),
+('A2', N'Đơn'),
+('A3', N'Đơn'),
+('B1', N'Đôi'),
+('B2', N'Đôi'),
+('B3', N'Đôi');
+
+
+INSERT INTO ACCOUNT VALUES 
+('U01', 'pass123', 'Khách', 'user1@gmail.com', '0912345678'),
+('U02', 'admin456', 'Admin', 'admin@gmail.com', '0987654321');
+
+INSERT INTO BOOKING VALUES 
+('B01', 'S01', 'A1', 'U01'),  -- U01 đặt ghế đơn cho suất M01
+('B02', 'S01', 'B1', 'U02'),  -- U02 đặt ghế đôi cho suất M01
+('B03', 'S02', 'A2', 'U01');  -- U01 đặt ghế đơn cho suất M02
