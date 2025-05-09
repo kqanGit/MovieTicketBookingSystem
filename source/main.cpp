@@ -1,5 +1,12 @@
+
+extern "C" {
+    #include "sqlite3.h"
+}
+//để intellisense nhận biết đó là file header của .c
 #include <iostream>
 #include "database/DatabaseConnection.h"
+
+
 
 int main() {
     DatabaseConnection dbConn("movies.db");
