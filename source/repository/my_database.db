@@ -1,0 +1,98 @@
+SQLite format 3
+-- SQLite format 3
+
+-- Tạo bảng Movie
+CREATE TABLE MOVIE (
+    MovieID TEXT PRIMARY KEY,
+    Title TEXT,
+    Genre TEXT,
+    Descriptions TEXT,
+    Rating REAL
+);
+
+-- Tạo bảng Showtime
+CREATE TABLE SHOWTIME (
+    ShowTimeID TEXT PRIMARY KEY,
+    MovieID TEXT,
+    Date TEXT,
+    StartTime TEXT,
+    EndTime TEXT,
+    FOREIGN KEY (MovieID) REFERENCES MOVIE(MovieID)
+);
+
+-- Tạo bảng SeatType
+CREATE TABLE SEATTYPE (
+    SeatType TEXT PRIMARY KEY,
+    Price REAL
+);
+
+-- Tạo bảng Seat
+CREATE TABLE SEAT (
+    SeatID TEXT PRIMARY KEY,
+    SeatType TEXT,
+    Price REAL,
+    FOREIGN KEY (SeatType) REFERENCES SEATTYPE(SeatType)
+);
+
+-- Tạo bảng Account
+CREATE TABLE ACCOUNT (
+    UserID TEXT PRIMARY KEY,
+    Password TEXT,
+    RoleUser TEXT,
+    Gmail TEXT,
+    PhoneNumber TEXT,
+    UserName TEXT
+);
+
+-- Tạo bảng Booking
+CREATE TABLE BOOKING (
+    BookingID TEXT PRIMARY KEY,
+    ShowTimeID TEXT,
+    UserID TEXT,
+    FOREIGN KEY (ShowTimeID) REFERENCES SHOWTIME(ShowTimeID),
+    FOREIGN KEY (UserID) REFERENCES ACCOUNT(UserID)
+);
+
+-- Tạo bảng BookSeat
+CREATE TABLE BOOKSEAT (
+    BookingID TEXT,
+    SeatID TEXT,
+    PRIMARY KEY (BookingID, SeatID),
+    FOREIGN KEY (BookingID) REFERENCES BOOKING(BookingID),
+    FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID)
+);
+
+-- Thêm dữ liệu
+
+INSERT INTO MOVIE VALUES 
+('M01', 'Avengers', 'Hành động', 'Biệt đội siêu anh hùng giải cứu thế giới', 8.5),
+('M02', 'Titanic', 'Tình cảm', 'Chuyện tình buồn trên con tàu định mệnh', 9.0);
+
+INSERT INTO SHOWTIME VALUES 
+('S01', 'M01', '2025-05-10', '18:00', '20:30'),
+('S02', 'M02', '2025-05-11', '20:00', '22:15');
+
+INSERT INTO SEATTYPE VALUES
+('Đơn', 50.0),
+('Đôi', 90.0);
+
+INSERT INTO SEAT VALUES 
+('A1', 'Đơn', 50.0),
+('A2', 'Đơn', 50.0),
+('A3', 'Đơn', 50.0),
+('B1', 'Đôi', 90.0),
+('B2', 'Đôi', 90.0),
+('B3', 'Đôi', 90.0);
+
+INSERT INTO ACCOUNT VALUES 
+('U01', 'pass123', 'Khách', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
+('U02', 'admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Tran Thi B');
+
+INSERT INTO BOOKING VALUES 
+('B01', 'S01', 'U01'),
+('B02', 'S02', 'U02');
+
+INSERT INTO BOOKSEAT VALUES 
+('B01', 'A1'),
+('B01', 'A2'),
+('B02', 'B1');
