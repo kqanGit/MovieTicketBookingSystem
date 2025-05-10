@@ -96,42 +96,43 @@ FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
 
 -------------------------- THÊM DỮ LIỆU -----------------------------
 
--- Thêm phim
+-- Insert Movies
 INSERT INTO MOVIE VALUES 
-('M01', N'Avengers', N'Hành động', N'Biệt đội siêu anh hùng giải cứu thế giới', 8.5),
-('M02', N'Titanic', N'Tình cảm', N'Chuyện tình buồn trên con tàu định mệnh', 9.0);
+('101', 'Avengers', 'Action', 'A team of superheroes saving the world', 8.5),
+('102', 'Titanic', 'Romance', 'A tragic love story on the doomed ship', 9.0);
 
--- Thêm suất chiếu
+-- Insert Showtimes
 INSERT INTO SHOWTIME VALUES 
-('S01', 'M01', '2025-05-10', '18:00', '20:30'),
-('S02', 'M02', '2025-05-11', '20:00', '22:15');
+('201', '101', '2025-05-10', '18:00', '20:30'),
+('202', '102', '2025-05-11', '20:00', '22:15');
 
--- Thêm loại ghế và giá
+-- Insert Seat Types
 INSERT INTO SEATTYPE VALUES
-(N'Đơn', 50.0),
-(N'Đôi', 90.0);
+('Single', 50.0),
+('Double', 90.0);
 
--- Thêm ghế
+-- Insert Seats
 INSERT INTO SEAT VALUES 
-('A1', N'Đơn', 50.0),
-('A2', N'Đơn', 50.0),
-('A3', N'Đơn', 50.0),
-('B1', N'Đôi', 90.0),
-('B2', N'Đôi', 90.0),
-('B3', N'Đôi', 90.0);
+('A1', 'Single', 50.0),
+('A2', 'Single', 50.0),
+('A3', 'Single', 50.0),
+('B1', 'Double', 90.0),
+('B2', 'Double', 90.0),
+('B3', 'Double', 90.0);
 
--- Thêm người dùng
+-- Insert Accounts
 INSERT INTO ACCOUNT VALUES 
-('U01', 'pass123', 'Khách', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
-('U02', 'admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Tran Thi B');
+('301', 'pass123', 'Customer', 'user1@gmail.com', '0912345678', 'John Nguyen'),
+('302', 'admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Anna Tran');
 
--- Đặt vé: U01 đặt 2 ghế cho suất M01, U02 đặt 1 ghế cho suất M02
+-- Insert Bookings
 INSERT INTO BOOKING VALUES 
-('B01', 'S01', 'U01'),
-('B02', 'S02', 'U02');
+('401', '201', '301'),
+('402', '202', '302');
 
--- Chi tiết ghế được đặt trong từng booking
+-- Insert Booked Seats
 INSERT INTO BOOKSEAT VALUES 
-('B01', 'A1'),
-('B01', 'A2'),
-('B02', 'B1');
+('401', 'A1'),
+('401', 'A2'),
+('402', 'B1');
+
