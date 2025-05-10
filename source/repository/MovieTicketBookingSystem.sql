@@ -1,11 +1,11 @@
-﻿-- Tạo database
+﻿-- Tạo database-----
 CREATE DATABASE MovieTicketBookingSystem;
 GO
 
 USE MovieTicketBookingSystem;
 GO
 
--- Bảng Movie
+-- Bảng Movie: lưu thông tin phim
 CREATE TABLE MOVIE (
     MovieID CHAR(3),
     Title NVARCHAR(30),
@@ -15,7 +15,7 @@ CREATE TABLE MOVIE (
     PRIMARY KEY (MovieID)
 );
 
--- Bảng Showtime
+-- Bảng Showtime: lưu thông tin suất chiếu
 CREATE TABLE SHOWTIME (
     ShowTimeID CHAR(3),
     MovieID CHAR(3),
@@ -25,15 +25,23 @@ CREATE TABLE SHOWTIME (
     PRIMARY KEY (ShowTimeID)
 );
 
--- Bảng Seat
+-- Bảng SeatType: lưu các loại ghế và giá
+CREATE TABLE SEATTYPE (
+    SeatType NVARCHAR(30),
+    Price FLOAT,
+    PRIMARY KEY (SeatType, Price)
+);
+
+-- Bảng Seat: lưu danh sách ghế và liên kết với SeatType
 CREATE TABLE SEAT (
     SeatID CHAR(3),
     SeatType NVARCHAR(30),
     Price FLOAT,
-    PRIMARY KEY (SeatID)
+    PRIMARY KEY (SeatID),
+    FOREIGN KEY (SeatType) REFERENCES SEATTYPE(SeatType)
 );
 
--- Bảng Account
+-- Bảng Account: lưu thông tin người dùng
 CREATE TABLE ACCOUNT (
     UserID CHAR(3),
     Password VARCHAR(30),
@@ -44,7 +52,7 @@ CREATE TABLE ACCOUNT (
     PRIMARY KEY (UserID)
 );
 
--- Bảng Booking
+-- Bảng Booking: mỗi lần đặt chỗ của người dùng cho một suất chiếu
 CREATE TABLE BOOKING (
     BookingID CHAR(3),
     ShowTimeID CHAR(3),
@@ -52,14 +60,14 @@ CREATE TABLE BOOKING (
     PRIMARY KEY (BookingID)
 );
 
--- Bảng BookSeat (quan hệ N-N giữa Booking và Seat)
+-- Bảng BookSeat: mỗi hàng biểu thị 1 ghế trong 1 booking (quan hệ N-N giữa Booking và Seat)
 CREATE TABLE BOOKSEAT (
     BookingID CHAR(3),
     SeatID CHAR(3),
     PRIMARY KEY (BookingID, SeatID)
 );
 
--------------------------- RÀNG BUỘC KHÓA NGOẠI 
+-------------------------- RÀNG BUỘC KHÓA NGOẠI ----------------------
 
 -- SHOWTIME -> MOVIE
 ALTER TABLE SHOWTIME
@@ -86,6 +94,8 @@ ALTER TABLE BOOKSEAT
 ADD CONSTRAINT FK_BOOKSEAT_SEAT
 FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
 
+-------------------------- THÊM DỮ LIỆU -----------------------------
+
 -- Thêm phim
 INSERT INTO MOVIE VALUES 
 ('M01', N'Avengers', N'Hành động', N'Biệt đội siêu anh hùng giải cứu thế giới', 8.5),
@@ -95,6 +105,11 @@ INSERT INTO MOVIE VALUES
 INSERT INTO SHOWTIME VALUES 
 ('S01', 'M01', '2025-05-10', '18:00', '20:30'),
 ('S02', 'M02', '2025-05-11', '20:00', '22:15');
+
+-- Thêm loại ghế và giá
+INSERT INTO SEATTYPE VALUES
+(N'Đơn', 50.0),
+(N'Đôi', 90.0);
 
 -- Thêm ghế
 INSERT INTO SEAT VALUES 
