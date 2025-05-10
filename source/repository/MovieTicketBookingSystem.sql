@@ -1,86 +1,21 @@
-﻿--CREATE DATABASE MovieTicketBookingSystem
---GO 
-
---USE MovieTicketBookingSystem
---GO
-
---CREATE TABLE MOVIE (
---    MovieID char(3), 
---    Title nvarchar(30),
---    Genre nvarchar(30),
---    Descriptions nvarchar(30),
---    Rating FLOAT,
---    PRIMARY KEY(MovieID)
---);
-
---CREATE TABLE SHOWTIME(
---	ShowTimeID char(3),
---	MovieID char(3),
---	SeatID char(3),
---	StatusSeat nvarchar(30),
---	Dates date,
---	StartTime Time,
---	EndTime Time,
-
---	PRIMARY KEY(ShowTimeID, MovieID, SeatID)
---);
-
---CREATE TABLE SEAT(
---	SeatID char(3),
---	BookingID char(3),
-
---	PRIMARY KEY(SeatID)
---);
-
---CREATE TABLE BOOKING(
---	BookingID char(3),
---	ShowTimeID char(3),
---	MovieID char(3),
---	SeatID char(3),
---	UserID char(3),
-
---	PRIMARY KEY(BookingID, ShowTimeID, MovieID, SeatID, UserID)
---);
-
---CREATE TABLE ACCOUNT(
---	UserID char(3),
---	Password varchar(30),
---	RoleUser varchar(30),
---	Gmail varchar(30),
---	PhoneNumber varchar(30),
-
---	PRIMARY KEY(UserID)
---)
-
-
---ALTER TABLE SHOWTIME ADD CONSTRAINT FK_SHOWTIME_MOVIE FOREIGN KEY MovieID REFERENCES MOVIE(MovieID)
-
---ALTER TABLE SHOWTIME ADD CONSTRAINT FK_SHOWTIME_SEAT FOREIGN KEY SeatID REFERENCES SEAT(SeatID)
-
---ALTER TABLE SEAT ADD CONSTRAINT FK_SEAT_BOOKING FOREIGN KEY BookingID REFERENCES BOOKING(BookingID)
-
---ALTER TABLE BOOKING ADD CONSTRAINT FK_BOOKING_SHOWTIME FOREIGN KEY (ShowTimeID, MovieID, SeatID) REFERENCES SHOWTIME(ShowTimeID, MovieID, SeatID)
-
---ALTER TABLE BOOKING ADD CONSTRAINT FK_BOOKING_ACCOUNT FOREIGN KEY UserID REFERENCES ACCOUNT(UserID)
-
-
+﻿-- Tạo database
 CREATE DATABASE MovieTicketBookingSystem;
 GO
 
 USE MovieTicketBookingSystem;
 GO
 
--- Bảng Movie: lưu thông tin phim
+-- Bảng Movie
 CREATE TABLE MOVIE (
     MovieID CHAR(3),
     Title NVARCHAR(30),
     Genre NVARCHAR(30),
-    Descriptions NVARCHAR(30),
+    Descriptions NVARCHAR(100),
     Rating FLOAT,
     PRIMARY KEY (MovieID)
 );
 
--- Bảng Showtime: lưu thông tin suất chiếu
+-- Bảng Showtime
 CREATE TABLE SHOWTIME (
     ShowTimeID CHAR(3),
     MovieID CHAR(3),
@@ -90,77 +25,98 @@ CREATE TABLE SHOWTIME (
     PRIMARY KEY (ShowTimeID)
 );
 
--- Bảng Seat: lưu danh sách các ghế trong rạp
+-- Bảng Seat
 CREATE TABLE SEAT (
     SeatID CHAR(3),
-	SeatType NVARCHAR(30),
+    SeatType NVARCHAR(30),
+    Price FLOAT,
     PRIMARY KEY (SeatID)
 );
 
--- Bảng Account: lưu thông tin người dùng
+-- Bảng Account
 CREATE TABLE ACCOUNT (
     UserID CHAR(3),
     Password VARCHAR(30),
     RoleUser VARCHAR(30),
-    Gmail VARCHAR(30),
-    PhoneNumber VARCHAR(30),
+    Gmail VARCHAR(50),
+    PhoneNumber VARCHAR(15),
+    UserName VARCHAR(50),
     PRIMARY KEY (UserID)
 );
 
--- Bảng Booking: người dùng đặt ghế nào cho suất chiếu nào
+-- Bảng Booking
 CREATE TABLE BOOKING (
     BookingID CHAR(3),
     ShowTimeID CHAR(3),
-    SeatID CHAR(3),
     UserID CHAR(3),
-    PRIMARY KEY (BookingID),
-    -- Ràng buộc thêm bên dưới
+    PRIMARY KEY (BookingID)
 );
 
+-- Bảng BookSeat (quan hệ N-N giữa Booking và Seat)
+CREATE TABLE BOOKSEAT (
+    BookingID CHAR(3),
+    SeatID CHAR(3),
+    PRIMARY KEY (BookingID, SeatID)
+);
 
--- Ràng buộc SHOWTIME -> MOVIE
+-------------------------- RÀNG BUỘC KHÓA NGOẠI 
+
+-- SHOWTIME -> MOVIE
 ALTER TABLE SHOWTIME
 ADD CONSTRAINT FK_SHOWTIME_MOVIE
 FOREIGN KEY (MovieID) REFERENCES MOVIE(MovieID);
 
--- Ràng buộc BOOKING -> SHOWTIME
+-- BOOKING -> SHOWTIME
 ALTER TABLE BOOKING
 ADD CONSTRAINT FK_BOOKING_SHOWTIME
 FOREIGN KEY (ShowTimeID) REFERENCES SHOWTIME(ShowTimeID);
 
--- Ràng buộc BOOKING -> SEAT
-ALTER TABLE BOOKING
-ADD CONSTRAINT FK_BOOKING_SEAT
-FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
-
--- Ràng buộc BOOKING -> ACCOUNT
+-- BOOKING -> ACCOUNT
 ALTER TABLE BOOKING
 ADD CONSTRAINT FK_BOOKING_ACCOUNT
 FOREIGN KEY (UserID) REFERENCES ACCOUNT(UserID);
 
+-- BOOKSEAT -> BOOKING
+ALTER TABLE BOOKSEAT
+ADD CONSTRAINT FK_BOOKSEAT_BOOKING
+FOREIGN KEY (BookingID) REFERENCES BOOKING(BookingID);
 
+-- BOOKSEAT -> SEAT
+ALTER TABLE BOOKSEAT
+ADD CONSTRAINT FK_BOOKSEAT_SEAT
+FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
+
+-- Thêm phim
 INSERT INTO MOVIE VALUES 
-('M01', N'Avengers', N'Hành động', N'Biệt đội siêu anh hùng', 8.5),
-('M02', N'Titanic', N'Tình cảm', N'Chuyện tình trên biển', 9.0);
+('M01', N'Avengers', N'Hành động', N'Biệt đội siêu anh hùng giải cứu thế giới', 8.5),
+('M02', N'Titanic', N'Tình cảm', N'Chuyện tình buồn trên con tàu định mệnh', 9.0);
 
+-- Thêm suất chiếu
 INSERT INTO SHOWTIME VALUES 
 ('S01', 'M01', '2025-05-10', '18:00', '20:30'),
 ('S02', 'M02', '2025-05-11', '20:00', '22:15');
 
+-- Thêm ghế
 INSERT INTO SEAT VALUES 
-('A1', N'Đơn'),
-('A2', N'Đơn'),
-('A3', N'Đơn'),
-('B1', N'Đôi'),
-('B2', N'Đôi'),
-('B3', N'Đôi');
+('A1', N'Đơn', 50.0),
+('A2', N'Đơn', 50.0),
+('A3', N'Đơn', 50.0),
+('B1', N'Đôi', 90.0),
+('B2', N'Đôi', 90.0),
+('B3', N'Đôi', 90.0);
 
-
+-- Thêm người dùng
 INSERT INTO ACCOUNT VALUES 
-('U01', 'pass123', 'Khách', 'user1@gmail.com', '0912345678'),
-('U02', 'admin456', 'Admin', 'admin@gmail.com', '0987654321');
+('U01', 'pass123', 'Khách', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
+('U02', 'admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Tran Thi B');
 
+-- Đặt vé: U01 đặt 2 ghế cho suất M01, U02 đặt 1 ghế cho suất M02
 INSERT INTO BOOKING VALUES 
-('B01', 'S01', 'A1', 'U01'),  -- U01 đặt ghế đơn cho suất M01
-('B02', 'S01', 'B1', 'U02'),  -- U02 đặt ghế đôi cho suất M01
-('B03', 'S02', 'A2', 'U01');  -- U01 đặt ghế đơn cho suất M02
+('B01', 'S01', 'U01'),
+('B02', 'S02', 'U02');
+
+-- Chi tiết ghế được đặt trong từng booking
+INSERT INTO BOOKSEAT VALUES 
+('B01', 'A1'),
+('B01', 'A2'),
+('B02', 'B1');
