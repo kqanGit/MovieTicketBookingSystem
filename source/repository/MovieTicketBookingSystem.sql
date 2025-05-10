@@ -94,45 +94,44 @@ ALTER TABLE BOOKSEAT
 ADD CONSTRAINT FK_BOOKSEAT_SEAT
 FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID);
 
--------------------------- THÊM DỮ LIỆU -----------------------------
+----------------------------- DỮ LIỆU MẪU ----------------------
 
--- Insert Movies
-INSERT INTO MOVIE VALUES 
-('101', 'Avengers', 'Action', 'A team of superheroes saving the world', 8.5),
-('102', 'Titanic', 'Romance', 'A tragic love story on the doomed ship', 9.0);
+-- Insert movies
+INSERT INTO MOVIE (Title, Genre, Descriptions, Rating) VALUES
+('Avengers', 'Action', 'The superhero team saving the world', 8.5),
+('Titanic', 'Romance', 'A tragic love story on the doomed ship', 9.0);
 
--- Insert Showtimes
-INSERT INTO SHOWTIME VALUES 
-('201', '101', '2025-05-10', '18:00', '20:30'),
-('202', '102', '2025-05-11', '20:00', '22:15');
+-- Assuming MovieID: Avengers=1, Titanic=2
+INSERT INTO SHOWTIME (MovieID, Date, StartTime, EndTime) VALUES
+(1, '2025-05-10', '18:00', '20:30'),
+(2, '2025-05-11', '20:00', '22:15');
 
--- Insert Seat Types
+-- Insert seat types
 INSERT INTO SEATTYPE VALUES
 ('Single', 50.0),
-('Double', 90.0);
+('Couple', 90.0);
 
--- Insert Seats
+-- Insert seats
 INSERT INTO SEAT VALUES 
 ('A1', 'Single', 50.0),
 ('A2', 'Single', 50.0),
 ('A3', 'Single', 50.0),
-('B1', 'Double', 90.0),
-('B2', 'Double', 90.0),
-('B3', 'Double', 90.0);
+('B1', 'Couple', 90.0),
+('B2', 'Couple', 90.0),
+('B3', 'Couple', 90.0);
 
--- Insert Accounts
-INSERT INTO ACCOUNT VALUES 
-('301', 'pass123', 'Customer', 'user1@gmail.com', '0912345678', 'John Nguyen'),
-('302', 'admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Anna Tran');
+-- Insert accounts
+INSERT INTO ACCOUNT (Password, RoleUser, Gmail, PhoneNumber, UserName) VALUES
+('pass123', 'User', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
+('admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Tran Thi B');
 
--- Insert Bookings
-INSERT INTO BOOKING VALUES 
-('401', '201', '301'),
-('402', '202', '302');
+-- Assuming UserID: Nguyen Van A = 1, Tran Thi B = 2; ShowTimeID = 1 and 2
+INSERT INTO BOOKING (ShowTimeID, UserID) VALUES
+(1, 1),
+(2, 2);
 
--- Insert Booked Seats
+-- Assuming BookingID: 1 and 2
 INSERT INTO BOOKSEAT VALUES 
-('401', 'A1'),
-('401', 'A2'),
-('402', 'B1');
-
+(1, 'A1'),
+(1, 'A2'),
+(2, 'B1');
