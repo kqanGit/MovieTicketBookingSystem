@@ -1,4 +1,7 @@
 #include "Booking.h"
-
-Booking::Booking(int bookingID, int userID, int showTimeID)
-    : bookingID(bookingID), userID(userID), showTimeID(showTimeID) {}
+Booking::Booking(
+    const int& bookingID,
+    const int& movieID,
+    const std::string& movieTitle,
+    const ShowTime& showTime
+) : bookingID(bookingID), movieID(movieID), movieTitle(movieTitle), showTime(showTime) {}
