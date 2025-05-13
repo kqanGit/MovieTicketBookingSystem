@@ -2,8 +2,9 @@
 #include <stdexcept>
 
 void AuthenticationRepositorySQL::addUser(const AccountInformation& info) {
-    std::string sql = "INSERT INTO users (username, password, phoneNumber, gmail, role) VALUES (?, ?, ?, ?, ?)";
-    dbConn->executeNonQuery(sql, {info.userName, info.password, info.phoneNumber, info.gmail, info.role});
+    std::string sql = "INSERT INTO users (Password, RoleUser, Gmail, PhoneNumber, UserName VALUES (?, ?, ?, ?, ?)";
+    // dbConn->executeNonQuery(sql, {info.userName, info.password, info.phoneNumber, info.gmail, info.role});
+    dbConn->executeNonQuery(sql, {info.password, info.role, info.gmail, info.phoneNumber, info.userName});
 }
 
 AccountInformation AuthenticationRepositorySQL::getUserByUserName(const std::string& username, const std::string& password) {
