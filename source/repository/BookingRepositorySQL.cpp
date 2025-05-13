@@ -9,8 +9,7 @@ BookingRepository::BookingRepository() {
 }
 
 BookingRepository::~BookingRepository() {
-    // Không cần giải phóng _dbConnection vì nó là singleton
-    // DatabaseConnection sẽ tự quản lý vòng đời của nó
+
 }
 
 void BookingRepository::addBooking(const int& userID, const int& showTimeID) {
@@ -50,7 +49,7 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
     for (const auto& row : result) {
         int bookingID = std::stoi(row.at("BookingID"));
         if (bookingDetails.find(bookingID) == bookingDetails.end()) {
-            // Sử dụng emplace thay vì operator[] để tránh cần constructor mặc định
+          
             bookingDetails.emplace(
                 std::piecewise_construct,
                 std::forward_as_tuple(bookingID),
@@ -61,12 +60,12 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
                     ShowTime(
                         std::stoi(row.at("ShowTimeID")),
                         row.at("Date"),
-                        row.at("StartTime"),  // Sửa StarTime thành StartTime
+                        row.at("StartTime"), 
                         row.at("EndTime")
                     )
                 )
             );
-        }        // Chuyển đổi SeatType từ chuỗi thành enum
+        }       
         SeatType seatType;
         std::string seatTypeStr = row.at("SeatType");
         if (seatTypeStr == "Single") {
@@ -74,7 +73,7 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
         } else if (seatTypeStr == "Couple") {
             seatType = SeatType::COUPLE;
         } else {
-            seatType = SeatType::SINGLE; // Giá trị mặc định
+            seatType = SeatType::SINGLE;
         }
         
         float price = std::stof(row.at("Price"));
@@ -91,7 +90,7 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
             totalPrice += seat->price();
         }        
           bookings.emplace_back(
-            bookingID,  // Không cần chuyển đổi int sang string
+            bookingID, 
             booking.movieID,
             booking.movieTitle,
             booking.showTime,
@@ -101,4 +100,45 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
     }
 
     return bookings;
+}
+
+std::vector<SeatView> BookingRepository::viewSeatsStatus(const int& showTimeID) {
+    std::string sql_stmt = "select SeatID, SeatType, Price from SEAT";
+    auto seatInfo = _dbConnection->executeQuery(sql_stmt, {});
+    sql_stmt = "select SeatID from BOOKSEAT where ShowTimeID = ?";
+    std::vector<std::string> params = {std::to_string(showTimeID)};
+    auto bookedSeats = _dbConnection->executeQuery(sql_stmt, params);
+    std::map<std::string, bool> bookedSeatsMap;
+    for (const auto& row : bookedSeats) {
+        bookedSeatsMap[row.at("SeatID")] = true;
+    }    
+    std::map<std::string, SeatView> seatDetails;
+    for (const auto& row : seatInfo) {
+        std::string seatID = row.at("SeatID");
+        SeatType seatType;
+        std::string seatTypeStr = row.at("SeatType");
+        if (seatTypeStr == "Single") {
+            seatType = SeatType::SINGLE;
+        } else if (seatTypeStr == "Couple") {
+            seatType = SeatType::COUPLE;
+        } else {
+            seatType = SeatType::SINGLE; // Giá trị mặc định
+        }
+        
+        float price = std::stof(row.at("Price"));
+        SeatFactory seatFactory;
+        ISeat* temp = seatFactory.createSeat(seatID, seatType, price);
+        std::shared_ptr<ISeat> seat(temp);
+        SeatStatus status = bookedSeatsMap[seatID] ? SeatStatus::BOOKED : SeatStatus::AVAILABLE;
+        seatDetails.emplace(
+            std::piecewise_construct,
+            std::forward_as_tuple(seatID),
+            std::forward_as_tuple(seat, status)
+        );
+    }
+    std::vector<SeatView> seatsView;
+    for (const auto& pair : seatDetails) {
+        seatsView.push_back(pair.second);
+    }
+    return seatsView;
 }
