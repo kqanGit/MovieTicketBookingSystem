@@ -14,7 +14,7 @@ protected:
     IBookingRepository* repo;
     
     void SetUp() override {
-        repo = new BookingRepository(); 
+        repo = new BookingRepository("database.db"); 
     }
     
     void TearDown() override {
@@ -121,6 +121,15 @@ TEST_F(BookingRepositoryDBTest, CanAddBookedSeats) {
     EXPECT_TRUE(foundA3);
     EXPECT_TRUE(foundB3);
 }
+
+TEST_F(BookingRepositoryDBTest, CanGetLatestBookingID) {
+    // Lấy booking ID mới nhất của user 1
+    int latestBookingId = repo->getLatestBookingID(1);
+    
+    // Kiểm tra booking ID mới nhất có đúng không
+    EXPECT_EQ(latestBookingId, 3);
+}
+   
 
 int main(int argc, char** argv) {
 
