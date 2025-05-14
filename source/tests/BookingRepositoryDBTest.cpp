@@ -148,9 +148,12 @@ int main(int argc, char** argv) {
         std::cerr << "Failed to connect to database" << std::endl;
         return 1;
     }   
+
     db->executeSQLFile("database.sql");
+
     ::testing::InitGoogleTest(&argc, argv);
     int result = RUN_ALL_TESTS();
     
+    db->disconnect();
     return result;
 }

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.0.2)
-project(BookingRepositoryTest)
+project(BookingTest)
 
 set(CMAKE_CXX_STANDARD 23)
 
@@ -41,6 +41,35 @@ target_include_directories(BookingRepositoryDBTest PRIVATE
 
 # Link Google Test và Google Mock cho DB test
 target_link_libraries(BookingRepositoryDBTest
+    gtest
+    gmock
+    gtest_main
+    sqlite3
+)
+
+add_executable(BookingServiceDBTest
+    BookingServiceDBTest.cpp
+    ../service/BookingService.cpp
+    ../repository/BookingRepositorySQL.cpp
+    ../repository/BookingView.cpp
+    ../repository/SeatView.cpp
+    ../database/DatabaseConnection.cpp
+    ../model/Booking.cpp
+    ../model/ShowTime.cpp
+    ../model/SingleSeat.cpp
+    ../model/CoupleSeat.cpp
+    ../model/Movie.cpp
+)
+
+target_include_directories(BookingServiceDBTest PRIVATE
+    ../service
+    ../repository
+    ../model
+    ../database
+    ../lib
+)
+
+target_link_libraries(BookingServiceDBTest
     gtest
     gmock
     gtest_main

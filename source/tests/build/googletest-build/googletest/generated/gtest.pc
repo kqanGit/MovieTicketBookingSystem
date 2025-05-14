@@ -1,5 +1,5 @@
-libdir=C:/Program Files (x86)/BookingRepositoryTest/lib
-includedir=C:/Program Files (x86)/BookingRepositoryTest/include
+libdir=C:/Program Files (x86)/BookingTest/lib
+includedir=C:/Program Files (x86)/BookingTest/include
 
 Name: gtest
 Description: GoogleTest (without main() function)
