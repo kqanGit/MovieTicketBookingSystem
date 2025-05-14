@@ -1,7 +1,7 @@
 #ifndef _SEATVIEW_H_
 #define _SEATVIEW_H_
 #include "ISeat.h"
-
+#include <memory>
 enum SeatStatus {
     AVAILABLE,
     BOOKED,
@@ -9,10 +9,10 @@ enum SeatStatus {
 
 class SeatView {
 public:
-    ISeat* seat;
+    std::shared_ptr<ISeat> seat;
     SeatStatus status;
 public:
-    SeatView(ISeat* seat, const SeatStatus& status);
+    SeatView(std::shared_ptr<ISeat> seat, const SeatStatus& status);
 };
 
 #endif 

@@ -1,9 +1,9 @@
 #include "BookingRepositorySQL.h"
 #include "SeatFactory.h"
 
-BookingRepository::BookingRepository() {
+BookingRepository::BookingRepository(std::string dbFilePath) {
     _dbConnection = DatabaseConnection::getInstance();
-    if (!_dbConnection->connect("MovieTicketBookingSystem.db")) {
+    if (!_dbConnection->connect(dbFilePath)) {
         throw std::runtime_error("Failed to connect to the database.");
     }
 }
@@ -44,8 +44,10 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
                            "join SEAT s on s.SeatID = bs.SeatID "
                            "where b.UserID = ?";
     std::vector<std::string> params = {std::to_string(userID)};
-    auto result = _dbConnection->executeQuery(sql_stmt, params);    std::map<int, Booking> bookingDetails;
+    auto result = _dbConnection->executeQuery(sql_stmt, params);    
+    std::map<int, Booking> bookingDetails;
     std::map<int, std::vector<std::shared_ptr<ISeat>>> seatsByBooking;
+    
     for (const auto& row : result) {
         int bookingID = std::stoi(row.at("BookingID"));
         if (bookingDetails.find(bookingID) == bookingDetails.end()) {
@@ -65,7 +67,8 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
                     )
                 )
             );
-        }       
+        }      
+
         SeatType seatType;
         std::string seatTypeStr = row.at("SeatType");
         if (seatTypeStr == "Single") {
@@ -81,7 +84,9 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
         ISeat* temp = seatFactory.createSeat(row.at("SeatID"), seatType, price);
         std::shared_ptr<ISeat> seat(temp);
         seatsByBooking[bookingID].push_back(seat);
-    }    std::vector<BookingView> bookings;
+    }  
+
+    std::vector<BookingView> bookings;
     for (const auto& pair : bookingDetails) {
         int bookingID = pair.first;
         Booking booking = pair.second;
@@ -105,7 +110,9 @@ std::vector<BookingView> BookingRepository::viewAllBookings(const int& userID) {
 std::vector<SeatView> BookingRepository::viewSeatsStatus(const int& showTimeID) {
     std::string sql_stmt = "select SeatID, SeatType, Price from SEAT";
     auto seatInfo = _dbConnection->executeQuery(sql_stmt, {});
-    sql_stmt = "select SeatID from BOOKSEAT where ShowTimeID = ?";
+    sql_stmt = "select SeatID from BOOKSEAT "
+            "join BOOKING b on b.BookingID = BOOKSEAT.BookingID "
+            "where ShowTimeID = ?";
     std::vector<std::string> params = {std::to_string(showTimeID)};
     auto bookedSeats = _dbConnection->executeQuery(sql_stmt, params);
     std::map<std::string, bool> bookedSeatsMap;
@@ -141,4 +148,14 @@ std::vector<SeatView> BookingRepository::viewSeatsStatus(const int& showTimeID) 
         seatsView.push_back(pair.second);
     }
     return seatsView;
+}
+
+int BookingRepository::getLatestBookingID(const int& userID) {
+    std::string sql_stmt = "select BookingID from BOOKING where UserID = ? order by BookingID desc limit 1";
+    std::vector<std::string> params = {std::to_string(userID)};
+    auto result = _dbConnection->executeQuery(sql_stmt, params);
+    if (result.empty()) {
+        return 0; // No bookings found
+    }
+    return std::stoi(result[0].at("BookingID"));
 }

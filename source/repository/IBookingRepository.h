@@ -10,6 +10,7 @@ public:
     virtual ~IBookingRepository() = default;
     virtual void addBooking(const int& userID, const int& showTimeID) = 0;
     virtual void addBookedSeats(const int& bookingID, const std::vector<std::string>& bookedSeats) = 0;
+    virtual int getLatestBookingID(const int& userID) = 0;
     virtual std::vector<BookingView> viewAllBookings(const int& userID) = 0;
     virtual std::vector<SeatView> viewSeatsStatus(const int& showTimeID) = 0;
 };
