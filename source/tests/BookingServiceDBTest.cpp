@@ -7,7 +7,7 @@
 #include <filesystem>
 
 TEST(BookingServiceTest, CanCreateBooking) {
-    IBookingService* service = new BookingService();
+    IBookingService* service = new BookingService(new BookingRepository("database.db"));
     int userID = 2;
     int showTimeID = 1;
     std::vector<std::string> seats = {"B1", "B2", "B3"};
@@ -16,7 +16,7 @@ TEST(BookingServiceTest, CanCreateBooking) {
 }
 
 TEST(BookingServiceTest, CanViewSeatsStatus) {
-    IBookingService* service = new BookingService();
+    IBookingService* service = new BookingService(new BookingRepository("database.db"));
     int showTimeID = 1;
     std::vector<SeatView> seatsStatus = service->viewSeatsStatus(showTimeID);
     std::cout << "Seats status for showTimeID " << showTimeID << ": ";
@@ -70,7 +70,7 @@ TEST(BookingServiceTest, CanViewSeatsStatus) {
 }
 
 TEST(BookingServiceTest, CanViewBookingHistory) {
-    IBookingService* service = new BookingService();
+    IBookingService* service = new BookingService(new BookingRepository("database.db"));
     int userID = 2;
     std::vector<BookingView> bookings = service->viewBookingHistory(userID);
     std::cout << "Booking history for userID " << userID << ": " << std::endl;
