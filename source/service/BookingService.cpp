@@ -1,19 +1,23 @@
 #include "BookingService.h"
 
-BookingService::BookingService() {
-    repo = new BookingRepository("database.db");
+BookingService::BookingService(IBookingRepository* repo) {
+    _repo = repo;
 }
 
 void BookingService::createBooking(const int& userID, const int& showTimeID, const std::vector<std::string>& seats) {
-    repo->addBooking(userID, showTimeID);
-    int bookingID = repo->getLatestBookingID(userID);
-    repo->addBookedSeats(bookingID, seats);
+    _repo->addBooking(userID, showTimeID);
+    int bookingID = _repo->getLatestBookingID(userID);
+    _repo->addBookedSeats(bookingID, seats);
 }
 
 std::vector<SeatView> BookingService::viewSeatsStatus(const int& showTimeID) {
-    return repo->viewSeatsStatus(showTimeID);
+    return _repo->viewSeatsStatus(showTimeID);
 }
 
 std::vector<BookingView> BookingService::viewBookingHistory(const int& userID) {
-    return repo->viewAllBookings(userID);
+    return _repo->viewAllBookings(userID);
+}
+
+BookingService::~BookingService() {
+    delete _repo;
 }

@@ -6,12 +6,13 @@
 
 class BookingService : public IBookingService {
 private:
-    IBookingRepository* repo;
+    IBookingRepository* _repo;
 public:
-    BookingService();
+    BookingService(IBookingRepository* repo);
     void createBooking(const int& userID, const int& showTimeID, const std::vector<std::string>& seats) override;
     std::vector<BookingView> viewBookingHistory(const int& userID) override;
     std::vector<SeatView> viewSeatsStatus(const int& showTimeID) override;
+    ~BookingService();
 };
 
 #endif
