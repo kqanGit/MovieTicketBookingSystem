@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-MovieViewerService::MovieViewerService(IMovieRepository* r) : repo(r) {}
+MovieViewerService::MovieViewerService(std::shared_ptr<IMovieRepository> r) : repo(move(r)) {}
 
 void MovieViewerService::showAllMovies() {
     auto movies = repo->getAllMovies();
@@ -12,7 +12,7 @@ void MovieViewerService::showAllMovies() {
 }
 
 void MovieViewerService::showMovieDetail(int id) {
-    IMovie* m = repo->getMovieById(id);
+    auto m = repo->getMovieById(id); // shared_ptr
     if (m) {
         cout << "ID: " << m->getId() << endl;
         cout << "Title: " << m->getTitle() << endl;

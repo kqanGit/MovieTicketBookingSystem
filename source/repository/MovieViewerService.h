@@ -1,15 +1,17 @@
+// MovieViewerService.h
 #ifndef MOVIEVIEWERSERVICE_H
 #define MOVIEVIEWERSERVICE_H
 
 #include "IMovieViewerService.h"
 #include "IMovieRepository.h"
+#include <memory>
 
 class MovieViewerService : public IMovieViewerService {
 private:
-    IMovieRepository* repo;
+    std::shared_ptr<IMovieRepository> repo;  // Thay đổi thành smart pointer
 
 public:
-    MovieViewerService(IMovieRepository* r);
+    explicit MovieViewerService(std::shared_ptr<IMovieRepository> r);
     void showAllMovies() override;
     void showMovieDetail(int id) override;
 };
