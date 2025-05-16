@@ -6,7 +6,7 @@
 class IMovieManagerService {
 public:
     virtual ~IMovieManagerService() {}
-    virtual void addMovie(IMovie* movie) = 0;
+    virtual void addMovie(std::shared_ptr<IMovie> movie) = 0;
     virtual void deleteMovie(int id) = 0;
 };
 
