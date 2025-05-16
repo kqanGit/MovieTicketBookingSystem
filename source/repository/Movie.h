@@ -15,6 +15,7 @@ private:
     vector<string> showTimes;
 
 public:
+    Movie(){}
     Movie(int id, const string& title, const string& genre, int duration,
           const string& description, float rating);
 
@@ -27,6 +28,13 @@ public:
 
     const vector<string>& getShowTimes() const;
     void addShowTime(const string& time);
+
+    void setId(int _id) { id = _id; }
+    void setTitle(const std::string& newTitle) { title = newTitle; }
+    void setGenre(const std::string& newGenre) { genre = newGenre; }
+    void setRating(float newRating) { rating = newRating; }
+    void setDuration(int newDuration) { duration = newDuration; }
+    void setDescription(const std::string& newDescription) { description = newDescription; }
 };
 
 #endif // MOVIE_H
