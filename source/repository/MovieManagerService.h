@@ -1,16 +1,18 @@
+// MovieManagerService.h
 #ifndef MOVIEMANAGERSERVICE_H
 #define MOVIEMANAGERSERVICE_H
 
 #include "IMovieManagerService.h"
 #include "IMovieRepository.h"
+#include <memory>
 
 class MovieManagerService : public IMovieManagerService {
 private:
-    IMovieRepository* repo;
+    std::shared_ptr<IMovieRepository> repo;
 
 public:
-    MovieManagerService(IMovieRepository* r);
-    void addMovie(IMovie* movie) override;
+    explicit MovieManagerService(std::shared_ptr<IMovieRepository> r);
+    void addMovie(std::shared_ptr<IMovie> movie) override;
     void deleteMovie(int id) override;
 };
 

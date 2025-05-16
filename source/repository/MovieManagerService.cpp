@@ -1,7 +1,8 @@
 #include "MovieManagerService.h"
 
-MovieManagerService::MovieManagerService(IMovieRepository* r) : repo(r) {}
-void MovieManagerService::addMovie(IMovie* movie) {
+MovieManagerService::MovieManagerService(std::shared_ptr<IMovieRepository> r) : repo(r) {}
+
+void MovieManagerService::addMovie(std::shared_ptr<IMovie> movie) {
     repo->addMovie(movie);
 }
 void MovieManagerService::deleteMovie(int id) {
