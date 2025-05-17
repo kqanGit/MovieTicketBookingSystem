@@ -7,11 +7,13 @@
 #include "UserContextFactory.h"
 #include <memory>
 
+
+// Sửa lại LoginService để lưu loại người dùng vào IUserContext*
 class LoginService : public ILoginService {
 private:
     IAuthenticationRepository* repo;
-    UserContextFactory* userFactory;
-    UserContextFactory* adminFactory;
+    UserContextFactory* userFactory;    // 
+    UserContextFactory* adminFactory;   // 
 public:
     LoginService(IAuthenticationRepository* r, UserContextFactory* uf, UserContextFactory* af)
         : repo(r), userFactory(uf), adminFactory(af) {}

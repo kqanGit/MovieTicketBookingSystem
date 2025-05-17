@@ -2,7 +2,7 @@
 #define APP_H
 
 #include <memory>
-#include "UserManager.h"
+#include "USER_pending/SessionManager.h"
 #include "repository/IAuthenticationRepository.h"
 #include "repository/AuthenticationRepositorySQL.h"
 #include "database/DatabaseConnection.h"
@@ -11,7 +11,7 @@
 // App class that manages the application lifecycle
 class App {
 private:
-    std::unique_ptr<UserManager> userManager;
+    std::unique_ptr<SessionManager> sessionManager;
     DatabaseConnection* dbConn;
     IAuthenticationRepository* authRepo;
     bool useMockRepo;

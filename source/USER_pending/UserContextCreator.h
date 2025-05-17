@@ -4,16 +4,11 @@
 
 #include "UserContextFactory.h"
 #include "User.h"
-#include "../repository/IAuthenticationRepository.h"
 
 class UserContextCreator : public UserContextFactory {
-private:
-    IAuthenticationRepository* repo;
 public:
-    UserContextCreator(IAuthenticationRepository* r) : repo(r) {}
-    std::unique_ptr<IUserContext> CreateUser(const AccountInformation& acc) override {
-        return std::make_unique<User>(acc, repo);
-    }
+    UserContextCreator() = default;
+    std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) override;
 };
 
 #endif

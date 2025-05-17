@@ -1,5 +1,6 @@
 #include "UserContextCreator.h"
 #include "User.h"
-#include <memory>
 
-// File này không cần định nghĩa lại CreateUser vì đã inline trong header.
+std::unique_ptr<IUserContext> UserContextCreator::CreateUser() {
+    return std::make_unique<User>();
+}

@@ -19,16 +19,16 @@ class IUserContext {
 public:
     virtual std::string getRole() const = 0;
 
-public:
-    // Chuyển sang trả về reference thay vì raw pointer
-    virtual IUserInformationService* getUserInformationService() = 0;
-    virtual IMovieViewerService* getMovieViewerService() = 0;
-    virtual IMovieManagerService* getMovieManagerService() = 0;
-    virtual IBookingService* getBookingService() = 0;
-    virtual IViewBookingHistoryService* getViewBookingHistoryService() = 0;
-    virtual ILoginService* getLoginService() = 0;
-    virtual ILogoutService* getLogoutService() = 0;
-    virtual IRegisterService* getRegisterService() = 0;
+    // Các service, trả về nullptr nếu không hỗ trợ ở vai trò hiện tại
+    virtual IUserInformationService* getUserInformationService() = 0; // User/Admin
+    virtual IMovieViewerService* getMovieViewerService() = 0;         // Guest/User/Admin
+    virtual IMovieManagerService* getMovieManagerService() = 0;       // Admin
+    virtual IBookingService* getBookingService() = 0;                 // User/Admin
+    virtual IViewBookingHistoryService* getViewBookingHistoryService() = 0; // User/Admin
+    virtual ILoginService* getLoginService() = 0;                     // Guest
+    virtual ILogoutService* getLogoutService() = 0;                   // User/Admin
+    virtual IRegisterService* getRegisterService() = 0;               // Guest
+
     virtual ~IUserContext() = default;
 };
 #endif

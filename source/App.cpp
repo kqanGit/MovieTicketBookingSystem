@@ -5,6 +5,7 @@
 #include "USER_pending/BookingService.h"
 #include "USER_pending/ViewBookingHistoryService.h"
 #include "USER_pending/MovieViewerService.h"
+#include "USER_pending/SessionManager.h"
 
 App::App(bool useMock) : dbConn(nullptr), authRepo(nullptr), useMockRepo(useMock) {
 }
@@ -38,9 +39,8 @@ bool App::initialize() {
         // Initialize SQL repository
         authRepo = new AuthenticationRepositorySQL(dbConn);
     }
-    
-    // Initialize UserManager with repository
-    userManager = std::make_unique<UserManager>(authRepo);
+      // Initialize SessionManager with repository
+    sessionManager = std::make_unique<SessionManager>(authRepo);
     
     std::cout << "Khởi tạo hoàn tất." << std::endl;
     return true;
@@ -49,13 +49,12 @@ bool App::initialize() {
 void App::run() {
     std::cout << "Chào mừng đến với hệ thống đặt vé xem phim!" << std::endl;
     
-    bool running = true;
-    while(running) {
+    bool running = true;    while(running) {
         // Lấy context người dùng hiện tại
-        auto currentUser = userManager->getCurrentUser();
+        auto currentUser = sessionManager->getCurrentContext();
         
         std::cout << "\n----- MENU CHÍNH -----" << std::endl;
-        std::cout << "Vai trò hiện tại: " << currentUser->getRole() << std::endl;
+        std::cout << "Vai trò hiện tại: " << sessionManager->getCurrentRole() << std::endl;
         
         // Menu tùy theo vai trò
         if (currentUser->getRole() == "guest") {
@@ -83,14 +82,13 @@ void App::run() {
         // Xử lý menu cho GUEST
         if (currentUser->getRole() == "guest") {
             switch(choice) {
-                case 1: { // Đăng nhập
-                    std::string username, password;
+                case 1: { // Đăng nhập                    std::string username, password;
                     std::cout << "Tên đăng nhập (admin/admin123, user/user123): ";
                     std::cin >> username;
                     std::cout << "Mật khẩu: ";
                     std::cin >> password;
                     
-                    userManager->login(username, password);
+                    sessionManager->login(username, password);
                     break;
                 }
                 case 2: { // Đăng ký
@@ -100,12 +98,11 @@ void App::run() {
                     std::cout << "Mật khẩu: ";
                     std::cin >> info.password;
                     std::cout << "Email: ";
-                    std::cin >> info.gmail;
-                    std::cout << "Số điện thoại: ";
+                    std::cin >> info.gmail;                    std::cout << "Số điện thoại: ";
                     std::cin >> info.phoneNumber;
                     info.role = "user"; // Mặc định là user
                     
-                    userManager->registerUser(info);
+                    sessionManager->registerUser(info);
                     break;
                 }
                 case 3: { // Xem danh sách phim
@@ -134,9 +131,8 @@ void App::run() {
                     break;
                 case 4: // Xem lịch sử đặt vé
                     testHistoryViewing();
-                    break;
-                case 5: // Đăng xuất
-                    userManager->logout();
+                    break;                case 5: // Đăng xuất
+                    sessionManager->logout();
                     break;
                 case 0:
                     running = false;
@@ -153,9 +149,8 @@ void App::run() {
                     break;
                 case 2: // Xem danh sách phim
                     testViewMovie();
-                    break;
-                case 3: // Đăng xuất
-                    userManager->logout();
+                    break;                case 3: // Đăng xuất
+                    sessionManager->logout();
                     break;
                 case 0:
                     running = false;

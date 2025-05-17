@@ -23,7 +23,7 @@ User::User(const AccountInformation& acc, IAuthenticationRepository* repo) {
     std::cout << "User context created with role: " << role << std::endl;
 }
 
-IUserInformationService* User::getUserInformationService() { return nullptr; }
+IUserInformationService* User::getUserInformationService() { return userInfoService.get(); }
 IMovieViewerService* User::getMovieViewerService() { return movieViewer.get(); }
 IMovieManagerService* User::getMovieManagerService() { return nullptr; }
 IBookingService* User::getBookingService() { return bookingService.get(); }

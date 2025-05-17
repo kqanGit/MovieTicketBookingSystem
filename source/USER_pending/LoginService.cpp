@@ -4,7 +4,7 @@
 
 std::unique_ptr<IUserContext> LoginService::login(const std::string& username, const std::string& password) {
     try {
-        AccountInformation info = repo->getUserByUserName(username, password);
+        AccountInformation info = repo->getUserByUserName(username, password); // repo (IAuthenticationRepository) is a pointer to the repository
         if (info.role == "admin") return adminFactory->CreateUser(info);
         else return userFactory->CreateUser(info);
     } catch(const std::exception& e) {
