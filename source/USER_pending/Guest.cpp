@@ -1,7 +1,8 @@
 #include "Guest.h"
 #include "LoginService.h"
 #include "RegisterService.h"
-#include "AuthenticationRepositorySQL.h"
+#include "MovieViewerService.h"
+#include "../repository/AuthenticationRepositorySQL.h"
 
 Guest::Guest() {
     role = "guest"; // Khởi tạo role
@@ -9,12 +10,20 @@ Guest::Guest() {
     auto repo = new AuthenticationRepositorySQL();
     loginService = std::make_unique<LoginService>(repo, new UserContextCreator(), new AdminContextCreator());
     registerService = std::make_unique<RegisterService>(repo);
+    
+    // Allow guests to view movies
+    movieViewer = std::make_unique<MovieViewerService>();
 }
 
 Guest::Guest(IAuthenticationRepository* repo) {
     role = "guest"; // Khởi tạo role
     loginService = std::make_unique<LoginService>(repo, new UserContextCreator(), new AdminContextCreator());
     registerService = std::make_unique<RegisterService>(repo);
+    
+    // Allow guests to view movies
+    movieViewer = std::make_unique<MovieViewerService>();
+    
+    std::cout << "Guest context created with role: " << role << std::endl;
 }
 
 

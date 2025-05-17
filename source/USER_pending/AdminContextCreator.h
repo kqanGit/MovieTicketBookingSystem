@@ -2,7 +2,7 @@
 #ifndef ADMIN_CONTEXT_CREATOR_H
 #define ADMIN_CONTEXT_CREATOR_H
 
-#include "IAuthenticationRepository.h"
+#include "../repository/IAuthenticationRepository.h"
 #include "UserContextFactory.h"
 #include "Admin.h"
 

@@ -2,7 +2,7 @@
 #define GUEST_CONTEXT_CREATOR_H
 
 #include "UserContextFactory.h"
-#include "IAuthenticationRepository.h"
+#include "../repository/IAuthenticationRepository.h"
 
 class GuestContextCreator : public UserContextFactory {
 private:

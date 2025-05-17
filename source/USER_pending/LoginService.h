@@ -3,7 +3,7 @@
 #define LOGIN_SERVICE_H
 
 #include "ILoginService.h"
-#include "IAuthenticationRepository.h"
+#include "../repository/IAuthenticationRepository.h"
 #include "UserContextFactory.h"
 #include <memory>
 

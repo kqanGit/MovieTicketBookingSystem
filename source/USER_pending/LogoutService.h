@@ -3,7 +3,7 @@
 #define LOGOUT_SERVICE_H
 
 #include "ILogoutService.h"
-#include "IAuthenticationRepository.h"
+#include "../repository/IAuthenticationRepository.h"
 #include "GuestContextCreator.h"
 #include <memory>
 

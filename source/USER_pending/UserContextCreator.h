@@ -4,7 +4,7 @@
 
 #include "UserContextFactory.h"
 #include "User.h"
-#include "IAuthenticationRepository.h"
+#include "../repository/IAuthenticationRepository.h"
 
 class UserContextCreator : public UserContextFactory {
 private:

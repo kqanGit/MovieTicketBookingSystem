@@ -10,7 +10,7 @@ void AuthenticationRepositorySQL::addUser(const AccountInformation& info) {
 AccountInformation AuthenticationRepositorySQL::getUserByUserName(const std::string& username, const std::string& password) {
     std::string sql = "SELECT * FROM users WHERE username = ? AND password = ?";
     auto results = dbConn->executeQuery(sql, {username, password});
-    if (results.empty()) throw std::runtime_error("Invalid username or password");
+    if (results.empty()) throw std::runtime_error("[AuthenticationRepoSQL]Invalid username or password");
 
     AccountInformation info;
     info.userName = results[0]["username"];

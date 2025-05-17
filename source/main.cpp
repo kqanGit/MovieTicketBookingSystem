@@ -1,37 +1,49 @@
-extern "C" {
-    #include "sqlite3.h"
-}
-#include "DatabaseConnection.h"
 #include <iostream>
+#include <memory>
+#include "App.h"
 
 int main() {
-    // Bước 1: Lấy thể hiện Singleton
-    DatabaseConnection* db = DatabaseConnection::getInstance();
-
-    // Bước 2: Kết nối đến file database (SQLite sẽ tạo mới nếu chưa tồn tại)
-    if (!db->connect("database.db")) {
-        std::cerr << "Không thể kết nối tới cơ sở dữ liệu.\n";
+    std::cout << "=== Movie Ticket Booking System ===" << std::endl;
+    std::cout << "This system demonstrates OOP design with SOLID principles." << std::endl;
+    std::cout << "It uses the State Pattern for user context management, Repository Pattern for authentication," << std::endl;
+    std::cout << "and implements placeholder services for future implementation." << std::endl;
+    std::cout << std::endl;
+    
+    // Prompt the user to choose between mock and real database
+    char choice;
+    std::cout << "Use mock repository for testing? (y/n): ";
+    std::cin >> choice;
+    
+    bool useMockRepo = (choice == 'y' || choice == 'Y');
+    
+    if (useMockRepo) {
+        std::cout << "Using mock repository with preset accounts:" << std::endl;
+        std::cout << "Admin: username='admin', password='admin123'" << std::endl;
+        std::cout << "User: username='user', password='user123'" << std::endl;
+    } else {
+        std::cout << "Using real database repository (SQLite)" << std::endl;
+    }
+    
+    // Create and initialize the app
+    App app(useMockRepo);
+    
+    // Initialize the application
+    if (!app.initialize()) {
+        std::cerr << "Could not initialize the application. Exiting..." << std::endl;
         return 1;
     }
-
-    // // (Tùy chọn) Bước 3: Chạy schema.sql để tạo bảng và chèn dữ liệu mẫu nếu file db mới
-    db->executeSQLFile("./database/database.sql");
-
-    // // Bước 4: Truy vấn dữ liệu
-    // std::string sql = "SELECT * FROM MOVIE";
-    // auto results = db->executeQuery(sql);
-
-    // // Bước 5: In kết quả
-    // std::cout << "🎬 Danh sách phim:\n";
-    // for (const auto& row : results) {
-    //     std::cout << "🎬 MovieID: " << row.at("MovieID")
-    //               << " | Title: " << row.at("Title")
-    //               << " | Genre: " << row.at("Genre")
-    //               << " | Description: " << row.at("Descriptions")
-    //               << " | Rating: " << row.at("Rating") << '\n';
-    // }
-
-    // Bước 6: Đóng kết nối
-    db->disconnect();
+    
+    // Run the application
+    try {
+        app.run();
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Unhandled exception: " << e.what() << std::endl;
+        return 2;
+    }
+    
+    // Close the application
+    app.shutdown();
+    
     return 0;
 }

@@ -1,12 +1,26 @@
 #include "User.h"
 #include "LogoutService.h"
+#include "BookingService.h"
+#include "ViewBookingHistoryService.h"
+#include "MovieViewerService.h"
+#include <iostream>
 
 User::User(const AccountInformation& acc, IAuthenticationRepository* repo) {
     role = "user"; // Khởi tạo role
     if (repo) {
         logoutService = std::make_unique<LogoutService>(repo);
     }
-    // Các service khác có thể được khởi tạo tương tự khi cần
+    
+    // Initialize booking service with simple cout functionality
+    bookingService = std::make_unique<BookingService>();
+    
+    // Initialize view history service with simple cout functionality
+    viewHistoryService = std::make_unique<ViewBookingHistoryService>();
+    
+    // Initialize movie viewer service for users to browse movies
+    movieViewer = std::make_unique<MovieViewerService>();
+    
+    std::cout << "User context created with role: " << role << std::endl;
 }
 
 IUserInformationService* User::getUserInformationService() { return userInfoService.get(); }
