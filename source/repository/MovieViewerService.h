@@ -5,6 +5,9 @@
 #include "IMovieViewerService.h"
 #include "IMovieRepository.h"
 #include <memory>
+#include <vector>   
+// #include "MovieDTO.h"
+// #include "Movie.h"  // đã include trong file IMovieViewerService.h
 
 class MovieViewerService : public IMovieViewerService {
 private:
@@ -12,8 +15,9 @@ private:
 
 public:
     explicit MovieViewerService(std::shared_ptr<IMovieRepository> r);
-    void showAllMovies() override;
-    void showMovieDetail(int id) override;
+    std::vector<MovieDTO> showAllMovies() override;
+    shared_ptr<IMovie> showMovieDetail(int id) override;
+    vector<std::string> showMovieShowTimes(int id) override;
 };
 
 #endif // MOVIEVIEWERSERVICE_H
