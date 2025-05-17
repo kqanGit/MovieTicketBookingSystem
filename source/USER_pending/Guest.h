@@ -2,8 +2,12 @@
 #ifndef GUEST_H
 #define GUEST_H
 
+#include "IAuthenticationRepository.h"
+#include "ILoginService.h"
+#include "ILogoutService.h"
+#include "IRegisterService.h"
 #include "IUserContext.h"
-#include "Interfaces.h"
+#include "IMovieViewerService.h"
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declaration

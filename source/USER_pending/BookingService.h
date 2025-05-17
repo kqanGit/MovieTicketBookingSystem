@@ -1,7 +1,7 @@
 #ifndef BOOKING_SERVICE_H
 #define BOOKING_SERVICE_H
 
-#include "Interfaces.h"
+#include "IBookingService.h"
 #include <iostream>
 
 class BookingService : public IBookingService {

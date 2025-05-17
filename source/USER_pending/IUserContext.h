@@ -3,10 +3,10 @@
 #define IUSERCONTEXT_H
 
 #include "AccountInformation.h"
+#include "IUserInformationService.h"
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declarations
-class IUserInformationService;
 class IMovieViewerService;
 class IMovieManagerService;
 class IBookingService;

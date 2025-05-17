@@ -1,8 +1,15 @@
 #ifndef USER_H
 #define USER_H
 
+#include "ILoginService.h"
+#include "ILogoutService.h"
+#include "IRegisterService.h"
 #include "IUserContext.h"
-#include "Interfaces.h"
+#include "IMovieViewerService.h"
+#include "IBookingService.h"
+#include "IViewBookingHistoryService.h"
+#include "IUserInformationService.h" // Thêm dòng này để tránh lỗi incomplete type
+
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declaration

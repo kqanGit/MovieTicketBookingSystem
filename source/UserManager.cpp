@@ -73,16 +73,20 @@ bool UserManager::registerUser(const AccountInformation& info) {
     if (!registerService) {
         std::cout << "Không thể thực hiện đăng ký!" << std::endl;
         return false;
-    }    try {
+    }
+
+    try {
         // Thực hiện đăng ký
-        registerService->addUser(info);
-        std::cout << "Đăng ký thành công với tài khoản: " << info.userName << std::endl;
-        
-        // Sau khi đăng ký, tự động đăng nhập
-        return login(info.userName, info.password);
-    } catch (const std::exception& e) {
-        std::cout << "Lỗi đăng ký: " << e.what() << std::endl;
-        return false;
+        auto newContext = registerService->registerAccount(info);
+        if (newContext) {
+            // Chuyển sang context mới (User)
+            currentUser = std::move(newContext);
+            std::cout << "Đăng ký và đăng nhập thành công với tài khoản: " << info.userName << std::endl;
+            return true;
+        } else {
+            std::cout << "Đăng ký thất bại" << std::endl;
+            return false;
+        }
     } catch (const std::exception& e) {
         std::cout << "Lỗi đăng ký: " << e.what() << std::endl;
         return false;

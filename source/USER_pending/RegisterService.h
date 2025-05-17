@@ -13,7 +13,6 @@ public:
     RegisterService(IAuthenticationRepository* r, UserContextFactory* f = nullptr) : repo(r), factory(f) {}
     
     std::unique_ptr<IUserContext> registerAccount(const AccountInformation& info) override;
-    void addUser(const AccountInformation& info) override;
 };
 
 #endif

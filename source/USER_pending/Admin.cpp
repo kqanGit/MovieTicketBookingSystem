@@ -19,7 +19,7 @@ Admin::Admin(const AccountInformation& acc, IAuthenticationRepository* repo) {
     std::cout << "Admin context created with role: " << role << std::endl;
 }
 
-IUserInformationService* Admin::getUserInformationService() { return userInfoService.get(); }
+IUserInformationService* Admin::getUserInformationService() { return nullptr; }
 IMovieViewerService* Admin::getMovieViewerService() { return movieViewer.get(); }
 IMovieManagerService* Admin::getMovieManagerService() { return movieManager.get(); }
 IBookingService* Admin::getBookingService() { return bookingService.get(); }

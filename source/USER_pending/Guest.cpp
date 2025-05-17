@@ -3,26 +3,24 @@
 #include "RegisterService.h"
 #include "MovieViewerService.h"
 #include "../repository/AuthenticationRepositorySQL.h"
+#include "UserContextCreator.h"
+#include "AdminContextCreator.h"
+#include "database/DatabaseConnection.h"
 
 Guest::Guest() {
     role = "guest"; // Khởi tạo role
-    // Với repository được tạo động ở đây, ta cần dùng new
-    auto repo = new AuthenticationRepositorySQL();
-    loginService = std::make_unique<LoginService>(repo, new UserContextCreator(), new AdminContextCreator());
+    auto db = DatabaseConnection::getInstance();
+    auto repo = new AuthenticationRepositorySQL(db);
+    loginService = std::make_unique<LoginService>(repo, new UserContextCreator(repo), new AdminContextCreator(repo));
     registerService = std::make_unique<RegisterService>(repo);
-    
-    // Allow guests to view movies
     movieViewer = std::make_unique<MovieViewerService>();
 }
 
 Guest::Guest(IAuthenticationRepository* repo) {
     role = "guest"; // Khởi tạo role
-    loginService = std::make_unique<LoginService>(repo, new UserContextCreator(), new AdminContextCreator());
+    loginService = std::make_unique<LoginService>(repo, new UserContextCreator(repo), new AdminContextCreator(repo));
     registerService = std::make_unique<RegisterService>(repo);
-    
-    // Allow guests to view movies
     movieViewer = std::make_unique<MovieViewerService>();
-    
     std::cout << "Guest context created with role: " << role << std::endl;
 }
 

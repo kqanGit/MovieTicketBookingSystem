@@ -1,7 +1,7 @@
 #ifndef MOVIE_MANAGER_SERVICE_H
 #define MOVIE_MANAGER_SERVICE_H
 
-#include "Interfaces.h"
+#include "IMovieManagerService.h"
 #include <iostream>
 #include <string>
 

@@ -1,16 +1,6 @@
 #include "AdminContextCreator.h"
+#include "Admin.h"
+#include <memory>
 
-class AdminContextCreator : public UserContextFactory {
-public:
-    std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) override {
-        return std::make_unique<Admin>(
-            new UserInformationService(info.userName),
-            new MovieViewerService(),
-            new MovieManagerService(),
-            new BookingService(),
-            new ViewBookingHistoryService(),
-            new LogoutService()
-        );
-    }
-};
+// Nếu cần cài đặt hàm ngoài class, để ở đây. Không được định nghĩa lại class AdminContextCreator trong file này.
 

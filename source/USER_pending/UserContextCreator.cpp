@@ -2,6 +2,4 @@
 #include "User.h"
 #include <memory>
 
-std::unique_ptr<IUserContext> UserContextCreator::CreateUser(const AccountInformation& acc) {
-    return std::make_unique<User>(acc);
-}
+// File này không cần định nghĩa lại CreateUser vì đã inline trong header.

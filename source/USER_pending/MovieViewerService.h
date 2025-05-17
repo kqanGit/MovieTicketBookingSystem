@@ -1,7 +1,7 @@
 #ifndef MOVIE_VIEWER_SERVICE_H
 #define MOVIE_VIEWER_SERVICE_H
 
-#include "Interfaces.h"
+#include "IMovieViewerService.h"
 #include <iostream>
 
 class MovieViewerService : public IMovieViewerService {

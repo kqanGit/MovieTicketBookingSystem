@@ -13,7 +13,3 @@ std::unique_ptr<IUserContext> RegisterService::registerAccount(const AccountInfo
         return nullptr;
     }
 }
-
-void RegisterService::addUser(const AccountInformation& info) {
-    repo->addUser(info);
-}

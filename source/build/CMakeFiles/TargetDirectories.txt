@@ -1,0 +1,3 @@
+D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/CMakeFiles/main.dir
+D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/CMakeFiles/ALL_BUILD.dir
+D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/CMakeFiles/ZERO_CHECK.dir

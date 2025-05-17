@@ -1,7 +1,7 @@
 #ifndef VIEW_BOOKING_HISTORY_SERVICE_H
 #define VIEW_BOOKING_HISTORY_SERVICE_H
 
-#include "Interfaces.h"
+#include "IViewBookingHistoryService.h"
 #include <iostream>
 
 class ViewBookingHistoryService : public IViewBookingHistoryService {
