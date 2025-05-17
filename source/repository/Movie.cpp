@@ -5,6 +5,10 @@ Movie::Movie(int id, const string& title, const string& genre, int duration,
     : id(id), title(title), genre(genre), duration(duration),
       description(description), rating(rating) {}
 
+Movie::Movie(const string& title, const string& genre, int duration,
+             const string& description, float rating) : title(title), genre(genre), duration(duration),
+      description(description), rating(rating) {}
+
 int Movie::getId() const { return id; }
 string Movie::getTitle() const { return title; }
 string Movie::getGenre() const { return genre; }
