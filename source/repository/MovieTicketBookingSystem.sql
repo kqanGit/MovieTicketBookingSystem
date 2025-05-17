@@ -1,30 +1,29 @@
-﻿-- Create Movie table
-CREATE TABLE MOVIE (
-    MovieID TEXT PRIMARY KEY,
+﻿CREATE TABLE MOVIE (
+    MovieID INTEGER PRIMARY KEY AUTOINCREMENT, -- id
     Title TEXT,
     Genre TEXT,
+    Duration INTEGER,
     Descriptions TEXT,
     Rating REAL
 );
 
--- Create Showtime table
+-- Tạo bảng Showtime
 CREATE TABLE SHOWTIME (
-    ShowTimeID TEXT PRIMARY KEY,
-    MovieID TEXT,
+    ShowTimeID INTEGER PRIMARY KEY AUTOINCREMENT,
+    MovieID INTEGER,
     Date TEXT,
     StartTime TEXT,
     EndTime TEXT,
     FOREIGN KEY (MovieID) REFERENCES MOVIE(MovieID)
 );
 
--- Create SeatType table
+-- Tạo bảng SeatType
 CREATE TABLE SEATTYPE (
-    SeatType TEXT,
-    Price REAL,
-    PRIMARY KEY (SeatType, Price)
+    SeatType TEXT PRIMARY KEY,
+    Price REAL
 );
 
--- Create Seat table
+-- Tạo bảng Seat
 CREATE TABLE SEAT (
     SeatID TEXT PRIMARY KEY,
     SeatType TEXT,
@@ -32,9 +31,9 @@ CREATE TABLE SEAT (
     FOREIGN KEY (SeatType) REFERENCES SEATTYPE(SeatType)
 );
 
--- Create Account table
+-- Tạo bảng Account
 CREATE TABLE ACCOUNT (
-    UserID TEXT PRIMARY KEY,
+    UserID INTEGER PRIMARY KEY AUTOINCREMENT,
     Password TEXT,
     RoleUser TEXT,
     Gmail TEXT,
@@ -42,41 +41,46 @@ CREATE TABLE ACCOUNT (
     UserName TEXT
 );
 
--- Create Booking table
+-- Tạo bảng Booking
 CREATE TABLE BOOKING (
-    BookingID TEXT PRIMARY KEY,
-    ShowTimeID TEXT,
-    UserID TEXT,
+    BookingID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ShowTimeID INTEGER,
+    UserID INTEGER,
     FOREIGN KEY (ShowTimeID) REFERENCES SHOWTIME(ShowTimeID),
     FOREIGN KEY (UserID) REFERENCES ACCOUNT(UserID)
 );
 
--- Create BookSeat table (N-N relationship between Booking and Seat)
+-- Tạo bảng BookSeat
 CREATE TABLE BOOKSEAT (
-    BookingID TEXT,
+    BookingID INTEGER,
     SeatID TEXT,
     PRIMARY KEY (BookingID, SeatID),
     FOREIGN KEY (BookingID) REFERENCES BOOKING(BookingID),
     FOREIGN KEY (SeatID) REFERENCES SEAT(SeatID)
 );
 
--- Insert movies
-INSERT INTO MOVIE (MovieID,Title, Genre, Descriptions, Rating) VALUES
-('001', 'Avengers', 'Action', 'The superhero team saving the world', 8.5),
-('002', 'Titanic', 'Romance', 'A tragic love story on the doomed ship', 9.0);
+-- Dữ liệu mẫu phim (7 phim)
+INSERT INTO MOVIE (Title, Genre, Duration, Descriptions, Rating) VALUES
+('Avengers', 'Action', 150, 'The superhero team saving the world', 8.5),
+('Titanic', 'Romance', 195, 'A tragic love story on the doomed ship', 9.0),
+('Inception', 'Sci-Fi', 148, 'A mind-bending journey through dreams', 8.8),
+('The Godfather', 'Crime', 175, 'A mafia family drama across generations', 9.2),
+('Interstellar', 'Sci-Fi', 169, 'A space exploration to save humanity', 8.6),
+('Frozen', 'Animation', 102, 'A magical tale of two royal sisters', 7.5),
+('Joker', 'Drama', 122, 'The origin story of the infamous villain', 8.4);
 
--- Insert showtimes
+-- Dữ liệu suất chiếu (cho 2 phim đầu tiên)
 INSERT INTO SHOWTIME (MovieID, Date, StartTime, EndTime) VALUES
-('1', '2025-05-10', '18:00', '20:30'),
-('2', '2025-05-11', '20:00', '22:15');
+(1, '2025-05-10', '18:00', '20:30'),
+(2, '2025-05-11', '20:00', '22:15');
 
--- Insert seat types
-INSERT INTO SEATTYPE (SeatType, Price) VALUES
+-- Dữ liệu loại ghế
+INSERT INTO SEATTYPE VALUES
 ('Single', 50.0),
 ('Couple', 90.0);
 
--- Insert seats
-INSERT INTO SEAT (SeatID, SeatType, Price) VALUES
+-- Dữ liệu ghế ngồi
+INSERT INTO SEAT VALUES 
 ('A1', 'Single', 50.0),
 ('A2', 'Single', 50.0),
 ('A3', 'Single', 50.0),
@@ -84,18 +88,18 @@ INSERT INTO SEAT (SeatID, SeatType, Price) VALUES
 ('B2', 'Couple', 90.0),
 ('B3', 'Couple', 90.0);
 
--- Insert accounts
+-- Dữ liệu tài khoản
 INSERT INTO ACCOUNT (Password, RoleUser, Gmail, PhoneNumber, UserName) VALUES
 ('pass123', 'User', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
 ('admin456', 'Admin', 'admin@gmail.com', '0987654321', 'Tran Thi B');
 
--- Insert bookings
+-- Dữ liệu đặt vé
 INSERT INTO BOOKING (ShowTimeID, UserID) VALUES
-('1', '1'),
-('2', '2');
+(1, 1),
+(2, 2);
 
--- Insert booked seats
-INSERT INTO BOOKSEAT (BookingID, SeatID) VALUES
-('1', 'A1'),
-('1', 'A2'),
-('2', 'B1');
+-- Dữ liệu đặt chỗ
+INSERT INTO BOOKSEAT VALUES 
+(1, 'A1'),
+(1, 'A2'),
+(2, 'B1');
