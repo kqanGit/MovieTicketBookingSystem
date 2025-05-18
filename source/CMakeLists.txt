@@ -1,48 +1,44 @@
-cmake_minimum_required(VERSION 3.10)
-project(MovieTicketBookingSystem)
+# CMake configuration for MovieTicketBookingSystem
+cmake_minimum_required(VERSION 4.0.2)
+project(app)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 
-# Chỉ định rõ các file .cpp cần build, tránh lấy CMakeCXXCompilerId.cpp
-file(GLOB MAIN_SOURCES
-    "${CMAKE_SOURCE_DIR}/main.cpp"
-    "${CMAKE_SOURCE_DIR}/App.cpp"
-    "${CMAKE_SOURCE_DIR}/SessionManager.cpp"
+# SQLite library
+add_library(sqlite3 STATIC
+    ../lib/sqlite3.c
 )
 
-file(GLOB DATABASE_SOURCES "${CMAKE_SOURCE_DIR}/database/*.cpp")
-file(GLOB MODEL_SOURCES "${CMAKE_SOURCE_DIR}/model/*.cpp")
-file(GLOB REPO_SOURCES "${CMAKE_SOURCE_DIR}/repository/*.cpp") 
-file(GLOB USER_SOURCES "${CMAKE_SOURCE_DIR}/USER_pending/*.cpp")
-
-# Thêm SQLite
-set(SQLITE_SOURCES
-    ${CMAKE_SOURCE_DIR}/lib/sqlite3.c
+target_compile_definitions(sqlite3 PRIVATE
+    SQLITE_ENABLE_RTREE
+    SQLITE_ENABLE_FTS5
 )
 
-# Thêm include directories
-include_directories(
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/database
-    ${CMAKE_SOURCE_DIR}/repository
-    ${CMAKE_SOURCE_DIR}/USER_pending
-    ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_SOURCE_DIR}/model
+# Main application
+file(GLOB REPO_SRC ./repository/*.cpp)
+file(GLOB DB_SRC ./database/*.cpp)
+file(GLOB MODEL_SRC ./model/*.cpp)
+file(GLOB USER_PENDING_SRC ./USER_pending/*.cpp)
+
+# Tạo executable từ các file nguồn
+add_executable(App
+    App.cpp
+    SessionManager.cpp
+    main.cpp
+    ${REPO_SRC}
+    ${DB_SRC}
+    ${MODEL_SRC}
+    ${USER_PENDING_SRC}
 )
 
-# Tạo executable
-add_executable(main 
-    ${MAIN_SOURCES} 
-    ${DATABASE_SOURCES}
-    ${MODEL_SOURCES}
-    ${REPO_SOURCES}
-    ${USER_SOURCES}
-    ${SQLITE_SOURCES}
+target_include_directories(App PRIVATE
+    ./repository
+    ./model
+    ./database
+    ./lib
+    ./USER_pending
+    .
 )
 
-# Liên kết các thư viện cần thiết
-if(WIN32)
-    target_link_libraries(main PRIVATE)
-else()
-    target_link_libraries(main pthread dl)
-endif()
+# Link with SQLite
+target_link_libraries(App PRIVATE sqlite3)
