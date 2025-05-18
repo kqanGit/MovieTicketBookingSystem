@@ -3,12 +3,12 @@
 
 #include <memory>
 #include "IUserContext.h"
+#include "AccountInformation.h"
 
 class UserContextFactory {
 public:
-    // Mặc định: trả về nullptr, chỉ override ở class phù hợp
-    virtual std::unique_ptr<IUserContext> CreateUser() { return nullptr; }
-    // virtual std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) { return nullptr; }
+    virtual std::unique_ptr<IUserContext> CreateUser() { return nullptr; } // Dùng cho Guest
+    virtual std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) { return nullptr; } // Dùng cho User/Admin
     virtual ~UserContextFactory() = default;
 };
 #endif

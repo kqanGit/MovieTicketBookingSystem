@@ -1,27 +1,23 @@
 #include "User.h"
+#include "UserInformationService.h" // Thong tin ca nhan cua User
 #include "LogoutService.h"
 #include "BookingService.h"
 #include "ViewBookingHistoryService.h"
 #include "MovieViewerService.h"
 #include <iostream>
 
-User::User(const AccountInformation& acc, IAuthenticationRepository* repo) {
-    role = "user"; // Khởi tạo role
-    if (repo) {
-        logoutService = std::make_unique<LogoutService>(repo);
-    }
-    
-    // Initialize booking service with simple cout functionality
-    bookingService = std::make_unique<BookingService>();
-    
-    // Initialize view history service with simple cout functionality
-    viewHistoryService = std::make_unique<ViewBookingHistoryService>();
-    
-    // Initialize movie viewer service for users to browse movies
+User::User(const AccountInformation& acc) {
+    role = "user";
+    userInfoService = std::make_unique<UserInformationService>(acc); // Truyền toàn bộ AccountInformation
     movieViewer = std::make_unique<MovieViewerService>();
-    
+    bookingService = std::make_unique<BookingService>();
+    viewHistoryService = std::make_unique<ViewBookingHistoryService>();
+    logoutService = std::make_unique<LogoutService>();
     std::cout << "User context created with role: " << role << std::endl;
 }
+
+// Định nghĩa phương thức getRole()
+std::string User::getRole() const { return role; }
 
 IUserInformationService* User::getUserInformationService() { return userInfoService.get(); }
 IMovieViewerService* User::getMovieViewerService() { return movieViewer.get(); }

@@ -4,21 +4,21 @@
 
 #include "ILoginService.h"
 #include "../repository/IAuthenticationRepository.h"
-#include "UserContextFactory.h"
-#include <memory>
+#include "AccountInformation.h"
+#include <optional>
 
 
 // Sửa lại LoginService để lưu loại người dùng vào IUserContext*
 class LoginService : public ILoginService {
 private:
     IAuthenticationRepository* repo;
-    UserContextFactory* userFactory;    // 
-    UserContextFactory* adminFactory;   // 
 public:
-    LoginService(IAuthenticationRepository* r, UserContextFactory* uf, UserContextFactory* af)
-        : repo(r), userFactory(uf), adminFactory(af) {}
+    // Constructor mặc định để hỗ trợ Guest.cpp
+    LoginService() : repo(nullptr) {}
+    // Constructor chính
+    LoginService(IAuthenticationRepository* r) : repo(r) {}
 
-    std::unique_ptr<IUserContext> login(const std::string& username, const std::string& password) override;
+    std::optional<AccountInformation> authenticate(const std::string& username, const std::string& password);
 };
 
 #endif

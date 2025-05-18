@@ -8,7 +8,7 @@
 class AdminContextCreator : public UserContextFactory {
 public:
     AdminContextCreator() = default;
-    std::unique_ptr<IUserContext> CreateUser() override;
+    std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) override;
 };
 
 #endif

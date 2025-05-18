@@ -8,12 +8,10 @@
 #include "IMovieViewerService.h"
 #include "IBookingService.h"
 #include "IViewBookingHistoryService.h"
-#include "IUserInformationService.h" // Thêm dòng này để tránh lỗi incomplete type
+#include "IUserInformationService.h"
 
-#include <memory> // Thêm để sử dụng unique_ptr
+#include <memory>
 
-// Forward declaration
-class IAuthenticationRepository;
 
 class User : public IUserContext {
 private:
@@ -22,15 +20,12 @@ private:
     std::unique_ptr<IBookingService> bookingService;
     std::unique_ptr<IViewBookingHistoryService> viewHistoryService;
     std::unique_ptr<ILogoutService> logoutService;
-    std::string role;
+    std::string role = "user";
 
 public:
-    User(const AccountInformation& acc, IAuthenticationRepository* repo = nullptr);
-    ~User() override = default; // Smart pointers tự giải phóng
-    
-    std::string getRole() const override { return role; }
-    
-    // Triển khai các phương thức từ interface
+    User(const AccountInformation& acc);
+
+    std::string getRole() const override;
     IUserInformationService* getUserInformationService() override;
     IMovieViewerService* getMovieViewerService() override;
     IMovieManagerService* getMovieManagerService() override;

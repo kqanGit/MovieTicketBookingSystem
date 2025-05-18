@@ -3,9 +3,9 @@
 
 int main() {
     std::cout << "=== Movie Ticket Booking System ===" << std::endl;
-    std::cout << "\nHệ thống sẽ bắt đầu với vai trò Guest.\n";
-    std::cout << "Bạn có thể đăng nhập (login), đăng ký (register), hoặc xem phim với vai trò Guest." << std::endl;
-    std::cout << "Sau khi đăng nhập thành công sẽ chuyển sang User hoặc Admin. Đăng xuất sẽ trở lại Guest." << std::endl;
+    std::cout << "\nThe system will start in Guest mode.\n";
+    std::cout << "You can log in, register, or browse movies as a Guest." << std::endl;
+    std::cout << "After successful login, you will switch to User or Admin mode. Logging out will return you to Guest mode." << std::endl;
     std::cout << "\nDatabase: source/database.db (SQLite)\n";
 
     // Khởi tạo App với repository thực (kết nối database)
@@ -18,7 +18,7 @@ int main() {
     try {
         app.run();
     } catch (const std::exception& e) {
-        std::cerr << "Lỗi không xử lý được: " << e.what() << std::endl;
+        std::cerr << "[Main]Failed to process: " << e.what() << std::endl;
         return 2;
     }
 

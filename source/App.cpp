@@ -5,7 +5,10 @@
 #include "USER_pending/BookingService.h"
 #include "USER_pending/ViewBookingHistoryService.h"
 #include "USER_pending/MovieViewerService.h"
-#include "USER_pending/SessionManager.h"
+#include "SessionManager.h" // Moved from USER_pending to the root folder
+#include "USER_pending/LoginService.h"
+#include "USER_pending/RegisterService.h"
+#include <filesystem>
 
 App::App(bool useMock) : dbConn(nullptr), authRepo(nullptr), useMockRepo(useMock) {
 }
@@ -15,97 +18,105 @@ App::~App() {
         delete authRepo;
         authRepo = nullptr;
     }
-    // dbConn là singleton nên không cần delete
+    // dbConn is a singleton so no need to delete
 }
 
 bool App::initialize() {
-    std::cout << "Đang khởi tạo ứng dụng..." << std::endl;
-    
+    std::cout << "Initializing application..." << std::endl;
+    dbConn = DatabaseConnection::getInstance();
+    bool dbExists = std::filesystem::exists("database.db");
+    if (!dbConn->connect("database.db")) {
+        std::cerr << "Cannot connect to database." << std::endl;
+        return false;
+    }
     if (useMockRepo) {
         // Use mock repository for testing
         std::cout << "Using mock repository for testing" << std::endl;
-        authRepo = new MockAuthRepository();
+        //authRepo = new MockAuthRepository();
+        // For now, use the real repository
+        authRepo = new AuthenticationRepositorySQL(dbConn);
     } else {
-        // Initialize database connection
-        dbConn = DatabaseConnection::getInstance();
-        if (!dbConn->connect("database.db")) {
-            std::cerr << "Không thể kết nối tới cơ sở dữ liệu." << std::endl;
-            return false;
+        // Chỉ chạy file SQL nếu database.db chưa tồn tại
+        if (!dbExists) {
+            dbConn->executeSQLFile("database/database.sql");
         }
-        
-        // Run database script if needed
-        dbConn->executeSQLFile("./database/database.sql");
-        
         // Initialize SQL repository
         authRepo = new AuthenticationRepositorySQL(dbConn);
     }
-      // Initialize SessionManager with repository
-    sessionManager = std::make_unique<SessionManager>(authRepo);
-    
-    std::cout << "Khởi tạo hoàn tất." << std::endl;
+    // Initialize SessionManager (no longer takes repository directly)
+    sessionManager = std::make_unique<SessionManager>();    
+    std::cout << "Initialization complete." << std::endl;
     return true;
 }
 
 void App::run() {
-    std::cout << "Chào mừng đến với hệ thống đặt vé xem phim!" << std::endl;
+    std::cout << "Welcome to the Movie Ticket Booking System!" << std::endl;
     
-    bool running = true;    while(running) {
-        // Lấy context người dùng hiện tại
+    bool running = true;    
+    while(running) {        // Get current user context
         auto currentUser = sessionManager->getCurrentContext();
-        
-        std::cout << "\n----- MENU CHÍNH -----" << std::endl;
-        std::cout << "Vai trò hiện tại: " << sessionManager->getCurrentRole() << std::endl;
-        
-        // Menu tùy theo vai trò
+          std::cout << "\n----- MAIN MENU -----" << std::endl;
+        std::cout << "Current role: " << sessionManager->getCurrentRole() << std::endl;
+          // Menu based on role
         if (currentUser->getRole() == "guest") {
-            std::cout << "1. Đăng nhập" << std::endl;
-            std::cout << "2. Đăng ký" << std::endl;
-            std::cout << "3. Xem danh sách phim" << std::endl;
+            std::cout << "1. Login" << std::endl;
+            std::cout << "2. Register" << std::endl;
+            std::cout << "3. View movie list" << std::endl;
         } else if (currentUser->getRole() == "user") {
-            std::cout << "1. Xem thông tin cá nhân" << std::endl;
-            std::cout << "2. Xem danh sách phim" << std::endl;
-            std::cout << "3. Đặt vé" << std::endl;
-            std::cout << "4. Xem lịch sử đặt vé" << std::endl;
-            std::cout << "5. Đăng xuất" << std::endl;
+            std::cout << "1. View personal information" << std::endl;
+            std::cout << "2. View movie list" << std::endl;
+            std::cout << "3. Book tickets" << std::endl;
+            std::cout << "4. View booking history" << std::endl;
+            std::cout << "5. Logout" << std::endl;
         } else if (currentUser->getRole() == "admin") {
-            std::cout << "1. Quản lý phim" << std::endl;
-            std::cout << "2. Xem danh sách phim" << std::endl;
-            std::cout << "3. Đăng xuất" << std::endl;
+            std::cout << "1. Manage movies" << std::endl;
+            std::cout << "2. View movie list" << std::endl;
+            std::cout << "3. Logout" << std::endl;
         }
         
-        std::cout << "0. Thoát" << std::endl;
-        std::cout << "Lựa chọn của bạn: ";
+        std::cout << "0. Exit" << std::endl;
+        std::cout << "Your choice: ";
         
         int choice;
         std::cin >> choice;
-        
-        // Xử lý menu cho GUEST
+          // Process GUEST menu
         if (currentUser->getRole() == "guest") {
-            switch(choice) {
-                case 1: { // Đăng nhập                    std::string username, password;
-                    std::cout << "Tên đăng nhập (admin/admin123, user/user123): ";
+            switch(choice) {                
+                case 1: { // Login
+                    std::string username, password;
+                    std::cout << "Username (admin/admin123, user/user123): ";
                     std::cin >> username;
-                    std::cout << "Mật khẩu: ";
+                    std::cout << "Password: ";
                     std::cin >> password;
-                    
-                    sessionManager->login(username, password);
-                    break;
-                }
-                case 2: { // Đăng ký
+                      // Use LoginService to authenticate
+                    LoginService loginService(authRepo);
+                    auto authResult = loginService.authenticate(username, password);
+                    if (authResult) {
+                        // If authentication is successful, update context in SessionManager
+                        sessionManager->setUserContext(*authResult);
+                    } else {
+                        std::cout << "Login failed: Incorrect username or password" << std::endl;
+                    }
+                    break;                }                case 2: { // Register
                     AccountInformation info;
-                    std::cout << "Tên đăng nhập: ";
+                    std::cout << "Username: ";
                     std::cin >> info.userName;
-                    std::cout << "Mật khẩu: ";
+                    std::cout << "Password: ";
                     std::cin >> info.password;
                     std::cout << "Email: ";
-                    std::cin >> info.gmail;                    std::cout << "Số điện thoại: ";
+                    std::cin >> info.gmail;                    
+                    std::cout << "Phone number: ";
                     std::cin >> info.phoneNumber;
-                    info.role = "user"; // Mặc định là user
-                    
-                    sessionManager->registerUser(info);
-                    break;
-                }
-                case 3: { // Xem danh sách phim
+                    info.role = "user"; // Default is user
+                      // Use RegisterService to register
+                    RegisterService registerService(authRepo);
+                    if (registerService.registerUser(info)) {
+                        std::cout << "Registration successful. Please login." << std::endl;
+                    } else {
+                        std::cout << "Registration failed." << std::endl;
+                    }
+                    break;                }
+                case 3: { // View movie list
                     testViewMovie();
                     break;
                 }
@@ -113,158 +124,149 @@ void App::run() {
                     running = false;
                     break;
                 default:
-                    std::cout << "Lựa chọn không hợp lệ!" << std::endl;
+                    std::cout << "Invalid choice!" << std::endl;
             }
-        }
-        // Xử lý menu cho USER
+        }        // Process USER menu
         else if (currentUser->getRole() == "user") {
             switch(choice) {
-                case 1: // Xem thông tin cá nhân
-                    std::cout << "Đang hiển thị thông tin cá nhân..." << std::endl;
-                    std::cout << "Chức năng này chưa được triển khai đầy đủ." << std::endl;
+                case 1: // View personal information
+                    std::cout << "Displaying personal information..." << std::endl;
+                    std::cout << "This feature is not fully implemented yet." << std::endl;
                     break;
-                case 2: // Xem danh sách phim
+                case 2: // View movie list
                     testViewMovie();
                     break;
-                case 3: // Đặt vé
+                case 3: // Book tickets
                     testBookingFunctionality();
                     break;
-                case 4: // Xem lịch sử đặt vé
+                case 4: // View booking history
                     testHistoryViewing();
-                    break;                case 5: // Đăng xuất
+                    break;                case 5: // Logout
                     sessionManager->logout();
                     break;
                 case 0:
                     running = false;
                     break;
                 default:
-                    std::cout << "Lựa chọn không hợp lệ!" << std::endl;
+                    std::cout << "Invalid choice!" << std::endl;
             }
-        }
-        // Xử lý menu cho ADMIN
+        }        // Process ADMIN menu
         else if (currentUser->getRole() == "admin") {
             switch(choice) {
-                case 1: // Quản lý phim
+                case 1: // Manage movies
                     testMovieManagement();
                     break;
-                case 2: // Xem danh sách phim
+                case 2: // View movie list
                     testViewMovie();
-                    break;                case 3: // Đăng xuất
+                    break;                
+                case 3: // Logout
                     sessionManager->logout();
                     break;
                 case 0:
                     running = false;
                     break;
                 default:
-                    std::cout << "Lựa chọn không hợp lệ!" << std::endl;
+                    std::cout << "Invalid choice!" << std::endl;
             }
         }
     }
 }
 
 void App::shutdown() {
-    std::cout << "Đang đóng ứng dụng..." << std::endl;
+    std::cout << "Closing application..." << std::endl;
     
-    // Đóng kết nối database
+    // Close database connection
     if (dbConn) {
         dbConn->disconnect();
     }
     
-    std::cout << "Đã đóng ứng dụng. Tạm biệt!" << std::endl;
+    std::cout << "Application closed. Goodbye!" << std::endl;
 }
 
 void App::testMovieManagement() {
-    std::cout << "\n=== Testing Movie Management (Admin) ===" << std::endl;
-    
-    auto currentUser = userManager->getCurrentUser();
-    if (currentUser->getRole() != "admin") {
-        std::cout << "This functionality is only available for admin users" << std::endl;
-        return;
-    }
-    
+    std::cout << "\n----- TEST MOVIE MANAGEMENT -----" << std::endl;    // Login as admin if not already logged in
+    if (!sessionManager->isUserAuthenticated() || sessionManager->getCurrentRole() != "admin") {
+        std::cout << "Logging in with admin account..." << std::endl;
+          // Use LoginService to authenticate
+        LoginService loginService(authRepo);
+        auto authResult = loginService.authenticate("admin", "admin123");
+        if (authResult && sessionManager->setUserContext(*authResult)) {
+            std::cout << "Admin login successful." << std::endl;
+        } else {
+            std::cout << "Login failed. Unable to test movie management functionality." << std::endl;
+            return;
+        }
+    }    auto currentUser = sessionManager->getCurrentContext();
     auto movieManager = currentUser->getMovieManagerService();
     if (movieManager) {
-        // Attempt to dynamic_cast to access concrete methods
-        auto* manager = dynamic_cast<MovieManagerService*>(movieManager);
-        if (manager) {
-            manager->addMovie();
-            manager->updateMovie();
-            manager->deleteMovie();
-            manager->listMovies();
-        } else {
-            std::cout << "Could not access MovieManagerService methods" << std::endl;
-        }
+        std::cout << "Testing add new movie... (simulation)" << std::endl;
+        std::cout << "Testing update movie information... (simulation)" << std::endl;
+        std::cout << "Testing delete movie... (simulation)" << std::endl;
     } else {
         std::cout << "Movie manager service is not available" << std::endl;
     }
+    sessionManager->logout();
 }
 
 void App::testBookingFunctionality() {
-    std::cout << "\n=== Testing Booking Functionality (User) ===" << std::endl;
-    
-    auto currentUser = userManager->getCurrentUser();
-    if (currentUser->getRole() != "user" && currentUser->getRole() != "admin") {
-        std::cout << "Please log in to access booking functionality" << std::endl;
-        return;
-    }
-    
+    std::cout << "\n----- TEST BOOKING FUNCTIONALITY -----" << std::endl;
+    if (!sessionManager->isUserAuthenticated() || sessionManager->getCurrentRole() != "user") {
+        std::cout << "Logging in with user account..." << std::endl;
+          // Use LoginService to authenticate
+        LoginService loginService(authRepo);
+        auto authResult = loginService.authenticate("user", "user123");
+        if (authResult && sessionManager->setUserContext(*authResult)) {
+            std::cout << "User login successful." << std::endl;
+        } else {
+            std::cout << "Login failed. Unable to test booking functionality." << std::endl;
+            return;
+        }
+    }    auto currentUser = sessionManager->getCurrentContext();
     auto bookingService = currentUser->getBookingService();
     if (bookingService) {
-        // Attempt to dynamic_cast to access concrete methods
-        auto* booking = dynamic_cast<BookingService*>(bookingService);
-        if (booking) {
-            booking->bookTicket();
-            booking->cancelBooking();
-            booking->viewShowtimes();
-            booking->viewAvailableSeats();
-        } else {
-            std::cout << "Could not access BookingService methods" << std::endl;
-        }
+        std::cout << "Testing movie ticket booking... (simulation)" << std::endl;
+        std::cout << "Booked tickets for The Avengers: Endgame, showtime 18:00 (simulation)." << std::endl;
+        std::cout << "Booking code: " << rand() % 10000 + 1000 << std::endl;
     } else {
         std::cout << "Booking service is not available" << std::endl;
     }
+    sessionManager->logout();
 }
 
 void App::testHistoryViewing() {
-    std::cout << "\n=== Testing Booking History Viewing (User) ===" << std::endl;
-    
-    auto currentUser = userManager->getCurrentUser();
-    if (currentUser->getRole() != "user" && currentUser->getRole() != "admin") {
-        std::cout << "Please log in to access booking history" << std::endl;
-        return;
-    }
-    
+    std::cout << "\n----- TEST HISTORY VIEWING -----" << std::endl;
+    if (!sessionManager->isUserAuthenticated() || sessionManager->getCurrentRole() != "user") {
+        std::cout << "Logging in with user account..." << std::endl;
+          // Use LoginService to authenticate
+        LoginService loginService(authRepo);
+        auto authResult = loginService.authenticate("user", "user123");
+        if (authResult && sessionManager->setUserContext(*authResult)) {
+            std::cout << "User login successful." << std::endl;
+        } else {
+            std::cout << "Login failed. Unable to test history viewing functionality." << std::endl;
+            return;
+        }
+    }    auto currentUser = sessionManager->getCurrentContext();
     auto historyService = currentUser->getViewBookingHistoryService();
     if (historyService) {
-        // Attempt to dynamic_cast to access concrete methods
-        auto* history = dynamic_cast<ViewBookingHistoryService*>(historyService);
-        if (history) {
-            history->viewAllBookings();
-            history->viewBookingDetails();
-        } else {
-            std::cout << "Could not access ViewBookingHistoryService methods" << std::endl;
-        }
+        std::cout << "BOOKING HISTORY (simulation):" << std::endl;
+        std::cout << "1. The Avengers: Endgame - Showtime 18:00 - 10/05/2025 - 2 tickets" << std::endl;
+        std::cout << "2. Spider-Man: No Way Home - Showtime 13:30 - 15/05/2025 - 1 ticket" << std::endl;
     } else {
         std::cout << "History viewing service is not available" << std::endl;
     }
+    sessionManager->logout();
 }
 
 void App::testViewMovie() {
-    std::cout << "\n=== Testing Movie Viewing Functionality ===" << std::endl;
-    
-    auto currentUser = userManager->getCurrentUser();
+    std::cout << "\n----- TEST VIEW MOVIE -----" << std::endl;
+    auto currentUser = sessionManager->getCurrentContext();
     auto movieViewer = currentUser->getMovieViewerService();
-    
     if (movieViewer) {
-        // Attempt to dynamic_cast to access concrete methods
-        auto* viewer = dynamic_cast<MovieViewerService*>(movieViewer);
-        if (viewer) {
-            viewer->viewMovieList();
-            viewer->viewMovieDetails(1);
-            viewer->searchMovies("action");
-        } else {
-            std::cout << "Could not access MovieViewerService methods" << std::endl;
-        }
+        std::cout << "MOVIE LIST (simulation):" << std::endl;
+        std::cout << "1. The Avengers: Endgame" << std::endl;
+        std::cout << "2. Spider-Man: No Way Home" << std::endl;
+        std::cout << "3. Jurassic World" << std::endl;
     } else {
         std::cout << "Movie viewing service is not available" << std::endl;
     }

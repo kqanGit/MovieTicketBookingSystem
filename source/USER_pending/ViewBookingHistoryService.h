@@ -1,6 +1,9 @@
 #ifndef VIEW_BOOKING_HISTORY_SERVICE_H
 #define VIEW_BOOKING_HISTORY_SERVICE_H
 
+// This is a simple implementation of the IViewBookingHistoryService interface
+// To test calling the viewAllBookings and viewBookingDetails methods
+
 #include "IViewBookingHistoryService.h"
 #include <iostream>
 

@@ -1,7 +1,9 @@
-// LogoutService.cpp
 #include "LogoutService.h"
+#include "Guest.h"
 
 std::unique_ptr<IUserContext> LogoutService::logout() {
-    GuestContextCreator guestFactory(repo);
-    return guestFactory.CreateUser({});
+    // return std::make_unique<Guest>();
+    // Hoặc nếu muốn dùng GuestContextCreator:
+    GuestContextCreator creator;
+    return creator.CreateUser();
 }

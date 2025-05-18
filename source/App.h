@@ -2,11 +2,11 @@
 #define APP_H
 
 #include <memory>
-#include "USER_pending/SessionManager.h"
+#include "SessionManager.h" // Đã chuyển từ USER_pending vào thư mục gốc
 #include "repository/IAuthenticationRepository.h"
 #include "repository/AuthenticationRepositorySQL.h"
 #include "database/DatabaseConnection.h"
-#include "MockAuthRepository.h"
+//#include "MockAuthRepository.h" // Comment lại nếu không cần hoặc không tồn tại
 
 // App class that manages the application lifecycle
 class App {

@@ -9,11 +9,8 @@
 #include "IMovieManagerService.h"
 #include "IBookingService.h"
 #include "IViewBookingHistoryService.h"
-#include "IUserInformationService.h" // Thêm dòng này để tránh lỗi incomplete type
-#include <memory> // Thêm để sử dụng unique_ptr
-
-// Forward declaration
-class IAuthenticationRepository;
+#include "IUserInformationService.h"
+#include <memory>
 
 class Admin : public IUserContext {
 private:
@@ -26,12 +23,10 @@ private:
     std::string role;
 
 public:
-    Admin(const AccountInformation& acc, IAuthenticationRepository* repo);
-    ~Admin() override = default; // Smart pointers tự giải phóng
-    
-    std::string getRole() const override { return role; }
-    
-    // Triển khai các phương thức từ interface
+    Admin(const AccountInformation& acc);
+    ~Admin() override = default;
+
+    std::string getRole() const override;
     IUserInformationService* getUserInformationService() override;
     IMovieViewerService* getMovieViewerService() override;
     IMovieManagerService* getMovieManagerService() override;

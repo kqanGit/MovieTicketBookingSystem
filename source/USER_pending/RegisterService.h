@@ -3,16 +3,16 @@
 
 #include "IRegisterService.h"
 #include "../repository/IAuthenticationRepository.h"
-#include "UserContextFactory.h"
 
 class RegisterService : public IRegisterService {
 private:
     IAuthenticationRepository* repo;
-    UserContextFactory* factory;
 public:
-    RegisterService(IAuthenticationRepository* r, UserContextFactory* f = nullptr) : repo(r), factory(f) {}
+    RegisterService() : repo(nullptr) {} // Default constructor
+    RegisterService(IAuthenticationRepository* r) : repo(r) {} // Parameterized constructor
     
-    std::unique_ptr<IUserContext> registerAccount(const AccountInformation& info) override;
+    // Chỉ cần một phương thức duy nhất để đăng ký người dùng, đúng với SoC
+    bool registerUser(const AccountInformation& info) override;
 };
 
 #endif

@@ -4,10 +4,12 @@
 #include <string>
 #include <memory>
 #include "IUserContext.h"
+#include "AccountInformation.h"
+#include <optional>
 
 class ILoginService {
 public:
-    virtual std::unique_ptr<IUserContext> login(const std::string& username, const std::string& password) = 0;
+    virtual std::optional<AccountInformation> authenticate(const std::string& username, const std::string& password) = 0;
     virtual ~ILoginService() = default;
 };
 

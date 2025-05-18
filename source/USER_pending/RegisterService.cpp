@@ -1,15 +1,17 @@
 #include "RegisterService.h"
 #include <iostream>
 
-std::unique_ptr<IUserContext> RegisterService::registerAccount(const AccountInformation& info) {
+bool RegisterService::registerUser(const AccountInformation& info) {
     try {
-        repo->addUser(info);
-        if (factory) {
-            return factory->CreateUser(info);
+        if (repo) {
+            repo->addUser(info);
+            std::cout << "Đăng ký thành công: " << info.userName << std::endl;
+            return true;
         }
-        return nullptr;
+        std::cout << "Không thể đăng ký: Repository không khả dụng" << std::endl;
+        return false;
     } catch (const std::exception& e) {
-        std::cout << "Registration failed: " << e.what() << std::endl;
-        return nullptr;
+        std::cout << "Đăng ký thất bại: " << e.what() << std::endl;
+        return false;
     }
 }
