@@ -3,35 +3,26 @@
 
 #include "IMovieManagerService.h"
 #include <iostream>
-#include <string>
 
 class MovieManagerService : public IMovieManagerService {
 public:
     MovieManagerService() {
-        std::cout << "MovieManagerService initialized" << std::endl;
+        std::cout << "[Service] MovieManagerService initialized.\n";
     }
-    
+
     void addMovie() {
-        std::cout << "Admin functionality: Adding a new movie" << std::endl;
-        std::cout << "Movie 'Godzilla vs. Kong' added successfully!" << std::endl;
+        std::cout << "[Admin] Adding a new movie...\n";
+        std::cout << "Movie 'Dune: Part Two' added successfully!\n";
     }
-    
+
     void updateMovie() {
-        std::cout << "Admin functionality: Updating a movie" << std::endl;
-        std::cout << "Movie ID 2 (The Matrix Resurrections) updated successfully!" << std::endl;
+        std::cout << "[Admin] Updating movie info...\n";
+        std::cout << "Movie 'The Matrix Resurrections' updated.\n";
     }
-    
+
     void deleteMovie() {
-        std::cout << "Admin functionality: Deleting a movie" << std::endl;
-        std::cout << "Movie ID 5 (Eternals) deleted successfully!" << std::endl;
-    }
-    
-    void listMovies() {
-        std::cout << "Admin functionality: Listing all movies" << std::endl;
-        std::cout << "1. Spider-Man: No Way Home (ID: 1)" << std::endl;
-        std::cout << "2. The Matrix Resurrections (ID: 2)" << std::endl;
-        std::cout << "3. Dune (ID: 3)" << std::endl;
-        std::cout << "4. No Time to Die (ID: 4)" << std::endl;
+        std::cout << "[Admin] Deleting movie...\n";
+        std::cout << "Movie ID 3 deleted from system.\n";
     }
 };
 

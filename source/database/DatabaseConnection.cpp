@@ -61,7 +61,7 @@ std::vector<std::map<std::string, std::string>> DatabaseConnection::executeQuery
     sqlite3_stmt* stmt;
 
     if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
-        std::cerr << "❌ Failed to prepare query: " << sqlite3_errmsg(db) << "\n";
+        std::cerr << "[DatabaseConnection] Failed to prepare query: " << sqlite3_errmsg(db) << "\n";
         return results;
     }
 
@@ -88,7 +88,7 @@ std::vector<std::map<std::string, std::string>> DatabaseConnection::executeQuery
 bool DatabaseConnection::executeSQLFile(const std::string& filePath) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "❌ Could not open SQL file: " << filePath << "\n";
+        std::cerr << "[DatabaseConnection] Could not open SQL file: " << filePath << "\n";
         return false;
     }
 
@@ -98,7 +98,7 @@ bool DatabaseConnection::executeSQLFile(const std::string& filePath) {
 
     char* errMsg = nullptr;
     if (sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "❌ Failed to execute SQL file: " << errMsg << "\n";
+        std::cerr << "[DatabaseConnection] Failed to execute SQL file: " << errMsg << "\n";
         sqlite3_free(errMsg);
         return false;
     }

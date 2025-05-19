@@ -4,7 +4,7 @@
 class IUserInformationService {
 public:
     virtual ~IUserInformationService() = default;
-    // Thêm các phương thức ảo nếu cần
+    virtual void printAccountInfo() const = 0;
 };
 
-#endif
+#endif // IUSERINFORMATIONSERVICE_H
