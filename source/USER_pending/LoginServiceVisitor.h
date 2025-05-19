@@ -1,0 +1,24 @@
+#ifndef LOGINSERVICEVISITOR_H
+#define LOGINSERVICEVISITOR_H
+#include "IServiceVisitor.h"
+#include "ILoginService.h"
+#include "Memory"
+#include "ServiceRegistry.h"
+#include <map>
+#include <memory>
+
+class Guest;
+class User;
+class Admin;
+
+class LoginServiceVisitor : public IServiceVisitor {
+public:
+    std::shared_ptr<ILoginService> _service;
+    LoginServiceVisitor();
+    std::shared_ptr<ILoginService> getLoginService();
+    void service(std::shared_ptr<Guest> role) override;
+    void service(std::shared_ptr<User> role) override;
+    void service(std::shared_ptr<Admin> role) override;
+};
+
+#endif

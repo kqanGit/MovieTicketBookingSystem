@@ -3,10 +3,11 @@
 #define IUSERCONTEXT_H
 
 #include "AccountInformation.h"
-#include "IUserInformationService.h"
+#include "IVisitor.h"
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declarations
+class IUserInformationService;
 class IMovieViewerService;
 class IMovieManagerService;
 class IBookingService;
@@ -15,20 +16,10 @@ class ILoginService;
 class ILogoutService;
 class IRegisterService;
 
+
 class IUserContext {
 public:
-    virtual std::string getRole() const = 0;
-
-    // Các service, trả về nullptr nếu không hỗ trợ ở vai trò hiện tại
-    virtual IUserInformationService* getUserInformationService() = 0; // User/Admin
-    virtual IMovieViewerService* getMovieViewerService() = 0;         // Guest/User/Admin
-    virtual IMovieManagerService* getMovieManagerService() = 0;       // Admin
-    virtual IBookingService* getBookingService() = 0;                 // User/Admin
-    virtual IViewBookingHistoryService* getViewBookingHistoryService() = 0; // User/Admin
-    virtual ILoginService* getLoginService() = 0;                     // Guest
-    virtual ILogoutService* getLogoutService() = 0;                   // User/Admin
-    virtual IRegisterService* getRegisterService() = 0;               // Guest
-
     virtual ~IUserContext() = default;
+    virtual void accept(std::shared_ptr<IVisitor> service) = 0;
 };
 #endif

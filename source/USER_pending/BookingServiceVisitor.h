@@ -1,0 +1,21 @@
+#ifndef _BOOKINGSERVICEVISITOR_H_
+#define _BOOKINGSERVICEVISITOR_H_
+#include "IServiceVisitor.h"
+#include "ServiceRegistry.h"
+#include "IBookingService.h"
+#include <memory>
+#include <map>
+
+class Guest;
+class User;
+class Admin;
+
+class BookingServiceVisitor : public IServiceVisitor {
+public:
+    std::shared_ptr<IBookingService> _service;
+    BookingServiceVisitor();
+    std::shared_ptr<IBookingService> getBookingService();
+    void service(std::shared_ptr<Guest> role) override;
+    void service(std::shared_ptr<User> role) override;
+    void service(std::shared_ptr<Admin> role) override;};
+#endif

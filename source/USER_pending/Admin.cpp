@@ -7,23 +7,9 @@
 #include "ViewBookingHistoryService.h"
 #include <iostream>
 
-Admin::Admin(const AccountInformation& acc) {
-    role = "admin";
-    userInfoService = std::make_unique<UserInformationService>(acc); // Truyền toàn bộ AccountInformation
-    logoutService = std::make_unique<LogoutService>();
-    movieManager = std::make_unique<MovieManagerService>();
-    movieViewer = std::make_unique<MovieViewerService>();
-    bookingService = std::make_unique<BookingService>();
-    viewHistoryService = std::make_unique<ViewBookingHistoryService>();
-    std::cout << "Admin context created with role: " << role << std::endl;
+void Admin::accept(std::shared_ptr<IVisitor> service) {
+    std::shared_ptr<IServiceVisitor> serviceVisitor = std::dynamic_pointer_cast<IServiceVisitor>(service);
+    if (serviceVisitor) {
+        serviceVisitor->service(std::shared_ptr<Admin>(this, [](Admin*){})); // Non-owning shared_ptr
+    }
 }
-
-std::string Admin::getRole() const { return role; }
-IUserInformationService* Admin::getUserInformationService() { return userInfoService.get(); }
-IMovieViewerService* Admin::getMovieViewerService() { return movieViewer.get(); }
-IMovieManagerService* Admin::getMovieManagerService() { return movieManager.get(); }
-IBookingService* Admin::getBookingService() { return bookingService.get(); }
-IViewBookingHistoryService* Admin::getViewBookingHistoryService() { return viewHistoryService.get(); }
-ILoginService* Admin::getLoginService() { return nullptr; }
-ILogoutService* Admin::getLogoutService() { return logoutService.get(); }
-IRegisterService* Admin::getRegisterService() { return nullptr; }
