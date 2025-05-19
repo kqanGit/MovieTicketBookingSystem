@@ -13,3 +13,11 @@ void Admin::accept(std::shared_ptr<IVisitor> service) {
         serviceVisitor->service(std::shared_ptr<Admin>(this, [](Admin*){})); // Non-owning shared_ptr
     }
 }
+
+Admin::Admin(const AccountInformation& acc) {
+    infoService = std::make_shared<UserInformationService>(acc);
+}
+
+std::shared_ptr<IUserInformationService> Admin::getUserInformationService() const {
+    return infoService;
+}

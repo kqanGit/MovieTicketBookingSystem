@@ -5,12 +5,11 @@
 #include "IUserContext.h"
 #include "IServiceVisitor.h"
 #include <memory> // Thêm để sử dụng unique_ptr
-#include <string>
 
 class Guest : public IUserContext, public std::enable_shared_from_this<Guest> {
 public:
     void accept(std::shared_ptr<IVisitor> service) override;
-    std::string getRole() const override { return "guest"; }
+    std::shared_ptr<IUserInformationService> getUserInformationService() const override;
 };
 
 #endif

@@ -16,9 +16,9 @@ public:
     std::shared_ptr<IRegisterService> _service;
     RegisterServiceVisitor();
     std::shared_ptr<IRegisterService> getRegisterService();
-    void service(Guest* role) override;
-    void service(User* role) override;
-    void service(Admin* role) override;
+    void service(std::shared_ptr<Guest> role) override;
+    void service(std::shared_ptr<User> role) override;
+    void service(std::shared_ptr<Admin> role) override;
 };
 
 #endif
