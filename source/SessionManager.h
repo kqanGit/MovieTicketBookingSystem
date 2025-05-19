@@ -3,74 +3,72 @@
 
 #include <memory>
 #include <string>
-#include "IUserContext.h"
-#include "AccountInformation.h"
-#include "UserContextFactory.h"
+#include "USER_pending/IUserContext.h"
+#include "USER_pending/AccountInformation.h"
+#include "USER_pending/UserContextFactory.h"
+#include "USER_pending/GuestContextCreator.h"
+#include "USER_pending/UserContextCreator.h"
+#include "USER_pending/AdminContextCreator.h"
 
 /**
  * @class SessionManager
  * @brief Manages user sessions and context transitions
  * 
- * The SessionManager is responsible for managing user sessions,
- * including keeping track of the current user context and providing
- * methods for transitions between different user states (Guest, User, Admin).
- * It centralizes user context management to provide a clearer API.
- * 
- * The SessionManager ONLY manages the context state and transitions,
- * it does not perform business logic like authentication or registration.
+ * Quản lý trạng thái người dùng hiện tại (Guest/User/Admin),
+ * xử lý đăng nhập/đăng xuất và chuyển đổi giữa các loại người dùng
  */
 class SessionManager {
 private:
-    // Con trỏ đa hình quản lý context hiện tại (Guest/User/Admin), đảm bảo đúng OOP/SOLID
-    std::unique_ptr<IUserContext> currentContext;
-    std::unique_ptr<UserContextFactory> guestFactory;
-    std::unique_ptr<UserContextFactory> userFactory;
-    std::unique_ptr<UserContextFactory> adminFactory;
+    // Con trỏ quản lý context hiện tại (Guest/User/Admin)
+    std::unique_ptr<IUserContext> _currentUserContext;
     
-    // Current session information
-    AccountInformation currentAccount;
-    bool isAuthenticated;
-
+    // Factory duy nhất để tạo các loại context khác nhau
+    std::shared_ptr<UserContextFactory> _contextFactory;
+    
+    // Thông tin về tài khoản hiện tại
+    AccountInformation _currentAccount;
+    bool _isAuthenticated;
+    
 public:
     /**
-     * @brief Constructs a SessionManager with default Guest context
+     * @brief Khởi tạo SessionManager với Guest context mặc định
      */
     SessionManager();
     
     /**
-     * @brief Get the current user context
-     * @return Pointer to the current user context
+     * @brief Lấy context người dùng hiện tại
+     * @return Con trỏ đến context người dùng hiện tại
      */
     IUserContext* getCurrentContext() const;
-
+    
     /**
-     * @brief Get the role of the current user context
-     * @return String representing the role (guest, user, admin)
+     * @brief Lấy vai trò người dùng hiện tại
+     * @return Chuỗi đại diện cho vai trò (guest, user, admin)
      */
     std::string getCurrentRole() const;
     
     /**
-     * @brief Check if user is authenticated
-     * @return True if authenticated, false otherwise
+     * @brief Kiểm tra người dùng đã đăng nhập chưa
+     * @return True nếu đã đăng nhập, false nếu chưa
      */
     bool isUserAuthenticated() const;
     
     /**
-     * @brief Get current account information
-     * @return Account information of the current user
+     * @brief Lấy thông tin tài khoản hiện tại
+     * @return Thông tin tài khoản của người dùng hiện tại
      */
     const AccountInformation& getCurrentAccount() const;
     
     /**
-     * @brief Set user context after successful authentication
-     * @param authInfo Account information from successful authentication
-     * @return True if context was set, false otherwise (e.g. already logged in)
+     * @brief Đặt context người dùng sau khi xác thực thành công
+     * @param authInfo Thông tin tài khoản từ xác thực thành công
+     * @return True nếu context được đặt, false nếu không (ví dụ: đã đăng nhập rồi)
      */
     bool setUserContext(const AccountInformation& authInfo);
     
     /**
-     * @brief Logout current user and reset to Guest context
-     * @return True if logout successful, false otherwise
+     * @brief Đăng xuất người dùng hiện tại và đặt lại về Guest context
+     * @return True nếu đăng xuất thành công, false nếu không
      */
     bool logout();
 };

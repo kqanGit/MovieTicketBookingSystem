@@ -9,6 +9,7 @@
 class Admin : public IUserContext {
 public:
     void accept(std::shared_ptr<IVisitor> service) override;
+    std::string getRole() const override { return "admin"; }
 };
 
 #endif

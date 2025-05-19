@@ -7,8 +7,8 @@
 
 class UserContextFactory {
 public:
-    virtual std::unique_ptr<IUserContext> CreateUser() { return nullptr; } // Dùng cho Guest
-    virtual std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) { return nullptr; } // Dùng cho User/Admin
+    virtual std::unique_ptr<IUserContext> CreateUser() = 0; // Dùng cho Guest
+    virtual std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) = 0; // Dùng cho User/Admin
     virtual ~UserContextFactory() = default;
 };
 #endif

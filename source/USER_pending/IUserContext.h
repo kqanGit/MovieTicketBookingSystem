@@ -5,6 +5,7 @@
 #include "AccountInformation.h"
 #include "IVisitor.h"
 #include <memory> // Thêm để sử dụng unique_ptr
+#include <string>
 
 // Forward declarations
 class IUserInformationService;
@@ -21,5 +22,6 @@ class IUserContext {
 public:
     virtual ~IUserContext() = default;
     virtual void accept(std::shared_ptr<IVisitor> service) = 0;
+    virtual std::string getRole() const = 0; // Thêm phương thức lấy vai trò
 };
 #endif

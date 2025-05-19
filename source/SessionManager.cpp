@@ -1,84 +1,91 @@
 #include "SessionManager.h"
-#include "Guest.h"
-#include "User.h"
-#include "Admin.h"
-#include "GuestContextCreator.h"
-#include "UserContextCreator.h"
-#include "AdminContextCreator.h"
+#include "USER_pending/Guest.h"
+#include "USER_pending/User.h"
+#include "USER_pending/Admin.h"
 #include <iostream>
 #include <stdexcept>
 
-SessionManager::SessionManager() : isAuthenticated(false) {
-    // Initialize the factories
-    guestFactory = std::make_unique<GuestContextCreator>();
-    userFactory = std::make_unique<UserContextCreator>();
-    adminFactory = std::make_unique<AdminContextCreator>();
+SessionManager::SessionManager() : _isAuthenticated(false) {
+    // Khởi tạo factory mặc định là GuestContextCreator
+    _contextFactory = std::make_shared<GuestContextCreator>();
     
-    // Start with a Guest context
-    AccountInformation guestInfo;
-    guestInfo.userName = "guest";
-    guestInfo.role = "guest";
-    currentContext = guestFactory->CreateUser(guestInfo);
-    currentAccount = AccountInformation(); // Set default currentAccount for Guest
+    // Khởi tạo với Guest context
+    _currentUserContext = _contextFactory->CreateUser();
     
-    std::cout << "Session initialized with Guest context" << std::endl;
+    std::cout << "Session khởi tạo với Guest context" << std::endl;
 }
 
 IUserContext* SessionManager::getCurrentContext() const {
-    return currentContext.get();
+    return _currentUserContext.get();
 }
 
 std::string SessionManager::getCurrentRole() const {
-    return currentContext->getRole();
+    if (!_currentUserContext) {
+        return "unknown";
+    }
+    
+    // Dựa vào loại context để xác định vai trò
+    auto guest = dynamic_cast<Guest*>(_currentUserContext.get());
+    if (guest) return "guest";
+    
+    auto user = dynamic_cast<User*>(_currentUserContext.get());
+    if (user) return "user";
+    
+    auto admin = dynamic_cast<Admin*>(_currentUserContext.get());
+    if (admin) return "admin";
+    
+    return "unknown";
 }
 
 bool SessionManager::isUserAuthenticated() const {
-    return isAuthenticated;
+    return _isAuthenticated;
 }
 
 const AccountInformation& SessionManager::getCurrentAccount() const {
-    return currentAccount;
+    return _currentAccount;
 }
 
 bool SessionManager::setUserContext(const AccountInformation& authInfo) {
-    if (isAuthenticated) {
-        std::cout << "Already logged in as " << currentAccount.userName << " with role: " << currentContext->getRole() << std::endl;
+    if (_isAuthenticated) {
+        std::cout << "Đã đăng nhập với tư cách: " << getCurrentRole() << std::endl;
         return false;
     }
 
+    // Cập nhật factory dựa trên vai trò
     if (authInfo.role == "admin") {
-        currentContext = adminFactory->CreateUser(authInfo);
+        _contextFactory = std::make_shared<AdminContextCreator>();
+        _currentUserContext = _contextFactory->CreateUser(authInfo);
     } else if (authInfo.role == "user") {
-        currentContext = userFactory->CreateUser(authInfo);
+        _contextFactory = std::make_shared<UserContextCreator>();
+        _currentUserContext = _contextFactory->CreateUser(authInfo);
     } else if (authInfo.role == "guest") {
-        currentContext = guestFactory->CreateUser();
+        _contextFactory = std::make_shared<GuestContextCreator>();
+        _currentUserContext = _contextFactory->CreateUser();
     } else {
-        std::cout << "Invalid role: " << authInfo.role << std::endl;
+        std::cout << "Vai trò không hợp lệ: " << authInfo.role << std::endl;
         return false;
     }
 
-    currentAccount = authInfo;
-    isAuthenticated = (authInfo.role != "guest");
-    std::cout << "Context set to: " << currentContext->getRole() << std::endl;
+    _currentAccount = authInfo;
+    _isAuthenticated = (authInfo.role != "guest");
+    std::cout << "Đã thiết lập context: " << getCurrentRole() << std::endl;
     return true;
 }
 
 bool SessionManager::logout() {
-    if (!isAuthenticated) {
-        std::cout << "Not logged in" << std::endl;
+    if (!_isAuthenticated) {
+        std::cout << "Chưa đăng nhập" << std::endl;
         return false;
     }
     
-    // Create guest context
-    AccountInformation guestInfo;
-    guestInfo.userName = "guest";
-    guestInfo.role = "guest";
-    currentContext = guestFactory->CreateUser(guestInfo);
+    // Cập nhật factory về lại GuestContextCreator và tạo guest context mới
+    _contextFactory = std::make_shared<GuestContextCreator>();
+    _currentUserContext = _contextFactory->CreateUser();
     
-    // Update session state
-    isAuthenticated = false;
-    currentAccount = AccountInformation(); // Reset to default when Guest
+    // Cập nhật trạng thái session
+    _isAuthenticated = false;
+    _currentAccount = AccountInformation(); // Reset thông tin tài khoản khi trở về Guest
     
-    std::cout << "Logout successful" << std::endl;
+    std::cout << "Đăng xuất thành công" << std::endl;
     return true;
 }

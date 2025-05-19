@@ -55,7 +55,7 @@ void App::run() {
     bool running = true;    
     while(running) {        // Get current user context
         auto currentUser = sessionManager->getCurrentContext();
-          std::cout << "\n----- MAIN MENU -----" << std::endl;
+        std::cout << "\n----- MAIN MENU -----" << std::endl;
         std::cout << "Current role: " << sessionManager->getCurrentRole() << std::endl;
           // Menu based on role
         if (currentUser->getRole() == "guest") {
@@ -97,7 +97,9 @@ void App::run() {
                     } else {
                         std::cout << "Login failed: Incorrect username or password" << std::endl;
                     }
-                    break;                }                case 2: { // Register
+                    break;                
+                }                
+                case 2: { // Register
                     AccountInformation info;
                     std::cout << "Username: ";
                     std::cin >> info.userName;
