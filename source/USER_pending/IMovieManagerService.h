@@ -4,7 +4,10 @@
 class IMovieManagerService {
 public:
     virtual ~IMovieManagerService() = default;
-    // Thêm các phương thức ảo nếu cần
+    virtual void addMovie() = 0;
+    virtual void updateMovie() = 0;
+    virtual void deleteMovie() = 0;
 };
+
 
 #endif

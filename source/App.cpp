@@ -14,6 +14,16 @@
 
 App::App() : dbConn(nullptr), authRepo(nullptr) {}
 
+App::App(bool useMock = false) : dbConn(nullptr), authRepo(nullptr) {
+    if (useMock) {
+        std::cout << "[App] Using mock repository (not implemented here).\n";
+        // TODO: Implement mock repo if needed
+    } else {
+        std::cout << "[App] Using real repository.\n";
+    }
+}
+
+
 App::~App() {
     shutdown();
 }

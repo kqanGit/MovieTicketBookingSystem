@@ -23,6 +23,7 @@ private:
 
 public:
     App();
+    App(bool useMock); // NEW: hỗ trợ chọn mock hay thật
     ~App();
 
     bool initialize();

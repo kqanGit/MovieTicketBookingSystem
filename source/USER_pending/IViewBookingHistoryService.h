@@ -4,7 +4,9 @@
 class IViewBookingHistoryService {
 public:
     virtual ~IViewBookingHistoryService() = default;
-    // Thêm các phương thức ảo nếu cần
+    virtual void viewAllBookings() = 0;
+    virtual void viewBookingDetails() = 0;
 };
+
 
 #endif

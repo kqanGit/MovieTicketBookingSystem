@@ -3,6 +3,7 @@
 #include "IVisitor.h"
 #include "IServiceVisitor.h"
 #include "IUserContext.h"
+#include "UserInformationService.h"
 #include <memory> 
 #include <string>
 
