@@ -1,6 +1,8 @@
 #ifndef IMOVIEVIEWERSERVICE_H
 #define IMOVIEVIEWERSERVICE_H
 
+#include <string>
+
 class IMovieViewerService {
 public:
     virtual ~IMovieViewerService() = default;

@@ -9,6 +9,9 @@ class UserContextCreator : public UserContextFactory {
 public:
     UserContextCreator() = default;
     std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) override;
+    // Bổ sung override cần thiết // Không cần thiết
+    std::unique_ptr<IUserContext> CreateUser() override;
+
 };
 
 #endif

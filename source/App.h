@@ -3,6 +3,7 @@
 #define APP_H
 
 #include <memory>
+#include <filesystem>
 #include "SessionManager.h"
 #include "repository/IAuthenticationRepository.h"
 #include "repository/AuthenticationRepositorySQL.h"

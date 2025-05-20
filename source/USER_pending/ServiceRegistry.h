@@ -18,7 +18,7 @@ public:
         std::string typeName = typeid(T).name();
         auto it = _services.find(typeName);
         if (it != _services.end()) {
-            return std::dynamic_pointer_cast<T>(it->second);
+            return std::static_pointer_cast<T>(it->second);
         }
         return nullptr;
     }

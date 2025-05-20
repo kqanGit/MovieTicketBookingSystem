@@ -30,11 +30,22 @@ App::~App() {
 
 bool App::initialize() {
     std::cout << "\n[App] Initializing application...\n";
+    
+    std::cout << "[Debug] Working dir: " << std::filesystem::current_path() << "\n";
 
     dbConn = DatabaseConnection::getInstance();
-    if (!dbConn->connect("data.db")) {
+    if (!dbConn->connect("data.db")) { // Đường dẫn đến file database
         std::cerr << "[App] Failed to connect to database.\n";
         return false;
+    }
+
+        // Nếu file chưa tồn tại hoặc mới tạo -> nên luôn chạy schema
+    if (!std::filesystem::exists("data.db") || dbConn->executeQuery("SELECT name FROM sqlite_master WHERE type='table';").empty()) {
+        std::cout << "[App] Running database schema setup...\n";
+        if (!dbConn->executeSQLFile("../database/database.sql")) {
+            std::cerr << "[App] Failed to initialize database schema.\n";
+            return false;
+        }
     }
 
     authRepo = new AuthenticationRepositorySQL(dbConn);
@@ -67,8 +78,12 @@ void App::run() {
             }
 
             std::string username, password;
-            std::cout << "Username: "; std::cin >> username;
-            std::cout << "Password: "; std::cin >> password;
+            std::cout << "Username: ";
+            std::getline(std::cin >> std::ws, username);
+
+            std::cout << "Password: ";
+            std::getline(std::cin >> std::ws, password);
+
 
             auto visitor = std::make_shared<LoginServiceVisitor>();
             sessionManager->getCurrentContext()->accept(visitor);

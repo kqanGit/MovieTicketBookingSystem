@@ -8,7 +8,12 @@
 class AdminContextCreator : public UserContextFactory {
 public:
     AdminContextCreator() = default;
+
+    // Bổ sung override để không còn abstract // Không dùng hàm này
+    std::unique_ptr<IUserContext> CreateUser() override;
+
     std::unique_ptr<IUserContext> CreateUser(const AccountInformation& info) override;
 };
+
 
 #endif

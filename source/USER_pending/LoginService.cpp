@@ -8,7 +8,7 @@ std::optional<AccountInformation> LoginService::authenticate(const std::string& 
         AccountInformation info = repo->getUserByUserName(username, password);
         return info;
     } catch(const std::exception& e) {
-        std::cout << "Login failed: " << e.what() << std::endl;
+        std::cout << "[LoginService] Login failed: " << e.what() << std::endl;
         return std::nullopt;
     }
 }

@@ -12,7 +12,7 @@ SessionManager::SessionManager() : _isAuthenticated(false) {
     // Khởi tạo với Guest context
     _currentUserContext = _contextFactory->CreateUser();
     
-    std::cout << "Session khởi tạo với Guest context" << std::endl;
+    std::cout << "Session initiated with Guest context" << std::endl;
 }
 
 IUserContext* SessionManager::getCurrentContext() const {
@@ -47,34 +47,34 @@ const AccountInformation& SessionManager::getCurrentAccount() const {
 
 bool SessionManager::setUserContext(const AccountInformation& authInfo) {
     if (_isAuthenticated) {
-        std::cout << "Đã đăng nhập với tư cách: " << getCurrentRole() << std::endl;
+        std::cout << "Login as role: " << getCurrentRole() << std::endl;
         return false;
     }
 
     // Cập nhật factory dựa trên vai trò
-    if (authInfo.role == "admin") {
+    if (authInfo.role == "Admin") {
         _contextFactory = std::make_shared<AdminContextCreator>();
         _currentUserContext = _contextFactory->CreateUser(authInfo);
-    } else if (authInfo.role == "user") {
+    } else if (authInfo.role == "User") {
         _contextFactory = std::make_shared<UserContextCreator>();
         _currentUserContext = _contextFactory->CreateUser(authInfo);
     } else if (authInfo.role == "guest") {
         _contextFactory = std::make_shared<GuestContextCreator>();
         _currentUserContext = _contextFactory->CreateUser();
     } else {
-        std::cout << "Vai trò không hợp lệ: " << authInfo.role << std::endl;
+        std::cout << "Invalid role: " << authInfo.role << std::endl;
         return false;
     }
 
     _currentAccount = authInfo;
     _isAuthenticated = (authInfo.role != "guest");
-    std::cout << "Đã thiết lập context: " << getCurrentRole() << std::endl;
+    std::cout << "[Session] Already Init context: " << getCurrentRole() << std::endl;
     return true;
 }
 
 bool SessionManager::logout() {
     if (!_isAuthenticated) {
-        std::cout << "Chưa đăng nhập" << std::endl;
+        std::cout << "[Session] Not Login yet" << std::endl;
         return false;
     }
     
@@ -86,6 +86,6 @@ bool SessionManager::logout() {
     _isAuthenticated = false;
     _currentAccount = AccountInformation(); // Reset thông tin tài khoản khi trở về Guest
     
-    std::cout << "Đăng xuất thành công" << std::endl;
+    std::cout << "[Session] Logout successfully" << std::endl;
     return true;
 }

@@ -11,3 +11,7 @@ void User::accept(std::shared_ptr<IVisitor> service) {
 std::shared_ptr<IUserInformationService> User::getUserInformationService() const {
     return infoService;
 }
+
+User::User(const AccountInformation& acc) {
+    infoService = std::make_shared<UserInformationService>(acc);
+}
