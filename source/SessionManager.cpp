@@ -26,13 +26,13 @@ std::string SessionManager::getCurrentRole() const {
     
     // Dựa vào loại context để xác định vai trò
     auto guest = dynamic_cast<Guest*>(_currentUserContext.get());
-    if (guest) return "guest";
+    if (guest) return "Guest";
     
     auto user = dynamic_cast<User*>(_currentUserContext.get());
-    if (user) return "user";
+    if (user) return "User";
     
     auto admin = dynamic_cast<Admin*>(_currentUserContext.get());
-    if (admin) return "admin";
+    if (admin) return "Admin";
     
     return "unknown";
 }
@@ -58,7 +58,7 @@ bool SessionManager::setUserContext(const AccountInformation& authInfo) {
     } else if (authInfo.role == "User") {
         _contextFactory = std::make_shared<UserContextCreator>();
         _currentUserContext = _contextFactory->CreateUser(authInfo);
-    } else if (authInfo.role == "guest") {
+    } else if (authInfo.role == "Guest") {
         _contextFactory = std::make_shared<GuestContextCreator>();
         _currentUserContext = _contextFactory->CreateUser();
     } else {
@@ -67,7 +67,7 @@ bool SessionManager::setUserContext(const AccountInformation& authInfo) {
     }
 
     _currentAccount = authInfo;
-    _isAuthenticated = (authInfo.role != "guest");
+    _isAuthenticated = (authInfo.role != "Guest");
     std::cout << "[Session] Already Init context: " << getCurrentRole() << std::endl;
     return true;
 }
