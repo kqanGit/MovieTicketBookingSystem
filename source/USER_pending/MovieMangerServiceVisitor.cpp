@@ -8,14 +8,14 @@ std::shared_ptr<IMovieManagerService> MovieManagerServiceVisitor::getMovieManage
     return _service;
 }
 
-void MovieManagerServiceVisitor::service(Guest* role) {
+void MovieManagerServiceVisitor::service(std::shared_ptr<Guest> role) {
     _service = nullptr;
 }
 
-void MovieManagerServiceVisitor::service(User* role) {
+void MovieManagerServiceVisitor::service(std::shared_ptr<User> role) {
     _service = nullptr;
 }
 
-void MovieManagerServiceVisitor::service(Admin* role) {
+void MovieManagerServiceVisitor::service(std::shared_ptr<Admin> role) {
     _service = ServiceRegistry::getSingleton<IMovieManagerService>();
 }

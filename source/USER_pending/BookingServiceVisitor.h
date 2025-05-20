@@ -11,8 +11,9 @@ class User;
 class Admin;
 
 class BookingServiceVisitor : public IServiceVisitor {
-public:
+private:
     std::shared_ptr<IBookingService> _service;
+public:
     BookingServiceVisitor();
     std::shared_ptr<IBookingService> getBookingService();
     void service(std::shared_ptr<Guest> role) override;

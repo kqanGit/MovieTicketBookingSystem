@@ -11,13 +11,14 @@ class User;
 class Admin;
 
 class MovieManagerServiceVisitor : public IServiceVisitor {
-public:
+private:
     std::shared_ptr<IMovieManagerService> _service;
+public:
     MovieManagerServiceVisitor();
     std::shared_ptr<IMovieManagerService> getMovieManagerService();
-    void service(Guest* role) override;
-    void service(User* role) override;
-    void service(Admin* role) override;
+    void service(std::shared_ptr<Guest> role) override;
+    void service(std::shared_ptr<User> role) override;
+    void service(std::shared_ptr<Admin> role) override;
 };
 
 #endif

@@ -12,13 +12,14 @@ class Admin;
 
 
 class LogoutServiceVisitor : public IServiceVisitor {
-public:
+private:
     std::shared_ptr<ILogoutService> _service;
+public:
     LogoutServiceVisitor();
     std::shared_ptr<ILogoutService> getLogoutService();
-    void service(Guest* role) override;
-    void service(User* role) override;
-    void service(Admin* role) override;
+    void service(std::shared_ptr<Guest> role) override;
+    void service(std::shared_ptr<User> role) override;
+    void service(std::shared_ptr<Admin> role) override;
 };
 
 #endif

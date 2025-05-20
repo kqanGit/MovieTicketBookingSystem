@@ -12,8 +12,9 @@ class Admin;
 
 
 class RegisterServiceVisitor : public IServiceVisitor{
-public:
+private:
     std::shared_ptr<IRegisterService> _service;
+public:
     RegisterServiceVisitor();
     std::shared_ptr<IRegisterService> getRegisterService();
     void service(std::shared_ptr<Guest> role) override;
