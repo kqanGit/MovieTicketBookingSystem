@@ -1,7 +1,6 @@
 #include "BookingService.h"
 
-BookingService::BookingService(IBookingRepository* repo) {
-    _repo = repo;
+BookingService::BookingService(std::shared_ptr<IBookingRepository> repo) : _repo(repo) {
 }
 
 void BookingService::createBooking(const int& userID, const int& showTimeID, const std::vector<std::string>& seats) {
@@ -16,8 +15,4 @@ std::vector<SeatView> BookingService::viewSeatsStatus(const int& showTimeID) {
 
 std::vector<BookingView> BookingService::viewBookingHistory(const int& userID) {
     return _repo->viewAllBookings(userID);
-}
-
-BookingService::~BookingService() {
-    delete _repo;
 }
