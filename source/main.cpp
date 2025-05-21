@@ -1,29 +1,37 @@
-
 extern "C" {
     #include "sqlite3.h"
 }
-//để intellisense nhận biết đó là file header của .c
+#include "DatabaseConnection.h"
 #include <iostream>
-#include "database/DatabaseConnection.h"
-
-
 
 int main() {
-    DatabaseConnection dbConn("movies.db");
-    if (!dbConn.isOpen()) {
+    // Bước 1: Lấy thể hiện Singleton
+    DatabaseConnection* db = DatabaseConnection::getInstance();
+
+    // Bước 2: Kết nối đến file database (SQLite sẽ tạo mới nếu chưa tồn tại)
+    if (!db->connect("database.db")) {
+        std::cerr << "Không thể kết nối tới cơ sở dữ liệu.\n";
         return 1;
     }
 
-    sqlite3* db = dbConn.getDB();
-    const char* sql = "CREATE TABLE IF NOT EXISTS Movie (id INTEGER PRIMARY KEY, title TEXT, year INTEGER);";
-    char* errMsg = nullptr;
+    // // (Tùy chọn) Bước 3: Chạy schema.sql để tạo bảng và chèn dữ liệu mẫu nếu file db mới
+    db->executeSQLFile("./database/database.sql");
 
-    if (sqlite3_exec(db, sql, nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "SQL error: " << errMsg << std::endl;
-        sqlite3_free(errMsg);
-    } else {
-        std::cout << "Table created or already exists.\n";
-    }
+    // // Bước 4: Truy vấn dữ liệu
+    // std::string sql = "SELECT * FROM MOVIE";
+    // auto results = db->executeQuery(sql);
 
+    // // Bước 5: In kết quả
+    // std::cout << "🎬 Danh sách phim:\n";
+    // for (const auto& row : results) {
+    //     std::cout << "🎬 MovieID: " << row.at("MovieID")
+    //               << " | Title: " << row.at("Title")
+    //               << " | Genre: " << row.at("Genre")
+    //               << " | Description: " << row.at("Descriptions")
+    //               << " | Rating: " << row.at("Rating") << '\n';
+    // }
+
+    // Bước 6: Đóng kết nối
+    db->disconnect();
     return 0;
 }

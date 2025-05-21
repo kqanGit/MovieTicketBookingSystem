@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "BookingServiceDBTest.dir\\Debug\\CoupleSeat.obj",
+            "outputs": [
+                "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\BookingServiceDBTest.dir\\Debug\\vc143.pdb",
+                "BookingServiceDBTest.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}
