@@ -68,7 +68,7 @@ void App::run() {
     std::cout << "\n[App] Application is running...\n";
 
     while (true) {
-        std::cout << "\n>> Command (login, logout, whoami, view, book, history, manage, quit): ";
+        std::cout << "\n>> Command (login, register, logout, whoami, view, book, history, manage, quit): ";
         std::cin >> command;
 
         if (command == "login") {
@@ -156,6 +156,50 @@ void App::run() {
         else if (command == "quit") {
             break;
         }
+
+        else if (command == "register") {
+            if (sessionManager->isUserAuthenticated()) {
+                std::cout << "[App] Please logout before registering a new account.\n";
+                continue;
+            }
+
+            std::string username, password, phone, email;
+
+            std::cout << "Username: ";
+            std::getline(std::cin >> std::ws, username);
+
+            std::cout << "Password: ";
+            std::getline(std::cin >> std::ws, password);
+
+            std::cout << "Phone number: ";
+            std::getline(std::cin >> std::ws, phone);
+
+            std::cout << "Email: ";
+            std::getline(std::cin >> std::ws, email);
+
+            AccountInformation acc;
+            acc.userName = username;
+            acc.password = password;
+            acc.phoneNumber = phone;
+            acc.gmail = email;
+            acc.role = "User"; // mặc định đăng ký là user
+
+            auto visitor = std::make_shared<RegisterServiceVisitor>();
+            sessionManager->getCurrentContext()->accept(visitor);
+            auto registerService = visitor->getRegisterService();
+
+            if (!registerService) {
+                std::cout << "[App] Register service not available.\n";
+                continue;
+            }
+
+            if (registerService->registerUser(acc)) {
+                std::cout << "[App] Registration successful. You can now login.\n";
+            } else {
+                std::cout << "[App] Registration failed.\n";
+            }
+        }
+
 
         else {
             std::cout << "[App] Unknown command.\n";

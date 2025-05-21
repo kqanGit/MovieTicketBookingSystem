@@ -15,6 +15,7 @@
 #include "LoginService.h"
 #include "LogoutService.h"
 #include "ServiceRegistry.h"
+#include "RegisterServiceVisitor.h"
 
 class App {
 private:
