@@ -23,7 +23,6 @@ std::vector<MovieDTO> MovieRepositorySQL::getAllMovies() {
             std::stoi(row.at("MovieID")),
             row.at("Title"),
             row.at("Genre"),
-            0, // duration tạm bỏ qua
             "", // description tạm bỏ qua 
             std::stof(row.at("Rating"))
         );
@@ -33,7 +32,7 @@ std::vector<MovieDTO> MovieRepositorySQL::getAllMovies() {
 }
 
 std::shared_ptr<IMovie> MovieRepositorySQL::getMovieById(int id) {
-    const std::string sql = "SELECT MovieID, Title, Genre, Descriptions, Duration, Rating FROM MOVIE WHERE MovieID = ?";
+    const std::string sql = "SELECT MovieID, Title, Genre, Descriptions, Rating FROM MOVIE WHERE MovieID = ?";
     auto results = dbConn->executeQuery(sql, {std::to_string(id)});
 
     if (results.empty()) {
@@ -45,7 +44,6 @@ std::shared_ptr<IMovie> MovieRepositorySQL::getMovieById(int id) {
         std::stoi(row.at("MovieID")),
         row.at("Title"),
         row.at("Genre"),
-        std::stoi(row.at("Duration")),
         row.at("Descriptions"),
         std::stof(row.at("Rating"))
     );
@@ -93,14 +91,13 @@ void MovieRepositorySQL::addShowTime(int movieId, std::string& Date, std::string
 
 
 void MovieRepositorySQL::addMovie(std::shared_ptr<IMovie> movie) {
-    const std::string sql = "INSERT INTO MOVIE (Title, Genre, Descriptions, Duration, Rating) "
+    const std::string sql = "INSERT INTO MOVIE (Title, Genre, Descriptions, Rating) "
                            "VALUES (?, ?, ?, ?, ?)";
     
     bool success = dbConn->executeNonQuery(sql, {
         movie->getTitle(),
         movie->getGenre(),
         movie->getDescription(),
-        std::to_string(movie->getDuration()),
         std::to_string(movie->getRating())
     });
 
@@ -120,10 +117,10 @@ void MovieRepositorySQL::deleteMovie(int id) {
 }
 
 MovieRepositorySQL::~MovieRepositorySQL() {
-    delete dbConn;
+    // Don't delete dbConn since it's a singleton managed by DatabaseConnection class
 }
 
-vector<string> MovieRepositorySQL::getShowTimesByMovieId(int id) {
+std::vector<std::string> MovieRepositorySQL::getShowTimesByMovieId(int id) {
     const std::string sql = "SELECT Date, StartTime, EndTime FROM SHOWTIME WHERE MovieID = ?";
     auto results = dbConn->executeQuery(sql, {std::to_string(id)});
     

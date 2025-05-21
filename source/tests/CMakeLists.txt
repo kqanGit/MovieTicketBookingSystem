@@ -28,7 +28,6 @@ add_executable(BookingRepositoryDBTest
     ../model/ShowTime.cpp
     ../model/SingleSeat.cpp
     ../model/CoupleSeat.cpp
-    ../model/Movie.cpp
 )
 
 # Thêm include path cho test DB
@@ -70,6 +69,31 @@ target_include_directories(BookingServiceDBTest PRIVATE
 )
 
 target_link_libraries(BookingServiceDBTest
+    gtest
+    gmock
+    gtest_main
+    sqlite3
+)
+
+add_executable(MovieViewerServiceDBTest
+    MovieViewerServiceDBTest.cpp
+    ../service/MovieViewerService.cpp
+    ../repository/MovieDTO.cpp
+    ../model/Movie.cpp
+    ../repository/MovieMapper.cpp
+    ../repository/MovieRepositorySQL.cpp
+    ../database/DatabaseConnection.cpp
+)
+
+target_include_directories(MovieViewerServiceDBTest PRIVATE
+    ../service
+    ../repository
+    ../model
+    ../database
+    ../lib
+)
+
+target_link_libraries(MovieViewerServiceDBTest
     gtest
     gmock
     gtest_main
