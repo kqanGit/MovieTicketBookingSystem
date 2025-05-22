@@ -34,7 +34,7 @@ bool App::initialize() {
     std::cout << "[Debug] Working dir: " << std::filesystem::current_path() << "\n";
 
     dbConn = DatabaseConnection::getInstance();
-    if (!dbConn->connect("data.db")) { // Đường dẫn đến file database
+    if (!dbConn->connect("database.db")) { // Đường dẫn đến file database
         std::cerr << "[App] Failed to connect to database.\n";
         return false;
     }

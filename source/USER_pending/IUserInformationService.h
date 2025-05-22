@@ -1,6 +1,8 @@
 #ifndef IUSERINFORMATIONSERVICE_H
 #define IUSERINFORMATIONSERVICE_H
 
+#include "AccountInformation.h"
+
 class IUserInformationService {
 public:
     virtual ~IUserInformationService() = default;
