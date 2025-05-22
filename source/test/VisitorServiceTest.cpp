@@ -13,6 +13,7 @@
 #include "../USER_pending/BookingService.h"
 #include "../USER_pending/IBookingService.h"
 
+// Test: Guest có thể sử dụng dịch vụ đăng nhập và đăng ký
 TEST(VisitorTest, GuestCanLoginAndRegister) {
     // Khởi tạo database connection để đăng ký services
     auto db = DatabaseConnection::getInstance();
@@ -41,6 +42,7 @@ TEST(VisitorTest, GuestCanLoginAndRegister) {
     db->disconnect();
 }
 
+// Test: Guest không thể sử dụng dịch vụ đặt vé (BookingService)
 TEST(VisitorTest, GuestCannotBook) {
     // Đăng ký service BookingService (để đảm bảo service tồn tại trong registry)
     ServiceRegistry::addSingleton<IBookingService>(std::make_shared<BookingService>());
