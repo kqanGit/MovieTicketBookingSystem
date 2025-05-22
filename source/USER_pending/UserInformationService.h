@@ -11,6 +11,7 @@ private:
 public:
     UserInformationService(const AccountInformation& acc);
     void printAccountInfo() const;
+    std::string getRole() const override;
 };
 
 #endif

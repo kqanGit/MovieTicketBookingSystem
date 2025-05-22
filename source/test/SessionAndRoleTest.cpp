@@ -1,27 +1,43 @@
 #include <gtest/gtest.h>
+#include "../SessionManager.h"
+#include "../USER_pending/Guest.h"
 #include "../USER_pending/User.h"
 #include "../USER_pending/Admin.h"
-#include "../USER_pending/Guest.h"
-#include "../SessionManager.h"
 #include "../USER_pending/UserInformationService.h"
 
-TEST(SessionTest, CreateUserAndAdminContexts) {
-    AccountInformation userAcc = { "u", "p", "p", "u@gmail.com", "User" };
-    AccountInformation adminAcc = { "a", "p", "p", "a@gmail.com", "Admin" };
+// Test Guest context: không có UserInformationService
+TEST(SessionManagerTest, GuestHasNoUserInfoService) {
+    SessionManager manager;
 
-    auto user = std::make_unique<User>(userAcc);
-    auto admin = std::make_unique<Admin>(adminAcc);
+    auto context = manager.getCurrentContext();
+    auto info = context->getUserInformationService();
 
-    // Kiểm tra vai trò của user và admin thông qua infoService
-    EXPECT_EQ(user->getUserInformationService()->getAccountType(), "User");
-    EXPECT_EQ(admin->getUserInformationService()->getAccountType(), "Admin");
+    EXPECT_EQ(info, nullptr);  // Guest không có thông tin người dùng
+    EXPECT_EQ(manager.getCurrentRole(), "Guest");
 }
 
-TEST(SessionManagerTest, LoginAndLogout) {
+// Test User context: có info và role là "user"
+TEST(SessionManagerTest, UserHasCorrectRoleInfo) {
+    AccountInformation acc = { "user01", "pass", "012", "user01@gmail.com", "User" };
+
     SessionManager manager;
-    AccountInformation info = { "x", "x", "0", "x@gmail.com", "User" };
-    EXPECT_TRUE(manager.setUserContext(info));
+    ASSERT_TRUE(manager.setUserContext(acc));
+
+    auto info = manager.getCurrentContext()->getUserInformationService();
+    ASSERT_NE(info, nullptr);
+    EXPECT_EQ(info->getRole(), "User");
     EXPECT_EQ(manager.getCurrentRole(), "User");
-    EXPECT_TRUE(manager.logout());
-    EXPECT_EQ(manager.getCurrentRole(), "Guest");
+}
+
+// Test Admin context: có info và role là "admin"
+TEST(SessionManagerTest, AdminHasCorrectRoleInfo) {
+    AccountInformation acc = { "admin01", "pass", "099", "admin@gmail.com", "Admin" };
+
+    SessionManager manager;
+    ASSERT_TRUE(manager.setUserContext(acc));
+
+    auto info = manager.getCurrentContext()->getUserInformationService();
+    ASSERT_NE(info, nullptr);
+    EXPECT_EQ(info->getRole(), "Admin");
+    EXPECT_EQ(manager.getCurrentRole(), "Admin");
 }

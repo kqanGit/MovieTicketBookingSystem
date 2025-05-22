@@ -12,3 +12,7 @@ void UserInformationService::printAccountInfo() const {
     std::cout << "Phone: " << accountInfo.phoneNumber << '\n';
     std::cout << "Role: " << accountInfo.role << '\n';
 }
+
+std::string UserInformationService::getRole() const {
+    return accountInfo.role;
+}
