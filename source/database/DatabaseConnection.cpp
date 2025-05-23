@@ -20,10 +20,11 @@ DatabaseConnection* DatabaseConnection::getInstance() {
 }
 
 bool DatabaseConnection::connect(const std::string& dbFilePath) {
-    if (!std::filesystem::exists(dbFilePath)) {
-        std::cerr << "[DatabaseConnection] File does not exist: " << dbFilePath << "\n";
-        return false;  // Ngăn SQLite tạo file rỗng
-    }
+    // if (!std::filesystem::exists(dbFilePath)) {
+    //     std::cerr << "[DatabaseConnection] File does not exist: " << dbFilePath << "\n";
+    //     db = nullptr;
+    //     return false;  // Ngăn SQLite tạo file rỗng
+    // }
 
     if (sqlite3_open(dbFilePath.c_str(), &db) != SQLITE_OK) {
         std::cerr << " [DatabaseConnection] Error opening database: " << sqlite3_errmsg(db) << "\n";

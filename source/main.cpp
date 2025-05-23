@@ -11,7 +11,7 @@ int main() {
     // Khởi tạo App với repository thực (kết nối database)
     App app(false); // false = dùng repository thật, true = mock
     if (!app.initialize()) {
-        std::cerr << "Không thể khởi tạo ứng dụng. Đang thoát..." << std::endl;
+        std::cerr << "[App] Unable to initialize the application. Exiting..." << std::endl;
         return 1;
     }
 
