@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\BookingRepositoryDBTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\BookingRepositorySQL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\BookingView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\SeatView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\database\DatabaseConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\model\Booking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\model\ShowTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\model\SingleSeat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\model\CoupleSeat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{75975B74-AC5E-376E-9E32-3B9EF8EBCBCE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

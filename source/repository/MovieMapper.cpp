@@ -19,7 +19,6 @@ std::shared_ptr<IMovie> MovieMapper::toEntity(const MovieDTO& dto) {
     movie->setTitle(dto.title);
     movie->setGenre(dto.genre);
     movie->setRating(dto.rating);
-    movie->setDuration(0); // Hoặc giá trị mặc định khác
     movie->setDescription(""); // Hoặc giá trị mặc định khác
     return movie;
 }
