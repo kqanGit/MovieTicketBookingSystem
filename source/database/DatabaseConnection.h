@@ -17,6 +17,7 @@ private:
     DatabaseConnection(); // private constructor
 
 public:
+    //DatabaseConnection(); // private constructor
     static DatabaseConnection* getInstance();
 
     bool connect(const std::string& dbFilePath);

@@ -20,23 +20,23 @@ Qt là một framework mạnh mẽ để xây dựng giao diện đồ họa (GU
 
 - Chọn **Next**.
 
-![Ảnh hướng dẫn cài Qt](../UI/image/1.png)
+![Ảnh hướng dẫn cài Qt](../UI/image/QT1.png)
 
 - Nhập email của bạn. Nhấn **Submit**.
 
-![Ảnh hướng dẫn cài Qt](../UI/image/2.png)
+![Ảnh hướng dẫn cài Qt](../UI/image/QT2.png)
 
 - Chọn **Disable seending usage statics**. Nhấn **Next**.
 
-![Ảnh hướng dẫn cài Qt](../UI/image/3.png)
+![Ảnh hướng dẫn cài Qt](../UI/image/QT3.png)
 
 - Chọn **I have read and agree to the terms and conditions of using Open source qt** và **I'm an individual and do not use Qt for any company** . Nhấn **Next**.
 
-![Ảnh hướng dẫn cài Qt](../UI/image/4.png)
+![Ảnh hướng dẫn cài Qt](../UI/image/QT4.png)
 
 - Chọn **Qt 6.9 for desktop developments** . Nhấn **Next**.
 
-![Ảnh hướng dẫn cài Qt](../UI/image/5.png)
+![Ảnh hướng dẫn cài Qt](../UI/image/QT5.png)
 
 ---
 

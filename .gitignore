@@ -1,1 +1,20 @@
 .vscode/
+# Bỏ qua file thực thi
+*.exe
+# Bỏ qua file ở source/repository
+source/repository/*.o
+source/repository/*.bat
+source/repository/*.ps1
+source/repository/CmakeLists.txt
+source/repository/runDB.exe
+# Bỏ qua file ở source/UI
+source/UI/*.dll
+source/UI/*.exe 
+source/UI/installQt.md
+source/UI/*.ttf
+source/UI/image/background.jpg
+source/UI/image/logo.png
+
+# Bỏ qua file ở source
+source/runDB.cpp
+*.db
