@@ -1,7 +1,10 @@
 #include "SessionManager.h"
-#include "USER_pending/Guest.h"
-#include "USER_pending/User.h"
-#include "USER_pending/Admin.h"
+#include "model/Guest.h" // Corrected path
+#include "model/User.h"  // Added missing include
+#include "model/Admin.h" // Added missing include
+#include "context/GuestContextCreator.h"
+#include "context/UserContextCreator.h"
+#include "context/AdminContextCreator.h"
 #include <iostream>
 #include <stdexcept>
 

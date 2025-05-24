@@ -3,12 +3,12 @@
 
 #include <memory>
 #include <string>
-#include "USER_pending/IUserContext.h"
-#include "USER_pending/AccountInformation.h"
-#include "USER_pending/UserContextFactory.h"
-#include "USER_pending/GuestContextCreator.h"
-#include "USER_pending/UserContextCreator.h"
-#include "USER_pending/AdminContextCreator.h"
+#include "context/IUserContext.h"
+#include "model/AccountInformation.h"
+#include "context/UserContextFactory.h"
+#include "context/GuestContextCreator.h"
+#include "context/UserContextCreator.h"
+#include "context/AdminContextCreator.h"
 
 /**
  * @class SessionManager

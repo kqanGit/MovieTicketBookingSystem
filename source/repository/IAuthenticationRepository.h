@@ -2,8 +2,7 @@
 #define IAUTHENTICATIONREPOSITORY_H
 
 #include <string>
-#include <optional>
-#include "../USER_pending/AccountInformation.h"
+#include "../model/AccountInformation.h" // Corrected path
 
 class IAuthenticationRepository {
 public:
