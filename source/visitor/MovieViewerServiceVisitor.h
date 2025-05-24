@@ -1,8 +1,8 @@
 #ifndef _MOVIEVIEWERSERVICEVISITOR_H_
 #define _MOVIEVIEWERSERVICEVISITOR_H_
 #include "IServiceVisitor.h"
-#include "IMovieViewerService.h"
-#include "ServiceRegistry.h"
+#include "../service/IMovieViewerService.h"
+#include "../core/ServiceRegistry.h"
 #include <memory>
 #include <map>
 

@@ -3,7 +3,8 @@
 #define ADMIN_CONTEXT_CREATOR_H
 
 #include "UserContextFactory.h"
-#include "Admin.h"
+#include "../model/Admin.h"
+#include "../model/AccountInformation.h"
 
 class AdminContextCreator : public UserContextFactory {
 public:

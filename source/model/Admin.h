@@ -1,9 +1,9 @@
 #ifndef ADMIN_H
 #define ADMIN_H
-#include "IVisitor.h"
-#include "IServiceVisitor.h"
-#include "IUserContext.h"
-#include "UserInformationService.h"
+#include "../visitor/IVisitor.h"
+#include "../visitor/IServiceVisitor.h"
+#include "../context/IUserContext.h"
+#include "../service/UserInformationService.h"
 #include <memory> 
 #include <string>
 

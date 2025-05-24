@@ -1,4 +1,7 @@
 #include "LoginServiceVisitor.h"
+#include "../model/Guest.h"
+#include "../model/User.h"
+#include "../model/Admin.h"
 
 LoginServiceVisitor::LoginServiceVisitor() {
     _service = nullptr;

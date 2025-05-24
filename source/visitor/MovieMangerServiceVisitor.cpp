@@ -1,4 +1,7 @@
 #include "MovieMangerServiceVisitor.h"
+#include "../model/Guest.h"
+#include "../model/User.h"
+#include "../model/Admin.h"
 
 MovieManagerServiceVisitor::MovieManagerServiceVisitor() {
     _service = nullptr;

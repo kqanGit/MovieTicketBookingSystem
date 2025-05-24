@@ -1,4 +1,7 @@
 #include "LogoutServiceVisitor.h"
+#include "../model/Guest.h"
+#include "../model/User.h"
+#include "../model/Admin.h"
 
 LogoutServiceVisitor::LogoutServiceVisitor() {
     _service = nullptr;

@@ -1,4 +1,7 @@
 #include "BookingServiceVisitor.h"
+#include "../model/Guest.h"
+#include "../model/User.h"
+#include "../model/Admin.h"
 
 BookingServiceVisitor::BookingServiceVisitor() {
     _service = nullptr;

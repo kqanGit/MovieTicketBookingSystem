@@ -1,10 +1,4 @@
 #include "Admin.h"
-#include "UserInformationService.h"
-#include "LogoutService.h"
-#include "MovieManagerService.h"
-#include "MovieViewerService.h"
-#include "BookingService.h"
-#include "ViewBookingHistoryService.h"
 #include <iostream>
 
 void Admin::accept(std::shared_ptr<IVisitor> service) {

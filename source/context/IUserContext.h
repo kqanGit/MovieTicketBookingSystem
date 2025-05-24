@@ -2,8 +2,8 @@
 #ifndef IUSERCONTEXT_H
 #define IUSERCONTEXT_H
 
-#include "AccountInformation.h"
-#include "IVisitor.h"
+#include "../model/AccountInformation.h"
+#include "../visitor/IVisitor.h"
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declarations

@@ -3,7 +3,8 @@
 #define USER_CONTEXT_CREATOR_H
 
 #include "UserContextFactory.h"
-#include "User.h"
+#include "../model/User.h"
+#include "../model/AccountInformation.h"
 
 class UserContextCreator : public UserContextFactory {
 public:

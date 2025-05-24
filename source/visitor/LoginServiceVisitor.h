@@ -1,9 +1,8 @@
 #ifndef LOGINSERVICEVISITOR_H
 #define LOGINSERVICEVISITOR_H
 #include "IServiceVisitor.h"
-#include "ILoginService.h"
-#include "Memory"
-#include "ServiceRegistry.h"
+#include "../service/ILoginService.h"
+#include "../core/ServiceRegistry.h"
 #include <map>
 #include <memory>
 

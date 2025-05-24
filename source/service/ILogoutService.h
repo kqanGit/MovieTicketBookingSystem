@@ -2,7 +2,7 @@
 #define ILOGOUT_SERVICE_H
 
 #include <memory>
-#include "IUserContext.h"
+#include "../context/IUserContext.h"
 
 class ILogoutService {
 public:

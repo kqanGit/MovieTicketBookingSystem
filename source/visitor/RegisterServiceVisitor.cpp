@@ -1,4 +1,7 @@
 #include "RegisterServiceVisitor.h"
+#include "../model/Guest.h"
+#include "../model/User.h"
+#include "../model/Admin.h"
 
 RegisterServiceVisitor::RegisterServiceVisitor() {
     _service = nullptr;

@@ -1,7 +1,7 @@
 #ifndef IUSERINFORMATIONSERVICE_H
 #define IUSERINFORMATIONSERVICE_H
 
-#include "AccountInformation.h"
+#include "../model/AccountInformation.h"
 
 class IUserInformationService {
 public:

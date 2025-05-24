@@ -2,7 +2,7 @@
 #define USER_INFORMATION_SERVICE_H
 
 #include "IUserInformationService.h"
-#include "AccountInformation.h"
+#include "../model/AccountInformation.h"
 #include <string>
 
 class UserInformationService : public IUserInformationService {

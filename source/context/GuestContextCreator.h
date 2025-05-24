@@ -1,8 +1,9 @@
-#ifndef GUEST_CONTEXT_CREATOR_H
-#define GUEST_CONTEXT_CREATOR_H
+#ifndef GUESTCONTEXTCREATOR_H
+#define GUESTCONTEXTCREATOR_H
 
 #include "UserContextFactory.h"
-#include "Guest.h"
+#include "../model/Guest.h"
+#include "../model/AccountInformation.h"
 #include <stdexcept> // Thêm dòng này để dùng std::logic_error
 
 class GuestContextCreator : public UserContextFactory {

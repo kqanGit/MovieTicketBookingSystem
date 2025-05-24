@@ -2,7 +2,7 @@
 #define IREGISTER_SERVICE_H
 
 #include <string>
-#include "AccountInformation.h"
+#include "../model/AccountInformation.h"
 
 class IRegisterService {
 public:

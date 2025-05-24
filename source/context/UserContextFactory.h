@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "IUserContext.h"
-#include "AccountInformation.h"
+#include "../model/AccountInformation.h"
 
 class UserContextFactory {
 public:

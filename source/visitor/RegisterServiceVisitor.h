@@ -1,8 +1,8 @@
 #ifndef _REGISTERSERVICEVISITOR_H_
 #define _REGISTERSERVICEVISITOR_H_
 #include "IServiceVisitor.h"
-#include "ServiceRegistry.h"
-#include "IRegisterService.h"  
+#include "../core/ServiceRegistry.h"
+#include "../service/IRegisterService.h"  
 #include <memory>
 #include <map>
 

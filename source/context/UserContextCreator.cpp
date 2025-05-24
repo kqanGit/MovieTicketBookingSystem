@@ -1,5 +1,5 @@
 #include "UserContextCreator.h"
-#include "User.h"
+#include "../model/User.h"
 #include <memory>
 #include <stdexcept>
 

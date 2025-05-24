@@ -4,7 +4,7 @@
 
 #include "ILoginService.h"
 #include "../repository/IAuthenticationRepository.h"
-#include "AccountInformation.h"
+#include "../model/AccountInformation.h"
 #include <optional>
 
 

@@ -1,7 +1,6 @@
 #include "Guest.h"
-#include "LoginService.h"
-#include "RegisterService.h"
-#include "MovieViewerService.h"
+#include "../service/LoginService.h"
+#include "../service/RegisterService.h"
 
 void Guest::accept(std::shared_ptr<IVisitor> visitor) {
     std::shared_ptr<IServiceVisitor> serviceVisitor = std::dynamic_pointer_cast<IServiceVisitor>(visitor);
