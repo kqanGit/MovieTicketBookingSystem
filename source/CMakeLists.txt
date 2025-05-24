@@ -23,7 +23,6 @@ file(GLOB_RECURSE CORE_SRC "./core/*.cpp")
 file(GLOB_RECURSE CONTEXT_SRC "./context/*.cpp")
 file(GLOB_RECURSE SERVICE_SRC "./service/*.cpp")
 file(GLOB_RECURSE UI_SRC "./UI/*.cpp")
-file(GLOB_RECURSE USER_SRC "./USER_pending/*.cpp") # Define USER_SRC for ./USER_pending
 
 # THÊM FILE QUAN TRỌNG TRONG ./source
 set(SOURCE_MAIN
