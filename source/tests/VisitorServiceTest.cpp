@@ -1,3 +1,139 @@
+/*
+* TEST PLAN FOR VISITOR SERVICE PATTERN IMPLEMENTATION
+* ====================================================
+*
+* 1. PURPOSE:
+*    - Verify the Visitor Pattern implementation for service operations
+*    - Test proper service visitor functionality across different user contexts
+*    - Ensure correct service delegation and execution through visitor pattern
+*    - Validate integration between visitors, services, and user contexts
+*
+* 2. TEST SCOPE:
+*    - Service visitor pattern implementation validation
+*    - Context-aware service execution through visitors
+*    - User role-based service access via visitor pattern
+*    - Service registration and retrieval through ServiceRegistry
+*    - Database integration through visitor-delegated services
+*
+* 3. TEST CASES:
+*    3.1. LoginServiceVisitor_ValidCredentials:
+*         - Description: Test login functionality through visitor pattern
+*         - Input: Valid user credentials
+*         - Expected Behavior: 
+*           + Visitor successfully executes login operation
+*           + Returns authenticated user information
+*           + Proper service delegation to LoginService
+*         - Validates: Authentication workflow via visitor pattern
+*
+*    3.2. RegisterServiceVisitor_NewUser:
+*         - Description: Test user registration through visitor pattern
+*         - Input: New user account information
+*         - Expected Behavior:
+*           + Visitor successfully executes registration
+*           + User is created in database
+*           + Returns confirmation of registration
+*         - Validates: Registration workflow via visitor pattern
+*
+*    3.3. BookingServiceVisitor_CreateBooking:
+*         - Description: Test booking creation through visitor pattern
+*         - Input: User context, showtime, and seat selection
+*         - Expected Behavior:
+*           + Visitor executes booking operation
+*           + Booking is created in database
+*           + Seats are marked as booked
+*         - Validates: Booking workflow via visitor pattern
+*
+*    3.4. LogoutServiceVisitor_SessionTermination:
+*         - Description: Test logout functionality through visitor pattern
+*         - Expected Behavior:
+*           + Visitor executes logout operation
+*           + User session is terminated
+*           + Context returns to Guest state
+*         - Validates: Session management via visitor pattern
+*
+*    3.5. MovieViewerServiceVisitor_MovieListing:
+*         - Description: Test movie viewing operations through visitor pattern
+*         - Expected Behavior:
+*           + Visitor retrieves movie information
+*           + Returns formatted movie data
+*           + Proper service delegation to MovieViewerService
+*         - Validates: Movie viewing workflow via visitor pattern
+*
+*    3.6. MovieManagerServiceVisitor_AdminOperations:
+*         - Description: Test movie management through visitor pattern (Admin only)
+*         - Input: Admin context and movie management operations
+*         - Expected Behavior:
+*           + Visitor executes management operations
+*           + Only accessible by Admin users
+*           + Proper role-based access control
+*         - Validates: Administrative operations via visitor pattern
+*
+* 4. VISITOR PATTERN TESTING:
+*    - Visitor interface implementation validation
+*    - Service delegation through visitor pattern
+*    - Context-aware visitor execution
+*    - Service registry integration with visitors
+*    - Proper visitor instantiation and lifecycle
+*
+* 5. FUTURE TEST CASES (TO BE IMPLEMENTED):
+*    5.1. InvalidVisitorOperations:
+*         - Test visitor behavior with invalid inputs
+*    5.2. ConcurrentVisitorExecution:
+*         - Test thread safety of visitor operations
+*    5.3. VisitorErrorHandling:
+*         - Test visitor behavior during service failures
+*    5.4. RoleBasedVisitorAccess:
+*         - Test that visitors respect user role permissions
+*    5.5. VisitorChaining:
+*         - Test sequential visitor operations
+*
+* 6. SERVICE REGISTRY TESTING:
+*    - Service registration and retrieval
+*    - Service lifecycle management
+*    - Dependency injection through registry
+*    - Service availability validation
+*
+* 7. DATABASE INTEGRATION:
+*    - Database setup: Fresh database for each test suite
+*    - Schema initialization from database.sql
+*    - Test data creation and cleanup
+*    - Connection management through DatabaseConnection
+*
+* 8. TEST DATA:
+*    - Test User: "testuser", password "password", phone "1234567890", email "test@email.com"
+*    - Test Admin: Admin credentials for management operations
+*    - Test Movies: Sample movie data for booking operations
+*    - Test Showtimes: Available showtimes for booking tests
+*
+* 9. TESTING METHODOLOGY:
+*    - Test Fixture Pattern: VisitorServiceTest class for setup/teardown
+*    - Integration Testing: Visitor + Service + Repository + Database layers
+*    - Mocking: Use test doubles for isolated visitor testing
+*    - Database Recreation: Fresh database for each test execution
+*
+* 10. DEPENDENCIES:
+*     - All Service Visitor classes (Login, Register, Booking, Logout, MovieViewer, MovieManager)
+*     - User context classes (Guest, User, Admin)
+*     - Service classes (LoginService, RegisterService, BookingService, etc.)
+*     - Repository classes (AuthenticationRepositorySQL, BookingRepositorySQL, MovieRepositorySQL)
+*     - ServiceRegistry for dependency management
+*     - DatabaseConnection for data persistence
+*
+* 11. DESIGN PATTERNS TESTED:
+*     - Visitor Pattern: Service operation delegation
+*     - Service Registry Pattern: Service management and dependency injection
+*     - Context Pattern: User role-based service access
+*     - Repository Pattern: Data access abstraction
+*
+* 12. SUCCESS CRITERIA:
+*     - All visitor operations execute successfully
+*     - Proper service delegation through visitor pattern
+*     - Role-based access control maintained
+*     - Database operations complete without errors
+*     - No memory leaks or resource issues
+*     - Consistent behavior across different user contexts
+*/
+
 #include <gtest/gtest.h>
 #include "../visitor/LoginServiceVisitor.h"
 #include "../visitor/RegisterServiceVisitor.h"
@@ -25,12 +161,11 @@
 #include "../service/IMovieManagerService.h"
 
 class VisitorServiceTest : public ::testing::Test {
-protected:    void SetUp() override {
+protected:    
+void SetUp() override {
         // Initialize database connection
         db = DatabaseConnection::getInstance();
-        db->connect("database.db");
-        
-        // Create repositories
+        db->connect("database.db");        // Create repositories
         authRepo = new AuthenticationRepositorySQL(db);
         std::string dbPath = "database.db";
         auto bookingRepo = std::make_shared<BookingRepository>(dbPath);

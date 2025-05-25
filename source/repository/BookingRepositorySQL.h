@@ -1,7 +1,9 @@
+#ifndef _BOOKINGREPOSITORY_H_
+#define _BOOKINGREPOSITORY_H_
 #include "IBookingRepository.h"
-#include "../database/DatabaseConnection.h"
-#include "../model/ShowTime.h"
-#include "../model/Booking.h"
+#include "DatabaseConnection.h"
+#include "ShowTime.h"
+#include "Booking.h"
 #include <stdexcept>
 #include <map>
 #include <format>
@@ -18,3 +20,5 @@ public:
     
     ~BookingRepository();
 };
+
+#endif

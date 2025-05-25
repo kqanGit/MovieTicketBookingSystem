@@ -142,6 +142,7 @@ add_executable(SessionAndRoleTest
     ../model/Guest.cpp
     ../SessionManager.cpp
     ../service/UserInformationService.cpp
+    ../service/LogoutService.cpp
     ${CONTEXT_SRC}
 )
 

@@ -19,6 +19,9 @@
     <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\service\UserInformationService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\service\LogoutService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\context\AdminContextCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

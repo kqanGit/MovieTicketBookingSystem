@@ -1,7 +1,7 @@
 #include "SessionManager.h"
-#include "model/Guest.h" // Corrected path
-#include "model/User.h"  // Added missing include
-#include "model/Admin.h" // Added missing include
+#include "model/Guest.h" 
+#include "model/User.h" 
+#include "model/Admin.h" 
 #include "context/GuestContextCreator.h"
 #include "context/UserContextCreator.h"
 #include "context/AdminContextCreator.h"
@@ -75,20 +75,22 @@ bool SessionManager::setUserContext(const AccountInformation& authInfo) {
     return true;
 }
 
-bool SessionManager::logout() {
-    if (!_isAuthenticated) {
+bool SessionManager::logout(std::shared_ptr<ILogoutService> service) {
+   if (!_isAuthenticated) {
         std::cout << "[Session] Not Login yet" << std::endl;
         return false;
     }
-    
-    // Cập nhật factory về lại GuestContextCreator và tạo guest context mới
+
+    if (!service) {
+        std::cerr << "[Session] LogoutService is null.\n";
+        return false;
+    }
+
+    _currentUserContext = service->logout();
     _contextFactory = std::make_shared<GuestContextCreator>();
-    _currentUserContext = _contextFactory->CreateUser();
-    
-    // Cập nhật trạng thái session
     _isAuthenticated = false;
-    _currentAccount = AccountInformation(); // Reset thông tin tài khoản khi trở về Guest
-    
+    _currentAccount = AccountInformation();
+
     std::cout << "[Session] Logout successfully" << std::endl;
     return true;
 }
