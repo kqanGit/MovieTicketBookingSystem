@@ -4,6 +4,7 @@
 
 #include "../repository/IMovieRepository.h"
 #include "../database/DatabaseConnection.h"
+#include "../model/ShowTime.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -26,7 +27,7 @@ public:
     void deleteMovie(int id) override;
     void addShowTime(int movieId, std::string& Date, std::string& StartTime, std::string& EndTime) override;
     void deleteShowTime(int movieId, int ShowTimeID) override;
-    std::vector<std::string> getShowTimesByMovieId(int id) override;
+    std::vector<ShowTime> getShowTimesByMovieId(int id) override;
     void deleteAllShowTimes(int movieId) override;
 
     ~MovieRepositorySQL();

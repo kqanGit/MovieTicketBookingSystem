@@ -183,23 +183,21 @@ void SetUp() override {
         guestContext = std::make_shared<Guest>();
         
         // Create a user with account information
-        AccountInformation userInfo = {
-            "testUser", 
-            "password", 
-            "123456789", 
-            "test@example.com", 
-            "User"
-        };
+        AccountInformation userInfo;
+        userInfo.userName = "testUser";
+        userInfo.password = "password";
+        userInfo.phoneNumber = "123456789";
+        userInfo.gmail = "test@example.com";
+        userInfo.role = "User";
         userContext = std::make_shared<User>(userInfo);
         
         // Create an admin with account information
-        AccountInformation adminInfo = {
-            "testAdmin", 
-            "password", 
-            "987654321", 
-            "admin@example.com", 
-            "Admin"
-        };
+        AccountInformation adminInfo;
+        adminInfo.userName = "testAdmin";
+        adminInfo.password = "password";
+        adminInfo.phoneNumber = "987654321";
+        adminInfo.gmail = "admin@example.com";
+        adminInfo.role = "Admin";
         adminContext = std::make_shared<Admin>(adminInfo);
     }
     

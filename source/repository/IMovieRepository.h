@@ -4,6 +4,7 @@
 #include <vector>
 #include "MovieDTO.h"
 #include "../model/IMovie.h"
+#include "../model/ShowTime.h"
 #include <memory>
 #include <string>
 #include <iostream>
@@ -18,7 +19,7 @@ public:
     virtual void deleteMovie(int id) = 0;
     virtual void addShowTime(int movieId, std::string& Date, std::string& StartTime, std::string& EndTime) = 0;
     virtual void deleteShowTime(int movieId, int ShowTimeId) = 0;
-    virtual std::vector<std::string> getShowTimesByMovieId(int id) = 0;
+    virtual std::vector<ShowTime> getShowTimesByMovieId(int id) = 0;
     virtual void deleteAllShowTimes(int movieId) = 0;
 };
 

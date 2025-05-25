@@ -6,8 +6,7 @@
 #include "../repository/IMovieRepository.h"
 #include <memory>
 #include <vector>   
-// #include "../repository/MovieDTO.h"
-// #include "../model/Movie.h"  // already included in IMovieViewerService.h
+#include "../model/ShowTime.h"  // Include ShowTime model
 
 class MovieViewerService : public IMovieViewerService {
 private:
@@ -17,7 +16,7 @@ public:
     explicit MovieViewerService(std::shared_ptr<IMovieRepository> r);
     std::vector<MovieDTO> showAllMovies() override;
     std::shared_ptr<IMovie> showMovieDetail(int id) override;
-    std::vector<std::string> showMovieShowTimes(int id) override;
+    std::vector<ShowTime> showMovieShowTimes(int id) override;  // Changed to return ShowTime vector
 };
 
 #endif // MOVIEVIEWERSERVICE_H

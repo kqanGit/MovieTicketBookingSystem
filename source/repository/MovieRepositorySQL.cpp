@@ -1,6 +1,7 @@
 #include "MovieRepositorySQL.h"
 #include "Movie.h"
 #include "MovieMapper.h"
+#include "model/ShowTime.h"
 
 // MovieRepositorySQL::MovieRepositorySQL(std::shared_ptr<DatabaseConnection> conn) {
 //     dbConn = conn.get();
@@ -127,14 +128,17 @@ MovieRepositorySQL::~MovieRepositorySQL() {
     // Don't delete dbConn since it's a singleton managed by DatabaseConnection class
 }
 
-std::vector<std::string> MovieRepositorySQL::getShowTimesByMovieId(int id) {
-    const std::string sql = "SELECT Date, StartTime, EndTime FROM SHOWTIME WHERE MovieID = ?";
+std::vector<ShowTime> MovieRepositorySQL::getShowTimesByMovieId(int id) {
+    const std::string sql = "SELECT ShowTimeID, Date, StartTime, EndTime FROM SHOWTIME WHERE MovieID = ?";
     auto results = dbConn->executeQuery(sql, {std::to_string(id)});
     
-    std::vector<std::string> showTimes;
+    std::vector<ShowTime> showTimes;
     for (const auto& row : results) {
-        std::string showTime = row.at("Date") + ", " + row.at("StartTime") + ", " + row.at("EndTime");
-        showTimes.push_back(showTime);
+        int showTimeID = std::stoi(row.at("ShowTimeID"));
+        std::string date = row.at("Date");
+        std::string startTime = row.at("StartTime");
+        std::string endTime = row.at("EndTime");
+        showTimes.emplace_back(showTimeID, date, startTime, endTime);
     }
     return showTimes;
 }

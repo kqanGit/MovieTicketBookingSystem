@@ -194,10 +194,28 @@ void App::run() {
                             std::cout << "[App] No showtimes available for movie ID " << movie_id_for_showtimes << ".\n";
                         } else {
                             std::cout << "[App] Available Showtimes for Movie ID " << movie_id_for_showtimes << ":\n";
-                            for (const auto& st_str : showtimes) {
                                 // Assuming showtimes are returned as formatted strings
                                 // If they are ShowTime objects, you'll need to format them here
-                                std::cout << "  " << st_str << "\n";
+                                // Nếu st_str là một chuỗi chứa thông tin ShowTime (ví dụ: "ShowTimeID: 123 - 2025-05-25,19:30,21:45")
+                                // thì bạn cần chuyển đổi nó thành struct ShowTime để in đẹp hơn.
+                                // Tuy nhiên, nếu service->showMovieShowTimes trả về std::vector<ShowTime> thay vì std::vector<std::string> thì sẽ tốt hơn.
+                                // Ở đây tôi sẽ giả sử bạn chỉ có chuỗi, nên sẽ in ra như sau:
+
+                                // Nếu bạn có struct ShowTime như sau:
+                                /*
+                                struct ShowTime {
+                                    int id;
+                                    std::string date;
+                                    std::string startTime;
+                                    std::string endTime;
+                                };
+                                */
+                                // Và nếu showtimes là std::vector<ShowTime> thì nên in như sau:
+                            for (const auto& st : showtimes) {
+                                std::cout << "  ShowTimeID: " << st.showTimeID
+                                            << " | Date: " << st.date
+                                            << " | Start: " << st.startTime
+                                            << " | End: " << st.endTime << "\n";
                             }
                         }
                     }
@@ -212,15 +230,61 @@ void App::run() {
         }
 
         else if (command == "book") {
-            auto visitor = std::make_shared<BookingServiceVisitor>();
-            sessionManager->getCurrentContext()->accept(visitor);
-            auto service = visitor->getBookingService();
-            if (service) {
+            auto bookingVisitor = std::make_shared<BookingServiceVisitor>();
+            sessionManager->getCurrentContext()->accept(bookingVisitor);
+            auto bookingService = bookingVisitor->getBookingService();
+
+            auto movieVisitor = std::make_shared<MovieViewerServiceVisitor>();
+            sessionManager->getCurrentContext()->accept(movieVisitor);
+            auto movieService = movieVisitor->getMovieViewerService();
+
+            if (bookingService && movieService) {
                 if (!sessionManager->isUserAuthenticated()) {
-                    std::cout << "[App] You need to be logged in to book tickets.\n";
+                    std::cout << "[App] You need to be logged in to book tickets. \n";
                     continue;
                 }
                 int userID = sessionManager->getCurrentAccount().userID;
+                
+                // Step 1: Get Movie ID
+                int movieID;
+                std::cout << "Enter Movie ID to book: ";
+                std::cin >> movieID;
+                if (std::cin.fail()) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "[App] Invalid Movie ID input.\n";
+                    continue;
+                }
+
+                // Step 2: Display Showtimes for the movie
+                auto movieDetail = movieService->showMovieDetail(movieID);
+                if (!movieDetail) {
+                    std::cout << "[App] Movie with ID " << movieID << " not found.\n";
+                    continue;
+                }
+                std::cout << "\n--- Movie: " << movieDetail->getTitle() << " ---\n";
+                auto showtimes = movieService->showMovieShowTimes(movieID);
+                if (showtimes.empty()) {
+                    std::cout << "[App] No showtimes available for this movie.\n";
+                    continue;
+                }
+                std::cout << "Available Showtimes (ShowTimeID - Details):\n";
+                // Assuming showtimes strings are already formatted. If they are ShowTime objects, adapt this.
+                // For now, let's assume the string itself might contain an ID or be parsable.
+                // This part might need adjustment based on how showMovieShowTimes formats its output
+                // and how ShowTime IDs are actually structured/retrieved.
+                // For this example, we'll just list them and ask for a ShowTimeID.
+                // A better approach would be if showMovieShowTimes returned objects with IDs.
+                for (const auto& st : showtimes) {
+                    // If showtimes is a vector of ShowTime struct/object, print its fields
+                    std::cout << "  ShowTimeID: " << st.showTimeID
+                              << " - Date: " << st.date
+                              << ", Start: " << st.startTime
+                              << ", End: " << st.endTime << "\n";
+                }
+
+
+                // Step 3: Get ShowTime ID
                 int showTimeID;
                 std::cout << "Enter ShowTime ID: ";
                 std::cin >> showTimeID;
@@ -231,31 +295,86 @@ void App::run() {
                     continue;
                 }
 
-                std::vector<std::string> seats;
-                std::string seatID_str; // Renamed to avoid conflict with any potential seatID variable
-                std::cout << "Enter seat IDs to book (type 'done' when finished):\n";
+                // Step 4: Display Seat Status
+                std::cout << "\n--- Seat Status for ShowTime ID: " << showTimeID << " ---\n";
+                try {
+                    std::vector<SeatView> seatsStatus = bookingService->viewSeatsStatus(showTimeID);
+                    if (seatsStatus.empty()) {
+                        std::cout << "[App] No seat information available for this showtime. It might be an invalid ShowTime ID or no seats configured.\n";
+                        continue;
+                    }
+                    for (const auto& seatView : seatsStatus) {
+                        std::cout << "  Seat ID: " << seatView.seat->id() 
+                                  << " - Price: " << seatView.seat->price()
+                                  << " - Status: " << (seatView.status == SeatStatus::AVAILABLE ? "Available" : "Booked") 
+                                  << "\n";
+                    }
+                } catch (const std::exception& e) {
+                    std::cerr << "[App] Error fetching seat status: " << e.what() << '\n';
+                    continue;
+                }
+                
+
+                // Step 5: Get seat IDs to book
+                std::vector<std::string> seatsToBook;
+                std::string seatID_str;
+                std::cout << "\nEnter seat IDs to book (type 'done' when finished):\n";
                 while (true) {
                     std::cout << "Seat ID: ";
                     std::cin >> seatID_str;
                     if (seatID_str == "done") {
                         break;
                     }
-                    seats.push_back(seatID_str);
+                    // Basic validation: check if the entered seat ID was listed as available
+                    bool isValidSeat = false;
+                    bool isAvailable = false;
+                     try {
+                        std::vector<SeatView> currentSeatsStatus = bookingService->viewSeatsStatus(showTimeID);
+                        for (const auto& sv : currentSeatsStatus) {
+                            if (sv.seat->id() == seatID_str) {
+                                isValidSeat = true;
+                                if (sv.status == SeatStatus::AVAILABLE) {
+                                    isAvailable = true;
+                                }
+                                break;
+                            }
+                        }
+                    } catch (const std::exception& e) { /* ignore */ }
+
+                    if (!isValidSeat) {
+                        std::cout << "[App] Seat ID '" << seatID_str << "' is not a valid seat for this showtime. Please try again.\n";
+                    } else if (!isAvailable) {
+                        std::cout << "[App] Seat ID '" << seatID_str << "' is already booked or not available. Please choose an available seat.\n";
+                    }
+                    else {
+                        bool alreadySelected = false;
+                        for(const auto& selected_seat : seatsToBook){
+                            if(selected_seat == seatID_str){
+                                alreadySelected = true;
+                                std::cout << "[App] Seat ID '" << seatID_str << "' already selected.\n";
+                                break;
+                            }
+                        }
+                        if(!alreadySelected){
+                             seatsToBook.push_back(seatID_str);
+                        }
+                    }
                 }
 
-                if (seats.empty()) {
+                if (seatsToBook.empty()) {
                     std::cout << "[App] No seats selected for booking.\n";
                     continue;
                 }
 
+                // Step 6: Create Booking
                 try {
-                    service->createBooking(userID, showTimeID, seats);
+                    bookingService->createBooking(userID, showTimeID, seatsToBook);
                     std::cout << "[App] Booking successful!\n";
                 } catch (const std::exception& e) {
                     std::cerr << "[App] Booking failed: " << e.what() << '\n';
                 }
             } else {
-                std::cout << "[App] Booking not allowed for your current role.\n";
+                std::cout << "[App] Booking or Movie service not available for your current role.\n";
             }
         }
 

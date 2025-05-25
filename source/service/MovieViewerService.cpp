@@ -1,5 +1,6 @@
 #include "MovieViewerService.h"
 #include <iostream>
+#include "../model/ShowTime.h"
 
 MovieViewerService::MovieViewerService(std::shared_ptr<IMovieRepository> r) : repo(std::move(r)) {}
 
@@ -27,10 +28,6 @@ std::shared_ptr<IMovie> MovieViewerService::showMovieDetail(int id) {
     }
 }
 
-std::vector<std::string> MovieViewerService::showMovieShowTimes(int id) {
-    auto showTimes = repo->getShowTimesByMovieId(id);
-    // for (const auto& st : showTimes) {
-    //     cout << "Date: " << st.date << ", Start: " << st.startTime << ", End: " << st.endTime << endl;
-    // }
-    return showTimes;
+std::vector<ShowTime> MovieViewerService::showMovieShowTimes(int id) {
+    return repo->getShowTimesByMovieId(id);
 }
