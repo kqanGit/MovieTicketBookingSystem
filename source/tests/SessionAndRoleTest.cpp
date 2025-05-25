@@ -116,7 +116,12 @@ TEST(SessionManagerTest, GuestHasNoUserInfoService) {
 
 // Test User context: có info và role là "user"
 TEST(SessionManagerTest, UserHasCorrectRoleInfo) {
-    AccountInformation acc = { "user01", "pass", "012", "user01@gmail.com", "User" };
+    AccountInformation acc;
+    acc.userName = "user01";
+    acc.password = "pass";
+    acc.phoneNumber = "012";
+    acc.gmail = "user01@gmail.com";
+    acc.role = "User";
 
     SessionManager manager;
     ASSERT_TRUE(manager.setUserContext(acc));
@@ -129,10 +134,16 @@ TEST(SessionManagerTest, UserHasCorrectRoleInfo) {
 
 // Test Admin context: có info và role là "admin"
 TEST(SessionManagerTest, AdminHasCorrectRoleInfo) {
-    AccountInformation acc = { "admin01", "pass", "099", "admin@gmail.com", "Admin" };
+    AccountInformation acc;
+    acc.userName = "admin01";
+    acc.password = "pass";
+    acc.phoneNumber = "099";
+    acc.gmail = "admin@gmail.com";
+    acc.role = "Admin";
 
     SessionManager manager;
-    ASSERT_TRUE(manager.setUserContext(acc));    auto info = manager.getCurrentContext()->getUserInformationService();
+    ASSERT_TRUE(manager.setUserContext(acc));
+    auto info = manager.getCurrentContext()->getUserInformationService();
     ASSERT_NE(info, nullptr);
     EXPECT_EQ(info->getRole(), "Admin");
     EXPECT_EQ(manager.getCurrentRole(), "Admin");
@@ -140,8 +151,13 @@ TEST(SessionManagerTest, AdminHasCorrectRoleInfo) {
 
 // Test logout functionality returns to Guest context
 TEST(SessionManagerTest, SessionLogoutReturnsToGuest) {
-    AccountInformation userAcc = { "user01", "pass", "012", "user01@gmail.com", "User" };
-      SessionManager manager;
+    AccountInformation userAcc;
+    userAcc.userName = "user01";
+    userAcc.password = "pass";
+    userAcc.phoneNumber = "012";
+    userAcc.gmail = "user01@gmail.com";
+    userAcc.role = "User";
+    SessionManager manager;
     std::shared_ptr<ILogoutService> service = std::make_shared<LogoutService>();
     
     // Initially should be Guest
@@ -159,7 +175,7 @@ TEST(SessionManagerTest, SessionLogoutReturnsToGuest) {
     EXPECT_EQ(userInfo->getRole(), "User");
     
     // Logout should return to Guest context
-    ASSERT_TRUE(manager.logout(service));
+    ASSERT_TRUE(manager.logout());
     EXPECT_EQ(manager.getCurrentRole(), "Guest");
     EXPECT_FALSE(manager.isUserAuthenticated());
     
@@ -170,8 +186,19 @@ TEST(SessionManagerTest, SessionLogoutReturnsToGuest) {
 
 // Test switching between different user contexts
 TEST(SessionManagerTest, ContextSwitchingValidation) {
-    AccountInformation userAcc = { "user01", "pass", "012", "user01@gmail.com", "User" };
-    AccountInformation adminAcc = { "admin01", "pass", "099", "admin@gmail.com", "Admin" };
+    AccountInformation userAcc;
+    userAcc.userName = "user01";
+    userAcc.password = "pass";
+    userAcc.phoneNumber = "012";
+    userAcc.gmail = "user01@gmail.com";
+    userAcc.role = "User";
+
+    AccountInformation adminAcc;
+    adminAcc.userName = "admin01";
+    adminAcc.password = "pass";
+    adminAcc.phoneNumber = "099";
+    adminAcc.gmail = "admin@gmail.com";
+    adminAcc.role = "Admin";
     
     SessionManager manager;
     std::shared_ptr<ILogoutService> service = std::make_shared<LogoutService>();
@@ -192,7 +219,7 @@ TEST(SessionManagerTest, ContextSwitchingValidation) {
     EXPECT_EQ(manager.getCurrentAccount().gmail, "user01@gmail.com");
     
     // Logout to Guest
-    ASSERT_TRUE(manager.logout(service));
+    ASSERT_TRUE(manager.logout());
     EXPECT_EQ(manager.getCurrentRole(), "Guest");
     EXPECT_FALSE(manager.isUserAuthenticated());
     
@@ -208,7 +235,7 @@ TEST(SessionManagerTest, ContextSwitchingValidation) {
     EXPECT_EQ(manager.getCurrentAccount().gmail, "admin@gmail.com");
     
     // Logout back to Guest
-    ASSERT_TRUE(manager.logout(service));
+    ASSERT_TRUE(manager.logout());
     EXPECT_EQ(manager.getCurrentRole(), "Guest");
     EXPECT_FALSE(manager.isUserAuthenticated());
     
