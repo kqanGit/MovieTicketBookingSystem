@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\SessionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\AuthenticationRepositorySQL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\MovieRepositorySQL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\database\DatabaseConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\model\Movie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\Admin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\AdminContextCreator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\BookingService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\BookingServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\Guest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\GuestContextCreator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LoginService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LoginServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LogoutService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LogoutServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieManagerService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieMangerServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieViewerService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieViewerServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\RegisterService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\RegisterServiceVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\UserContextCreator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\UserInformationService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\ViewBookingHistoryService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\ViewBookingHistoryVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DDFCEB70-8F91-3AEB-B546-19AE0B7AA183}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
