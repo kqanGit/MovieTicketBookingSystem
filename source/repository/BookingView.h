@@ -1,7 +1,7 @@
 #ifndef _BOOKINGVIEW_H_
 #define _BOOKINGVIEW_H_
-#include "ShowTime.h"
-#include "ISeat.h"
+#include "../model/ShowTime.h"
+#include "../model/ISeat.h"
 #include <vector>
 #include <string>
 #include <memory>

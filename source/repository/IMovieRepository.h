@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "MovieDTO.h"
-#include "IMovie.h"
+#include "../model/IMovie.h"
 #include <memory>
 #include <string>
 #include <iostream>

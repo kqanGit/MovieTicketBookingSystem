@@ -5,13 +5,16 @@
       <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\BookingRepositoryDBTest.exe</FullPath>
+      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\AuthenticationServiceTest.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\BookingServiceDBTest.exe</FullPath>
+      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\SessionAndRoleTest.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\MovieViewerServiceDBTest.exe</FullPath>
+      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\UserInformationTest.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\Debug\VisitorServiceTest.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\x64\Debug\ALL_BUILD</FullPath>

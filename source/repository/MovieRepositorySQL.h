@@ -2,8 +2,8 @@
 #ifndef MOVIEREPOSITORYSQL_H
 #define MOVIEREPOSITORYSQL_H
 
-#include "IMovieRepository.h"
-#include "DatabaseConnection.h"
+#include "../repository/IMovieRepository.h"
+#include "../database/DatabaseConnection.h"
 #include <memory>
 #include <string>
 #include <vector>

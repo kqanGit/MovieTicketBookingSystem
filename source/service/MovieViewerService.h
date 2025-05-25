@@ -3,11 +3,11 @@
 #define MOVIEVIEWERSERVICE_H
 
 #include "IMovieViewerService.h"
-#include "IMovieRepository.h"
+#include "../repository/IMovieRepository.h"
 #include <memory>
 #include <vector>   
-// #include "MovieDTO.h"
-// #include "Movie.h"  // already included in IMovieViewerService.h
+// #include "../repository/MovieDTO.h"
+// #include "../model/Movie.h"  // already included in IMovieViewerService.h
 
 class MovieViewerService : public IMovieViewerService {
 private:

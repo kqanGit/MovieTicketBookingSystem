@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.9.5+33de0b227 for .NET Framework
-      Build started 5/21/2025 9:26:06 PM.
+      Build started 5/24/2025 9:25:11 PM.
       
       Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\4.0.2\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -53,7 +53,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.59
+      Time Elapsed 00:00:00.87
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       MSBuild version 17.9.5+33de0b227 for .NET Framework
-      Build started 5/21/2025 9:26:07 PM.
+      Build started 5/24/2025 9:25:12 PM.
       
       Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\4.0.2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -108,7 +108,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.70
+      Time Elapsed 00:00:00.75
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-mf071o"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-mf071o"
+      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-c66a8y"
+      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-c66a8y"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od"
@@ -137,40 +137,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-mf071o'
+        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-c66a8y'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_08918.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d01e8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/21/2025 9:26:08 PM.
+        Build started 5/24/2025 9:25:14 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf071o\\cmTC_08918.vcxproj" on node 1 (default targets).
+        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c66a8y\\cmTC_d01e8.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_08918.dir\\Debug\\".
+          Creating directory "cmTC_d01e8.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf071o\\Debug\\".
-          Creating directory "cmTC_08918.dir\\Debug\\cmTC_08918.tlog\\".
+          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c66a8y\\Debug\\".
+          Creating directory "cmTC_d01e8.dir\\Debug\\cmTC_d01e8.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_08918.dir\\Debug\\cmTC_08918.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_08918.dir\\Debug\\cmTC_08918.tlog\\unsuccessfulbuild".
+          Creating "cmTC_d01e8.dir\\Debug\\cmTC_d01e8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d01e8.dir\\Debug\\cmTC_d01e8.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_08918.dir\\Debug\\\\" /Fd"cmTC_08918.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d01e8.dir\\Debug\\\\" /Fd"cmTC_d01e8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_08918.dir\\Debug\\\\" /Fd"cmTC_08918.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d01e8.dir\\Debug\\\\" /Fd"cmTC_d01e8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf071o\\Debug\\cmTC_08918.exe" /INCREMENTAL /ILK:"cmTC_08918.dir\\Debug\\cmTC_08918.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-mf071o/Debug/cmTC_08918.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-mf071o/Debug/cmTC_08918.lib" /MACHINE:X64  /machine:x64 cmTC_08918.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_08918.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf071o\\Debug\\cmTC_08918.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c66a8y\\Debug\\cmTC_d01e8.exe" /INCREMENTAL /ILK:"cmTC_d01e8.dir\\Debug\\cmTC_d01e8.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-c66a8y/Debug/cmTC_d01e8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-c66a8y/Debug/cmTC_d01e8.lib" /MACHINE:X64  /machine:x64 cmTC_d01e8.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_d01e8.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c66a8y\\Debug\\cmTC_d01e8.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_08918.dir\\Debug\\cmTC_08918.tlog\\unsuccessfulbuild".
-          Touching "cmTC_08918.dir\\Debug\\cmTC_08918.tlog\\cmTC_08918.lastbuildstate".
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf071o\\cmTC_08918.vcxproj" (default targets).
+          Deleting file "cmTC_d01e8.dir\\Debug\\cmTC_d01e8.tlog\\unsuccessfulbuild".
+          Touching "cmTC_d01e8.dir\\Debug\\cmTC_d01e8.tlog\\cmTC_d01e8.lastbuildstate".
+        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c66a8y\\cmTC_d01e8.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.67
+        Time Elapsed 00:00:00.62
         
       exitCode: 0
   -
@@ -210,8 +210,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-lvptp2"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-lvptp2"
+      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-dl1vze"
+      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-dl1vze"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od"
@@ -221,40 +221,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-lvptp2'
+        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-dl1vze'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b470f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f79ed.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/21/2025 9:26:09 PM.
+        Build started 5/24/2025 9:25:15 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lvptp2\\cmTC_b470f.vcxproj" on node 1 (default targets).
+        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dl1vze\\cmTC_f79ed.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_b470f.dir\\Debug\\".
+          Creating directory "cmTC_f79ed.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lvptp2\\Debug\\".
-          Creating directory "cmTC_b470f.dir\\Debug\\cmTC_b470f.tlog\\".
+          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dl1vze\\Debug\\".
+          Creating directory "cmTC_f79ed.dir\\Debug\\cmTC_f79ed.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_b470f.dir\\Debug\\cmTC_b470f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_b470f.dir\\Debug\\cmTC_b470f.tlog\\unsuccessfulbuild".
+          Creating "cmTC_f79ed.dir\\Debug\\cmTC_f79ed.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_f79ed.dir\\Debug\\cmTC_f79ed.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b470f.dir\\Debug\\\\" /Fd"cmTC_b470f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f79ed.dir\\Debug\\\\" /Fd"cmTC_f79ed.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b470f.dir\\Debug\\\\" /Fd"cmTC_b470f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f79ed.dir\\Debug\\\\" /Fd"cmTC_f79ed.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lvptp2\\Debug\\cmTC_b470f.exe" /INCREMENTAL /ILK:"cmTC_b470f.dir\\Debug\\cmTC_b470f.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-lvptp2/Debug/cmTC_b470f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-lvptp2/Debug/cmTC_b470f.lib" /MACHINE:X64  /machine:x64 cmTC_b470f.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_b470f.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lvptp2\\Debug\\cmTC_b470f.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dl1vze\\Debug\\cmTC_f79ed.exe" /INCREMENTAL /ILK:"cmTC_f79ed.dir\\Debug\\cmTC_f79ed.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-dl1vze/Debug/cmTC_f79ed.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-dl1vze/Debug/cmTC_f79ed.lib" /MACHINE:X64  /machine:x64 cmTC_f79ed.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_f79ed.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dl1vze\\Debug\\cmTC_f79ed.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_b470f.dir\\Debug\\cmTC_b470f.tlog\\unsuccessfulbuild".
-          Touching "cmTC_b470f.dir\\Debug\\cmTC_b470f.tlog\\cmTC_b470f.lastbuildstate".
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lvptp2\\cmTC_b470f.vcxproj" (default targets).
+          Deleting file "cmTC_f79ed.dir\\Debug\\cmTC_f79ed.tlog\\unsuccessfulbuild".
+          Touching "cmTC_f79ed.dir\\Debug\\cmTC_f79ed.tlog\\cmTC_f79ed.lastbuildstate".
+        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dl1vze\\cmTC_f79ed.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.81
+        Time Elapsed 00:00:00.91
         
       exitCode: 0
   -
@@ -297,8 +297,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ew5nkb"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ew5nkb"
+      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-l4pf2k"
+      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-l4pf2k"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od"
@@ -307,40 +307,40 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ew5nkb'
+        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-l4pf2k'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5b378.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1fcf5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/21/2025 9:26:11 PM.
+        Build started 5/24/2025 9:25:17 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\cmTC_5b378.vcxproj" on node 1 (default targets).
+        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\cmTC_1fcf5.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_5b378.dir\\Debug\\".
+          Creating directory "cmTC_1fcf5.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\Debug\\".
-          Creating directory "cmTC_5b378.dir\\Debug\\cmTC_5b378.tlog\\".
+          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\Debug\\".
+          Creating directory "cmTC_1fcf5.dir\\Debug\\cmTC_1fcf5.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_5b378.dir\\Debug\\cmTC_5b378.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_5b378.dir\\Debug\\cmTC_5b378.tlog\\unsuccessfulbuild".
+          Creating "cmTC_1fcf5.dir\\Debug\\cmTC_1fcf5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_1fcf5.dir\\Debug\\cmTC_1fcf5.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5b378.dir\\Debug\\\\" /Fd"cmTC_5b378.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fcf5.dir\\Debug\\\\" /Fd"cmTC_1fcf5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5b378.dir\\Debug\\\\" /Fd"cmTC_5b378.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1fcf5.dir\\Debug\\\\" /Fd"cmTC_1fcf5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\src.c"
           src.c
-        E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\cmTC_5b378.vcxproj]
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\cmTC_5b378.vcxproj" (default targets) -- FAILED.
+        E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\cmTC_1fcf5.vcxproj]
+        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\cmTC_1fcf5.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\cmTC_5b378.vcxproj" (default target) (1) ->
+        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\cmTC_1fcf5.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ew5nkb\\cmTC_5b378.vcxproj]
+          E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-l4pf2k\\cmTC_1fcf5.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.73
+        Time Elapsed 00:00:00.68
         
       exitCode: 1
   -
@@ -354,8 +354,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-tbga3y"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-tbga3y"
+      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ipxhu6"
+      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ipxhu6"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od"
@@ -364,42 +364,42 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-tbga3y'
+        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ipxhu6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_db0f1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_60191.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/21/2025 9:26:12 PM.
+        Build started 5/24/2025 9:25:18 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\cmTC_db0f1.vcxproj" on node 1 (default targets).
+        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\cmTC_60191.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_db0f1.dir\\Debug\\".
+          Creating directory "cmTC_60191.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\Debug\\".
-          Creating directory "cmTC_db0f1.dir\\Debug\\cmTC_db0f1.tlog\\".
+          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\Debug\\".
+          Creating directory "cmTC_60191.dir\\Debug\\cmTC_60191.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_db0f1.dir\\Debug\\cmTC_db0f1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_db0f1.dir\\Debug\\cmTC_db0f1.tlog\\unsuccessfulbuild".
+          Creating "cmTC_60191.dir\\Debug\\cmTC_60191.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_60191.dir\\Debug\\cmTC_60191.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_db0f1.dir\\Debug\\\\" /Fd"cmTC_db0f1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60191.dir\\Debug\\\\" /Fd"cmTC_60191.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_db0f1.dir\\Debug\\\\" /Fd"cmTC_db0f1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60191.dir\\Debug\\\\" /Fd"cmTC_60191.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\Debug\\cmTC_db0f1.exe" /INCREMENTAL /ILK:"cmTC_db0f1.dir\\Debug\\cmTC_db0f1.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-tbga3y/Debug/cmTC_db0f1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-tbga3y/Debug/cmTC_db0f1.lib" /MACHINE:X64  /machine:x64 cmTC_db0f1.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\cmTC_db0f1.vcxproj]
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\cmTC_db0f1.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\Debug\\cmTC_60191.exe" /INCREMENTAL /ILK:"cmTC_60191.dir\\Debug\\cmTC_60191.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ipxhu6/Debug/cmTC_60191.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-ipxhu6/Debug/cmTC_60191.lib" /MACHINE:X64  /machine:x64 cmTC_60191.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\cmTC_60191.vcxproj]
+        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\cmTC_60191.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\cmTC_db0f1.vcxproj" (default target) (1) ->
+        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\cmTC_60191.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tbga3y\\cmTC_db0f1.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ipxhu6\\cmTC_60191.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.55
+        Time Elapsed 00:00:00.44
         
       exitCode: 1
   -
@@ -413,8 +413,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-idoj0a"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-idoj0a"
+      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-snuxfk"
+      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-snuxfk"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od"
@@ -423,42 +423,42 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-idoj0a'
+        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-snuxfk'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5e999.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4bc44.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/21/2025 9:26:13 PM.
+        Build started 5/24/2025 9:25:18 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\cmTC_5e999.vcxproj" on node 1 (default targets).
+        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\cmTC_4bc44.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_5e999.dir\\Debug\\".
+          Creating directory "cmTC_4bc44.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\Debug\\".
-          Creating directory "cmTC_5e999.dir\\Debug\\cmTC_5e999.tlog\\".
+          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\Debug\\".
+          Creating directory "cmTC_4bc44.dir\\Debug\\cmTC_4bc44.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_5e999.dir\\Debug\\cmTC_5e999.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_5e999.dir\\Debug\\cmTC_5e999.tlog\\unsuccessfulbuild".
+          Creating "cmTC_4bc44.dir\\Debug\\cmTC_4bc44.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4bc44.dir\\Debug\\cmTC_4bc44.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5e999.dir\\Debug\\\\" /Fd"cmTC_5e999.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4bc44.dir\\Debug\\\\" /Fd"cmTC_4bc44.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5e999.dir\\Debug\\\\" /Fd"cmTC_5e999.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4bc44.dir\\Debug\\\\" /Fd"cmTC_4bc44.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\Debug\\cmTC_5e999.exe" /INCREMENTAL /ILK:"cmTC_5e999.dir\\Debug\\cmTC_5e999.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-idoj0a/Debug/cmTC_5e999.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-idoj0a/Debug/cmTC_5e999.lib" /MACHINE:X64  /machine:x64 cmTC_5e999.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\cmTC_5e999.vcxproj]
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\cmTC_5e999.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\Debug\\cmTC_4bc44.exe" /INCREMENTAL /ILK:"cmTC_4bc44.dir\\Debug\\cmTC_4bc44.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-snuxfk/Debug/cmTC_4bc44.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/tests/build/CMakeFiles/CMakeScratch/TryCompile-snuxfk/Debug/cmTC_4bc44.lib" /MACHINE:X64  /machine:x64 cmTC_4bc44.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\cmTC_4bc44.vcxproj]
+        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\cmTC_4bc44.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\cmTC_5e999.vcxproj" (default target) (1) ->
+        "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\cmTC_4bc44.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-idoj0a\\cmTC_5e999.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snuxfk\\cmTC_4bc44.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.44
+        Time Elapsed 00:00:00.43
         
       exitCode: 1
 ...

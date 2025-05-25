@@ -1,8 +1,8 @@
 #ifndef _BOOKINGSERVICE_H_
 #define _BOOKINGSERVICE_H_
 #include "IBookingService.h"
-#include "IBookingRepository.h"
-#include "BookingRepositorySQL.h"
+#include "../repository/IBookingRepository.h"
+#include "../repository/BookingRepositorySQL.h"
 #include <memory>
 
 class BookingService : public IBookingService {

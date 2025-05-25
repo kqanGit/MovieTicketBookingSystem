@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "AuthenticationServiceTest.dir\\Debug\\LogoutService.obj",
+            "outputs": [
+                "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\tests\\build\\AuthenticationServiceTest.dir\\Debug\\vc143.pdb",
+                "AuthenticationServiceTest.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

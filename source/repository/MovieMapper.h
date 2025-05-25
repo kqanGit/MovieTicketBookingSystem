@@ -1,7 +1,7 @@
 #ifndef MOVIEMAPPER_H
 #define MOVIEMAPPER_H
 
-#include "IMovie.h"
+#include "../model/IMovie.h"
 #include "MovieDTO.h"
 #include <memory>
 

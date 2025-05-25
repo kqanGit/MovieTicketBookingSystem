@@ -1,7 +1,7 @@
 #ifndef IMOVIEMANAGERSERVICE_H
 #define IMOVIEMANAGERSERVICE_H
 
-#include "IMovie.h"
+#include "../model/IMovie.h"
 #include <vector>
 #include <string>
 #include <memory>

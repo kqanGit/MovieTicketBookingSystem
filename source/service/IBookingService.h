@@ -2,8 +2,8 @@
 #define _IBOOKINGSERVICE_H_
 #include <string>
 #include <vector>
-#include "SeatView.h"
-#include "BookingView.h"
+#include "../repository/SeatView.h"
+#include "../repository/BookingView.h"
 
 class IBookingService {
 public:

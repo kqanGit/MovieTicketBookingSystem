@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 
 DatabaseConnection* DatabaseConnection::instance = nullptr;
 
@@ -20,7 +21,7 @@ DatabaseConnection* DatabaseConnection::getInstance() {
 
 bool DatabaseConnection::connect(const std::string& dbFilePath) {
     if (sqlite3_open(dbFilePath.c_str(), &db) != SQLITE_OK) {
-        std::cerr << " Error opening database: " << sqlite3_errmsg(db) << "\n";
+        std::cerr << " [DatabaseConnection] Error opening database: " << sqlite3_errmsg(db) << "\n";
         db = nullptr;
         return false;
     }
@@ -37,7 +38,7 @@ void DatabaseConnection::disconnect() {
 bool DatabaseConnection::executeNonQuery(const std::string& sql, const std::vector<std::string>& params) {
     sqlite3_stmt* stmt;
     if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
-        std::cerr << "❌ Failed to prepare statement: " << sqlite3_errmsg(db) << "\n";
+        std::cerr << "[DatabaseConnection] Failed to prepare statement: " << sqlite3_errmsg(db) << "\n";
         return false;
     }
 
@@ -47,7 +48,7 @@ bool DatabaseConnection::executeNonQuery(const std::string& sql, const std::vect
 
     bool success = (sqlite3_step(stmt) == SQLITE_DONE);
     if (!success) {
-        std::cerr << "❌ Failed to execute statement: " << sqlite3_errmsg(db) << "\n";
+        std::cerr << "[DatabaseConnection] Failed to execute statement: " << sqlite3_errmsg(db) << "\n";
     }
 
     sqlite3_finalize(stmt);
@@ -61,7 +62,7 @@ std::vector<std::map<std::string, std::string>> DatabaseConnection::executeQuery
     sqlite3_stmt* stmt;
 
     if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
-        std::cerr << "❌ Failed to prepare query: " << sqlite3_errmsg(db) << "\n";
+        std::cerr << "[DatabaseConnection] Failed to prepare query: " << sqlite3_errmsg(db) << "\n";
         return results;
     }
 
@@ -88,7 +89,7 @@ std::vector<std::map<std::string, std::string>> DatabaseConnection::executeQuery
 bool DatabaseConnection::executeSQLFile(const std::string& filePath) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "❌ Could not open SQL file: " << filePath << "\n";
+        std::cerr << "[DatabaseConnection] Could not open SQL file: " << filePath << "\n";
         return false;
     }
 
@@ -98,7 +99,7 @@ bool DatabaseConnection::executeSQLFile(const std::string& filePath) {
 
     char* errMsg = nullptr;
     if (sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "❌ Failed to execute SQL file: " << errMsg << "\n";
+        std::cerr << "[DatabaseConnection] Failed to execute SQL file: " << errMsg << "\n";
         sqlite3_free(errMsg);
         return false;
     }

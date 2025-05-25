@@ -2,12 +2,12 @@
 #define IMOVIEVIEWERSERVICE_H
 
 #include <vector>
-#include "MovieDTO.h"
-#include "Movie.h"
+#include "../repository/MovieDTO.h"
+#include "../model/Movie.h"
 #include <memory>
 
 class IMovieViewerService {
-public:
+public:    
     virtual ~IMovieViewerService() {}
     virtual std::vector<MovieDTO> showAllMovies() = 0;
     virtual std::shared_ptr<IMovie> showMovieDetail(int id) = 0;

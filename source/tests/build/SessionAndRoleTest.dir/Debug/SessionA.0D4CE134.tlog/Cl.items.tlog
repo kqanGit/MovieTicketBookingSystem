@@ -1,0 +1,10 @@
+E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\SessionAndRoleTest.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\SessionAndRoleTest.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\model\User.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\User.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\model\Admin.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\Admin.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\model\Guest.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\Guest.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\SessionManager.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\SessionManager.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\service\UserInformationService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\UserInformationService.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\service\LogoutService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\LogoutService.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\context\AdminContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\AdminContextCreator.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\context\GuestContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\GuestContextCreator.obj
+E:\just write some code\OOP\MovieTicketBookingSystem\source\context\UserContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\tests\build\SessionAndRoleTest.dir\Debug\UserContextCreator.obj

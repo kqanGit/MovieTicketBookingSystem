@@ -3,7 +3,7 @@
 #define MOVIEMANAGERSERVICE_H
 
 #include "IMovieManagerService.h"
-#include "IMovieRepository.h"
+#include "../repository/IMovieRepository.h"
 #include <memory>
 #include <vector>
 #include <string>
