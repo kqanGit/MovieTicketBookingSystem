@@ -7,15 +7,7 @@
 #include <memory> // Thêm để sử dụng unique_ptr
 
 // Forward declarations
-class IUserInformationService;
-class IMovieViewerService;
-class IMovieManagerService;
-class IBookingService;
-class IViewBookingHistoryService;
-class ILoginService;
-class ILogoutService;
-class IRegisterService;
-
+class IUserInformationService; // Kept as it is used by getUserInformationService()
 
 class IUserContext {
 public:

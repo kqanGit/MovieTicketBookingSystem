@@ -7,6 +7,7 @@
 #include "context/AdminContextCreator.h"
 #include <iostream>
 #include <stdexcept>
+#include "../visitor/LogoutServiceVisitor.h" // Added for visitor pattern
 
 SessionManager::SessionManager() : _isAuthenticated(false) {
     // Khởi tạo factory mặc định là GuestContextCreator
@@ -75,14 +76,19 @@ bool SessionManager::setUserContext(const AccountInformation& authInfo) {
     return true;
 }
 
-bool SessionManager::logout(std::shared_ptr<ILogoutService> service) {
+bool SessionManager::logout() { // New signature
    if (!_isAuthenticated) {
         std::cout << "[Session] Not Login yet" << std::endl;
         return false;
     }
 
+    // Use visitor to get the logout service
+    auto visitor = std::make_shared<LogoutServiceVisitor>();
+    _currentUserContext->accept(visitor);
+    auto service = visitor->getLogoutService();
+
     if (!service) {
-        std::cerr << "[Session] LogoutService is null.\n";
+        std::cerr << "[Session] LogoutService is not available for the current context.\n";
         return false;
     }
 

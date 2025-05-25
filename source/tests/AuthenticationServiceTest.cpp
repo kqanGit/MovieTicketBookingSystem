@@ -140,7 +140,13 @@ protected:
 };
 
 TEST_F(AuthServiceTest, RegisterAndLogin_Success) {
-    AccountInformation acc { "testuser", "123", "0123", "test@gmail.com", "user" };
+    AccountInformation acc;
+    acc.userID = 1;
+    acc.userName = "testuser";
+    acc.password = "123";
+    acc.phoneNumber = "0123";
+    acc.gmail = "test@gmail.com";
+    acc.role = "User";
     RegisterService reg(repo);
     ASSERT_TRUE(reg.registerUser(acc));
 

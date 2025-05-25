@@ -12,6 +12,8 @@ AccountInformation AuthenticationRepositorySQL::getUserByUserName(const std::str
     if (results.empty()) throw std::runtime_error("[AuthenticationRepoSQL] Invalid username or password");
 
     AccountInformation info;
+    info.userID      = std::stoi(results[0]["UserID"]); // Assuming UserID is an integer
+    if (info.userID <= 0) throw std::runtime_error("[AuthenticationRepoSQL] Invalid UserID");
     info.userName    = results[0]["UserName"];
     info.password    = results[0]["Password"];
     info.phoneNumber = results[0]["PhoneNumber"];

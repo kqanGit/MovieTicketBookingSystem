@@ -22,7 +22,7 @@ public:
 
     std::vector<MovieDTO> getAllMovies() override;
     std::shared_ptr<IMovie> getMovieById(int id) override;
-    void addMovie(std::shared_ptr<IMovie> movie) override;
+    int addMovie(std::shared_ptr<IMovie> movie) override;
     void deleteMovie(int id) override;
     void addShowTime(int movieId, std::string& Date, std::string& StartTime, std::string& EndTime) override;
     void deleteShowTime(int movieId, int ShowTimeID) override;

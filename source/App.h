@@ -6,6 +6,8 @@
 #include <filesystem>
 #include "SessionManager.h"
 #include "repository/IAuthenticationRepository.h"
+#include "repository/IMovieRepository.h" // Added for _movieRepository
+#include "repository/IBookingRepository.h" // Added for _bookingRepository
 #include "repository/AuthenticationRepositorySQL.h"
 #include "database/DatabaseConnection.h"
 #include "IRegisterService.h"
@@ -21,7 +23,9 @@ class App {
 private:
     std::unique_ptr<SessionManager> sessionManager;
     DatabaseConnection* dbConn;
-    IAuthenticationRepository* authRepo;
+    std::shared_ptr<IAuthenticationRepository> _authRepository;
+    std::shared_ptr<IMovieRepository> _movieRepository;
+    std::shared_ptr<IBookingRepository> _bookingRepository;
 
 public:
     App();

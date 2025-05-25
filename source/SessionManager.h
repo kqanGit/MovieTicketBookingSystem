@@ -9,7 +9,6 @@
 #include "context/GuestContextCreator.h"
 #include "context/UserContextCreator.h"
 #include "context/AdminContextCreator.h"
-#include "service/LogoutService.h"
 
 /**
  * @class SessionManager
@@ -71,7 +70,7 @@ public:
      * @brief Đăng xuất người dùng hiện tại và đặt lại về Guest context
      * @return True nếu đăng xuất thành công, false nếu không
      */
-    bool logout(std::shared_ptr<ILogoutService> service);
+    bool logout();
 };
 
 #endif // SESSION_MANAGER_H

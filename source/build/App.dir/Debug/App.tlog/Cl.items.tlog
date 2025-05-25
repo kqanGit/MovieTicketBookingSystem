@@ -1,28 +1,35 @@
-E:\just write some code\OOP\MovieTicketBookingSystem\source\main.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\main.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\App.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\App.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\SessionManager.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\SessionManager.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\AuthenticationRepositorySQL.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\AuthenticationRepositorySQL.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\repository\MovieRepositorySQL.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieRepositorySQL.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\database\DatabaseConnection.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\DatabaseConnection.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\model\Movie.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\Movie.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\Admin.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\Admin.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\AdminContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\AdminContextCreator.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\BookingService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\BookingServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\Guest.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\Guest.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\GuestContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\GuestContextCreator.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LoginService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\LoginService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LoginServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\LoginServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LogoutService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\LogoutService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\LogoutServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\LogoutServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieManagerService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieManagerService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieMangerServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieMangerServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieViewerService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieViewerService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\MovieViewerServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieViewerServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\RegisterService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\RegisterService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\RegisterServiceVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\RegisterServiceVisitor.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\User.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\User.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\UserContextCreator.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\UserContextCreator.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\UserInformationService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\UserInformationService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\ViewBookingHistoryService.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\ViewBookingHistoryService.obj
-E:\just write some code\OOP\MovieTicketBookingSystem\source\USER_pending\ViewBookingHistoryVisitor.cpp;E:\just write some code\OOP\MovieTicketBookingSystem\source\build\App.dir\Debug\ViewBookingHistoryVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\main.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\main.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\SessionManager.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\SessionManager.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\App.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\App.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\AuthenticationRepositorySQL.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\AuthenticationRepositorySQL.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\BookingRepositorySQL.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingRepositorySQL.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\BookingView.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingView.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\MovieDTO.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieDTO.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\MovieMapper.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieMapper.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\MovieRepositorySQL.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieRepositorySQL.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\repository\SeatView.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\SeatView.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\database\DatabaseConnection.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\DatabaseConnection.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\Admin.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\Admin.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\Booking.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\Booking.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\CoupleSeat.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\CoupleSeat.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\Guest.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\Guest.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\Movie.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\Movie.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\ShowTime.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\ShowTime.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\SingleSeat.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\SingleSeat.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\model\User.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\User.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\BookingServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\LoginServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\LoginServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\LogoutServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\LogoutServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\MovieMangerServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieMangerServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\MovieViewerServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieViewerServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\visitor\RegisterServiceVisitor.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\RegisterServiceVisitor.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\context\AdminContextCreator.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\AdminContextCreator.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\context\GuestContextCreator.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\GuestContextCreator.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\context\UserContextCreator.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\UserContextCreator.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\BookingService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\BookingService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\LoginService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\LoginService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\LogoutService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\LogoutService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\MovieManagerService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieManagerService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\MovieViewerService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\MovieViewerService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\RegisterService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\RegisterService.obj
+D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\service\UserInformationService.cpp;D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\build\App.dir\Debug\UserInformationService.obj

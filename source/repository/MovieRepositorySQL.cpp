@@ -90,9 +90,9 @@ void MovieRepositorySQL::addShowTime(int movieId, std::string& Date, std::string
 
 
 
-void MovieRepositorySQL::addMovie(std::shared_ptr<IMovie> movie) {
+int MovieRepositorySQL::addMovie(std::shared_ptr<IMovie> movie) {
     const std::string sql = "INSERT INTO MOVIE (Title, Genre, Descriptions, Rating) "
-                           "VALUES (?, ?, ?, ?, ?)";
+                           "VALUES (?, ?, ?, ?)";
     
     bool success = dbConn->executeNonQuery(sql, {
         movie->getTitle(),
@@ -105,6 +105,13 @@ void MovieRepositorySQL::addMovie(std::shared_ptr<IMovie> movie) {
     if (!success) {
         throw std::runtime_error("Failed to add movie to database");
     }
+    // Retrieve the last inserted ID
+    // This is specific to SQLite. Other databases might have different ways.
+    auto result = dbConn->executeQuery("SELECT last_insert_rowid();");
+    if (!result.empty() && result[0].count("last_insert_rowid()")) {
+        return std::stoi(result[0].at("last_insert_rowid()"));
+    }
+    throw std::runtime_error("Failed to retrieve last inserted movie ID.");
 }
 
 void MovieRepositorySQL::deleteMovie(int id) {
