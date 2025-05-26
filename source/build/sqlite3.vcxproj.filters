@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\lib\sqlite3.c">
+    <ClCompile Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\lib\sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\OOP\LyThuyet\PROJECT\MovieTicketBookingSystem\source\CMakeLists.txt" />
+    <CustomBuild Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{D20EC2EA-1BE7-3680-95C5-2F86A787541B}</UniqueIdentifier>
+      <UniqueIdentifier>{DDFCEB70-8F91-3AEB-B546-19AE0B7AA183}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

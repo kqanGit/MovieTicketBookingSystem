@@ -1,4 +1,4 @@
-# Install script for directory: D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source
+# Install script for directory: E:/just write some code/OOP/MovieTicketBookingSystem/source
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,7 +35,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/install_local_manifest.txt"
+  file(WRITE "E:/just write some code/OOP/MovieTicketBookingSystem/source/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -51,6 +51,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/just write some code/OOP/MovieTicketBookingSystem/source/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

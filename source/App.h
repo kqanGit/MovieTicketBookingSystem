@@ -18,10 +18,12 @@
 #include "LogoutService.h"
 #include "ServiceRegistry.h"
 #include "RegisterServiceVisitor.h"
+#include "UI/SFMLUIManager.h"  // Add SFML UI Manager
 
 class App {
 private:
-    std::unique_ptr<SessionManager> sessionManager;
+    std::shared_ptr<SessionManager> sessionManager;  // Changed to shared_ptr
+    std::unique_ptr<SFMLUIManager> uiManager;  // Add SFML UI Manager
     DatabaseConnection* dbConn;
     std::shared_ptr<IAuthenticationRepository> _authRepository;
     std::shared_ptr<IMovieRepository> _movieRepository;

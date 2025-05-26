@@ -1,7 +1,7 @@
 #include "MovieRepositorySQL.h"
 #include "Movie.h"
 #include "MovieMapper.h"
-#include "model/ShowTime.h"
+#include "../model/ShowTime.h"
 
 // MovieRepositorySQL::MovieRepositorySQL(std::shared_ptr<DatabaseConnection> conn) {
 //     dbConn = conn.get();
