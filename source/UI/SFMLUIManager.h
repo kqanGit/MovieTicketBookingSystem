@@ -17,12 +17,15 @@
 #include "../visitor/MovieViewerServiceVisitor.h"
 #include "../visitor/BookingServiceVisitor.h"
 #include "../visitor/RegisterServiceVisitor.h"
+#include "../visitor/MovieMangerServiceVisitor.h"
 #include "../repository/MovieDTO.h"
 #include "../repository/BookingView.h"
 #include "../repository/SeatView.h"
 #include "../model/ShowTime.h"
+#include "../model/Movie.h"
 
 enum class UIState {
+    GUEST_SCREEN,
     LOGIN_SCREEN,
     MAIN_MENU,
     MOVIE_LIST,
@@ -34,6 +37,7 @@ enum class UIState {
     ADMIN_PANEL,
     MOVIE_MANAGEMENT,
     EDIT_MOVIE,
+    SHOWTIME_MANAGEMENT,
     SUCCESS_MESSAGE
 };
 
@@ -67,6 +71,15 @@ private:
     bool isEditingDuration;
     bool isEditingPrice;
     
+    // Showtime management variables
+    int managingMovieId;
+    std::string newShowtimeDate;
+    std::string newShowtimeStartTime;
+    std::string newShowtimeEndTime;
+    bool isEditingDate;
+    bool isEditingStartTime;
+    bool isEditingEndTime;
+    
     // Success message variables
     std::string successMessage;
     UIState previousState;
@@ -83,8 +96,8 @@ private:
     // UI helper methods
     void handleEvents();
     void update();
-    void render();
-      // Screen rendering methods
+    void render();    // Screen rendering methods
+    void renderGuestScreen();
     void renderLoginScreen();
     void renderMainMenu();
     void renderMovieList();
@@ -96,6 +109,7 @@ private:
     void renderAdminPanel();
     void renderMovieManagement();
     void renderEditMovie();
+    void renderShowtimeManagement();
     void renderSuccessMessage();// Input handling
     void handleTextInput(unsigned int unicode);
     void handleKeyPress(sf::Keyboard::Key key);
@@ -112,8 +126,15 @@ private:
     void drawMovieCard(const MovieDTO& movie, float x, float y, bool isSelected);
     void showSuccessMessage(const std::string& message);
     void deleteMovie(int movieId);
-    void updateMovie(int movieId);
+    void updateMovie(int movieId);    void addMovie();
     void resetEditingFlags();
+    void clearEditingFields();
+    void clearShowtimeFields();
+    
+    // Showtime management methods
+    void addShowtime(int movieId);
+    void deleteShowtime(int movieId, int showtimeId);
+    void resetShowtimeEditingFlags();
     
     // Service interaction methods
     void attemptLogin();

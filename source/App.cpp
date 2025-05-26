@@ -53,7 +53,7 @@ bool App::initialize() {
     // Nếu file chưa tồn tại hoặc mới tạo -> nên luôn chạy schema
     if (!std::filesystem::exists("database.db") || dbConn->executeQuery("SELECT name FROM sqlite_master WHERE type='table';").empty()) {
         std::cout << "[App] Running database schema setup...\n";
-        if (!dbConn->executeSQLFile("../database/database.sql")) {
+        if (!dbConn->executeSQLFile("./database/database.sql")) {
             std::cerr << "[App] Failed to initialize database schema.\n";
             return false;
         }

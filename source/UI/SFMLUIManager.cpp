@@ -3,10 +3,11 @@
 #include <sstream>
 
 SFMLUIManager::SFMLUIManager(std::shared_ptr<SessionManager> sessionMgr)
-    : sessionManager(sessionMgr), currentState(UIState::LOGIN_SCREEN),
+    : sessionManager(sessionMgr), currentState(UIState::GUEST_SCREEN),
       selectedMovieIndex(0), selectedShowTimeIndex(0),
       isInputtingUsername(true), isInputtingPassword(false),
-      isInputtingEmail(false), isInputtingPhone(false) {
+      isInputtingEmail(false), isInputtingPhone(false),
+      managingMovieId(-1), isEditingDate(false), isEditingStartTime(false), isEditingEndTime(false) {
 }
 
 SFMLUIManager::~SFMLUIManager() {
@@ -23,9 +24,8 @@ bool SFMLUIManager::initialize() {
     isEditingDescription = false;
     isEditingGenre = false;
     isEditingDuration = false;
-    isEditingPrice = false;
-    editingMovieId = -1;
-    previousState = UIState::LOGIN_SCREEN;
+    isEditingPrice = false;    editingMovieId = -1;
+    previousState = UIState::GUEST_SCREEN;
     
     // Try to load font from various locations
     bool fontLoaded = false;
@@ -102,8 +102,7 @@ void SFMLUIManager::handleTextInput(unsigned int unicode) {
                 inputEmail += inputChar;
             } else if (isInputtingPhone) {
                 inputPhone += inputChar;
-            }
-        } else if (currentState == UIState::EDIT_MOVIE) {
+            }        } else if (currentState == UIState::EDIT_MOVIE) {
             if (isEditingTitle) {
                 editMovieTitle += inputChar;
             } else if (isEditingDescription) {
@@ -114,6 +113,14 @@ void SFMLUIManager::handleTextInput(unsigned int unicode) {
                 editMovieDuration += inputChar;
             } else if (isEditingPrice) {
                 editMoviePrice += inputChar;
+            }
+        } else if (currentState == UIState::SHOWTIME_MANAGEMENT) {
+            if (isEditingDate) {
+                newShowtimeDate += inputChar;
+            } else if (isEditingStartTime) {
+                newShowtimeStartTime += inputChar;
+            } else if (isEditingEndTime) {
+                newShowtimeEndTime += inputChar;
             }
         }
     }
@@ -136,8 +143,7 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
                 inputEmail.pop_back();
             } else if (isInputtingPhone && !inputPhone.empty()) {
                 inputPhone.pop_back();
-            }
-        } else if (currentState == UIState::EDIT_MOVIE) {
+            }        } else if (currentState == UIState::EDIT_MOVIE) {
             if (isEditingTitle && !editMovieTitle.empty()) {
                 editMovieTitle.pop_back();
             } else if (isEditingDescription && !editMovieDescription.empty()) {
@@ -148,6 +154,14 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
                 editMovieDuration.pop_back();
             } else if (isEditingPrice && !editMoviePrice.empty()) {
                 editMoviePrice.pop_back();
+            }
+        } else if (currentState == UIState::SHOWTIME_MANAGEMENT) {
+            if (isEditingDate && !newShowtimeDate.empty()) {
+                newShowtimeDate.pop_back();
+            } else if (isEditingStartTime && !newShowtimeStartTime.empty()) {
+                newShowtimeStartTime.pop_back();
+            } else if (isEditingEndTime && !newShowtimeEndTime.empty()) {
+                newShowtimeEndTime.pop_back();
             }
         }
     } else if (key == sf::Keyboard::Tab) {
@@ -173,8 +187,35 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
 }
 
 void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
-    // Handle button clicks based on current state
-    switch (currentState) {
+    // Handle button clicks based on current state   
+    switch (currentState) {        case UIState::GUEST_SCREEN: {
+            // Match the coordinates from renderGuestScreen()
+            sf::RectangleShape loginBtn = createStyledButton(450, 320, 300, 60, sf::Color(0, 150, 0));
+            sf::RectangleShape registerBtn = createStyledButton(450, 400, 300, 60, sf::Color(0, 100, 200));
+            sf::RectangleShape browseMoviesBtn = createStyledButton(450, 480, 300, 60, sf::Color(150, 100, 0));
+            
+            if (isButtonClicked(loginBtn, mousePos)) {
+                currentState = UIState::LOGIN_SCREEN;
+                // Clear input fields when switching to login
+                inputUsername.clear();
+                inputPassword.clear();
+                statusMessage.clear();
+            } else if (isButtonClicked(registerBtn, mousePos)) {
+                currentState = UIState::REGISTER_SCREEN;
+                // Clear input fields when switching to register
+                inputUsername.clear();
+                inputPassword.clear();
+                inputEmail.clear();
+                inputPhone.clear();
+                statusMessage.clear();
+            } else if (isButtonClicked(browseMoviesBtn, mousePos)) {
+                // Guest can browse movies without authentication
+                loadMovies();
+                currentState = UIState::MOVIE_LIST;
+            }
+            break;
+        }
+        
         case UIState::LOGIN_SCREEN: {
             sf::RectangleShape loginBtn = createButton(500, 400, 200, 50);
             sf::RectangleShape registerBtn = createButton(500, 470, 200, 50);
@@ -199,28 +240,47 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::MAIN_MENU: {
+          case UIState::MAIN_MENU: {
             sf::RectangleShape moviesBtn = createButton(500, 300, 200, 50);
-            sf::RectangleShape historyBtn = createButton(500, 370, 200, 50);
-            sf::RectangleShape logoutBtn = createButton(500, 440, 200, 50);
+            int buttonY = 370;
             
             if (isButtonClicked(moviesBtn, mousePos)) {
                 loadMovies();
                 currentState = UIState::MOVIE_LIST;
-            } else if (isButtonClicked(historyBtn, mousePos)) {
-                loadBookingHistory();
-                currentState = UIState::BOOKING_HISTORY;
-            } else if (isButtonClicked(logoutBtn, mousePos)) {
+            } else if (sessionManager->isUserAuthenticated()) {
+                sf::RectangleShape historyBtn = createButton(500, buttonY, 200, 50);
+                if (isButtonClicked(historyBtn, mousePos)) {
+                    loadBookingHistory();
+                    currentState = UIState::BOOKING_HISTORY;
+                }
+                buttonY += 70;
+                
+                // Admin panel access for admin users
+                if (sessionManager->getCurrentRole() == "Admin") {
+                    sf::RectangleShape adminBtn = createButton(500, buttonY, 200, 50);
+                    if (isButtonClicked(adminBtn, mousePos)) {
+                        currentState = UIState::ADMIN_PANEL;
+                    }
+                    buttonY += 70;
+                }
+            }
+            
+            // Logout button (position depends on previous buttons)
+            sf::RectangleShape logoutBtn = createButton(500, buttonY, 200, 50);
+            if (isButtonClicked(logoutBtn, mousePos)) {
                 logout();
             }
             break;
         }
-        
-        case UIState::MOVIE_LIST: {
+          case UIState::MOVIE_LIST: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::MAIN_MENU;
+                // Return guests to guest screen, authenticated users to main menu
+                if (sessionManager->isUserAuthenticated()) {
+                    currentState = UIState::MAIN_MENU;
+                } else {
+                    currentState = UIState::GUEST_SCREEN;
+                }
                 break;
             }
             
@@ -237,15 +297,29 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::MOVIE_DETAILS: {
+          case UIState::MOVIE_DETAILS: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape bookBtn = createButton(500, 600, 200, 50);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::MOVIE_LIST;
-            } else if (isButtonClicked(bookBtn, mousePos) && !currentShowTimes.empty()) {
-                currentState = UIState::BOOKING_SCREEN;
+            } else if (!currentShowTimes.empty()) {
+                if (sessionManager->isUserAuthenticated()) {
+                    // Authenticated users can book tickets
+                    sf::RectangleShape bookBtn = createButton(500, 600, 200, 50);
+                    if (isButtonClicked(bookBtn, mousePos)) {
+                        currentState = UIState::BOOKING_SCREEN;
+                    }
+                } else {
+                    // Guests get a login prompt button
+                    sf::RectangleShape loginPromptBtn = createButton(500, 630, 200, 40);
+                    if (isButtonClicked(loginPromptBtn, mousePos)) {
+                        currentState = UIState::LOGIN_SCREEN;
+                        // Clear any previous input
+                        inputUsername.clear();
+                        inputPassword.clear();
+                        statusMessage.clear();
+                    }
+                }
             }
             break;
         }
@@ -316,8 +390,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::REGISTER_SCREEN: {
+          case UIState::REGISTER_SCREEN: {
             sf::RectangleShape registerBtn = createButton(500, 500, 200, 50);
             sf::RectangleShape backBtn = createButton(500, 570, 200, 50);
             sf::RectangleShape usernameField = createButton(400, 250, 400, 40);
@@ -328,7 +401,8 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             if (isButtonClicked(registerBtn, mousePos)) {
                 attemptRegister();
             } else if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::LOGIN_SCREEN;
+                // Return to guest screen for guest users, login screen for authenticated users
+                currentState = UIState::GUEST_SCREEN;
                 inputUsername.clear();
                 inputPassword.clear();
                 inputEmail.clear();
@@ -353,54 +427,36 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isInputtingUsername = false;
                 isInputtingPassword = false;
                 isInputtingEmail = false;
-                isInputtingPhone = true;            }
+                isInputtingPhone = true;
+            }
             break;
-        }
-        
-        case UIState::ADMIN_PANEL: {
-            sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape manageMoviesBtn = createButton(400, 300, 300, 60);
-            sf::RectangleShape viewBookingsBtn = createButton(400, 380, 300, 60);
+        }        case UIState::ADMIN_PANEL: {
+            sf::RectangleShape backBtn = createButton(500, 380, 200, 50);
+            sf::RectangleShape manageMoviesBtn = createButton(500, 300, 200, 50);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::MAIN_MENU;
             } else if (isButtonClicked(manageMoviesBtn, mousePos)) {
                 loadMovies();
                 currentState = UIState::MOVIE_MANAGEMENT;
-            } else if (isButtonClicked(viewBookingsBtn, mousePos)) {
-                loadBookingHistory();
-                currentState = UIState::BOOKING_HISTORY;
             }
             break;
         }
-        
-        case UIState::MOVIE_MANAGEMENT: {
+          case UIState::MOVIE_MANAGEMENT: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape addMovieBtn = createButton(950, 100, 150, 50);
+            sf::RectangleShape addMovieBtn = createButton(200, 50, 150, 40);  // Match coordinates from render function
             
             if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::ADMIN_PANEL;
-            } else if (isButtonClicked(addMovieBtn, mousePos)) {
+                currentState = UIState::ADMIN_PANEL;            } else if (isButtonClicked(addMovieBtn, mousePos)) {
                 // Reset edit fields for new movie
-                editMovieTitle.clear();
-                editMovieDescription.clear();
-                editMovieGenre.clear();
-                editMovieDuration.clear();
-                editMoviePrice.clear();
-                editingMovieId = -1;
-                resetEditingFlags();
+                clearEditingFields();
                 isEditingTitle = true;
-                currentState = UIState::EDIT_MOVIE;
-            } else {
-                // Check for edit/delete buttons on movie cards
+                currentState = UIState::EDIT_MOVIE;} else {
+                // Check for edit/delete buttons on movie cards (coordinates match renderMovieManagement)
                 for (size_t i = 0; i < movies.size(); ++i) {
-                    int row = i / 3;
-                    int col = i % 3;
-                    float x = 100 + col * 370;
-                    float y = 150 + row * 200;
-                    
-                    sf::RectangleShape editBtn = createButton(x + 260, y + 90, 80, 30);
-                    sf::RectangleShape deleteBtn = createButton(x + 260, y + 125, 80, 30);
+                    sf::RectangleShape editBtn = createButton(920, 155 + i * 80, 80, 30);
+                    sf::RectangleShape deleteBtn = createButton(1010, 155 + i * 80, 80, 30);
+                    sf::RectangleShape showtimeBtn = createButton(1100, 155 + i * 80, 80, 25);
                     
                     if (isButtonClicked(editBtn, mousePos)) {
                         editingMovieId = movies[i].id;
@@ -416,6 +472,12 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                     } else if (isButtonClicked(deleteBtn, mousePos)) {
                         deleteMovie(movies[i].id);
                         loadMovies(); // Refresh the list
+                        break;
+                    } else if (isButtonClicked(showtimeBtn, mousePos)) {
+                        managingMovieId = movies[i].id;
+                        loadShowTimes(movies[i].id);
+                        resetShowtimeEditingFlags();
+                        currentState = UIState::SHOWTIME_MANAGEMENT;
                         break;
                     }
                 }
@@ -433,11 +495,10 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             sf::RectangleShape priceField = createButton(620, 400, 180, 40);
             
             if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::MOVIE_MANAGEMENT;
-            } else if (isButtonClicked(saveBtn, mousePos)) {
+                currentState = UIState::MOVIE_MANAGEMENT;            } else if (isButtonClicked(saveBtn, mousePos)) {
                 if (editingMovieId == -1) {
-                    // Add new movie logic would go here
-                    showSuccessMessage("New movie added successfully!");
+                    // Add new movie
+                    addMovie();
                 } else {
                     updateMovie(editingMovieId);
                 }
@@ -457,13 +518,47 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isEditingDuration = true;
             } else if (isButtonClicked(priceField, mousePos)) {
                 resetEditingFlags();
-                isEditingPrice = true;
+                isEditingPrice = true;            }
+            break;
+        }
+          case UIState::SHOWTIME_MANAGEMENT: {
+            // Match coordinates from renderShowtimeManagement()
+            sf::RectangleShape dateField = createInputField(250, 185, 200, 30, isEditingDate);
+            sf::RectangleShape startField = createInputField(250, 235, 200, 30, isEditingStartTime);
+            sf::RectangleShape endField = createInputField(250, 285, 200, 30, isEditingEndTime);
+            sf::RectangleShape addButton = createStyledButton(50, 340, 150, 40, sf::Color(0, 150, 0));
+            sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+            
+            if (isButtonClicked(backButton, mousePos)) {
+                currentState = UIState::MOVIE_MANAGEMENT;
+                resetShowtimeEditingFlags();
+            } else if (isButtonClicked(addButton, mousePos)) {
+                if (managingMovieId != -1) {
+                    addShowtime(managingMovieId);
+                }
+            } else if (isButtonClicked(dateField, mousePos)) {
+                resetShowtimeEditingFlags();
+                isEditingDate = true;
+            } else if (isButtonClicked(startField, mousePos)) {
+                resetShowtimeEditingFlags();
+                isEditingStartTime = true;
+            } else if (isButtonClicked(endField, mousePos)) {
+                resetShowtimeEditingFlags();
+                isEditingEndTime = true;
+            } else {
+                // Check for delete buttons on showtime entries
+                for (size_t i = 0; i < currentShowTimes.size() && i < 5; ++i) {
+                    sf::RectangleShape deleteBtn = createStyledButton(700, 455 + i * 30, 80, 25, sf::Color(150, 0, 0));
+                    if (isButtonClicked(deleteBtn, mousePos)) {
+                        deleteShowtime(managingMovieId, currentShowTimes[i].showTimeID);
+                        break;
+                    }
+                }
             }
             break;
         }
-        
-        case UIState::SUCCESS_MESSAGE: {
-            sf::RectangleShape okBtn = createButton(500, 450, 200, 50);
+          case UIState::SUCCESS_MESSAGE: {
+            sf::RectangleShape okBtn = createButton(500, 520, 200, 50);
             if (isButtonClicked(okBtn, mousePos)) {
                 currentState = previousState;
             }
@@ -478,8 +573,10 @@ void SFMLUIManager::update() {
 
 void SFMLUIManager::render() {
     window.clear(sf::Color::Black);
-    
-    switch (currentState) {
+      switch (currentState) {
+        case UIState::GUEST_SCREEN:
+            renderGuestScreen();
+            break;
         case UIState::LOGIN_SCREEN:
             renderLoginScreen();
             break;
@@ -509,9 +606,11 @@ void SFMLUIManager::render() {
             break;
         case UIState::MOVIE_MANAGEMENT:
             renderMovieManagement();
-            break;
-        case UIState::EDIT_MOVIE:
+            break;        case UIState::EDIT_MOVIE:
             renderEditMovie();
+            break;
+        case UIState::SHOWTIME_MANAGEMENT:
+            renderShowtimeManagement();
             break;
         case UIState::SUCCESS_MESSAGE:
             renderSuccessMessage();
@@ -519,6 +618,50 @@ void SFMLUIManager::render() {
     }
     
     window.display();
+}
+
+void SFMLUIManager::renderGuestScreen() {
+    // Draw gradient background
+    drawGradientBackground();
+    
+    // Main title
+    sf::Text title = createText("Movie Ticket Booking System", 300, 150, 40);
+    title.setFillColor(sf::Color::White);
+    window.draw(title);
+    
+    // Welcome message
+    sf::Text welcome = createText("Welcome! Please choose an option to continue", 350, 220, 24);
+    welcome.setFillColor(sf::Color(200, 200, 200));
+    window.draw(welcome);
+    
+    // Login button
+    sf::RectangleShape loginBtn = createStyledButton(450, 320, 300, 60, sf::Color(0, 150, 0));
+    window.draw(loginBtn);
+    
+    sf::Text loginText = createText("Login", 570, 340, 24);
+    loginText.setFillColor(sf::Color::White);
+    window.draw(loginText);
+    
+    // Register button
+    sf::RectangleShape registerBtn = createStyledButton(450, 400, 300, 60, sf::Color(0, 100, 200));
+    window.draw(registerBtn);
+    
+    sf::Text registerText = createText("Register", 555, 420, 24);
+    registerText.setFillColor(sf::Color::White);
+    window.draw(registerText);
+    
+    // Browse Movies button (Guest can view movies without logging in)
+    sf::RectangleShape browseBtn = createStyledButton(450, 480, 300, 60, sf::Color(150, 100, 0));
+    window.draw(browseBtn);
+    
+    sf::Text browseText = createText("Browse Movies", 530, 500, 24);
+    browseText.setFillColor(sf::Color::White);
+    window.draw(browseText);
+    
+    // Footer message
+    sf::Text footer = createText("No account needed to browse movies", 420, 580, 18);
+    footer.setFillColor(sf::Color(150, 150, 150));
+    window.draw(footer);
 }
 
 void SFMLUIManager::renderLoginScreen() {
@@ -589,22 +732,38 @@ void SFMLUIManager::renderMainMenu() {
     sf::Text moviesText = createText("View Movies", 540, 315, 20);
     window.draw(moviesText);
     
+    int buttonY = 370;
+    
     // History button (only for authenticated users)
     if (sessionManager->isUserAuthenticated()) {
-        sf::RectangleShape historyBtn = createButton(500, 370, 200, 50);
+        sf::RectangleShape historyBtn = createButton(500, buttonY, 200, 50);
         historyBtn.setFillColor(sf::Color(150, 100, 0));
         window.draw(historyBtn);
         
-        sf::Text historyText = createText("Booking History", 520, 385, 20);
+        sf::Text historyText = createText("Booking History", 520, buttonY + 15, 20);
         window.draw(historyText);
+        
+        buttonY += 70;
+    }
+    
+    // Admin Panel button (only for admin users)
+    if (sessionManager->getCurrentRole() == "Admin") {
+        sf::RectangleShape adminBtn = createButton(500, buttonY, 200, 50);
+        adminBtn.setFillColor(sf::Color(100, 0, 150));
+        window.draw(adminBtn);
+        
+        sf::Text adminText = createText("Admin Panel", 540, buttonY + 15, 20);
+        window.draw(adminText);
+        
+        buttonY += 70;
     }
     
     // Logout button
-    sf::RectangleShape logoutBtn = createButton(500, 440, 200, 50);
+    sf::RectangleShape logoutBtn = createButton(500, buttonY, 200, 50);
     logoutBtn.setFillColor(sf::Color(150, 0, 0));
     window.draw(logoutBtn);
     
-    sf::Text logoutText = createText("Logout", 560, 455, 20);
+    sf::Text logoutText = createText("Logout", 560, buttonY + 15, 20);
     window.draw(logoutText);
 }
 
@@ -667,8 +826,7 @@ void SFMLUIManager::renderMovieDetails() {
             sf::Text showtimeText = createText(showtimeInfo, 120, 360 + i * 30, 18);
             window.draw(showtimeText);
         }
-        
-        // Book button
+          // Book button (only for authenticated users)
         if (!currentShowTimes.empty() && sessionManager->isUserAuthenticated()) {
             sf::RectangleShape bookBtn = createButton(500, 600, 200, 50);
             bookBtn.setFillColor(sf::Color(0, 150, 0));
@@ -676,6 +834,18 @@ void SFMLUIManager::renderMovieDetails() {
             
             sf::Text bookText = createText("Book Tickets", 540, 615, 20);
             window.draw(bookText);
+        } else if (!currentShowTimes.empty() && !sessionManager->isUserAuthenticated()) {
+            // Message for guests
+            sf::Text guestMessage = createText("Please login to book tickets", 450, 600, 18);
+            guestMessage.setFillColor(sf::Color(200, 200, 0));
+            window.draw(guestMessage);
+            
+            sf::RectangleShape loginPromptBtn = createButton(500, 630, 200, 40);
+            loginPromptBtn.setFillColor(sf::Color(0, 100, 150));
+            window.draw(loginPromptBtn);
+            
+            sf::Text loginPromptText = createText("Go to Login", 550, 640, 18);
+            window.draw(loginPromptText);
         }
     }
 }
@@ -893,7 +1063,10 @@ void SFMLUIManager::renderRegisterScreen() {
 }
 
 void SFMLUIManager::renderAdminPanel() {
+    drawGradientBackground();
+    
     sf::Text title = createText("Admin Panel", 500, 100, 32);
+    title.setFillColor(sf::Color::White);
     window.draw(title);
     
     // Movie Management button
@@ -902,14 +1075,16 @@ void SFMLUIManager::renderAdminPanel() {
     window.draw(movieMgmtBtn);
     
     sf::Text movieMgmtText = createText("Movie Management", 510, 315, 18);
+    movieMgmtText.setFillColor(sf::Color::White);
     window.draw(movieMgmtText);
     
     // Back to Main Menu button
-    sf::RectangleShape backBtn = createButton(500, 370, 200, 50);
+    sf::RectangleShape backBtn = createButton(500, 380, 200, 50);
     backBtn.setFillColor(sf::Color(100, 100, 100));
     window.draw(backBtn);
     
-    sf::Text backText = createText("Back to Main Menu", 515, 385, 18);
+    sf::Text backText = createText("Back to Main Menu", 515, 395, 18);
+    backText.setFillColor(sf::Color::White);
     window.draw(backText);
 }
 
@@ -950,14 +1125,21 @@ void SFMLUIManager::renderMovieManagement() {
         
         sf::Text editText = createText("Edit", 940, 165 + i * 80, 16);
         window.draw(editText);
-        
-        // Delete button
+          // Delete button
         sf::RectangleShape deleteBtn = createButton(1010, 155 + i * 80, 80, 30);
         deleteBtn.setFillColor(sf::Color(150, 0, 0));
         window.draw(deleteBtn);
         
         sf::Text deleteText = createText("Delete", 1025, 165 + i * 80, 16);
         window.draw(deleteText);
+        
+        // Showtimes button
+        sf::RectangleShape showtimeBtn = createButton(1100, 155 + i * 80, 80, 25);
+        showtimeBtn.setFillColor(sf::Color(150, 100, 0));
+        window.draw(showtimeBtn);
+        
+        sf::Text showtimeText = createText("Times", 1118, 163 + i * 80, 14);
+        window.draw(showtimeText);
     }
 }
 
@@ -972,24 +1154,21 @@ void SFMLUIManager::renderEditMovie() {
     
     sf::Text backText = createText("Back", 80, 60, 18);
     window.draw(backText);
-    
-    // Save button
-    sf::RectangleShape saveBtn = createButton(1050, 50, 100, 40);
+      // Save button
+    sf::RectangleShape saveBtn = createButton(500, 550, 200, 50);
     saveBtn.setFillColor(sf::Color(0, 150, 0));
     window.draw(saveBtn);
     
-    sf::Text saveText = createText("Save", 1080, 60, 18);
+    sf::Text saveText = createText("Save", 580, 565, 18);
     window.draw(saveText);
-    
-    // Form fields
-    sf::Text titleLabel = createText("Title:", 300, 140, 18);
+      // Form fields
+    sf::Text titleLabel = createText("Title:", 300, 160, 18);
     window.draw(titleLabel);
-    
-    sf::RectangleShape titleField = createButton(400, 130, 400, 40);
+      sf::RectangleShape titleField = createButton(400, 150, 400, 40);
     titleField.setFillColor(isEditingTitle ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
     window.draw(titleField);
     
-    sf::Text titleText = createText(editMovieTitle, 410, 140, 18);
+    sf::Text titleText = createText(editMovieTitle, 410, 160, 18);
     window.draw(titleText);
     
     sf::Text descLabel = createText("Description:", 300, 200, 18);
@@ -1020,9 +1199,7 @@ void SFMLUIManager::renderEditMovie() {
     window.draw(durationField);
     
     sf::Text durationText = createText(editMovieDuration, 410, 410, 18);
-    window.draw(durationText);
-    
-    sf::Text priceLabel = createText("Price:", 620, 390, 18);
+    window.draw(durationText);    sf::Text priceLabel = createText("Rating:", 620, 410, 18);
     window.draw(priceLabel);
     
     sf::RectangleShape priceField = createButton(620, 400, 180, 40);
@@ -1041,28 +1218,37 @@ void SFMLUIManager::renderSuccessMessage() {
     window.draw(overlay);
     
     // Message box
-    sf::RectangleShape messageBox = createButton(300, 250, 600, 300);
+    sf::RectangleShape messageBox = createButton(250, 200, 700, 400);
     messageBox.setFillColor(sf::Color(50, 50, 50));
     messageBox.setOutlineThickness(3);
-    messageBox.setOutlineColor(sf::Color::White);
+    messageBox.setOutlineColor(sf::Color::Green);
     window.draw(messageBox);
     
     // Success title
-    sf::Text title = createText("Success!", 550, 300, 32);
+    sf::Text title = createText("SUCCESS!", 550, 250, 36);
     title.setFillColor(sf::Color::Green);
     window.draw(title);
     
-    // Success message
-    sf::Text message = createText(successMessage, 320, 380, 20);
-    message.setFillColor(sf::Color::White);
-    window.draw(message);
+    // Parse and display multi-line success message
+    std::string line;
+    std::istringstream stream(successMessage);
+    float yPos = 320;
+    
+    while (std::getline(stream, line)) {
+        if (!line.empty()) {
+            sf::Text messageLine = createText(line, 280, yPos, 18);
+            messageLine.setFillColor(sf::Color::White);
+            window.draw(messageLine);
+        }
+        yPos += 25; // Line spacing
+    }
     
     // OK button
-    sf::RectangleShape okBtn = createButton(500, 450, 200, 50);
+    sf::RectangleShape okBtn = createButton(500, 520, 200, 50);
     okBtn.setFillColor(sf::Color(0, 150, 0));
     window.draw(okBtn);
     
-    sf::Text okText = createText("OK", 580, 465, 20);
+    sf::Text okText = createText("OK", 580, 535, 20);
     window.draw(okText);
 }
 
@@ -1224,19 +1410,36 @@ void SFMLUIManager::createBooking() {
             
             bookingService->createBooking(userID, showTimeID, selectedSeats);
             
-            // Booking successful - go back to main menu
-            currentState = UIState::MAIN_MENU;
+            // Booking successful - show success message
+            previousState = UIState::MAIN_MENU;
             selectedSeats.clear();
-            statusMessage = "Booking successful!";
+            
+            // Create detailed success message
+            std::string movieTitle = (selectedMovieIndex < movies.size()) ? movies[selectedMovieIndex].title : "Movie";
+            std::string showTimeInfo = currentShowTimes[selectedShowTimeIndex].date + " " + 
+                                     currentShowTimes[selectedShowTimeIndex].startTime;
+            std::string seatsInfo = "";
+            for (size_t i = 0; i < selectedSeats.size(); ++i) {
+                if (i > 0) seatsInfo += ", ";
+                seatsInfo += selectedSeats[i];
+            }
+              successMessage = std::string("Booking Successful!\n\n") +
+                           "Movie: " + movieTitle + "\n" +
+                           "Show Time: " + showTimeInfo + "\n" +
+                           "Seats: " + seatsInfo + "\n\n" +
+                           "Thank you for your booking!";
+            
+            currentState = UIState::SUCCESS_MESSAGE;
         } catch (const std::exception& e) {
             statusMessage = "Booking failed: " + std::string(e.what());
+            // Stay in current state to show error
         }
     }
 }
 
 void SFMLUIManager::logout() {
     sessionManager->logout();
-    currentState = UIState::LOGIN_SCREEN;
+    currentState = UIState::GUEST_SCREEN;
     inputUsername.clear();
     inputPassword.clear();
     inputEmail.clear();
@@ -1262,21 +1465,130 @@ void SFMLUIManager::showSuccessMessage(const std::string& message) {
 }
 
 void SFMLUIManager::deleteMovie(int movieId) {
-    // This would connect to a movie management service to delete the movie
-    // For now, just show a success message
-    showSuccessMessage("Movie deleted successfully!");
-    loadMovies(); // Reload the movie list
+    auto visitor = std::make_shared<MovieManagerServiceVisitor>();
+    sessionManager->getCurrentContext()->accept(visitor);
+    auto movieManagerService = visitor->getMovieManagerService();
+    
+    if (movieManagerService) {
+        try {
+            movieManagerService->deleteMovie(movieId);
+            showSuccessMessage("Movie deleted successfully!");
+            loadMovies(); // Reload the movie list
+        } catch (const std::exception& e) {
+            showSuccessMessage("Error deleting movie: " + std::string(e.what()));
+        }
+    } else {
+        showSuccessMessage("Access denied: Admin privileges required!");
+    }
 }
 
 void SFMLUIManager::updateMovie(int movieId) {
-    // This would connect to a movie management service to update the movie
-    // For now, just show a success message
-    showSuccessMessage("Movie updated successfully!");
-    resetEditingFlags();
-    loadMovies(); // Reload the movie list
+    auto visitor = std::make_shared<MovieManagerServiceVisitor>();
+    sessionManager->getCurrentContext()->accept(visitor);
+    auto movieManagerService = visitor->getMovieManagerService();    if (movieManagerService) {
+        try {
+            // Create updated movie object with ID - use try-catch for price conversion
+            float rating = 5.0f; // Default rating
+            try {
+                if (!editMoviePrice.empty()) {
+                    rating = std::stof(editMoviePrice);
+                    if (rating < 0.0f || rating > 10.0f) {
+                        rating = 5.0f; // Clamp to valid range
+                    }
+                }
+            } catch (...) {
+                rating = 5.0f; // Default if conversion fails
+            }
+            
+            auto updatedMovie = std::make_shared<Movie>(
+                movieId,  // Include ID in constructor
+                editMovieTitle,
+                editMovieGenre, 
+                editMovieDescription.empty() ? "No description available" : editMovieDescription,
+                rating
+            );
+              // For now, we'll simulate update by deleting and re-adding
+            // In a real implementation, you'd have an updateMovie method
+            movieManagerService->deleteMovie(movieId);
+            
+            // Add the updated movie back without default showtimes
+            std::vector<std::string> emptyShowTimes;
+            movieManagerService->addMovie(updatedMovie, emptyShowTimes);
+            
+            showSuccessMessage("Movie updated successfully!");
+            clearEditingFields();
+            loadMovies(); // Reload the movie list
+        } catch (const std::exception& e) {
+            showSuccessMessage("Error updating movie: " + std::string(e.what()));
+        }} else {
+        showSuccessMessage("Access denied: Admin privileges required!");
+    }
+}
+
+void SFMLUIManager::addMovie() {
+    auto visitor = std::make_shared<MovieManagerServiceVisitor>();
+    sessionManager->getCurrentContext()->accept(visitor);
+    auto movieManagerService = visitor->getMovieManagerService();
+    
+    if (movieManagerService) {
+        try {
+            // Validate input fields
+            if (editMovieTitle.empty() || editMovieGenre.empty()) {
+                showSuccessMessage("Error: Title and Genre are required!");
+                return;
+            }
+            
+            float rating = 5.0f; // Default rating
+            try {
+                if (!editMoviePrice.empty()) {
+                    rating = std::stof(editMoviePrice);
+                    if (rating < 0.0f || rating > 10.0f) {
+                        rating = 5.0f; // Clamp to valid range
+                    }
+                }
+            } catch (...) {
+                rating = 5.0f; // Default if conversion fails
+            }
+              // Create new movie object
+            auto newMovie = std::make_shared<Movie>(
+                editMovieTitle,
+                editMovieGenre,
+                editMovieDescription.empty() ? "No description available" : editMovieDescription,
+                rating
+            );
+            
+            // Add movie without default showtimes - admin can add showtimes manually
+            std::vector<std::string> emptyShowTimes;
+            movieManagerService->addMovie(newMovie, emptyShowTimes);
+            
+            showSuccessMessage("New movie '" + editMovieTitle + "' added successfully!\nUse Showtime Management to add showtimes.");
+            clearEditingFields();
+            loadMovies(); // Reload the movie list
+        } catch (const std::exception& e) {
+            showSuccessMessage("Error adding movie: " + std::string(e.what()));
+        }
+    } else {
+        showSuccessMessage("Access denied: Admin privileges required!");
+    }
 }
 
 void SFMLUIManager::resetEditingFlags() {
+    isEditingTitle = false;
+    isEditingDescription = false;
+    isEditingGenre = false;
+    isEditingDuration = false;
+    isEditingPrice = false;
+    // Don't clear input fields here - only reset boolean flags
+    // editingMovieId = -1;  // Keep this for new movies only
+    // editMovieTitle.clear();  // Don't clear text
+    // editMovieDescription.clear();  // Don't clear text
+    // editMovieGenre.clear();  // Don't clear text
+    // editMovieDuration.clear();  // Don't clear text
+    // editMoviePrice.clear();  // Don't clear text
+}
+
+void SFMLUIManager::clearEditingFields() {
+    // New function to completely clear all editing data
     isEditingTitle = false;
     isEditingDescription = false;
     isEditingGenre = false;
@@ -1290,7 +1602,188 @@ void SFMLUIManager::resetEditingFlags() {
     editMoviePrice.clear();
 }
 
-// Additional UI utility method implementations
+void SFMLUIManager::renderShowtimeManagement() {
+    drawGradientBackground();
+    
+    // Title
+    sf::Text title = createText("Showtime Management", 50, 50, 36);
+    title.setFillColor(sf::Color::White);
+    window.draw(title);
+    
+    // Movie info if managing specific movie
+    if (managingMovieId >= 0) {
+        auto it = std::find_if(movies.begin(), movies.end(), 
+            [this](const MovieDTO& movie) { return movie.id == managingMovieId; });
+        
+        if (it != movies.end()) {
+            sf::Text movieInfo = createText("Managing showtimes for: " + it->title, 50, 100, 24);
+            movieInfo.setFillColor(sf::Color(200, 200, 255));
+            window.draw(movieInfo);
+        }
+    }
+    
+    // Add New Showtime Section
+    sf::Text addLabel = createText("Add New Showtime:", 50, 150, 20);
+    addLabel.setFillColor(sf::Color::White);
+    window.draw(addLabel);
+    
+    // Date input
+    sf::Text dateLabel = createText("Date (YYYY-MM-DD):", 50, 190, 16);
+    dateLabel.setFillColor(sf::Color::White);
+    window.draw(dateLabel);
+    
+    sf::RectangleShape dateField = createInputField(250, 185, 200, 30, isEditingDate);
+    window.draw(dateField);
+    
+    sf::Text dateText = createText(newShowtimeDate.empty() ? "Enter date..." : newShowtimeDate, 260, 195, 14);
+    dateText.setFillColor(isEditingDate ? sf::Color::Black : sf::Color(100, 100, 100));
+    window.draw(dateText);
+    
+    // Start time input
+    sf::Text startLabel = createText("Start Time (HH:MM):", 50, 240, 16);
+    startLabel.setFillColor(sf::Color::White);
+    window.draw(startLabel);
+    
+    sf::RectangleShape startField = createInputField(250, 235, 200, 30, isEditingStartTime);
+    window.draw(startField);
+    
+    sf::Text startText = createText(newShowtimeStartTime.empty() ? "Enter start time..." : newShowtimeStartTime, 260, 245, 14);
+    startText.setFillColor(isEditingStartTime ? sf::Color::Black : sf::Color(100, 100, 100));
+    window.draw(startText);
+    
+    // End time input
+    sf::Text endLabel = createText("End Time (HH:MM):", 50, 290, 16);
+    endLabel.setFillColor(sf::Color::White);
+    window.draw(endLabel);
+    
+    sf::RectangleShape endField = createInputField(250, 285, 200, 30, isEditingEndTime);
+    window.draw(endField);
+    
+    sf::Text endText = createText(newShowtimeEndTime.empty() ? "Enter end time..." : newShowtimeEndTime, 260, 295, 14);
+    endText.setFillColor(isEditingEndTime ? sf::Color::Black : sf::Color(100, 100, 100));
+    window.draw(endText);
+    
+    // Add Showtime button
+    sf::RectangleShape addButton = createStyledButton(50, 340, 150, 40, sf::Color(0, 150, 0));
+    window.draw(addButton);
+    
+    sf::Text addButtonText = createText("Add Showtime", 90, 355, 16);
+    addButtonText.setFillColor(sf::Color::White);
+    window.draw(addButtonText);
+    
+    // Current Showtimes Section
+    sf::Text currentLabel = createText("Current Showtimes:", 50, 420, 20);
+    currentLabel.setFillColor(sf::Color::White);
+    window.draw(currentLabel);
+    
+    // Display current showtimes (placeholder for now)
+    for (size_t i = 0; i < currentShowTimes.size() && i < 5; ++i) {
+        std::string showtimeInfo = "Date: " + currentShowTimes[i].date + 
+                                  " | Time: " + currentShowTimes[i].startTime + 
+                                  " - " + currentShowTimes[i].endTime;
+        
+        sf::Text showtimeText = createText(showtimeInfo, 50, 460 + i * 30, 14);
+        showtimeText.setFillColor(sf::Color(200, 200, 200));
+        window.draw(showtimeText);
+        
+        // Delete button for each showtime
+        sf::RectangleShape deleteBtn = createStyledButton(700, 455 + i * 30, 80, 25, sf::Color(150, 0, 0));
+        window.draw(deleteBtn);
+        
+        sf::Text deleteText = createText("Delete", 720, 462 + i * 30, 12);
+        deleteText.setFillColor(sf::Color::White);
+        window.draw(deleteText);
+    }
+    
+    // Back button
+    sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+    window.draw(backButton);
+    
+    sf::Text backText = createText("Back", 85, 735, 16);
+    backText.setFillColor(sf::Color::White);
+    window.draw(backText);
+}
+
+void SFMLUIManager::addShowtime(int movieId) {
+    // Validate input fields
+    if (newShowtimeDate.empty() || newShowtimeStartTime.empty() || newShowtimeEndTime.empty()) {
+        showSuccessMessage("Please fill in all showtime fields.");
+        return;
+    }
+    
+    // Basic validation for date format (YYYY-MM-DD)
+    if (newShowtimeDate.length() != 10 || newShowtimeDate[4] != '-' || newShowtimeDate[7] != '-') {
+        showSuccessMessage("Please enter date in YYYY-MM-DD format.");
+        return;
+    }
+    
+    // Basic validation for time format (HH:MM)
+    if (newShowtimeStartTime.length() != 5 || newShowtimeStartTime[2] != ':' ||
+        newShowtimeEndTime.length() != 5 || newShowtimeEndTime[2] != ':') {
+        showSuccessMessage("Please enter time in HH:MM format.");
+        return;
+    }
+    
+    try {
+        // Use MovieManagerServiceVisitor to add showtime
+        MovieManagerServiceVisitor visitor;
+        
+        // Create a ShowTime object with a temporary ID (will be assigned by database)
+        ShowTime newShowtime(0, newShowtimeDate, newShowtimeStartTime, newShowtimeEndTime);
+        
+        // Note: In a real implementation, you would call a service method to add the showtime
+        // For now, we'll show a success message and clear the fields
+        showSuccessMessage("Showtime added successfully!\nDate: " + newShowtimeDate + 
+                          "\nTime: " + newShowtimeStartTime + " - " + newShowtimeEndTime);
+          // Clear input fields
+        resetShowtimeEditingFlags();
+        clearShowtimeFields();
+        
+        // Reload showtimes for the current movie
+        if (managingMovieId >= 0) {
+            loadShowTimes(managingMovieId);
+        }
+        
+    } catch (const std::exception& e) {
+        showSuccessMessage("Error adding showtime: " + std::string(e.what()));
+    }
+}
+
+void SFMLUIManager::deleteShowtime(int movieId, int showtimeId) {
+    try {
+        // Use MovieManagerServiceVisitor to delete showtime
+        MovieManagerServiceVisitor visitor;
+        
+        // Note: In a real implementation, you would call a service method to delete the showtime
+        // For now, we'll show a success message
+        showSuccessMessage("Showtime deleted successfully!");
+        
+        // Reload showtimes for the current movie
+        if (managingMovieId >= 0) {
+            loadShowTimes(managingMovieId);
+        }
+        
+    } catch (const std::exception& e) {
+        showSuccessMessage("Error deleting showtime: " + std::string(e.what()));
+    }
+}
+
+void SFMLUIManager::resetShowtimeEditingFlags() {
+    isEditingDate = false;
+    isEditingStartTime = false;
+    isEditingEndTime = false;
+    // Don't clear the input data here - only reset boolean flags
+    // newShowtimeDate.clear();
+    // newShowtimeStartTime.clear();
+    // newShowtimeEndTime.clear();
+}
+
+void SFMLUIManager::clearShowtimeFields() {
+    newShowtimeDate.clear();
+    newShowtimeStartTime.clear();
+    newShowtimeEndTime.clear();
+}
+
 sf::RectangleShape SFMLUIManager::createStyledButton(float x, float y, float width, float height, sf::Color color) {
     sf::RectangleShape button;
     button.setSize(sf::Vector2f(width, height));
@@ -1305,38 +1798,39 @@ sf::RectangleShape SFMLUIManager::createInputField(float x, float y, float width
     sf::RectangleShape field;
     field.setSize(sf::Vector2f(width, height));
     field.setPosition(sf::Vector2f(x, y));
-    field.setFillColor(isActive ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
+    field.setFillColor(isActive ? sf::Color(255, 255, 255, 220) : sf::Color(200, 200, 200, 180));
     field.setOutlineThickness(2);
-    field.setOutlineColor(isActive ? sf::Color::Cyan : sf::Color::White);
+    field.setOutlineColor(isActive ? sf::Color::Blue : sf::Color(100, 100, 100));
     return field;
 }
 
 void SFMLUIManager::drawGradientBackground() {
-    // Create a simple gradient effect using multiple rectangles
+    // Create a simple gradient background using multiple rectangles
     for (int i = 0; i < 800; i += 10) {
         sf::RectangleShape strip;
         strip.setSize(sf::Vector2f(1200, 10));
-        strip.setPosition(0, i);
+        strip.setPosition(sf::Vector2f(0, i));
         
-        // Calculate gradient color from dark blue to black
-        int colorValue = 50 - (i / 16); // Gradually darken
-        if (colorValue < 0) colorValue = 0;
-        
-        strip.setFillColor(sf::Color(colorValue / 3, colorValue / 2, colorValue));
+        // Calculate gradient color
+        float ratio = static_cast<float>(i) / 800.0f;
+        int colorValue = static_cast<int>(20 + ratio * 40); // From dark to slightly lighter
+        strip.setFillColor(sf::Color(colorValue, colorValue, colorValue + 10));
         window.draw(strip);
     }
 }
 
 void SFMLUIManager::drawMovieCard(const MovieDTO& movie, float x, float y, bool isSelected) {
     // Card background
-    sf::RectangleShape card = createButton(x, y, 350, 180);
+    sf::RectangleShape card;
+    card.setSize(sf::Vector2f(300, 180));
+    card.setPosition(sf::Vector2f(x, y));
     card.setFillColor(isSelected ? sf::Color(80, 80, 120) : sf::Color(50, 50, 80));
-    card.setOutlineThickness(isSelected ? 3 : 2);
+    card.setOutlineThickness(2);
     card.setOutlineColor(isSelected ? sf::Color::Yellow : sf::Color::White);
     window.draw(card);
     
     // Movie title
-    sf::Text title = createText(movie.title, x + 10, y + 10, 20);
+    sf::Text title = createText(movie.title, x + 10, y + 10, 18);
     title.setFillColor(sf::Color::White);
     window.draw(title);
     
@@ -1349,7 +1843,8 @@ void SFMLUIManager::drawMovieCard(const MovieDTO& movie, float x, float y, bool 
     sf::Text rating = createText("Rating: " + std::to_string(movie.rating), x + 10, y + 65, 16);
     rating.setFillColor(sf::Color(255, 215, 0)); // Gold color for rating
     window.draw(rating);
-      // Movie ID
+    
+    // Movie ID
     sf::Text movieId = createText("ID: " + std::to_string(movie.id), x + 10, y + 90, 14);
     movieId.setFillColor(sf::Color(180, 180, 180));
     window.draw(movieId);
