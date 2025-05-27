@@ -113,6 +113,12 @@ void SFMLUIManager::handleTextInput(unsigned int unicode) {
                 editMovieDuration += inputChar;
             } else if (isEditingPrice) {
                 editMoviePrice += inputChar;
+            } else if (isEditingDate) {
+                newShowtimeDate += inputChar;
+            } else if (isEditingStartTime) {
+                newShowtimeStartTime += inputChar;
+            } else if (isEditingEndTime) {
+                newShowtimeEndTime += inputChar;
             }
         } else if (currentState == UIState::SHOWTIME_MANAGEMENT) {
             if (isEditingDate) {
@@ -154,6 +160,12 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
                 editMovieDuration.pop_back();
             } else if (isEditingPrice && !editMoviePrice.empty()) {
                 editMoviePrice.pop_back();
+            } else if (isEditingDate && !newShowtimeDate.empty()) {
+                newShowtimeDate.pop_back();
+            } else if (isEditingStartTime && !newShowtimeStartTime.empty()) {
+                newShowtimeStartTime.pop_back();
+            } else if (isEditingEndTime && !newShowtimeEndTime.empty()) {
+                newShowtimeEndTime.pop_back();
             }
         } else if (currentState == UIState::SHOWTIME_MANAGEMENT) {
             if (isEditingDate && !newShowtimeDate.empty()) {
@@ -484,8 +496,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::EDIT_MOVIE: {
+          case UIState::EDIT_MOVIE: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             sf::RectangleShape saveBtn = createButton(500, 550, 200, 50);
             sf::RectangleShape titleField = createButton(400, 150, 400, 40);
@@ -495,7 +506,8 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             sf::RectangleShape priceField = createButton(620, 400, 180, 40);
             
             if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::MOVIE_MANAGEMENT;            } else if (isButtonClicked(saveBtn, mousePos)) {
+                currentState = UIState::MOVIE_MANAGEMENT;
+            } else if (isButtonClicked(saveBtn, mousePos)) {
                 if (editingMovieId == -1) {
                     // Add new movie
                     addMovie();
@@ -518,37 +530,42 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isEditingDuration = true;
             } else if (isButtonClicked(priceField, mousePos)) {
                 resetEditingFlags();
-                isEditingPrice = true;            }
+                isEditingPrice = true;
+            }
+            
+            // Showtime fields (only for new movies)
+            if (editingMovieId == -1) {
+                sf::RectangleShape dateField = createInputField(360, 505, 150, 30, isEditingDate);
+                sf::RectangleShape startField = createInputField(580, 505, 100, 30, isEditingStartTime);
+                sf::RectangleShape endField = createInputField(740, 505, 100, 30, isEditingEndTime);
+                
+                if (isButtonClicked(dateField, mousePos)) {
+                    resetShowtimeEditingFlags(); // Reset all showtime flags first
+                    isEditingDate = true;        // Then activate the clicked one
+                    // Also reset main editing flags if a showtime field is clicked
+                    resetEditingFlags(); 
+                } else if (isButtonClicked(startField, mousePos)) {
+                    resetShowtimeEditingFlags();
+                    isEditingStartTime = true;
+                    resetEditingFlags();
+                } else if (isButtonClicked(endField, mousePos)) {
+                    resetShowtimeEditingFlags();
+                    isEditingEndTime = true;
+                    resetEditingFlags();
+                }
+            }
             break;
-        }
-          case UIState::SHOWTIME_MANAGEMENT: {
-            // Match coordinates from renderShowtimeManagement()
-            sf::RectangleShape dateField = createInputField(250, 185, 200, 30, isEditingDate);
-            sf::RectangleShape startField = createInputField(250, 235, 200, 30, isEditingStartTime);
-            sf::RectangleShape endField = createInputField(250, 285, 200, 30, isEditingEndTime);
-            sf::RectangleShape addButton = createStyledButton(50, 340, 150, 40, sf::Color(0, 150, 0));
+        }case UIState::SHOWTIME_MANAGEMENT: {
+            // Only handle back button and delete buttons
             sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
             
             if (isButtonClicked(backButton, mousePos)) {
                 currentState = UIState::MOVIE_MANAGEMENT;
                 resetShowtimeEditingFlags();
-            } else if (isButtonClicked(addButton, mousePos)) {
-                if (managingMovieId != -1) {
-                    addShowtime(managingMovieId);
-                }
-            } else if (isButtonClicked(dateField, mousePos)) {
-                resetShowtimeEditingFlags();
-                isEditingDate = true;
-            } else if (isButtonClicked(startField, mousePos)) {
-                resetShowtimeEditingFlags();
-                isEditingStartTime = true;
-            } else if (isButtonClicked(endField, mousePos)) {
-                resetShowtimeEditingFlags();
-                isEditingEndTime = true;
             } else {
-                // Check for delete buttons on showtime entries
-                for (size_t i = 0; i < currentShowTimes.size() && i < 5; ++i) {
-                    sf::RectangleShape deleteBtn = createStyledButton(700, 455 + i * 30, 80, 25, sf::Color(150, 0, 0));
+                // Check for delete buttons on showtime entries (updated coordinates)
+                for (size_t i = 0; i < currentShowTimes.size() && i < 8; ++i) {
+                    sf::RectangleShape deleteBtn = createStyledButton(700, 305 + i * 30, 80, 25, sf::Color(150, 0, 0));
                     if (isButtonClicked(deleteBtn, mousePos)) {
                         deleteShowtime(managingMovieId, currentShowTimes[i].showTimeID);
                         break;
@@ -1199,7 +1216,7 @@ void SFMLUIManager::renderEditMovie() {
     window.draw(durationField);
     
     sf::Text durationText = createText(editMovieDuration, 410, 410, 18);
-    window.draw(durationText);    sf::Text priceLabel = createText("Rating:", 620, 410, 18);
+    window.draw(durationText);    sf::Text priceLabel = createText("Rating:", 620, 390, 18);
     window.draw(priceLabel);
     
     sf::RectangleShape priceField = createButton(620, 400, 180, 40);
@@ -1208,6 +1225,50 @@ void SFMLUIManager::renderEditMovie() {
     
     sf::Text priceText = createText(editMoviePrice, 630, 410, 18);
     window.draw(priceText);
+    
+    // Showtime section (only show when adding new movie)
+    if (editingMovieId == -1) {
+        sf::Text showtimeLabel = createText("Initial Showtimes (Optional):", 300, 460, 20);
+        showtimeLabel.setFillColor(sf::Color(200, 200, 255));
+        window.draw(showtimeLabel);
+        
+        sf::Text showtimeInfo = createText("Format: Date (YYYY-MM-DD), Start Time (HH:MM), End Time (HH:MM)", 300, 485, 14);
+        showtimeInfo.setFillColor(sf::Color(150, 150, 150));
+        window.draw(showtimeInfo);
+        
+        // Date input
+        sf::Text dateLabel = createText("Date:", 300, 510, 16);
+        window.draw(dateLabel);
+        
+        sf::RectangleShape dateField = createInputField(360, 505, 150, 30, isEditingDate);
+        window.draw(dateField);
+        
+        sf::Text dateText = createText(newShowtimeDate.empty() ? "YYYY-MM-DD" : newShowtimeDate, 370, 515, 14);
+        dateText.setFillColor(isEditingDate ? sf::Color::Black : sf::Color(100, 100, 100));
+        window.draw(dateText);
+        
+        // Start time input
+        sf::Text startLabel = createText("Start:", 530, 510, 16);
+        window.draw(startLabel);
+        
+        sf::RectangleShape startField = createInputField(580, 505, 100, 30, isEditingStartTime);
+        window.draw(startField);
+        
+        sf::Text startText = createText(newShowtimeStartTime.empty() ? "HH:MM" : newShowtimeStartTime, 590, 515, 14);
+        startText.setFillColor(isEditingStartTime ? sf::Color::Black : sf::Color(100, 100, 100));
+        window.draw(startText);
+        
+        // End time input
+        sf::Text endLabel = createText("End:", 700, 510, 16);
+        window.draw(endLabel);
+        
+        sf::RectangleShape endField = createInputField(740, 505, 100, 30, isEditingEndTime);
+        window.draw(endField);
+        
+        sf::Text endText = createText(newShowtimeEndTime.empty() ? "HH:MM" : newShowtimeEndTime, 750, 515, 14);
+        endText.setFillColor(isEditingEndTime ? sf::Color::Black : sf::Color(100, 100, 100));
+        window.draw(endText);
+    }
 }
 
 void SFMLUIManager::renderSuccessMessage() {
@@ -1548,8 +1609,7 @@ void SFMLUIManager::addMovie() {
                 }
             } catch (...) {
                 rating = 5.0f; // Default if conversion fails
-            }
-              // Create new movie object
+            }            // Create new movie object
             auto newMovie = std::make_shared<Movie>(
                 editMovieTitle,
                 editMovieGenre,
@@ -1557,11 +1617,19 @@ void SFMLUIManager::addMovie() {
                 rating
             );
             
-            // Add movie without default showtimes - admin can add showtimes manually
-            std::vector<std::string> emptyShowTimes;
-            movieManagerService->addMovie(newMovie, emptyShowTimes);
+            // Collect showtime data from input fields
+            std::vector<std::string> movieShowTimes;
+            if (!newShowtimeDate.empty() && !newShowtimeStartTime.empty() && !newShowtimeEndTime.empty()) {
+                // Corrected format: comma-separated
+                std::string showtime = newShowtimeDate + "," + newShowtimeStartTime + "," + newShowtimeEndTime;
+                movieShowTimes.push_back(showtime);
+            }
             
-            showSuccessMessage("New movie '" + editMovieTitle + "' added successfully!\nUse Showtime Management to add showtimes.");
+            movieManagerService->addMovie(newMovie, movieShowTimes);
+            
+            showSuccessMessage("New movie \'" + editMovieTitle + "\' added successfully!" + 
+                (movieShowTimes.empty() ? "\\nTo add showtimes, edit the movie and add them during creation." : 
+                "\\nShowtime added: " + newShowtimeDate + " " + newShowtimeStartTime + "-" + newShowtimeEndTime)); // Keep user-facing message format
             clearEditingFields();
             loadMovies(); // Reload the movie list
         } catch (const std::exception& e) {
@@ -1600,6 +1668,9 @@ void SFMLUIManager::clearEditingFields() {
     editMovieGenre.clear();
     editMovieDuration.clear();
     editMoviePrice.clear();
+    
+    // Clear showtime fields as well
+    clearShowtimeFields();
 }
 
 void SFMLUIManager::renderShowtimeManagement() {
@@ -1622,80 +1693,47 @@ void SFMLUIManager::renderShowtimeManagement() {
         }
     }
     
-    // Add New Showtime Section
-    sf::Text addLabel = createText("Add New Showtime:", 50, 150, 20);
-    addLabel.setFillColor(sf::Color::White);
-    window.draw(addLabel);
+    // Information message about adding showtimes
+    sf::Text infoLabel = createText("Showtime Information:", 50, 150, 20);
+    infoLabel.setFillColor(sf::Color::White);
+    window.draw(infoLabel);
     
-    // Date input
-    sf::Text dateLabel = createText("Date (YYYY-MM-DD):", 50, 190, 16);
-    dateLabel.setFillColor(sf::Color::White);
-    window.draw(dateLabel);
+    sf::Text infoMessage1 = createText("• Showtimes can only be added when creating a new movie", 50, 180, 16);
+    infoMessage1.setFillColor(sf::Color(200, 200, 0));
+    window.draw(infoMessage1);
     
-    sf::RectangleShape dateField = createInputField(250, 185, 200, 30, isEditingDate);
-    window.draw(dateField);
+    sf::Text infoMessage2 = createText("• Use 'Add Movie' in Movie Management to create movies with showtimes", 50, 200, 16);
+    infoMessage2.setFillColor(sf::Color(200, 200, 0));
+    window.draw(infoMessage2);
     
-    sf::Text dateText = createText(newShowtimeDate.empty() ? "Enter date..." : newShowtimeDate, 260, 195, 14);
-    dateText.setFillColor(isEditingDate ? sf::Color::Black : sf::Color(100, 100, 100));
-    window.draw(dateText);
-    
-    // Start time input
-    sf::Text startLabel = createText("Start Time (HH:MM):", 50, 240, 16);
-    startLabel.setFillColor(sf::Color::White);
-    window.draw(startLabel);
-    
-    sf::RectangleShape startField = createInputField(250, 235, 200, 30, isEditingStartTime);
-    window.draw(startField);
-    
-    sf::Text startText = createText(newShowtimeStartTime.empty() ? "Enter start time..." : newShowtimeStartTime, 260, 245, 14);
-    startText.setFillColor(isEditingStartTime ? sf::Color::Black : sf::Color(100, 100, 100));
-    window.draw(startText);
-    
-    // End time input
-    sf::Text endLabel = createText("End Time (HH:MM):", 50, 290, 16);
-    endLabel.setFillColor(sf::Color::White);
-    window.draw(endLabel);
-    
-    sf::RectangleShape endField = createInputField(250, 285, 200, 30, isEditingEndTime);
-    window.draw(endField);
-    
-    sf::Text endText = createText(newShowtimeEndTime.empty() ? "Enter end time..." : newShowtimeEndTime, 260, 295, 14);
-    endText.setFillColor(isEditingEndTime ? sf::Color::Black : sf::Color(100, 100, 100));
-    window.draw(endText);
-    
-    // Add Showtime button
-    sf::RectangleShape addButton = createStyledButton(50, 340, 150, 40, sf::Color(0, 150, 0));
-    window.draw(addButton);
-    
-    sf::Text addButtonText = createText("Add Showtime", 90, 355, 16);
-    addButtonText.setFillColor(sf::Color::White);
-    window.draw(addButtonText);
+    sf::Text infoMessage3 = createText("• This screen allows you to view and delete existing showtimes only", 50, 220, 16);
+    infoMessage3.setFillColor(sf::Color(200, 200, 0));
+    window.draw(infoMessage3);
     
     // Current Showtimes Section
-    sf::Text currentLabel = createText("Current Showtimes:", 50, 420, 20);
+    sf::Text currentLabel = createText("Current Showtimes:", 50, 270, 20);
     currentLabel.setFillColor(sf::Color::White);
     window.draw(currentLabel);
     
-    // Display current showtimes (placeholder for now)
-    for (size_t i = 0; i < currentShowTimes.size() && i < 5; ++i) {
+    // Display current showtimes
+    for (size_t i = 0; i < currentShowTimes.size() && i < 8; ++i) {
         std::string showtimeInfo = "Date: " + currentShowTimes[i].date + 
                                   " | Time: " + currentShowTimes[i].startTime + 
                                   " - " + currentShowTimes[i].endTime;
         
-        sf::Text showtimeText = createText(showtimeInfo, 50, 460 + i * 30, 14);
+        sf::Text showtimeText = createText(showtimeInfo, 50, 310 + i * 30, 14);
         showtimeText.setFillColor(sf::Color(200, 200, 200));
         window.draw(showtimeText);
         
         // Delete button for each showtime
-        sf::RectangleShape deleteBtn = createStyledButton(700, 455 + i * 30, 80, 25, sf::Color(150, 0, 0));
+        sf::RectangleShape deleteBtn = createStyledButton(700, 305 + i * 30, 80, 25, sf::Color(150, 0, 0));
         window.draw(deleteBtn);
         
-        sf::Text deleteText = createText("Delete", 720, 462 + i * 30, 12);
+        sf::Text deleteText = createText("Delete",  720, 312 + i * 30, 12);
         deleteText.setFillColor(sf::Color::White);
         window.draw(deleteText);
     }
-    
-    // Back button
+      // Back button
     sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
     window.draw(backButton);
     
@@ -1705,66 +1743,31 @@ void SFMLUIManager::renderShowtimeManagement() {
 }
 
 void SFMLUIManager::addShowtime(int movieId) {
-    // Validate input fields
-    if (newShowtimeDate.empty() || newShowtimeStartTime.empty() || newShowtimeEndTime.empty()) {
-        showSuccessMessage("Please fill in all showtime fields.");
-        return;
-    }
-    
-    // Basic validation for date format (YYYY-MM-DD)
-    if (newShowtimeDate.length() != 10 || newShowtimeDate[4] != '-' || newShowtimeDate[7] != '-') {
-        showSuccessMessage("Please enter date in YYYY-MM-DD format.");
-        return;
-    }
-    
-    // Basic validation for time format (HH:MM)
-    if (newShowtimeStartTime.length() != 5 || newShowtimeStartTime[2] != ':' ||
-        newShowtimeEndTime.length() != 5 || newShowtimeEndTime[2] != ':') {
-        showSuccessMessage("Please enter time in HH:MM format.");
-        return;
-    }
-    
-    try {
-        // Use MovieManagerServiceVisitor to add showtime
-        MovieManagerServiceVisitor visitor;
-        
-        // Create a ShowTime object with a temporary ID (will be assigned by database)
-        ShowTime newShowtime(0, newShowtimeDate, newShowtimeStartTime, newShowtimeEndTime);
-        
-        // Note: In a real implementation, you would call a service method to add the showtime
-        // For now, we'll show a success message and clear the fields
-        showSuccessMessage("Showtime added successfully!\nDate: " + newShowtimeDate + 
-                          "\nTime: " + newShowtimeStartTime + " - " + newShowtimeEndTime);
-          // Clear input fields
-        resetShowtimeEditingFlags();
-        clearShowtimeFields();
-        
-        // Reload showtimes for the current movie
-        if (managingMovieId >= 0) {
-            loadShowTimes(managingMovieId);
-        }
-        
-    } catch (const std::exception& e) {
-        showSuccessMessage("Error adding showtime: " + std::string(e.what()));
-    }
+    // Display message that showtimes can only be added when creating a movie
+    showSuccessMessage("Showtimes can only be added when creating a new movie.\n\nTo add showtimes:\n1. Go to Movie Management\n2. Click 'Add Movie'\n3. Enter movie details and showtimes together\n\nThis screen is for viewing and deleting existing showtimes only.");
 }
 
 void SFMLUIManager::deleteShowtime(int movieId, int showtimeId) {
-    try {
-        // Use MovieManagerServiceVisitor to delete showtime
-        MovieManagerServiceVisitor visitor;
-        
-        // Note: In a real implementation, you would call a service method to delete the showtime
-        // For now, we'll show a success message
-        showSuccessMessage("Showtime deleted successfully!");
-        
-        // Reload showtimes for the current movie
-        if (managingMovieId >= 0) {
-            loadShowTimes(managingMovieId);
+    auto visitor = std::make_shared<MovieManagerServiceVisitor>();
+    sessionManager->getCurrentContext()->accept(visitor);
+    auto movieManagerService = visitor->getMovieManagerService();
+    
+    if (movieManagerService) {
+        try {
+            // Call the deleteShowTime method
+            movieManagerService->deleteShowTime(movieId, showtimeId);
+            showSuccessMessage("Showtime deleted successfully!");
+            
+            // Reload showtimes for the current movie
+            if (managingMovieId >= 0) {
+                loadShowTimes(managingMovieId);
+            }
+            
+        } catch (const std::exception& e) {
+            showSuccessMessage("Error deleting showtime: " + std::string(e.what()));
         }
-        
-    } catch (const std::exception& e) {
-        showSuccessMessage("Error deleting showtime: " + std::string(e.what()));
+    } else {
+        showSuccessMessage("Access denied: Admin privileges required!");
     }
 }
 
@@ -1779,9 +1782,13 @@ void SFMLUIManager::resetShowtimeEditingFlags() {
 }
 
 void SFMLUIManager::clearShowtimeFields() {
+    // Function to completely clear showtime input data
     newShowtimeDate.clear();
     newShowtimeStartTime.clear();
     newShowtimeEndTime.clear();
+    isEditingDate = false;
+    isEditingStartTime = false;
+    isEditingEndTime = false;
 }
 
 sf::RectangleShape SFMLUIManager::createStyledButton(float x, float y, float width, float height, sf::Color color) {
