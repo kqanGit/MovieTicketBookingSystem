@@ -1,5 +1,6 @@
 #include "BookingRepositorySQL.h"
-#include "SeatFactory.h"
+#include "../model/SeatFactory.h"
+#include "../model/Booking.h"
 
 BookingRepository::BookingRepository(std::string dbFilePath) {
     _dbConnection = DatabaseConnection::getInstance();

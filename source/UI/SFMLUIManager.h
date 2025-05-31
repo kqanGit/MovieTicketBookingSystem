@@ -1,3 +1,11 @@
+/**
+ * @file SFMLUIManager.h
+ * @brief SFML-based user interface manager for the movie booking system
+ * @author Movie Ticket Booking System Team
+ * @date 2025
+ * @version 1.0.0
+ */
+
 #ifndef SFML_UI_MANAGER_H
 #define SFML_UI_MANAGER_H
 
@@ -24,23 +32,86 @@
 #include "../model/ShowTime.h"
 #include "../model/Movie.h"
 
+/**
+ * @enum UIState
+ * @brief Enumeration of all possible user interface states
+ * 
+ * Defines the complete set of UI screens and states that the application
+ * can display. Used for state management and screen transitions.
+ * 
+ * @details
+ * Screen Categories:
+ * - Guest/Authentication: GUEST_SCREEN, LOGIN_SCREEN, REGISTER_SCREEN
+ * - User Interface: MAIN_MENU, MOVIE_LIST, MOVIE_DETAILS, BOOKING_SCREEN
+ * - Booking Flow: SEAT_SELECTION, BOOKING_HISTORY
+ * - Admin Interface: ADMIN_PANEL, MOVIE_MANAGEMENT, EDIT_MOVIE, SHOWTIME_MANAGEMENT
+ * - System Messages: SUCCESS_MESSAGE
+ */
 enum class UIState {
-    GUEST_SCREEN,
-    LOGIN_SCREEN,
-    MAIN_MENU,
-    MOVIE_LIST,
-    MOVIE_DETAILS,
-    BOOKING_SCREEN,
-    SEAT_SELECTION,
-    BOOKING_HISTORY,
-    REGISTER_SCREEN,
-    ADMIN_PANEL,
-    MOVIE_MANAGEMENT,
-    EDIT_MOVIE,
-    SHOWTIME_MANAGEMENT,
-    SUCCESS_MESSAGE
+    GUEST_SCREEN,        ///< Initial guest user interface
+    LOGIN_SCREEN,        ///< User authentication screen
+    MAIN_MENU,          ///< Main navigation menu
+    MOVIE_LIST,         ///< Browse available movies
+    MOVIE_DETAILS,      ///< View detailed movie information
+    BOOKING_SCREEN,     ///< Movie booking interface
+    SEAT_SELECTION,     ///< Theater seat selection
+    BOOKING_HISTORY,    ///< View user's booking history
+    REGISTER_SCREEN,    ///< New user registration
+    ADMIN_PANEL,        ///< Administrator control panel
+    MOVIE_MANAGEMENT,   ///< Movie catalog management
+    EDIT_MOVIE,         ///< Movie editing interface
+    SHOWTIME_MANAGEMENT,///< Showtime scheduling interface
+    SUCCESS_MESSAGE     ///< Success confirmation display
 };
 
+/**
+ * @class SFMLUIManager
+ * @brief Complete user interface management using SFML graphics library
+ * 
+ * This class provides a comprehensive graphical user interface for the movie
+ * ticket booking system using SFML (Simple and Fast Multimedia Library).
+ * It manages all user interactions, screen transitions, and visual presentations.
+ * 
+ * @details
+ * Core Capabilities:
+ * - Complete UI state management and transitions
+ * - Real-time user input handling and validation
+ * - Interactive movie browsing and selection
+ * - Seat selection with visual theater layout
+ * - Administrative movie and showtime management
+ * - User authentication and registration flows
+ * - Responsive design with scrolling support
+ * - Error handling and user feedback
+ * 
+ * @par Design Patterns Used
+ * - State Pattern: UI state management and transitions
+ * - Observer Pattern: Event handling and UI updates
+ * - Visitor Pattern: Service integration for different user roles
+ * - MVC Pattern: UI separated from business logic
+ * - Factory Pattern: Dynamic UI component creation
+ * 
+ * @par Technical Features
+ * - Hardware-accelerated graphics rendering
+ * - Font rendering and text input support
+ * - Event-driven programming model
+ * - Modular screen design for maintainability
+ * - Responsive layout with scrolling capabilities
+ * 
+ * @par Usage Example
+ * @code
+ * auto sessionManager = std::make_shared<SessionManager>();
+ * SFMLUIManager uiManager(sessionManager);
+ * 
+ * uiManager.initialize();
+ * uiManager.run(); // Main application loop
+ * @endcode
+ * 
+ * @warning SFML libraries must be properly linked and initialized
+ * 
+ * @see SessionManager
+ * @see UIState
+ * @see ServiceRegistry
+ */
 class SFMLUIManager {
 private:
     sf::RenderWindow window;

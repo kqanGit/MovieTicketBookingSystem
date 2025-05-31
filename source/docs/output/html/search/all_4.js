@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['dẫn_20cài_20đặt_20qt_20trên_20windows_20vscode_0',['Hướng Dẫn Cài Đặt Qt Trên Windows + VSCode',['../md_UI_2installQt.html',1,'']]],
+  ['dẫn_20cài_20đặt_20wxwidgets_20trên_20windows_20msys2_20ucrt64_1',['Hướng dẫn cài đặt wxWidgets trên Windows (MSYS2 UCRT64)',['../md_UI_2install-wxWidgets.html',1,'']]],
+  ['data_20access_20layer_2',['Data Access Layer',['../index.html#data_layer',1,'']]],
+  ['database_3',['Database',['../md_diagram_2Class__diagram_2Database.html',1,'']]],
+  ['database_20operations_4',['Database Operations',['../index.html#database_usage',1,'']]],
+  ['database_2emd_5',['Database.md',['../Database_8md.html',1,'']]],
+  ['databaseconnection_6',['DatabaseConnection',['../classDatabaseConnection.html',1,'DatabaseConnection'],['../classDatabaseConnection.html#a7f50e17550775f1803dea4084f1987f1',1,'DatabaseConnection::DatabaseConnection()']]],
+  ['databaseconnection_2ecpp_7',['DatabaseConnection.cpp',['../DatabaseConnection_8cpp.html',1,'']]],
+  ['databaseconnection_2eh_8',['DatabaseConnection.h',['../DatabaseConnection_8h.html',1,'']]],
+  ['date_9',['date',['../structShowTime.html#a0b28bd1154438f464de2e1c469d7d9db',1,'ShowTime']]],
+  ['db_10',['db',['../classDatabaseConnection.html#a80d5fabc8359af30f228ac41099e0a4a',1,'DatabaseConnection']]],
+  ['dbconn_11',['dbConn',['../classApp.html#aa88cc98f1e470315c2737d45729a2864',1,'App::dbConn'],['../classAuthenticationRepositorySQL.html#a41a3e2302157be01aa74c83dd0a1bf93',1,'AuthenticationRepositorySQL::dbConn'],['../classMovieRepositorySQL.html#a46efa321dd030a771afe41f8f70838ab',1,'MovieRepositorySQL::dbConn']]],
+  ['deleteallshowtimes_12',['deleteAllShowTimes',['../classIMovieRepository.html#aa6dcd88f21aa2b0857d9d2d2d872ac50',1,'IMovieRepository::deleteAllShowTimes()'],['../classMovieRepositorySQL.html#a4427e4076a7df95837cf8313b4166209',1,'MovieRepositorySQL::deleteAllShowTimes()']]],
+  ['deletemovie_13',['deleteMovie',['../classIMovieRepository.html#a77870e3e767e1fa52b200f3e5d93e2ac',1,'IMovieRepository::deleteMovie()'],['../classMovieRepositorySQL.html#acc36023b07ab05bc1bfe1b6e51a997cb',1,'MovieRepositorySQL::deleteMovie()'],['../classIMovieManagerService.html#abbe92eed5cabd273b2a23be27f66bb69',1,'IMovieManagerService::deleteMovie()'],['../classMovieManagerService.html#a80621281f60c8f1d1c6c5b7ec1a2b0e6',1,'MovieManagerService::deleteMovie()'],['../classSFMLUIManager.html#ad17defb895b7998ffbe26f15f4ffd6b3',1,'SFMLUIManager::deleteMovie()']]],
+  ['deleteshowtime_14',['deleteShowTime',['../classIMovieRepository.html#a122eec4ed65cf902d30856227bd58627',1,'IMovieRepository::deleteShowTime()'],['../classMovieRepositorySQL.html#a89e7962fcd3b0c9d84fff0c84277240c',1,'MovieRepositorySQL::deleteShowTime()'],['../classIMovieManagerService.html#a747d02274fb638d723b16bfc7212f613',1,'IMovieManagerService::deleteShowTime()'],['../classMovieManagerService.html#aa9b3c50df97920646255e4c04c070b61',1,'MovieManagerService::deleteShowTime()']]],
+  ['deleteshowtime_15',['deleteShowtime',['../classSFMLUIManager.html#a90b26774efc7d9a8486fe6d08ceb491a',1,'SFMLUIManager']]],
+  ['description_16',['description',['../classMovie.html#a63e2f7263b81644b17ed9c01b6061ef8',1,'Movie']]],
+  ['design_20patterns_17',['Design Patterns',['../index.html#patterns_sec',1,'']]],
+  ['development_20team_18',['Development Team',['../index.html#team_sec',1,'']]],
+  ['disconnect_19',['disconnect',['../classDatabaseConnection.html#a0722d2ce742a882eaabc3eb7ed518b64',1,'DatabaseConnection']]],
+  ['documentation_20',['Documentation',['../index.html#documentation_sec',1,'Documentation'],['../index.html',1,'Movie Ticket Booking System - API Documentation']]],
+  ['drawgradientbackground_21',['drawGradientBackground',['../classSFMLUIManager.html#a88fb52e58e13398cdc8783b773cf7efc',1,'SFMLUIManager']]],
+  ['drawmoviecard_22',['drawMovieCard',['../classSFMLUIManager.html#a765d8cb67eddfe235583d7b2c127697b',1,'SFMLUIManager']]]
+];

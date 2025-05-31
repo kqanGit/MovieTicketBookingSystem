@@ -1,0 +1,204 @@
+/**
+ * @mainpage Movie Ticket Booking System - API Documentation
+ * 
+ * @section intro_sec Introduction
+ * 
+ * Welcome to the Movie Ticket Booking System API documentation. This system is a comprehensive
+ * Object-Oriented Programming (OOP) project that demonstrates advanced software engineering
+ * principles, design patterns, and modern C++ development practices.
+ * 
+ * @section overview_sec System Overview
+ * 
+ * The Movie Ticket Booking System is a desktop application built using C++ that simulates
+ * a real-world cinema management platform. It enables different user roles to interact
+ * with a centralized movie booking system through an intuitive SFML-based graphical interface.
+ * 
+ * @subsection key_features Key Features
+ * - **Multi-Role Authentication**: Guest, User, and Admin role management
+ * - **Movie Management**: Complete CRUD operations for movie catalog
+ * - **Ticket Booking**: Interactive seat selection and reservation system
+ * - **Showtime Scheduling**: Flexible movie scheduling system
+ * - **Database Persistence**: SQLite-based data storage with transaction support
+ * - **Modern UI**: SFML-based graphical user interface
+ * 
+ * @section architecture_sec System Architecture
+ * 
+ * The system follows a clean 3-layer architecture pattern:
+ * 
+ * @subsection presentation_layer Presentation Layer
+ * - **Framework**: SFML (Simple and Fast Multimedia Library)
+ * - **Components**: UI::SFMLUIManager, various UI controllers
+ * - **Responsibility**: User interface rendering, event handling, input validation
+ * 
+ * @subsection business_layer Business Logic Layer
+ * - **Services**: Authentication, Booking, Movie management services
+ * - **Components**: service:: namespace classes
+ * - **Responsibility**: Core business rules, workflow management, data processing
+ * 
+ * @subsection data_layer Data Access Layer
+ * - **Framework**: SQLite3 with custom ORM-like implementation
+ * - **Components**: Repository pattern implementations, DatabaseConnection
+ * - **Responsibility**: Data persistence, database operations, data integrity
+ * 
+ * @section patterns_sec Design Patterns
+ * 
+ * The system showcases several key design patterns:
+ * 
+ * @subsection singleton_pattern Singleton Pattern
+ * - **Implementation**: DatabaseConnection
+ * - **Purpose**: Ensures single database connection instance
+ * - **Benefits**: Resource management, connection pooling, thread safety
+ * 
+ * @subsection factory_pattern Factory Pattern
+ * - **Implementation**: UserContextFactory, SeatFactory
+ * - **Purpose**: Creates appropriate objects based on runtime conditions
+ * - **Benefits**: Encapsulates object creation logic, supports polymorphism
+ * 
+ * @subsection repository_pattern Repository Pattern
+ * - **Implementation**: IMovieRepository, IBookingRepository, IAuthenticationRepository
+ * - **Purpose**: Abstracts data access from business logic
+ * - **Benefits**: Testability, maintainability, separation of concerns
+ * 
+ * @subsection visitor_pattern Visitor Pattern
+ * - **Implementation**: Service layer with visitor-based operation dispatch
+ * - **Purpose**: Separates algorithms from object structure
+ * - **Benefits**: Easy to add new operations without modifying existing classes
+ * 
+ * @subsection strategy_pattern Strategy Pattern
+ * - **Implementation**: IUserContext with Guest/User/Admin implementations
+ * - **Purpose**: Different behaviors based on user role
+ * - **Benefits**: Runtime behavior selection, role-based functionality
+ * 
+ * @section modules_sec System Modules
+ * 
+ * @subsection core_modules Core Modules
+ * - **App**: Main application controller and entry point
+ * - **SessionManager**: User session and context management
+ * - **DatabaseConnection**: Database connectivity and query execution
+ * 
+ * @subsection model_modules Model Layer
+ * - **Movie**: Movie entity with metadata and showtimes
+ * - **User/Admin/Guest**: User role implementations
+ * - **Booking**: Ticket booking and seat reservation
+ * - **ShowTime**: Movie scheduling information
+ * 
+ * @subsection service_modules Service Layer
+ * - **AuthenticationService**: Login, registration, and security
+ * - **BookingService**: Ticket booking workflow
+ * - **MovieService**: Movie management operations
+ * 
+ * @subsection repository_modules Repository Layer
+ * - **MovieRepository**: Movie data persistence
+ * - **BookingRepository**: Booking transaction management
+ * - **AuthenticationRepository**: User credential handling
+ * 
+ * @section usage_sec Usage Examples
+ * 
+ * @subsection basic_usage Basic Application Usage
+ * 
+ * @code{.cpp}
+ * // Initialize and run the application
+ * App app;
+ * if (app.initialize()) {
+ *     app.run();  // Starts the main event loop
+ * }
+ * app.shutdown();
+ * @endcode
+ * 
+ * @subsection database_usage Database Operations
+ * 
+ * @code{.cpp}
+ * // Get database connection
+ * DatabaseConnection* db = DatabaseConnection::getInstance();
+ * db->connect("database.db");
+ * 
+ * // Execute a parameterized query
+ * std::vector<std::string> params = {"Action"};
+ * auto results = db->executeQuery("SELECT * FROM movies WHERE genre = ?", params);
+ * 
+ * for (const auto& row : results) {
+ *     std::cout << "Movie: " << row.at("title") << std::endl;
+ * }
+ * @endcode
+ * 
+ * @subsection session_usage Session Management
+ * 
+ * @code{.cpp}
+ * // Create session manager
+ * SessionManager sessionMgr;
+ * 
+ * // Check current user role
+ * std::string role = sessionMgr.getCurrentRole();  // "guest"
+ * 
+ * // Login user (after authentication)
+ * AccountInformation userInfo;
+ * userInfo.username = "john_doe";
+ * userInfo.role = "user";
+ * sessionMgr.setUserContext(userInfo);
+ * 
+ * // Now role changes
+ * role = sessionMgr.getCurrentRole();  // "user"
+ * @endcode
+ * 
+ * @section testing_sec Testing Framework
+ * 
+ * The system includes comprehensive testing using Google Test framework:
+ * 
+ * - **Unit Tests**: Service layer and business logic testing
+ * - **Integration Tests**: Database and repository testing
+ * - **Mock Objects**: Isolated testing with dependency injection
+ * 
+ * @section build_sec Building the Project
+ * 
+ * @subsection requirements Requirements
+ * - C++17 or later
+ * - CMake 3.16+
+ * - SFML 2.5+
+ * - SQLite3
+ * - Google Test (for testing)
+ * 
+ * @subsection build_steps Build Steps
+ * 
+ * @code{.bash}
+ * # Create build directory
+ * mkdir build && cd build
+ * 
+ * # Configure with CMake
+ * cmake ../source
+ * 
+ * # Build the project
+ * make -j4  # Linux/macOS
+ * # or MSBuild on Windows
+ * 
+ * # Run the application
+ * ./MovieTicketBookingSystem
+ * @endcode
+ * 
+ * @section documentation_sec Documentation
+ * 
+ * This documentation is generated using Doxygen. To regenerate:
+ * 
+ * @code{.bash}
+ * cd source/docs
+ * doxygen Doxyfile
+ * @endcode
+ * 
+ * @section team_sec Development Team
+ * 
+ * - **Team Leader**: Bùi Minh Quân (23120337)
+ *   - System architecture, booking module, project management
+ * 
+ * - **Backend Developer**: Bửu Huỳnh Vĩnh Phúc (23120328)
+ *   - Authentication system, database design, security
+ * 
+ * - **Frontend Developer**: Trương Thành Phát (23120319)
+ *   - Movie management, UI design, database modeling
+ * 
+ * @section license_sec License
+ * 
+ * This project is developed for educational purposes as part of an Object-Oriented
+ * Programming course. All rights reserved to the development team.
+ * 
+ * @date 2025
+ * @version 1.0.0
+ */

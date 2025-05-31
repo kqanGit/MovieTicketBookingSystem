@@ -1,0 +1,10 @@
+^E:\JUST WRITE SOME CODE\OOP\MOVIETICKETBOOKINGSYSTEM\SOURCE\BUILD-RELEASE\CMAKEFILES\19B488B83D3B54C82966885913A6E4D8\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SE:/just write some code/OOP/MovieTicketBookingSystem/source" "-BE:/just write some code/OOP/MovieTicketBookingSystem/source/build-release" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/just write some code/OOP/MovieTicketBookingSystem/source/build-release/MovieTicketBookingSystem.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

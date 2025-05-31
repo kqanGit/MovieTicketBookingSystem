@@ -102,6 +102,7 @@
 #include "../service/UserInformationService.h"
 #include "../service/LogoutService.h"
 #include "../service/ILogoutService.h"
+#include "../core/ServiceRegistry.h"
 
 // Test Guest context: không có UserInformationService
 TEST(SessionManagerTest, GuestHasNoUserInfoService) {
@@ -158,7 +159,7 @@ TEST(SessionManagerTest, SessionLogoutReturnsToGuest) {
     userAcc.gmail = "user01@gmail.com";
     userAcc.role = "User";
     SessionManager manager;
-    std::shared_ptr<ILogoutService> service = std::make_shared<LogoutService>();
+    ServiceRegistry::addSingleton<ILogoutService>(std::make_shared<LogoutService>());
     
     // Initially should be Guest
     EXPECT_EQ(manager.getCurrentRole(), "Guest");

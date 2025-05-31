@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['layer_0',['Layer',['../index.html#business_layer',1,'Business Logic Layer'],['../index.html#data_layer',1,'Data Access Layer'],['../index.html#model_modules',1,'Model Layer'],['../index.html#presentation_layer',1,'Presentation Layer'],['../index.html#repository_modules',1,'Repository Layer'],['../index.html#service_modules',1,'Service Layer']]],
+  ['license_1',['License',['../index.html#license_sec',1,'']]],
+  ['loadbookinghistory_2',['loadBookingHistory',['../classSFMLUIManager.html#a918859b2805e647957c72e1f358d0f9d',1,'SFMLUIManager']]],
+  ['loadmoviedetails_3',['loadMovieDetails',['../classSFMLUIManager.html#a31444e417ed7f558feac909f89c058db',1,'SFMLUIManager']]],
+  ['loadmovies_4',['loadMovies',['../classSFMLUIManager.html#ae81621456a95b2d935021122be002d89',1,'SFMLUIManager']]],
+  ['loadseats_5',['loadSeats',['../classSFMLUIManager.html#aa61a59a488a4481d88ca8bc7d740d9c5',1,'SFMLUIManager']]],
+  ['loadshowtimes_6',['loadShowTimes',['../classSFMLUIManager.html#a77a4127678c69addd8b5f3a6850cdbb0',1,'SFMLUIManager']]],
+  ['logic_20layer_7',['Business Logic Layer',['../index.html#business_layer',1,'']]],
+  ['login_5fscreen_8',['LOGIN_SCREEN',['../SFMLUIManager_8h.html#a46982b6b3247b002a74dde6ca26b2344a1f47c52d3f2879606bfdfaa24493966e',1,'SFMLUIManager.h']]],
+  ['loginservice_9',['LoginService',['../classLoginService.html',1,'LoginService'],['../classLoginService.html#a0f1d6855a7fcaa1ed5d77e120f70b358',1,'LoginService::LoginService()'],['../classLoginService.html#a3e86612650b5cd90c680f0f556ff96ab',1,'LoginService::LoginService(IAuthenticationRepository *r)']]],
+  ['loginservice_2ecpp_10',['LoginService.cpp',['../LoginService_8cpp.html',1,'']]],
+  ['loginservice_2eh_11',['LoginService.h',['../LoginService_8h.html',1,'']]],
+  ['loginservicevisitor_12',['LoginServiceVisitor',['../classLoginServiceVisitor.html',1,'LoginServiceVisitor'],['../classLoginServiceVisitor.html#a08a37124f195be12e80b4ec6de00bac7',1,'LoginServiceVisitor::LoginServiceVisitor()']]],
+  ['loginservicevisitor_2ecpp_13',['LoginServiceVisitor.cpp',['../LoginServiceVisitor_8cpp.html',1,'']]],
+  ['loginservicevisitor_2eh_14',['LoginServiceVisitor.h',['../LoginServiceVisitor_8h.html',1,'']]],
+  ['logout_15',['logout',['../classILogoutService.html#a020bfa05dcf8515166cd8a7e5bc47161',1,'ILogoutService::logout()'],['../classLogoutService.html#af8b304125702762a6bf2e78035b52271',1,'LogoutService::logout()'],['../classSessionManager.html#a69faf310362b529115819bd73151d066',1,'SessionManager::logout()'],['../classSFMLUIManager.html#af75e8a18184c39ddb2b6f199b046fa47',1,'SFMLUIManager::logout()']]],
+  ['logoutservice_16',['LogoutService',['../classLogoutService.html',1,'LogoutService'],['../classLogoutService.html#a65bdfdb4d4a027e6b129dc730c873399',1,'LogoutService::LogoutService()']]],
+  ['logoutservice_2ecpp_17',['LogoutService.cpp',['../LogoutService_8cpp.html',1,'']]],
+  ['logoutservice_2eh_18',['LogoutService.h',['../LogoutService_8h.html',1,'']]],
+  ['logoutservicevisitor_19',['LogoutServiceVisitor',['../classLogoutServiceVisitor.html',1,'LogoutServiceVisitor'],['../classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57',1,'LogoutServiceVisitor::LogoutServiceVisitor()']]],
+  ['logoutservicevisitor_2ecpp_20',['LogoutServiceVisitor.cpp',['../LogoutServiceVisitor_8cpp.html',1,'']]],
+  ['logoutservicevisitor_2eh_21',['LogoutServiceVisitor.h',['../LogoutServiceVisitor_8h.html',1,'']]]
+];
