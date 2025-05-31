@@ -1,4 +1,3 @@
-```mermaid
 classDiagram
 direction TB
     class IMovie {
@@ -22,10 +21,12 @@ direction TB
     }
 
     class IMovieRepository {
-	    +getAllMovies()* vector~MovieDTO~
-	    +getMovieById(id)* IMovie
-	    +addMovie(movie)*
-	    +deleteMovie(id)*
+	    +getAllMovies() vector~MovieDTO~
+	    +getMovieById(id) IMovie
+	    +addMovie(movie)
+	    +deleteMovie(id)
+        +deleteShowTimes(moiveID, showTimeID)
+        +deleteAllShowTimes(moiveID)
     }
 
     class MovieRepositorySQL {
@@ -34,28 +35,36 @@ direction TB
 	    +getMovieById(id)
 	    +addMovie(movie)
 	    +deleteMovie(id)
+        +ddShowTimes(id, starttime, endtime)
+        +deleteShowTimes(moiveID, showTimeID)
+        +getShowTimesByMovieId(id)
+        +deleteAllShowTimes(moiveID)
     }
 
     class IMovieViewerService {
-	    +showAllMovies()*
-	    +showMovieDetail(id)*
+	    +showAllMovies()
+	    +showMovieDetail(id)
+        +showMovieShowTimes(id)
     }
 
     class IMovieManagerService {
-	    +addMovie(movie)*
-	    +deleteMovie(id)*
+	    +addMovie(movie)
+	    +deleteMovie(id)
+        +deleteShowTimes(moiveID, showTimeID)
     }
 
     class MovieManagerService {
-	    -IMovieRepository repo
+	    -IMovieRepository : repo
 	    +addMovie(movie)
 	    +deleteMovie(id)
+        +deleteShowTimes(moiveID, showTimeID)
     }
 
     class MovieViewerService {
 	    -IMovieRepository : repo
 	    +showAllMovies()
 	    +showMovieDetail(id)
+        +showMovieShowTimes(id)
     }
 
     %% class DatabaseConnection {
@@ -67,9 +76,8 @@ direction TB
 	%%     +getConnection()
     %% }
 
-	<<interface>> IMovieManagerService
-	<<interface>> IMovieViewerService
-    <<interface>> IMovieRepository
+	<<interface>> IMovie
+	<<interface>> IMovieRepository
 
     IMovie <|.. Movie
     IMovie <.. IMovieManagerService
@@ -81,5 +89,3 @@ direction TB
     MovieViewerService ..> IMovieRepository : use
     IMovieManagerService <|.. MovieManagerService
     IMovieViewerService <|.. MovieViewerService
-
-```

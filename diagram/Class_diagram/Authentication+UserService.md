@@ -1,135 +1,84 @@
 ```mermaid
-
-
 classDiagram
 direction TB
-    class AccountInformation {
-	    +string userName
-	    +string password
-	    +string phoneNumber
-	    +string gmail
-	    +string role
-    }
 
-    class User {
-	    +getUserInformationService() "IUserInformationService*"
-	    +getMovieViewerService() "IMovieViewerService*"
-	    +getMovieManagerService() nullptr
-	    +getBookingService() "IBookingService*"
-	    +getViewBookingHistoryService() "IViewBookingHistoryService*"
-	    +getLoginService() nullptr
-	    +getLogoutService() "ILogoutService*"
-	    +getRegisterService() nullptr
-    }
-
-    class Admin {
-	    +getUserInformationService() "IUserInformationService*"
-	    +getMovieViewerService() "IMovieViewerService*"
-	    +getMovieManagerService() "IMovieManagerService*"
-	    +getBookingService() "IBookingService*"
-	    +getViewBookingHistoryService() "IViewBookingHistoryService*"
-	    +getLoginService() nullptr
-	    +getLogoutService() "ILogoutService*"
-	    +getRegisterService() nullptr
-    }
-
-    class UserContextFactory {
-        CreateUser()*
-    }
-
-    class UserContextCreator {
-        CreateUser()
-    }
-
-    class AdminContextCreator {
-        CreateUser()
-    }
-    
-    class GuestContextCreator {
-        CreateUser()
-    }
-
-    class ILoginService {
-	    +login(username, password)*
-
-    }
-
-    class LoginService {
-	    -IAuthenticationRepository : repo
-	    +login(username, password)
-    }
-
-    class ILogoutService {
-	    +logout()*
-    }
-
-    class LogoutService {
-	    +logout()
-    }
-
-    class IRegisterService {
-	    +register()*
-    }
-
-    class RegisterService {
-        -IAuthenticationRepository : repo
-	    +register()
-    }
-
-
-    class IAuthenticationRepository {
-	    +addUser(userName, password, phoneNumber, gmail, role)*
-	    +getUserByUserName(userName, password) AccountInformation
-    }
-
-    class AuthenticationRepositorySQL {
-	    - DatabaseConnection: dbConn
-	    +addUser(userName, password, phoneNumber, gmail, role)*
-	    +getUserByUserName(userName, password) AccountInformation
-    }
-
+    %% User Context
     class IUserContext {
-	    +getUserInformationService() IUserInformationService**
-	    +getMovieViewerService() IMovieViewerService**
-	    +getMovieManagerService() IMovieManagerService**
-	    +getBookingService() IBookingService**
-	    +getViewBookingHistoryService() IViewBookingHistoryService**
-	    +getLoginService() ILoginService**
-	    +getLogoutService() ILogoutService**
-	    +getRegisterService() IRegisterService**
+        <<interface>>
+        +accept(visitor)*
     }
 
     class Guest {
-	    +getUserInformationService() nullptr
-	    +getMovieViewerService() "IMovieViewerService*"
-	    +getMovieManagerService() nullptr
-	    +getBookingService() nullptr
-	    +getViewBookingHistoryService() nullptr
-	    +getLoginService() "ILoginService*"
-	    +getLogoutService() nullptr
-	    +getRegisterService() "IRegisterService*"
+        +accept(visitor)
     }
 
-	<<interface>> ILoginService
-	<<interface>> ILogoutService
-	<<interface>> IUserContext
+    class User {
+        +accept(visitor)
+    }
 
-    UserContextFactory <|-- UserContextCreator
-    UserContextFactory <|-- AdminContextCreator
-    UserContextFactory <|-- GuestContextCreator
-    UserContextFactory <.. IUserContext
+    class Admin {
+        +accept(visitor)
+    }
+
+    %% Services
+    class ILoginService {
+        <<interface>>
+        +authenticate()*
+    }
+
+    class LoginService {
+        +authenticate()
+    }
+
+    class IRegisterService {
+        <<interface>>
+        +registerUser()*
+    }
+
+    class RegisterService {
+        +registerUser()
+    }
+
+    class IUserInformationService {
+        <<interface>>
+        +printAccountInfo()*
+        +getRole()*
+    }
+
+    class UserInformationService {
+        +printAccountInfo()
+        +getRole()
+    }
+
+    %% Repository
+    class IAuthenticationRepository {
+        <<interface>>
+        +addUser()*
+        +getUserByUserName()*
+    }
+
+    class AuthenticationRepositorySQL {
+        +addUser()
+        +getUserByUserName()
+    }
+
+    %% Core Data
+    class AccountInformation {
+        +int userID
+        +string userName
+        +string password
+        +string role
+    }
+
+    %% Relationships
     IUserContext <|.. Guest
     IUserContext <|.. User
     IUserContext <|.. Admin
-    IAuthenticationRepository <|.. AuthenticationRepositorySQL
-    IAuthenticationRepository <.. AccountInformation
     ILoginService <|.. LoginService
-    LoginService <.. IAuthenticationRepository
-    RegisterService <.. IAuthenticationRepository
-    ILogoutService <|.. LogoutService
-    IRegisterService <|.. RegisterService 
-    Guest <.. ILoginService
-    Guest <.. IRegisterService
-    User <.. ILogoutService
-    Admin <.. ILogoutService
+    IRegisterService <|.. RegisterService
+    IUserInformationService <|.. UserInformationService
+    IAuthenticationRepository <|.. AuthenticationRepositorySQL
+    LoginService --> IAuthenticationRepository
+    RegisterService --> IAuthenticationRepository
+    UserInformationService --> IAuthenticationRepository
 ```
