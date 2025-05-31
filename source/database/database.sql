@@ -76,13 +76,59 @@ INSERT INTO SEATTYPE VALUES
 ('Single', 50.0),
 ('Couple', 90.0);
 
+-- Ghế Single: A1–A10
 INSERT INTO SEAT VALUES 
-('A1', 'Single', 50.0),
-('A2', 'Single', 50.0),
-('A3', 'Single', 50.0),
-('B1', 'Couple', 90.0),
-('B2', 'Couple', 90.0),
-('B3', 'Couple', 90.0);
+('A1', 'Single', 50.0), ('A2', 'Single', 50.0), ('A3', 'Single', 50.0),
+('A4', 'Single', 50.0), ('A5', 'Single', 50.0), ('A6', 'Single', 50.0),
+('A7', 'Single', 50.0), ('A8', 'Single', 50.0), ('A9', 'Single', 50.0), ('A10', 'Single', 50.0);
+
+-- Ghế Couple: B1–B5
+INSERT INTO SEAT VALUES 
+('B1', 'Couple', 90.0), ('B2', 'Couple', 90.0), ('B3', 'Couple', 90.0), 
+('B4', 'Couple', 90.0), ('B5', 'Couple', 90.0);
+
+-- Ghế Single: C1–C10
+INSERT INTO SEAT VALUES 
+('C1', 'Single', 50.0), ('C2', 'Single', 50.0), ('C3', 'Single', 50.0), 
+('C4', 'Single', 50.0), ('C5', 'Single', 50.0), ('C6', 'Single', 50.0), 
+('C7', 'Single', 50.0), ('C8', 'Single', 50.0), ('C9', 'Single', 50.0), ('C10', 'Single', 50.0);
+
+-- Ghế Single: D1–D10
+INSERT INTO SEAT VALUES 
+('D1', 'Single', 50.0), ('D2', 'Single', 50.0), ('D3', 'Single', 50.0), 
+('D4', 'Single', 50.0), ('D5', 'Single', 50.0), ('D6', 'Single', 50.0), 
+('D7', 'Single', 50.0), ('D8', 'Single', 50.0), ('D9', 'Single', 50.0), ('D10', 'Single', 50.0);
+
+-- Ghế Single: F1–F10
+INSERT INTO SEAT VALUES 
+('F1', 'Single', 50.0), ('F2', 'Single', 50.0), ('F3', 'Single', 50.0), 
+('F4', 'Single', 50.0), ('F5', 'Single', 50.0), ('F6', 'Single', 50.0), 
+('F7', 'Single', 50.0), ('F8', 'Single', 50.0), ('F9', 'Single', 50.0), ('F10', 'Single', 50.0);
+
+-- Ghế Couple: G1–G5
+INSERT INTO SEAT VALUES 
+('G1', 'Couple', 90.0), ('G2', 'Couple', 90.0), ('G3', 'Couple', 90.0), 
+('G4', 'Couple', 90.0), ('G5', 'Couple', 90.0);
+
+-- Ghế Single: H1–H10
+INSERT INTO SEAT VALUES 
+('H1', 'Single', 50.0), ('H2', 'Single', 50.0), ('H3', 'Single', 50.0), 
+('H4', 'Single', 50.0), ('H5', 'Single', 50.0), ('H6', 'Single', 50.0), 
+('H7', 'Single', 50.0), ('H8', 'Single', 50.0), ('H9', 'Single', 50.0), ('H10', 'Single', 50.0);
+
+-- Ghế Couple: I1–I5
+INSERT INTO SEAT VALUES 
+('I1', 'Couple', 90.0), ('I2', 'Couple', 90.0), ('I3', 'Couple', 90.0), 
+('I4', 'Couple', 90.0), ('I5', 'Couple', 90.0);
+
+-- Ghế Single: J1–J10
+INSERT INTO SEAT VALUES 
+('J1', 'Single', 50.0), ('J2', 'Single', 50.0), ('J3', 'Single', 50.0), 
+('J4', 'Single', 50.0), ('J5', 'Single', 50.0), ('J6', 'Single', 50.0), 
+('J7', 'Single', 50.0), ('J8', 'Single', 50.0), ('J9', 'Single', 50.0), ('J10', 'Single', 50.0);
+
+
+
 
 INSERT INTO ACCOUNT (Password, RoleUser, Gmail, PhoneNumber, UserName) VALUES
 ('pass123', 'User', 'user1@gmail.com', '0912345678', 'Nguyen Van A'),
