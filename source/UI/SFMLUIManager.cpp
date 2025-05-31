@@ -438,10 +438,9 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::SEAT_SELECTION: {
+          case UIState::SEAT_SELECTION: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
+            sf::RectangleShape confirmBtn = createButton(900, 650, 200, 50);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::BOOKING_SCREEN;
@@ -910,7 +909,7 @@ void SFMLUIManager::renderMainMenu() {
         sf::Color(150, 0, 0)
     };
     // Draw buttons in a centered horizontal row
-    
+
     for (int i = 0; i < labels.size(); ++i) {
         float x = startX + i * (w + gap);
         
@@ -1315,7 +1314,7 @@ void SFMLUIManager::renderSeatSelection() {
     // Only draw gradient background for non-guest screens
     drawGradientBackground();
     
-    sf::Text title = createText("Select Seats", 500, 50, 28);
+    sf::Text title = createText("Select Seats", 550, 50, 35);
     window.draw(title);
     
     // Back button
@@ -1515,31 +1514,59 @@ void SFMLUIManager::renderSeatSelection() {
         selectedTitle.setFillColor(sf::Color(220, 255, 220));
         window.draw(selectedTitle);
         
-        // Display each seat as a mini icon with text
-        float xPos = 340;
+        // // Display each seat as a mini icon with text
+        // float xPos = 340;
+        // for (const auto& seat : selectedSeats) {
+        //     // Small seat icon
+        //     sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
+        //     seatIcon.setPosition(xPos, 722);
+        //     seatIcon.setFillColor(sf::Color::Green);
+        //     window.draw(seatIcon);
+        //       // Seat ID text
+        //     sf::Text seatText = createText(seat, xPos + 20, 720, 16);
+        //     seatText.setFillColor(sf::Color(220, 255, 220));
+        //     window.draw(seatText);
+            
+        //     xPos += 60; // Space between seats
+        // }
+
+    }
+
+        // Display each seat as a mini icon with text in a square/grid layout (right side)
+        float gridStartX = 950;  // Gần cạnh phải của cửa sổ (1280px)
+        float gridStartY = 100;  // Bắt đầu phía dưới
+        int seatsPerRow = 3;     // Số ghế trên mỗi hàng
+        int seatGap = 60;        // Khoảng cách giữa các ghế
+        int index = 0;
+
         for (const auto& seat : selectedSeats) {
-            // Small seat icon
-            sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
-            seatIcon.setPosition(xPos, 722);
-            seatIcon.setFillColor(sf::Color::Green);
-            window.draw(seatIcon);
-            
-            // Seat ID text
-            sf::Text seatText = createText(seat, xPos + 20, 720, 16);
-            seatText.setFillColor(sf::Color(220, 255, 220));
-            window.draw(seatText);
-            
-            xPos += 60; // Space between seats
-        }
+        int row = index / seatsPerRow;
+        int col = index % seatsPerRow;
+
+        float xPos = gridStartX + col * seatGap;
+        float yPos = gridStartY + row * seatGap;
+
+        // Small seat icon
+        sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
+        seatIcon.setPosition(xPos, yPos);
+        seatIcon.setFillColor(sf::Color::Green);
+        window.draw(seatIcon);
+
+        // Seat ID text (hiển thị ngay bên phải biểu tượng ghế)
+        sf::Text seatText = createText(seat, xPos + 20, yPos - 2, 16);
+        seatText.setFillColor(sf::Color(220, 255, 220));
+        window.draw(seatText);
+
+        ++index;
         
-        // Confirm button with enhanced styling
-        sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
+        // Confirm button with enhanced styling (moved to the right side)
+        sf::RectangleShape confirmBtn = createButton(1050, 650, 200, 50);
         confirmBtn.setFillColor(sf::Color(0, 150, 0));
         confirmBtn.setOutlineThickness(2);
         confirmBtn.setOutlineColor(sf::Color(100, 255, 100));
         window.draw(confirmBtn);
         
-        sf::Text confirmText = createText("Confirm Booking", 530, 775, 18);
+        sf::Text confirmText = createText("Confirm Booking", 1085, 665, 18);
         confirmText.setStyle(sf::Text::Bold);
         window.draw(confirmText);
     }
@@ -1585,6 +1612,8 @@ void SFMLUIManager::renderBookingHistory() {
         window.draw(price);
     }
 }
+
+
 
 void SFMLUIManager::renderRegisterScreen() {
     // Only draw gradient background for non-guest screens
@@ -1660,6 +1689,7 @@ void SFMLUIManager::renderRegisterScreen() {
         window.draw(status);
     }
 }
+
 
 void SFMLUIManager::renderAdminPanel() {
     drawGradientBackground();
