@@ -1,3 +1,5 @@
+
+```mermaid
 classDiagram
 direction TB
     class IMovie {
@@ -89,3 +91,4 @@ direction TB
     MovieViewerService ..> IMovieRepository : use
     IMovieManagerService <|.. MovieManagerService
     IMovieViewerService <|.. MovieViewerService
+```
