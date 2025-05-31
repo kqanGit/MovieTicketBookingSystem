@@ -1051,7 +1051,7 @@ void SFMLUIManager::renderMovieDetails() {
         star.setFillColor(sf::Color(255, 215, 0)); // Gold color
         window.draw(star);
         
-        sf::Text ratingLabel = createText("Rating: " + std::to_string(movie.rating) + "/5", 130, 230, 20);
+        sf::Text ratingLabel = createText("Rating: " + std::to_string(movie.rating) + "/10", 130, 230, 20);
         ratingLabel.setFillColor(sf::Color(255, 220, 100));
         window.draw(ratingLabel);
           // Get description from MovieViewerService
