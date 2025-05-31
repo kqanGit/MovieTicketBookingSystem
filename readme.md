@@ -247,7 +247,7 @@ Our implementation showcases multiple sophisticated design patterns for enterpri
 
 ### Commit activities
 
-![GitHub Commit Activity](image/commit_activity.png)
+![GitHub Commit Activity](source/image/commit_activity.png)
 
 ### Grade Distribution Policy
 - **Equal Distribution**: All team members receive the same grade based on overall project quality
