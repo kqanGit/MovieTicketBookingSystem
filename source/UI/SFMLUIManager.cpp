@@ -359,8 +359,8 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         }case UIState::MOVIE_LIST: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             // Scroll buttons
-            sf::RectangleShape scrollUpBtn = createStyledButton(950, 150, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
-            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            sf::RectangleShape scrollUpBtn = createStyledButton(1150, 150, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            sf::RectangleShape scrollDownBtn = createStyledButton(1150, 600, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
             
             if (isButtonClicked(backBtn, mousePos)) {
                 // Return guests to guest screen, authenticated users to main menu
@@ -837,6 +837,9 @@ void SFMLUIManager::renderLoginScreen() {
     // Only draw gradient background for non-guest screens
     drawGradientBackground();
 
+    sf::Text title = createText("Login Account", 470, 100, 40);
+    window.draw(title);
+
     // Username field
     sf::RectangleShape usernameField = createButton(400, 250, 400, 40);
     usernameField.setFillColor(isInputtingUsername ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
@@ -907,6 +910,7 @@ void SFMLUIManager::renderMainMenu() {
         sf::Color(150, 0, 0)
     };
     // Draw buttons in a centered horizontal row
+    
     for (int i = 0; i < labels.size(); ++i) {
         float x = startX + i * (w + gap);
         
@@ -1587,7 +1591,7 @@ void SFMLUIManager::renderRegisterScreen() {
     drawGradientBackground();
     
     // Title
-    sf::Text title = createText("Register New Account", 450, 100, 28);
+    sf::Text title = createText("Register New Account", 400, 100, 40);
     window.draw(title);
     
     // Username field
