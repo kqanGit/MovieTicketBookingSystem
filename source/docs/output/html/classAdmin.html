@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a262434e1cb825e24a1fa6f48d2e15b31" id="r_a262434e1cb825e24a1fa6f48d2e15b31"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classUserInformationService.html">UserInformationService</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a262434e1cb825e24a1fa6f48d2e15b31">infoService</a></td></tr>
-<tr class="memdesc:a262434e1cb825e24a1fa6f48d2e15b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">User information service instance.  <br /></td></tr>
+<tr class="memdesc:a262434e1cb825e24a1fa6f48d2e15b31"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> information service instance.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Administrator user context with elevated privileges. </p>
@@ -130,8 +130,8 @@ Private Attributes</h2></td></tr>
 <p>Administrative Capabilities:</p><ul>
 <li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> catalog management (add, edit, delete movies)</li>
 <li>Showtime scheduling and management</li>
-<li>User account administration</li>
-<li>Booking and revenue oversight</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> account administration</li>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> and revenue oversight</li>
 <li>System configuration and maintenance</li>
 <li>Report generation and analytics</li>
 </ul>
@@ -154,16 +154,16 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="keyword">auto</span> <a class="code hl_variable" href="#a262434e1cb825e24a1fa6f48d2e15b31">infoService</a> = adminUser.getUserInformationService();</div>
 <div class="ttc" id="aclassAdmin_html_a21b0884ce159541ef1634c501e5a3996"><div class="ttname"><a href="#a21b0884ce159541ef1634c501e5a3996">Admin::Admin</a></div><div class="ttdeci">Admin(const AccountInformation &amp;acc)</div><div class="ttdoc">Constructor with account information.</div><div class="ttdef"><b>Definition</b> <a href="Admin_8cpp_source.html#l00011">Admin.cpp:11</a></div></div>
 <div class="ttc" id="aclassAdmin_html_a262434e1cb825e24a1fa6f48d2e15b31"><div class="ttname"><a href="#a262434e1cb825e24a1fa6f48d2e15b31">Admin::infoService</a></div><div class="ttdeci">std::shared_ptr&lt; UserInformationService &gt; infoService</div><div class="ttdoc">User information service instance.</div><div class="ttdef"><b>Definition</b> <a href="Admin_8h_source.html#l00075">Admin.h:75</a></div></div>
-<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00007">AccountInformation.h:7</a></div></div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
 </div><!-- fragment --></dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd><a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> privileges should be carefully controlled and audited</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
 <dd>
-<a class="el" href="structAccountInformation.html">AccountInformation</a> </dd>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd>
 <dd>
 <a class="el" href="classIVisitor.html" title="Base interface for all visitor implementations.">IVisitor</a> </dd>
 <dd>
-<a class="el" href="classUserInformationService.html">UserInformationService</a> </dd></dl>
+<a class="el" href="classUserInformationService.html" title="Concrete implementation of user information display operations.">UserInformationService</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Admin_8h_source.html#l00066">66</a> of file <a class="el" href="Admin_8h_source.html">Admin.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -254,8 +254,8 @@ acc contains valid administrator credentials</dd></dl>
 <a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> actions are logged for audit purposes</dd></dl>
 <dl class="section user"><dt>Supported Services</dt><dd><a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> users can accept:<ul>
 <li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> management services (add, edit, delete movies)</li>
-<li>User administration services</li>
-<li>Booking management services</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> administration services</li>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> management services</li>
 <li>System configuration services</li>
 <li>Reporting and analytics services</li>
 </ul>
@@ -263,7 +263,7 @@ acc contains valid administrator credentials</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Service operations execute with elevated privileges</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIVisitor.html" title="Base interface for all visitor implementations.">IVisitor</a> </dd>
 <dd>
-IServiceVisitor </dd></dl>
+<a class="el" href="classIServiceVisitor.html" title="Visitor interface for role-based service operations.">IServiceVisitor</a> </dd></dl>
 
 <p>Implements <a class="el" href="classIUserContext.html#a3b2633a5e1491406fe793abdfda437bf">IUserContext</a>.</p>
 
@@ -306,16 +306,16 @@ IServiceVisitor </dd></dl>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Returned service has administrative access permissions</dd></dl>
 <dl class="section user"><dt>Service Capabilities</dt><dd>The returned service provides:<ul>
-<li>User account creation and modification</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> account creation and modification</li>
 <li>Password reset and security management</li>
-<li>User role and permission management</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> role and permission management</li>
 <li>Account status control (enable/disable)</li>
-<li>User activity and audit trail access</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> activity and audit trail access</li>
 </ul>
 </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html">IUserInformationService</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html" title="Interface for user information display and management operations.">IUserInformationService</a> </dd>
 <dd>
-<a class="el" href="classUserInformationService.html">UserInformationService</a> </dd></dl>
+<a class="el" href="classUserInformationService.html" title="Concrete implementation of user information display operations.">UserInformationService</a> </dd></dl>
 
 <p>Implements <a class="el" href="classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3">IUserContext</a>.</p>
 
@@ -344,7 +344,7 @@ IServiceVisitor </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>User information service instance. </p>
+<p><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> information service instance. </p>
 <p>Shared pointer to service responsible for managing user account information and administrative operations. Provides access to user data modification capabilities. </p>
 
 <p class="definition">Definition at line <a class="el" href="Admin_8h_source.html#l00075">75</a> of file <a class="el" href="Admin_8h_source.html">Admin.h</a>.</p>

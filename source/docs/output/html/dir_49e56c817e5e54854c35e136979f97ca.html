@@ -92,6 +92,143 @@ $(function(){initNavTree('dir_49e56c817e5e54854c35e136979f97ca.html','',''); });
   <div class="headertitle"><div class="title">docs Directory Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<p>This directory contains tools and configuration for generating comprehensive API documentation for the <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> Ticket <a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> System.</p>
+<h1>Quick Start</h1>
+<h2>Method 1: PowerShell Script (Recommended)</h2>
+<div class="fragment"><div class="line"># Navigate to docs directory</div>
+<div class="line">cd source/docs</div>
+<div class="line"> </div>
+<div class="line"># Generate documentation</div>
+<div class="line">.\generate_docs.ps1</div>
+<div class="line"> </div>
+<div class="line"># Generate and open in browser</div>
+<div class="line">.\generate_docs.ps1 -OpenDocs</div>
+</div><!-- fragment --><h2>Method 2: Direct Doxygen Command</h2>
+<div class="fragment"><div class="line"># Navigate to docs directory  </div>
+<div class="line">cd source/docs</div>
+<div class="line"> </div>
+<div class="line"># Run Doxygen directly</div>
+<div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><h1>Available Options</h1>
+<h2>PowerShell Script Parameters</h2>
+<ul>
+<li><b>No parameters</b>: Generate documentation using current settings</li>
+<li><b><span class="tt">-InstallDoxygen</span></b>: Automatically install Doxygen (via Chocolatey) if not found</li>
+<li><b><span class="tt">-OpenDocs</span></b>: Generate documentation and open in default browser</li>
+<li><b><span class="tt">-Clean</span></b>: Remove previous documentation output</li>
+</ul>
+<h2>Examples</h2>
+<div class="fragment"><div class="line"># Basic documentation generation</div>
+<div class="line">.\generate_docs.ps1</div>
+<div class="line"> </div>
+<div class="line"># Install Doxygen and generate docs</div>
+<div class="line">.\generate_docs.ps1 -InstallDoxygen</div>
+<div class="line"> </div>
+<div class="line"># Generate and immediately view</div>
+<div class="line">.\generate_docs.ps1 -OpenDocs</div>
+<div class="line"> </div>
+<div class="line"># Clean previous output</div>
+<div class="line">.\generate_docs.ps1 -Clean</div>
+<div class="line"> </div>
+<div class="line"># Combine parameters</div>
+<div class="line">.\generate_docs.ps1 -Clean -OpenDocs</div>
+</div><!-- fragment --><h1>Prerequisites</h1>
+<h2>Required Software</h2>
+<ul>
+<li><b>Doxygen</b>: Download from <a href="https://www.doxygen.nl/download.html">https://www.doxygen.nl/download.html</a></li>
+<li><b>PowerShell</b>: Included with Windows, available for Linux/macOS</li>
+</ul>
+<h2>Optional Software</h2>
+<ul>
+<li><b>Chocolatey</b>: For automatic Doxygen installation</li>
+<li><b>GraphViz</b>: For enhanced diagram generation (automatically included with Doxygen)</li>
+</ul>
+<h1>Output Structure</h1>
+<p>After generation, documentation will be available at:</p>
+<div class="fragment"><div class="line">source/docs/output/</div>
+<div class="line">├── html/</div>
+<div class="line">│   ├── index.html          # Main documentation entry point</div>
+<div class="line">│   ├── annotated.html      # Class list</div>
+<div class="line">│   ├── classes.html        # Class index</div>
+<div class="line">│   ├── files.html          # File index</div>
+<div class="line">│   └── ...                 # Additional HTML files</div>
+<div class="line">└── latex/                  # LaTeX output (if enabled)</div>
+</div><!-- fragment --><h1>Configuration</h1>
+<h2>Doxyfile Settings</h2>
+<p>The <span class="tt">Doxyfile</span> contains all Doxygen configuration. Key settings:</p>
+<ul>
+<li><b>INPUT</b>: Source code directories to scan</li>
+<li><b>OUTPUT_DIRECTORY</b>: Where to generate documentation</li>
+<li><b>GENERATE_HTML</b>: Enable HTML output (enabled)</li>
+<li><b>GENERATE_LATEX</b>: Enable LaTeX output (disabled by default)</li>
+<li><b>EXTRACT_ALL</b>: Extract documentation for all entities</li>
+<li><b>SOURCE_BROWSER</b>: Include source code browser</li>
+</ul>
+<h2>Customization</h2>
+<p>To modify documentation generation:</p>
+<ol type="1">
+<li>Edit <span class="tt">Doxyfile</span> with desired settings</li>
+<li>Modify <span class="tt"><a class="el" href="mainpage_8dox.html">mainpage.dox</a></span> for main page content</li>
+<li>Update <span class="tt">generate_docs.ps1</span> for additional automation</li>
+</ol>
+<h1>Troubleshooting</h1>
+<h2>Common Issues</h2>
+<p><b>"Doxygen not found"</b></p><ul>
+<li>Install Doxygen: <a href="https://www.doxygen.nl/download.html">https://www.doxygen.nl/download.html</a></li>
+<li>Add Doxygen to system PATH</li>
+<li>Run with <span class="tt">-InstallDoxygen</span> parameter</li>
+</ul>
+<p><b>"PowerShell execution policy"</b> </p><div class="fragment"><div class="line"># Enable script execution (run as Administrator)</div>
+<div class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine</div>
+</div><!-- fragment --><p><b>"Permission denied"</b> </p><div class="fragment"><div class="line"># Check file permissions</div>
+<div class="line">Get-Acl .\generate_docs.ps1</div>
+<div class="line"> </div>
+<div class="line"># Or run PowerShell as Administrator</div>
+</div><!-- fragment --><h2>Manual Installation</h2>
+<p>If automated installation fails:</p>
+<ol type="1">
+<li><b>Windows</b>: Download installer from Doxygen website</li>
+<li><b>Chocolatey</b>: <span class="tt">choco install doxygen.install</span></li>
+<li><b>Linux</b>: <span class="tt">sudo apt-get install doxygen</span> (Ubuntu/Debian)</li>
+<li><b>macOS</b>: <span class="tt">brew install doxygen</span></li>
+</ol>
+<h1>Files Description</h1>
+<ul>
+<li><b><span class="tt">Doxyfile</span></b>: Main Doxygen configuration file</li>
+<li><b><span class="tt">generate_docs.ps1</span></b>: PowerShell automation script (RECOMMENDED)</li>
+<li><b><span class="tt"><a class="el" href="mainpage_8dox.html">mainpage.dox</a></span></b>: Main documentation page content</li>
+<li><b><span class="tt"><a class="el" href="README_8md.html">README.md</a></span></b>: This file - usage instructions</li>
+<li><b><span class="tt">output/</span></b>: Generated documentation (created after first run)</li>
+</ul>
+<h1>Integration with IDE</h1>
+<h2>Visual Studio Code</h2>
+<ol type="1">
+<li>Install "Doxygen Documentation Generator" extension</li>
+<li>Use <span class="tt">Ctrl+Shift+P</span> → "Generate Doxygen Documentation"</li>
+<li>Or use terminal: <span class="tt">.\generate_docs.ps1 -OpenDocs</span></li>
+</ol>
+<h2>Command Line Integration</h2>
+<div class="fragment"><div class="line"># Add to PowerShell profile for global access</div>
+<div class="line">function Generate-Docs { </div>
+<div class="line">    Set-Location &quot;source/docs&quot;</div>
+<div class="line">    .\generate_docs.ps1 @args</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1>Best Practices</h1>
+<ol type="1">
+<li><b>Always use PowerShell script</b> instead of direct Doxygen commands</li>
+<li><b>Review output</b> in browser after generation</li>
+<li><b>Keep Doxyfile updated</b> with new source directories</li>
+<li><b>Clean output</b> periodically to ensure fresh generation</li>
+<li><b>Document code</b> with proper Doxygen comments for best results</li>
+</ol>
+<h1>Support</h1>
+<p>For issues with documentation generation:</p><ol type="1">
+<li>Check this README for common solutions</li>
+<li>Verify Doxygen installation and PATH configuration</li>
+<li>Review PowerShell execution policy settings</li>
+<li>Contact development team for project-specific issues </li>
+</ol>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

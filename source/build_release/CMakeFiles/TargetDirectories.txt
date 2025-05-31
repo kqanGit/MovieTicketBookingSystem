@@ -1,0 +1,4 @@
+E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/sqlite3.dir
+E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/App.dir
+E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/ALL_BUILD.dir
+E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/ZERO_CHECK.dir

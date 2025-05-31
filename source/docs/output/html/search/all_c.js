@@ -19,7 +19,7 @@ var searchData=
   ['moviedto_16',['MovieDTO',['../classMovieDTO.html',1,'MovieDTO'],['../classMovieDTO.html#a13d8004c1343222d17202193867e8995',1,'MovieDTO::MovieDTO()'],['../classMovieDTO.html#a9b1c052191721fca540cd2666eafdcff',1,'MovieDTO::MovieDTO(int id, const std::string &amp;title, const std::string &amp;genre, float rating)']]],
   ['moviedto_2ecpp_17',['MovieDTO.cpp',['../MovieDTO_8cpp.html',1,'']]],
   ['moviedto_2eh_18',['MovieDTO.h',['../MovieDTO_8h.html',1,'']]],
-  ['movieid_19',['movieID',['../classBookingView.html#a8dd7674eac01aa52e948eef6d6c8bec0',1,'BookingView']]],
+  ['movieid_19',['movieID',['../structBooking.html#a060ab584adf57aa7903e30ab97bcdba3',1,'Booking::movieID'],['../classBookingView.html#a8dd7674eac01aa52e948eef6d6c8bec0',1,'BookingView::movieID']]],
   ['movielistscrolloffset_20',['movieListScrollOffset',['../classSFMLUIManager.html#a2da4e2e7bf1a87cd824e20fcd2345326',1,'SFMLUIManager']]],
   ['moviemanagerservice_21',['MovieManagerService',['../classMovieManagerService.html',1,'MovieManagerService'],['../classMovieManagerService.html#aff12cae2a6fa3af1ab673b7ebe903a39',1,'MovieManagerService::MovieManagerService()']]],
   ['moviemanagerservice_2ecpp_22',['MovieManagerService.cpp',['../MovieManagerService_8cpp.html',1,'']]],
@@ -34,13 +34,12 @@ var searchData=
   ['movierepositorysql_2ecpp_31',['MovieRepositorySQL.cpp',['../MovieRepositorySQL_8cpp.html',1,'']]],
   ['movierepositorysql_2eh_32',['MovieRepositorySQL.h',['../MovieRepositorySQL_8h.html',1,'']]],
   ['movies_33',['movies',['../classSFMLUIManager.html#a4c05532359813b764dd6040afcbd7440',1,'SFMLUIManager']]],
-  ['movietitle_34',['movieTitle',['../classBookingView.html#ad1e9ad194a129b59a084117c45dcbf66',1,'BookingView']]],
+  ['movietitle_34',['movieTitle',['../structBooking.html#a7ea9656e65c4808a35178bd8798c7394',1,'Booking::movieTitle'],['../classBookingView.html#ad1e9ad194a129b59a084117c45dcbf66',1,'BookingView::movieTitle']]],
   ['movieviewerservice_35',['MovieViewerService',['../classMovieViewerService.html',1,'MovieViewerService'],['../classMovieViewerService.html#a448267e1165ea23d309a4c82bb24c7e1',1,'MovieViewerService::MovieViewerService()']]],
   ['movieviewerservice_2ecpp_36',['MovieViewerService.cpp',['../MovieViewerService_8cpp.html',1,'']]],
   ['movieviewerservice_2eh_37',['MovieViewerService.h',['../MovieViewerService_8h.html',1,'']]],
   ['movieviewerservicevisitor_38',['MovieViewerServiceVisitor',['../classMovieViewerServiceVisitor.html',1,'MovieViewerServiceVisitor'],['../classMovieViewerServiceVisitor.html#a400170e3df0e40c37999d78f5127ff40',1,'MovieViewerServiceVisitor::MovieViewerServiceVisitor()']]],
   ['movieviewerservicevisitor_2ecpp_39',['MovieViewerServiceVisitor.cpp',['../MovieViewerServiceVisitor_8cpp.html',1,'']]],
   ['movieviewerservicevisitor_2eh_40',['MovieViewerServiceVisitor.h',['../MovieViewerServiceVisitor_8h.html',1,'']]],
-  ['movieviewscrolloffset_41',['movieViewScrollOffset',['../classSFMLUIManager.html#a828b16950358d7fccbf81126a6e8baef',1,'SFMLUIManager']]],
-  ['msys2_20ucrt64_42',['Hướng dẫn cài đặt wxWidgets trên Windows (MSYS2 UCRT64)',['../md_UI_2install-wxWidgets.html',1,'']]]
+  ['movieviewscrolloffset_41',['movieViewScrollOffset',['../classSFMLUIManager.html#a828b16950358d7fccbf81126a6e8baef',1,'SFMLUIManager']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: IMovieViewerService Class Reference</title>
+<title>Movie Ticket Booking System: IMovieViewerService Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classIMovieViewerService.html','','classIMovieViewerSe
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">IMovieViewerService Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">IMovieViewerService Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for movie browsing and viewing operations.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IMovieViewerService_8h_source.html">service/IMovieViewerService.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -100,20 +103,63 @@ Inheritance diagram for IMovieViewerService:</div>
  <div class="center">
   <img src="classIMovieViewerService.png" usemap="#IMovieViewerService_map" alt=""/>
   <map id="IMovieViewerService_map" name="IMovieViewerService_map">
-<area href="classMovieViewerService.html" alt="MovieViewerService" shape="rect" coords="0,56,134,80"/>
+<area href="classMovieViewerService.html" title="Concrete implementation of movie browsing and viewing operations." alt="MovieViewerService" shape="rect" coords="0,56,134,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aafdd9bd72d2fb33d6c3299e6b20f75f6" id="r_aafdd9bd72d2fb33d6c3299e6b20f75f6"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafdd9bd72d2fb33d6c3299e6b20f75f6">~IMovieViewerService</a> ()</td></tr>
+<tr class="memdesc:aafdd9bd72d2fb33d6c3299e6b20f75f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 <tr class="memitem:ac6b58ddb588792e884befe1cbda0bfc7" id="r_ac6b58ddb588792e884befe1cbda0bfc7"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="classMovieDTO.html">MovieDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6b58ddb588792e884befe1cbda0bfc7">showAllMovies</a> ()=0</td></tr>
+<tr class="memdesc:ac6b58ddb588792e884befe1cbda0bfc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all available movies in the system catalog.  <br /></td></tr>
 <tr class="memitem:a64879a827b177d04a9d29031f8bce45b" id="r_a64879a827b177d04a9d29031f8bce45b"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classIMovie.html">IMovie</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64879a827b177d04a9d29031f8bce45b">showMovieDetail</a> (int id)=0</td></tr>
+<tr class="memdesc:a64879a827b177d04a9d29031f8bce45b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves detailed information for a specific movie.  <br /></td></tr>
 <tr class="memitem:aa33882386a66b81170337117f251032e" id="r_aa33882386a66b81170337117f251032e"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="structShowTime.html">ShowTime</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa33882386a66b81170337117f251032e">showMovieShowTimes</a> (int id)=0</td></tr>
+<tr class="memdesc:aa33882386a66b81170337117f251032e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all available showtimes for a specific movie.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IMovieViewerService_8h_source.html#l00010">10</a> of file <a class="el" href="IMovieViewerService_8h_source.html">IMovieViewerService.h</a>.</p>
+<div class="textblock"><p>Interface for movie browsing and viewing operations. </p>
+<p>The <a class="el" href="classIMovieViewerService.html" title="Interface for movie browsing and viewing operations.">IMovieViewerService</a> interface defines the contract for all movie viewing and browsing operations in the cinema booking system. This interface provides read-only access to movie information and is used by both guests and registered users to explore available movies.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Display available movies in the catalog</li>
+<li>Provide detailed information about specific movies</li>
+<li>Show available showtimes for movies</li>
+<li>Support movie browsing and discovery</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Encapsulates movie viewing business logic</li>
+<li>Provides abstraction for different viewing implementations</li>
+<li>Enables caching and performance optimizations</li>
+<li>Separates presentation logic from data access</li>
+</ul>
+<p>Performance Considerations:</p><ul>
+<li>Methods may implement caching for frequently accessed data</li>
+<li>Large movie catalogs should support pagination</li>
+<li>Showtime queries should be optimized for date ranges</li>
+<li>Consider lazy loading for detailed movie information</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;IMovieViewerService&gt; movieViewer = </div>
+<div class="line">    std::make_unique&lt;MovieViewerService&gt;(movieRepo);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Browse all available movies</span></div>
+<div class="line"><span class="keyword">auto</span> movies = movieViewer-&gt;showAllMovies();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Get details for a specific movie</span></div>
+<div class="line"><span class="keyword">auto</span> movieDetail = movieViewer-&gt;showMovieDetail(movieId);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// View showtimes for the movie</span></div>
+<div class="line"><span class="keyword">auto</span> showtimes = movieViewer-&gt;showMovieShowTimes(movieId);</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovieViewerService.html" title="Concrete implementation of movie browsing and viewing operations.">MovieViewerService</a> </dd>
+<dd>
+<a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> </dd>
+<dd>
+<a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> </dd>
+<dd>
+<a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IMovieViewerService_8h_source.html#l00065">65</a> of file <a class="el" href="IMovieViewerService_8h_source.html">IMovieViewerService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aafdd9bd72d2fb33d6c3299e6b20f75f6" name="aafdd9bd72d2fb33d6c3299e6b20f75f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafdd9bd72d2fb33d6c3299e6b20f75f6">&#9670;&#160;</a></span>~IMovieViewerService()</h2>
@@ -138,7 +184,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="IMovieViewerService_8h_source.html#l00012">12</a> of file <a class="el" href="IMovieViewerService_8h_source.html">IMovieViewerService.h</a>.</p>
+<p>Virtual destructor for proper cleanup of derived classes. </p>
+<p>Ensures that concrete movie viewer service implementations are properly destroyed when accessed through the interface pointer. </p>
+
+<p class="definition">Definition at line <a class="el" href="IMovieViewerService_8h_source.html#l00073">73</a> of file <a class="el" href="IMovieViewerService_8h_source.html">IMovieViewerService.h</a>.</p>
 
 </div>
 </div>
@@ -166,6 +215,38 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves all available movies in the system catalog. </p>
+<p>Returns a comprehensive list of all movies currently available in the cinema system. This method provides a summary view of movies suitable for catalog browsing and selection interfaces.</p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> objects containing movie summary information</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns all active movies in the system </dd>
+<dd>
+<a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> objects contain essential movie information </dd>
+<dd>
+Results may be cached for performance</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if database query fails </td></tr>
+    <tr><td class="paramname">ServiceUnavailableException</td><td>if movie service is temporarily unavailable</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Returns only active/available movies, not removed ones </dd>
+<dd>
+Results may be ordered by various criteria (title, release date, etc.) </dd>
+<dd>
+Empty vector is returned if no movies are available </dd>
+<dd>
+Consider implementing pagination for large catalogs</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keyword">auto</span> allMovies = movieViewer-&gt;showAllMovies();</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; movie : allMovies) {</div>
+<div class="line">        std::cout &lt;&lt; movie.getTitle() &lt;&lt; <span class="stringliteral">&quot; - &quot;</span> </div>
+<div class="line">                  &lt;&lt; movie.getDuration() &lt;&lt; <span class="stringliteral">&quot; min&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle movie retrieval failure</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classMovieViewerService.html#a8d4ae3b69f60783c0f14f4149c48ee0a">MovieViewerService</a>.</p>
 
 </div>
@@ -193,6 +274,43 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves detailed information for a specific movie. </p>
+<p>Returns comprehensive details about a specific movie, including all movie properties and metadata. This method provides the full movie entity for detailed viewing and booking operations.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier of the movie to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the movie entity with complete details</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>id must be a valid, existing movie identifier </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns complete movie information </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> object contains all available properties</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if id is invalid </td></tr>
+    <tr><td class="paramname">MovieNotFoundException</td><td>if movie does not exist </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if database query fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Returns null pointer if movie is not found (implementation dependent) </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> details may include extended information not in DTO </dd>
+<dd>
+Consider caching frequently accessed movie details</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keyword">auto</span> movieDetail = movieViewer-&gt;showMovieDetail(selectedMovieId);</div>
+<div class="line">    <span class="keywordflow">if</span> (movieDetail) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Title: &quot;</span> &lt;&lt; movieDetail-&gt;getTitle() &lt;&lt; std::endl;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Genre: &quot;</span> &lt;&lt; movieDetail-&gt;getGenre() &lt;&lt; std::endl;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Duration: &quot;</span> &lt;&lt; movieDetail-&gt;getDuration() &lt;&lt; <span class="stringliteral">&quot; minutes&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> MovieNotFoundException&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle movie not found</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classMovieViewerService.html#a46a9361904834eeecb346b984e9b2327">MovieViewerService</a>.</p>
 
 </div>
@@ -220,11 +338,51 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves all available showtimes for a specific movie. </p>
+<p>Returns a list of all scheduled showtimes for the specified movie, enabling users to select their preferred screening time for booking. Showtimes may be filtered to show only future/available screenings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier of the movie to query showtimes for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> objects containing scheduling information</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>id must be a valid, existing movie identifier </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns all available showtimes for the movie </dd>
+<dd>
+<a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> objects contain complete scheduling information </dd>
+<dd>
+Results may be filtered to show only future showtimes</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if id is invalid </td></tr>
+    <tr><td class="paramname">MovieNotFoundException</td><td>if movie does not exist </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if database query fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>May return only future showtimes or all showtimes (implementation dependent) </dd>
+<dd>
+Empty vector is returned if no showtimes are scheduled </dd>
+<dd>
+Results may be ordered chronologically </dd>
+<dd>
+Consider filtering by date range for better performance</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keyword">auto</span> showtimes = movieViewer-&gt;showMovieShowTimes(movieId);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; showtime : showtimes) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Showtime: &quot;</span> &lt;&lt; showtime.getDateTime() </div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot; - Theater: &quot;</span> &lt;&lt; showtime.getTheater() &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> MovieNotFoundException&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle movie not found</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classMovieViewerService.html#aafe7de9111caea6d83935d7b137faf09">MovieViewerService</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>service/<a class="el" href="IMovieViewerService_8h_source.html">IMovieViewerService.h</a></li>
 </ul>
 </div><!-- contents -->

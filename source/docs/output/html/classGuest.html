@@ -93,6 +93,9 @@ $(function(){initNavTree('classGuest.html','','classGuest-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Implementation of <a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> for anonymous guest users.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Guest_8h_source.html">model/Guest.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Guest:</div>
@@ -106,18 +109,130 @@ Inheritance diagram for Guest:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a0b3ff80ba45275e5ef264ea92037493d" id="r_a0b3ff80ba45275e5ef264ea92037493d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b3ff80ba45275e5ef264ea92037493d">Guest</a> ()=default</td></tr>
+<tr class="memdesc:a0b3ff80ba45275e5ef264ea92037493d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="memitem:ab2fe82ed3253e569d6ec97aa83a34d0f" id="r_ab2fe82ed3253e569d6ec97aa83a34d0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2fe82ed3253e569d6ec97aa83a34d0f">accept</a> (std::shared_ptr&lt; <a class="el" href="classIVisitor.html">IVisitor</a> &gt; service) override</td></tr>
-<tr class="memdesc:ab2fe82ed3253e569d6ec97aa83a34d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a visitor service for operation dispatch.  <br /></td></tr>
+<tr class="memdesc:ab2fe82ed3253e569d6ec97aa83a34d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a visitor for service operations.  <br /></td></tr>
 <tr class="memitem:ac720d672af23563e926d830e8d9abb1f" id="r_ac720d672af23563e926d830e8d9abb1f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIUserInformationService.html">IUserInformationService</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac720d672af23563e926d830e8d9abb1f">getUserInformationService</a> () const override</td></tr>
-<tr class="memdesc:ac720d672af23563e926d830e8d9abb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get user information service for this context.  <br /></td></tr>
+<tr class="memdesc:ac720d672af23563e926d830e8d9abb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get user information service for guests.  <br /></td></tr>
+<tr class="memitem:a282f32f5c415f3add224c74700e095c0" id="r_a282f32f5c415f3add224c74700e095c0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a282f32f5c415f3add224c74700e095c0">~Guest</a> ()=default</td></tr>
+<tr class="memdesc:a282f32f5c415f3add224c74700e095c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classIUserContext"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIUserContext')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classIUserContext.html">IUserContext</a></td></tr>
 <tr class="memitem:ab6614b5217760176ecda903b00c6a19f inherit pub_methods_classIUserContext" id="r_ab6614b5217760176ecda903b00c6a19f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIUserContext.html#ab6614b5217760176ecda903b00c6a19f">~IUserContext</a> ()=default</td></tr>
 <tr class="memdesc:ab6614b5217760176ecda903b00c6a19f inherit pub_methods_classIUserContext"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper inheritance cleanup.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Guest_8h_source.html#l00009">9</a> of file <a class="el" href="Guest_8h_source.html">Guest.h</a>.</p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Implementation of <a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> for anonymous guest users. </p>
+<p>This class represents an anonymous guest user who can browse the movie booking system without authentication. Guests have limited access to system features and cannot perform authenticated operations like booking tickets.</p>
+<p>Key Features:</p><ul>
+<li>Anonymous browsing capabilities</li>
+<li>Limited system access without authentication</li>
+<li>Visitor pattern support for role-based operations</li>
+<li>Read-only access to public information</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Strategy Pattern</b>: Implements <a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> with guest-specific behavior</li>
+<li><b>Visitor Pattern</b>: Accepts visitors for role-based service operations</li>
+<li><b>Null Object Pattern</b>: Provides default behavior for unauthenticated users</li>
+<li><b>Factory Pattern</b>: Created through <a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a></li>
+</ul>
+<p><a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> Capabilities:</p><ul>
+<li>Browse available movies and showtimes</li>
+<li>View movie details and information</li>
+<li>Access public content and features</li>
+<li>Navigate the system interface</li>
+</ul>
+<p><a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> Limitations:</p><ul>
+<li>Cannot book tickets or make reservations</li>
+<li>No access to user-specific features</li>
+<li>Cannot save preferences or history</li>
+<li>No payment or transaction capabilities</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> guest = std::make_shared&lt;Guest&gt;();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Guest can browse movies</span></div>
+<div class="line"><span class="keyword">auto</span> serviceVisitor = std::make_shared&lt;MovieBrowsingVisitor&gt;();</div>
+<div class="line">guest-&gt;accept(serviceVisitor);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// But cannot access user-specific services</span></div>
+<div class="line"><span class="keyword">auto</span> userInfo = guest-&gt;getUserInformationService(); <span class="comment">// Returns limited service</span></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Guests should be encouraged to register for full system access </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Do not allow guests to access sensitive or user-specific data</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
+<dd>
+<a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a> </dd>
+<dd>
+<a class="el" href="classIVisitor.html" title="Base interface for all visitor implementations.">IVisitor</a> </dd>
+<dd>
+<a class="el" href="classIServiceVisitor.html" title="Visitor interface for role-based service operations.">IServiceVisitor</a> </dd>
+<dd>
+<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Guest_8h_source.html#l00070">70</a> of file <a class="el" href="Guest_8h_source.html">Guest.h</a>.</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0b3ff80ba45275e5ef264ea92037493d" name="a0b3ff80ba45275e5ef264ea92037493d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b3ff80ba45275e5ef264ea92037493d">&#9670;&#160;</a></span>Guest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Guest::Guest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Creates a new guest context with default anonymous user settings. Initializes the guest for basic system browsing capabilities.</p>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> context is ready for visitor pattern operations </dd>
+<dd>
+<a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> has limited system access permissions</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>No authentication or user data is associated with guests </dd></dl>
+
+</div>
+</div>
+<a id="a282f32f5c415f3add224c74700e095c0" name="a282f32f5c415f3add224c74700e095c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a282f32f5c415f3add224c74700e095c0">&#9670;&#160;</a></span>~Guest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Guest::~Guest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Virtual destructor. </p>
+<p>Ensures proper cleanup of guest context resources. Since guests have minimal state, cleanup is typically minimal.</p>
+<dl class="section note"><dt>Note</dt><dd>Automatically called when guest context is destroyed </dd></dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ab2fe82ed3253e569d6ec97aa83a34d0f" name="ab2fe82ed3253e569d6ec97aa83a34d0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2fe82ed3253e569d6ec97aa83a34d0f">&#9670;&#160;</a></span>accept()</h2>
 
@@ -141,26 +256,34 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Accept a visitor service for operation dispatch. </p>
-<p>Implements the Visitor pattern acceptor role. Different context implementations can route the visitor to appropriate handlers based on user role and permissions.</p>
+<p>Accept a visitor for service operations. </p>
+<p>Implements the visitor pattern to allow different service visitors to operate on the guest context. This enables role-based service access with guest-specific limitations.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">service</td><td>Visitor service to accept and process</td></tr>
+    <tr><td class="paramname">service</td><td>Visitor implementing service operations for guests</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section pre"><dt>Precondition</dt><dd>service != nullptr</dd></dl>
-<dl class="section user"><dt>Visitor Dispatch Logic</dt><dd><ul>
-<li>GuestContext: Limited visitor acceptance (login/register only)</li>
-<li>UserContext: Full user-level visitor acceptance</li>
-<li>AdminContext: All visitor types including admin operations</li>
+<dl class="section pre"><dt>Precondition</dt><dd>service is not null </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Visitor has performed guest-appropriate operations</dd></dl>
+<dl class="section user"><dt>Visitor Behavior</dt><dd><ul>
+<li>Service visitors should respect guest limitations</li>
+<li>Only provide read-only and public operations</li>
+<li>Block authenticated-only features</li>
+<li>Guide guests toward registration when appropriate</li>
 </ul>
 </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Visitors must check user context type for proper access control </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIVisitor.html" title="Base interface for all visitor implementations.">IVisitor</a> </dd>
 <dd>
-<a class="el" href="classLoginServiceVisitor.html">LoginServiceVisitor</a> </dd>
-<dd>
-<a class="el" href="classBookingServiceVisitor.html">BookingServiceVisitor</a> </dd></dl>
+<a class="el" href="classIServiceVisitor.html" title="Visitor interface for role-based service operations.">IServiceVisitor</a></dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> guest = std::make_shared&lt;Guest&gt;();</div>
+<div class="line"><span class="keyword">auto</span> movieBrowser = std::make_shared&lt;MovieBrowsingVisitor&gt;();</div>
+<div class="line">guest-&gt;accept(movieBrowser); <span class="comment">// Allows movie browsing</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> bookingService = std::make_shared&lt;BookingServiceVisitor&gt;();</div>
+<div class="line">guest-&gt;accept(bookingService); <span class="comment">// Should provide limited/redirect behavior</span></div>
+</div><!-- fragment --> </dd></dl>
 
 <p>Implements <a class="el" href="classIUserContext.html#a3b2633a5e1491406fe793abdfda437bf">IUserContext</a>.</p>
 
@@ -191,18 +314,33 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get user information service for this context. </p>
-<p>Returns the appropriate user information service based on the current user context and authentication status.</p>
-<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;IUserInformationService&gt; Service instance or nullptr</dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">nullptr</td><td>For <a class="el" href="classGuest.html">Guest</a> context (no authenticated user) </td></tr>
-    <tr><td class="paramname">Valid</td><td>service For authenticated User/Admin contexts</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>The returned service provides access to user profile management, booking history, and other user-specific data operations</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html">IUserInformationService</a> </dd></dl>
+<p>Get user information service for guests. </p>
+<p>Returns a user information service appropriate for guest contexts. This service provides limited functionality compared to authenticated user services.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;IUserInformationService&gt; Guest-appropriate information service</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns service with guest-level access </dd>
+<dd>
+Service provides limited functionality</dd></dl>
+<dl class="section user"><dt>Guest Service Features</dt><dd><ul>
+<li>Basic system information access</li>
+<li>Public content browsing</li>
+<li>No personal data access</li>
+<li>Registration encouragement prompts</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Service should encourage guest registration for full access </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Service must not expose user-specific or sensitive data</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html" title="Interface for user information display and management operations.">IUserInformationService</a> </dd>
+<dd>
+<a class="el" href="classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3" title="Get user information service for this context.">IUserContext::getUserInformationService()</a></dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> guest = std::make_shared&lt;Guest&gt;();</div>
+<div class="line"><span class="keyword">auto</span> infoService = guest-&gt;getUserInformationService();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Can access public information</span></div>
+<div class="line"><span class="keyword">auto</span> publicInfo = infoService-&gt;getPublicSystemInfo();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Cannot access user-specific data</span></div>
+<div class="line"><span class="comment">// auto userData = infoService-&gt;getUserData(); // Should return null/empty</span></div>
+</div><!-- fragment --> </dd></dl>
 
 <p>Implements <a class="el" href="classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3">IUserContext</a>.</p>
 

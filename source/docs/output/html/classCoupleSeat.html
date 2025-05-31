@@ -93,6 +93,9 @@ $(function(){initNavTree('classCoupleSeat.html','','classCoupleSeat-members'); }
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete implementation of <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for couple seating.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="CoupleSeat_8h_source.html">model/CoupleSeat.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CoupleSeat:</div>
@@ -107,12 +110,13 @@ Inheritance diagram for CoupleSeat:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0579878ba98b8bb82c86f2de6876a2ab" id="r_a0579878ba98b8bb82c86f2de6876a2ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0579878ba98b8bb82c86f2de6876a2ab">CoupleSeat</a> (std::string seatID, <a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a> <a class="el" href="#a8d00696baafe3cd7236ff4e1772bdbc9">type</a>, float <a class="el" href="#ae9ae3c98935ed4f960d7afc6fcd25f5b">price</a>)</td></tr>
+<tr class="memdesc:a0579878ba98b8bb82c86f2de6876a2ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for couple seat.  <br /></td></tr>
 <tr class="memitem:ae9ae3c98935ed4f960d7afc6fcd25f5b" id="r_ae9ae3c98935ed4f960d7afc6fcd25f5b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9ae3c98935ed4f960d7afc6fcd25f5b">price</a> () const override</td></tr>
-<tr class="memdesc:ae9ae3c98935ed4f960d7afc6fcd25f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the price for this seat.  <br /></td></tr>
+<tr class="memdesc:ae9ae3c98935ed4f960d7afc6fcd25f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat price.  <br /></td></tr>
 <tr class="memitem:ae6ec9888f43ef6b3492a1f95acd26841" id="r_ae6ec9888f43ef6b3492a1f95acd26841"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ec9888f43ef6b3492a1f95acd26841">id</a> () const override</td></tr>
-<tr class="memdesc:ae6ec9888f43ef6b3492a1f95acd26841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier for this seat.  <br /></td></tr>
+<tr class="memdesc:ae6ec9888f43ef6b3492a1f95acd26841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat identifier.  <br /></td></tr>
 <tr class="memitem:a8d00696baafe3cd7236ff4e1772bdbc9" id="r_a8d00696baafe3cd7236ff4e1772bdbc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d00696baafe3cd7236ff4e1772bdbc9">type</a> () const override</td></tr>
-<tr class="memdesc:a8d00696baafe3cd7236ff4e1772bdbc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type category of this seat.  <br /></td></tr>
+<tr class="memdesc:a8d00696baafe3cd7236ff4e1772bdbc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat type.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classISeat"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classISeat')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classISeat.html">ISeat</a></td></tr>
 <tr class="memitem:a36756ba053988f3d4654f3743563ce0b inherit pub_methods_classISeat" id="r_a36756ba053988f3d4654f3743563ce0b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISeat.html#a36756ba053988f3d4654f3743563ce0b">~ISeat</a> ()=default</td></tr>
 <tr class="memdesc:a36756ba053988f3d4654f3743563ce0b inherit pub_methods_classISeat"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper inheritance.  <br /></td></tr>
@@ -120,12 +124,51 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a8f30a35ad35c796bcbe97061a77bc305" id="r_a8f30a35ad35c796bcbe97061a77bc305"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f30a35ad35c796bcbe97061a77bc305">_seatID</a></td></tr>
+<tr class="memdesc:a8f30a35ad35c796bcbe97061a77bc305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique seat identifier.  <br /></td></tr>
 <tr class="memitem:a9c5228d3e39adda887d7867a46e2f24b" id="r_a9c5228d3e39adda887d7867a46e2f24b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c5228d3e39adda887d7867a46e2f24b">_price</a></td></tr>
+<tr class="memdesc:a9c5228d3e39adda887d7867a46e2f24b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seat price in currency units.  <br /></td></tr>
 <tr class="memitem:a89bf1288b4655788dfe864e20b644360" id="r_a89bf1288b4655788dfe864e20b644360"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89bf1288b4655788dfe864e20b644360">_type</a></td></tr>
+<tr class="memdesc:a89bf1288b4655788dfe864e20b644360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seat type classification.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00006">6</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
+<div class="textblock"><p>Concrete implementation of <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for couple seating. </p>
+<p>This class represents a couple seat in the movie theater, designed for two people sitting together. Couple seats typically offer more space, comfort, and privacy compared to regular single seats.</p>
+<p>Key Features:</p><ul>
+<li>Premium seating option for couples</li>
+<li>Higher pricing tier than single seats</li>
+<li>Enhanced comfort and space</li>
+<li>Special seating arrangement for two people</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Strategy Pattern</b>: Implements <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> interface with couple-specific behavior</li>
+<li><b>Factory Pattern</b>: Created through <a class="el" href="classSeatFactory.html" title="Factory for creating different types of seat objects.">SeatFactory</a> for consistent instantiation</li>
+<li><b>Value Object</b>: Immutable seat representation with defined properties</li>
+</ul>
+<p>Seat Characteristics:</p><ul>
+<li>Designed for two occupants</li>
+<li>Premium pricing structure</li>
+<li>Enhanced comfort features</li>
+<li>Strategic theater placement</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="comment">// Create couple seat through factory</span></div>
+<div class="line"><span class="keyword">auto</span> coupleSeat = std::make_unique&lt;CoupleSeat&gt;(<span class="stringliteral">&quot;C12&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a375d221c5d22b70910ec8140b02e6fa5">SeatType::COUPLE</a>, 25.99f);</div>
+<div class="line"> </div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Seat ID: &quot;</span> &lt;&lt; coupleSeat-&gt;id() &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Price: $&quot;</span> &lt;&lt; coupleSeat-&gt;price() &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Type: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(coupleSeat-&gt;type()) &lt;&lt; std::endl;</div>
+<div class="ttc" id="aISeat_8h_html_a476531b8b779ebb4a8672ef5b44a4de2a375d221c5d22b70910ec8140b02e6fa5"><div class="ttname"><a href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a375d221c5d22b70910ec8140b02e6fa5">COUPLE</a></div><div class="ttdeci">@ COUPLE</div><div class="ttdoc">Double-width seat for couples.</div><div class="ttdef"><b>Definition</b> <a href="ISeat_8h_source.html#l00022">ISeat.h:22</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Couple seats are typically more expensive than single seats </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure proper seat ID format and positive pricing</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> </dd>
+<dd>
+<a class="el" href="classSeatFactory.html" title="Factory for creating different types of seat objects.">SeatFactory</a> </dd>
+<dd>
+<a class="el" href="classSingleSeat.html" title="Concrete implementation of ISeat for individual seating.">SingleSeat</a> </dd>
+<dd>
+<a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00058">58</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0579878ba98b8bb82c86f2de6876a2ab" name="a0579878ba98b8bb82c86f2de6876a2ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0579878ba98b8bb82c86f2de6876a2ab">&#9670;&#160;</a></span>CoupleSeat()</h2>
@@ -150,6 +193,32 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor for couple seat. </p>
+<p>Creates a new couple seat with specified identifier, type, and price. Initializes all seat properties for use in the booking system.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seatID</td><td>Unique identifier for the seat (e.g., "C12") </td></tr>
+    <tr><td class="paramname">type</td><td>Seat type (should be SeatType::COUPLE) </td></tr>
+    <tr><td class="paramname">price</td><td>Cost for booking this seat (must be positive)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>seatID is non-empty and unique </dd>
+<dd>
+price &gt; 0.0f </dd>
+<dd>
+type == SeatType::COUPLE </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Seat is ready for booking operations</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If seatID is empty or price is negative</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a0579878ba98b8bb82c86f2de6876a2ab">CoupleSeat</a> seat(<span class="stringliteral">&quot;C12&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a375d221c5d22b70910ec8140b02e6fa5">SeatType::COUPLE</a>, 25.99f);</div>
+<div class="ttc" id="aclassCoupleSeat_html_a0579878ba98b8bb82c86f2de6876a2ab"><div class="ttname"><a href="#a0579878ba98b8bb82c86f2de6876a2ab">CoupleSeat::CoupleSeat</a></div><div class="ttdeci">CoupleSeat(std::string seatID, SeatType type, float price)</div><div class="ttdoc">Constructor for couple seat.</div><div class="ttdef"><b>Definition</b> <a href="CoupleSeat_8cpp_source.html#l00003">CoupleSeat.cpp:3</a></div></div>
+</div><!-- fragment --> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CoupleSeat_8cpp_source.html#l00003">3</a> of file <a class="el" href="CoupleSeat_8cpp_source.html">CoupleSeat.cpp</a>.</p>
 
@@ -179,14 +248,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the unique identifier for this seat. </p>
-<p>Returns a unique string identifier that can be used to reference this specific seat in bookings and reservations.</p>
-<dl class="section return"><dt>Returns</dt><dd>std::string Unique seat identifier (e.g., "A1", "B2")</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns non-empty unique identifier</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>ID format may follow theater-specific conventions </dd>
-<dd>
-IDs should be human-readable for customer reference</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<p>Get the seat identifier. </p>
+<p>Returns the unique string identifier for this seat, used for booking references and theater layout management.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The unique seat identifier</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns non-empty string</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Seat ID format should be consistent across the theater </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#ae64ced2057fdffacefc940483679038e" title="Gets the unique identifier for this seat.">ISeat::id()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#ae64ced2057fdffacefc940483679038e">ISeat</a>.</p>
 
@@ -217,14 +284,12 @@ IDs should be human-readable for customer reference</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the price for this seat. </p>
-<p>Returns the current price for booking this seat, which may vary based on seat type, location, showtime, or other factors.</p>
-<dl class="section return"><dt>Returns</dt><dd>float The price of the seat in system currency</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns positive price value</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Price calculation may include dynamic pricing factors </dd>
-<dd>
-Currency and precision are system-dependent</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<p>Get the seat price. </p>
+<p>Returns the cost for booking this couple seat. Couple seats typically have premium pricing due to enhanced comfort and space.</p>
+<dl class="section return"><dt>Returns</dt><dd>float The price for this seat in currency units</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns positive value</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Price may be subject to dynamic pricing algorithms </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#a0f09b8e0c9815cc476c73032854c843e" title="Calculates the price for this seat.">ISeat::price()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#a0f09b8e0c9815cc476c73032854c843e">ISeat</a>.</p>
 
@@ -255,15 +320,14 @@ Currency and precision are system-dependent</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the type category of this seat. </p>
-<p>Returns the seat type classification for booking logic, pricing, and display purposes.</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> The category of this seat</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns valid <a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> enum value</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Used for filtering and categorizing seats </dd>
+<p>Get the seat type. </p>
+<p>Returns the seat type classification, which should always be SeatType::COUPLE for this implementation.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> The seat type (SeatType::COUPLE)</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns SeatType::COUPLE</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Used for pricing, layout, and booking logic differentiation </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#a3dc0b92e64464e2f9972867d0860343b" title="Gets the type category of this seat.">ISeat::type()</a> </dd>
 <dd>
-Affects pricing and booking constraints</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#a3dc0b92e64464e2f9972867d0860343b">ISeat</a>.</p>
 
@@ -292,7 +356,12 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00009">9</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
+<p>Seat price in currency units. </p>
+<p>The cost for booking this couple seat. Couple seats typically have premium pricing compared to single seats.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Must be positive value </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Price may vary based on showtime, movie popularity, etc. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00079">79</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +385,11 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00008">8</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
+<p>Unique seat identifier. </p>
+<p>String identifier that uniquely identifies this seat within the theater. Typically follows a format like "C12" (row C, seat 12).</p>
+<dl class="section note"><dt>Note</dt><dd>Must be unique within the theater/showtime context </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00068">68</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
 
 </div>
 </div>
@@ -340,7 +413,11 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00010">10</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
+<p>Seat type classification. </p>
+<p>Indicates this is a couple seat type for booking system categorization and special handling.</p>
+<dl class="section note"><dt>Note</dt><dd>Should always be SeatType::COUPLE for this class </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CoupleSeat_8h_source.html#l00089">89</a> of file <a class="el" href="CoupleSeat_8h_source.html">CoupleSeat.h</a>.</p>
 
 </div>
 </div>

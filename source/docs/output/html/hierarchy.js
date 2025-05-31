@@ -2,10 +2,12 @@ var hierarchy =
 [
     [ "AccountInformation", "structAccountInformation.html", null ],
     [ "App", "classApp.html", null ],
+    [ "Booking", "structBooking.html", null ],
     [ "BookingView", "classBookingView.html", null ],
     [ "DatabaseConnection", "classDatabaseConnection.html", null ],
     [ "std::enable_shared_from_this", null, [
-      [ "Guest", "classGuest.html", null ]
+      [ "Guest", "classGuest.html", null ],
+      [ "User", "classUser.html", null ]
     ] ],
     [ "IAuthenticationRepository", "classIAuthenticationRepository.html", [
       [ "AuthenticationRepositorySQL", "classAuthenticationRepositorySQL.html", null ]
@@ -13,7 +15,7 @@ var hierarchy =
     [ "IBookingRepository", "classIBookingRepository.html", [
       [ "BookingRepository", "classBookingRepository.html", null ]
     ] ],
-    [ "IBookingService", null, [
+    [ "IBookingService", "classIBookingService.html", [
       [ "BookingService", "classBookingService.html", null ]
     ] ],
     [ "ILoginService", "classILoginService.html", [
@@ -42,26 +44,29 @@ var hierarchy =
       [ "CoupleSeat", "classCoupleSeat.html", null ],
       [ "SingleSeat", "classSingleSeat.html", null ]
     ] ],
-    [ "IServiceVisitor", null, [
-      [ "BookingServiceVisitor", "classBookingServiceVisitor.html", null ],
-      [ "LoginServiceVisitor", "classLoginServiceVisitor.html", null ],
-      [ "LogoutServiceVisitor", "classLogoutServiceVisitor.html", null ],
-      [ "MovieManagerServiceVisitor", "classMovieManagerServiceVisitor.html", null ],
-      [ "MovieViewerServiceVisitor", "classMovieViewerServiceVisitor.html", null ],
-      [ "RegisterServiceVisitor", "classRegisterServiceVisitor.html", null ]
-    ] ],
     [ "IUserContext", "classIUserContext.html", [
       [ "Admin", "classAdmin.html", null ],
-      [ "Guest", "classGuest.html", null ]
+      [ "Guest", "classGuest.html", null ],
+      [ "User", "classUser.html", null ]
     ] ],
     [ "IUserInformationService", "classIUserInformationService.html", [
       [ "UserInformationService", "classUserInformationService.html", null ]
     ] ],
-    [ "IVisitor", "classIVisitor.html", null ],
+    [ "IVisitor", "classIVisitor.html", [
+      [ "IServiceVisitor", "classIServiceVisitor.html", [
+        [ "BookingServiceVisitor", "classBookingServiceVisitor.html", null ],
+        [ "LoginServiceVisitor", "classLoginServiceVisitor.html", null ],
+        [ "LogoutServiceVisitor", "classLogoutServiceVisitor.html", null ],
+        [ "MovieManagerServiceVisitor", "classMovieManagerServiceVisitor.html", null ],
+        [ "MovieViewerServiceVisitor", "classMovieViewerServiceVisitor.html", null ],
+        [ "RegisterServiceVisitor", "classRegisterServiceVisitor.html", null ]
+      ] ]
+    ] ],
     [ "MovieDTO", "classMovieDTO.html", null ],
     [ "MovieMapper", "classMovieMapper.html", null ],
     [ "SeatFactory", "classSeatFactory.html", null ],
     [ "SeatView", "classSeatView.html", null ],
+    [ "ServiceRegistry", "classServiceRegistry.html", null ],
     [ "SessionManager", "classSessionManager.html", null ],
     [ "SFMLUIManager", "classSFMLUIManager.html", null ],
     [ "ShowTime", "structShowTime.html", null ],

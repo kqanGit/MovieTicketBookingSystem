@@ -1,5 +1,14 @@
 # Movie Ticket Booking System - Documentation Generator
 # PowerShell script for generating API documentation with Doxygen
+#
+# RECOMMENDED METHOD: Use this PowerShell script instead of .bat files
+# This script provides cross-platform compatibility and better error handling
+#
+# Usage Examples:
+#   .\generate_docs.ps1                    # Generate documentation
+#   .\generate_docs.ps1 -InstallDoxygen    # Install Doxygen and generate docs
+#   .\generate_docs.ps1 -OpenDocs          # Generate and open documentation
+#   .\generate_docs.ps1 -Clean             # Clean previous output
 
 param(
     [switch]$InstallDoxygen,

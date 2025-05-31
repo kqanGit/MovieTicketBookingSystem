@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\just write some code\OOP\MovieTicketBookingSystem\source\build_release\CMakeFiles\905a5ccd8e6492ed20c4e63dd7f1b212\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{51E1E0EE-ED7A-3717-B245-D0244F628FBD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

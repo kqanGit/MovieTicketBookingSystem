@@ -93,25 +93,73 @@ $(function(){initNavTree('structShowTime.html','','structShowTime-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Data structure representing a movie showtime schedule.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ShowTime_8h_source.html">model/ShowTime.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1ae3a6a180b563bddcaa3e76bdf4fee8" id="r_a1ae3a6a180b563bddcaa3e76bdf4fee8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">ShowTime</a> (int <a class="el" href="#abaceff9680a7803fbfde8ffab133b507">showTimeID</a>, const std::string &amp;<a class="el" href="#a0b28bd1154438f464de2e1c469d7d9db">date</a>, const std::string &amp;<a class="el" href="#ae434377761ccd05ec7050cc9ba3410c8">startTime</a>, const std::string &amp;<a class="el" href="#a42875d8985d5a530bca1d18c6939af17">endTime</a>)</td></tr>
+<tr class="memdesc:a1ae3a6a180b563bddcaa3e76bdf4fee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor.  <br /></td></tr>
+<tr class="memitem:a3c29a0c96b9e8c8e1d52498c3968bb64" id="r_a3c29a0c96b9e8c8e1d52498c3968bb64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c29a0c96b9e8c8e1d52498c3968bb64">ShowTime</a> ()</td></tr>
+<tr class="memdesc:a3c29a0c96b9e8c8e1d52498c3968bb64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abaceff9680a7803fbfde8ffab133b507" id="r_abaceff9680a7803fbfde8ffab133b507"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaceff9680a7803fbfde8ffab133b507">showTimeID</a></td></tr>
+<tr class="memdesc:abaceff9680a7803fbfde8ffab133b507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique showtime identifier.  <br /></td></tr>
 <tr class="memitem:a0b28bd1154438f464de2e1c469d7d9db" id="r_a0b28bd1154438f464de2e1c469d7d9db"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b28bd1154438f464de2e1c469d7d9db">date</a></td></tr>
+<tr class="memdesc:a0b28bd1154438f464de2e1c469d7d9db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Date of the movie showing.  <br /></td></tr>
 <tr class="memitem:ae434377761ccd05ec7050cc9ba3410c8" id="r_ae434377761ccd05ec7050cc9ba3410c8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae434377761ccd05ec7050cc9ba3410c8">startTime</a></td></tr>
+<tr class="memdesc:ae434377761ccd05ec7050cc9ba3410c8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> start time.  <br /></td></tr>
 <tr class="memitem:a42875d8985d5a530bca1d18c6939af17" id="r_a42875d8985d5a530bca1d18c6939af17"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42875d8985d5a530bca1d18c6939af17">endTime</a></td></tr>
+<tr class="memdesc:a42875d8985d5a530bca1d18c6939af17"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> end time.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00004">4</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
+<div class="textblock"><p>Data structure representing a movie showtime schedule. </p>
+<p>This structure encapsulates all temporal information about when a specific movie is scheduled to be shown in the theater. It serves as a fundamental data unit for the booking system's scheduling functionality.</p>
+<p>Key Features:</p><ul>
+<li>Unique showtime identification</li>
+<li>Complete temporal scheduling information</li>
+<li>Date and time management for movie screenings</li>
+<li>Integration with booking and reservation systems</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Value Object</b>: Immutable data container for showtime information</li>
+<li><b>Data Transfer Object (DTO)</b>: Transfers showtime data between layers</li>
+<li><b>Composite</b>: Combines multiple temporal attributes into single entity</li>
+</ul>
+<p>Usage Context:</p><ul>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> scheduling and timetable management</li>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> system reservation handling</li>
+<li>Theater capacity and availability tracking</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> interface showtime display</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">ShowTime</a> evening(101, <span class="stringliteral">&quot;2025-06-15&quot;</span>, <span class="stringliteral">&quot;19:30&quot;</span>, <span class="stringliteral">&quot;22:00&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Showtime ID: &quot;</span> &lt;&lt; evening.showTimeID &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Date: &quot;</span> &lt;&lt; evening.date &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Duration: &quot;</span> &lt;&lt; evening.startTime &lt;&lt; <span class="stringliteral">&quot; - &quot;</span> &lt;&lt; evening.endTime &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Use in booking context</span></div>
+<div class="line">bookingService-&gt;reserveSeats(evening.showTimeID, selectedSeats);</div>
+<div class="ttc" id="astructShowTime_html_a1ae3a6a180b563bddcaa3e76bdf4fee8"><div class="ttname"><a href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">ShowTime::ShowTime</a></div><div class="ttdeci">ShowTime(int showTimeID, const std::string &amp;date, const std::string &amp;startTime, const std::string &amp;endTime)</div><div class="ttdoc">Parameterized constructor.</div><div class="ttdef"><b>Definition</b> <a href="ShowTime_8cpp_source.html#l00003">ShowTime.cpp:3</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>All time values should follow consistent format standards </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure start time is before end time for data integrity</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> </dd>
+<dd>
+<a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> </dd>
+<dd>
+<a class="el" href="classIBookingService.html" title="Interface defining booking operations for movie tickets.">IBookingService</a> </dd>
+<dd>
+Theater </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00059">59</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1ae3a6a180b563bddcaa3e76bdf4fee8" name="a1ae3a6a180b563bddcaa3e76bdf4fee8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">&#9670;&#160;</a></span>ShowTime()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">&#9670;&#160;</a></span>ShowTime() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,7 +187,83 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Parameterized constructor. </p>
+<p>Creates a new showtime with all scheduling information specified. Initializes all temporal attributes for the movie screening.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">showTimeID</td><td>Unique identifier for this showtime </td></tr>
+    <tr><td class="paramname">date</td><td>Date of screening (format: "YYYY-MM-DD") </td></tr>
+    <tr><td class="paramname">startTime</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> start time (format: "HH:MM") </td></tr>
+    <tr><td class="paramname">endTime</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> end time (format: "HH:MM")</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>showTimeID &gt; 0 for valid showtimes </dd>
+<dd>
+date is in valid format and not in the past </dd>
+<dd>
+startTime is in valid format and before endTime </dd>
+<dd>
+endTime is in valid format and after startTime </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>All showtime attributes are initialized</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If any parameter is invalid</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Validation Considerations</dt><dd><ul>
+<li>Verify date is not in the past</li>
+<li>Ensure start time precedes end time</li>
+<li>Validate time format consistency</li>
+<li>Check for scheduling conflicts</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><span class="comment">// Create evening showtime</span></div>
+<div class="line"><a class="code hl_function" href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">ShowTime</a> eveningShow(101, <span class="stringliteral">&quot;2025-06-15&quot;</span>, <span class="stringliteral">&quot;19:30&quot;</span>, <span class="stringliteral">&quot;22:00&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Create matinee showtime</span></div>
+<div class="line"><a class="code hl_function" href="#a1ae3a6a180b563bddcaa3e76bdf4fee8">ShowTime</a> matineeShow(102, <span class="stringliteral">&quot;2025-06-15&quot;</span>, <span class="stringliteral">&quot;14:00&quot;</span>, <span class="stringliteral">&quot;16:30&quot;</span>);</div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Constructor should validate input parameters for data integrity </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>Default constructor (if needed for STL containers) </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="ShowTime_8cpp_source.html#l00003">3</a> of file <a class="el" href="ShowTime_8cpp_source.html">ShowTime.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3c29a0c96b9e8c8e1d52498c3968bb64" name="a3c29a0c96b9e8c8e1d52498c3968bb64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c29a0c96b9e8c8e1d52498c3968bb64">&#9670;&#160;</a></span>ShowTime() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ShowTime::ShowTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Creates an uninitialized showtime object. Useful for STL containers and scenarios where showtime data will be assigned later.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>showTimeID == 0 (invalid state) </dd>
+<dd>
+All string fields are empty</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Requires subsequent initialization before use </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Object is in invalid state until properly initialized </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00171">171</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 
 </div>
 </div>
@@ -156,7 +280,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00006">6</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
+<p>Date of the movie showing. </p>
+<p>The calendar date when this movie screening is scheduled. Format should be consistent across the system (e.g., "YYYY-MM-DD").</p>
+<dl class="section user"><dt>Expected Format</dt><dd><ul>
+<li>ISO 8601 date format: "YYYY-MM-DD"</li>
+<li>Example: "2025-06-15"</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Date format should be validated for consistency </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae434377761ccd05ec7050cc9ba3410c8" title="Movie start time.">startTime</a>, <a class="el" href="#a42875d8985d5a530bca1d18c6939af17" title="Movie end time.">endTime</a> for complete scheduling information </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00084">84</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 
 </div>
 </div>
@@ -172,7 +306,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00008">8</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> end time. </p>
+<p>The time when the movie screening is expected to conclude. Includes movie duration plus credits and buffer time.</p>
+<dl class="section user"><dt>Expected Format</dt><dd><ul>
+<li>24-hour format: "HH:MM"</li>
+<li>Example: "22:00" for 10:00 PM</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Must be later than startTime </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Allows calculation of screening duration</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Should account for full movie duration plus credits </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae434377761ccd05ec7050cc9ba3410c8" title="Movie start time.">startTime</a> for complete time range </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00118">118</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 
 </div>
 </div>
@@ -188,7 +334,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00005">5</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
+<p>Unique showtime identifier. </p>
+<p>Database primary key that uniquely identifies this specific showtime across the entire system. Used for booking references and scheduling.</p>
+<dl class="section note"><dt>Note</dt><dd>Must be unique across all showtimes in the database </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>Booking::showTimeID for foreign key relationships </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00069">69</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +355,18 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00007">7</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> start time. </p>
+<p>The time when the movie screening begins on the scheduled date. Should include sufficient lead time for previews and announcements.</p>
+<dl class="section user"><dt>Expected Format</dt><dd><ul>
+<li>24-hour format: "HH:MM"</li>
+<li>Example: "19:30" for 7:30 PM</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Must be earlier than endTime </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Time format should be validated and consistent </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a42875d8985d5a530bca1d18c6939af17" title="Movie end time.">endTime</a> for screening duration calculation </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ShowTime_8h_source.html#l00100">100</a> of file <a class="el" href="ShowTime_8h_source.html">ShowTime.h</a>.</p>
 
 </div>
 </div>

@@ -4,7 +4,7 @@ var dir_3f14f6767c31cb4a1d22c13c18cc6fc3 =
     [ "Admin.cpp", "Admin_8cpp.html", null ],
     [ "Admin.h", "Admin_8h.html", "Admin_8h" ],
     [ "Booking.cpp", "Booking_8cpp.html", null ],
-    [ "Booking.h", "Booking_8h.html", null ],
+    [ "Booking.h", "Booking_8h.html", "Booking_8h" ],
     [ "CoupleSeat.cpp", "CoupleSeat_8cpp.html", null ],
     [ "CoupleSeat.h", "CoupleSeat_8h.html", "CoupleSeat_8h" ],
     [ "Guest.cpp", "Guest_8cpp.html", null ],
@@ -19,5 +19,5 @@ var dir_3f14f6767c31cb4a1d22c13c18cc6fc3 =
     [ "SingleSeat.cpp", "SingleSeat_8cpp.html", null ],
     [ "SingleSeat.h", "SingleSeat_8h.html", "SingleSeat_8h" ],
     [ "User.cpp", "User_8cpp.html", null ],
-    [ "User.h", "User_8h.html", null ]
+    [ "User.h", "User_8h.html", "User_8h" ]
 ];

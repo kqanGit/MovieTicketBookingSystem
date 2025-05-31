@@ -92,26 +92,30 @@ $(function(){initNavTree('IUserInformationService_8h_source.html','',''); });
   <div class="headertitle"><div class="title">IUserInformationService.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="IUserInformationService_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef IUSERINFORMATIONSERVICE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define IUSERINFORMATIONSERVICE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="AccountInformation_8h.html">../model/AccountInformation.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classIUserInformationService.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="classIUserInformationService.html">IUserInformationService</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">    8</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">~IUserInformationService</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">    9</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">printAccountInfo</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">   10</a></span>    <span class="keyword">virtual</span> std::string <a class="code hl_function" href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">getRole</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
+<a href="IUserInformationService_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef IUSERINFORMATIONSERVICE_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define IUSERINFORMATIONSERVICE_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="AccountInformation_8h.html">../model/AccountInformation.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="};">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classIUserInformationService.html">   65</a></span><span class="keyword">class </span><a class="code hl_interface" href="classIUserInformationService.html">IUserInformationService</a> {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">   73</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">~IUserInformationService</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">  109</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">printAccountInfo</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">  151</a></span>    <span class="keyword">virtual</span> std::string <a class="code hl_function" href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">getRole</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>};</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif </span><span class="comment">// IUSERINFORMATIONSERVICE_H</span></div>
-<div class="ttc" id="aAccountInformation_8h_html"><div class="ttname"><a href="AccountInformation_8h.html">AccountInformation.h</a></div></div>
-<div class="ttc" id="aclassIUserInformationService_html"><div class="ttname"><a href="classIUserInformationService.html">IUserInformationService</a></div><div class="ttdef"><b>Definition</b> <a href="#l00006">IUserInformationService.h:6</a></div></div>
-<div class="ttc" id="aclassIUserInformationService_html_a341b05de90beb3ecbe7072a7f66be1a5"><div class="ttname"><a href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">IUserInformationService::getRole</a></div><div class="ttdeci">virtual std::string getRole() const =0</div></div>
-<div class="ttc" id="aclassIUserInformationService_html_a8590c6b3adce0cdf3fa8927e93f39d8c"><div class="ttname"><a href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">IUserInformationService::~IUserInformationService</a></div><div class="ttdeci">virtual ~IUserInformationService()=default</div></div>
-<div class="ttc" id="aclassIUserInformationService_html_aa5766d18f7a0383ca7484bcd6057b0f0"><div class="ttname"><a href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">IUserInformationService::printAccountInfo</a></div><div class="ttdeci">virtual void printAccountInfo() const =0</div></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="preprocessor">#endif </span><span class="comment">// IUSERINFORMATIONSERVICE_H</span></div>
+<div class="ttc" id="aAccountInformation_8h_html"><div class="ttname"><a href="AccountInformation_8h.html">AccountInformation.h</a></div><div class="ttdoc">User account information data structure.</div></div>
+<div class="ttc" id="aclassIUserInformationService_html"><div class="ttname"><a href="classIUserInformationService.html">IUserInformationService</a></div><div class="ttdoc">Interface for user information display and management operations.</div><div class="ttdef"><b>Definition</b> <a href="#l00065">IUserInformationService.h:65</a></div></div>
+<div class="ttc" id="aclassIUserInformationService_html_a341b05de90beb3ecbe7072a7f66be1a5"><div class="ttname"><a href="classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5">IUserInformationService::getRole</a></div><div class="ttdeci">virtual std::string getRole() const =0</div><div class="ttdoc">Retrieves the user&#39;s role for authorization purposes.</div></div>
+<div class="ttc" id="aclassIUserInformationService_html_a8590c6b3adce0cdf3fa8927e93f39d8c"><div class="ttname"><a href="classIUserInformationService.html#a8590c6b3adce0cdf3fa8927e93f39d8c">IUserInformationService::~IUserInformationService</a></div><div class="ttdeci">virtual ~IUserInformationService()=default</div><div class="ttdoc">Virtual destructor for proper cleanup of derived classes.</div></div>
+<div class="ttc" id="aclassIUserInformationService_html_aa5766d18f7a0383ca7484bcd6057b0f0"><div class="ttname"><a href="classIUserInformationService.html#aa5766d18f7a0383ca7484bcd6057b0f0">IUserInformationService::printAccountInfo</a></div><div class="ttdeci">virtual void printAccountInfo() const =0</div><div class="ttdoc">Displays user account information to output stream.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

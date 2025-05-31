@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: IUserInformationService Class Reference</title>
+<title>Movie Ticket Booking System: IUserInformationService Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classIUserInformationService.html','','classIUserInfor
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">IUserInformationService Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">IUserInformationService Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for user information display and management operations.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IUserInformationService_8h_source.html">service/IUserInformationService.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -100,19 +103,63 @@ Inheritance diagram for IUserInformationService:</div>
  <div class="center">
   <img src="classIUserInformationService.png" usemap="#IUserInformationService_map" alt=""/>
   <map id="IUserInformationService_map" name="IUserInformationService_map">
-<area href="classUserInformationService.html" alt="UserInformationService" shape="rect" coords="0,56,147,80"/>
+<area href="classUserInformationService.html" title="Concrete implementation of user information display operations." alt="UserInformationService" shape="rect" coords="0,56,147,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8590c6b3adce0cdf3fa8927e93f39d8c" id="r_a8590c6b3adce0cdf3fa8927e93f39d8c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8590c6b3adce0cdf3fa8927e93f39d8c">~IUserInformationService</a> ()=default</td></tr>
+<tr class="memdesc:a8590c6b3adce0cdf3fa8927e93f39d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 <tr class="memitem:aa5766d18f7a0383ca7484bcd6057b0f0" id="r_aa5766d18f7a0383ca7484bcd6057b0f0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5766d18f7a0383ca7484bcd6057b0f0">printAccountInfo</a> () const =0</td></tr>
+<tr class="memdesc:aa5766d18f7a0383ca7484bcd6057b0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays user account information to output stream.  <br /></td></tr>
 <tr class="memitem:a341b05de90beb3ecbe7072a7f66be1a5" id="r_a341b05de90beb3ecbe7072a7f66be1a5"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a341b05de90beb3ecbe7072a7f66be1a5">getRole</a> () const =0</td></tr>
+<tr class="memdesc:a341b05de90beb3ecbe7072a7f66be1a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the user's role for authorization purposes.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IUserInformationService_8h_source.html#l00006">6</a> of file <a class="el" href="IUserInformationService_8h_source.html">IUserInformationService.h</a>.</p>
+<div class="textblock"><p>Interface for user information display and management operations. </p>
+<p>The <a class="el" href="classIUserInformationService.html" title="Interface for user information display and management operations.">IUserInformationService</a> interface defines the contract for accessing and displaying user account information within the movie ticket booking system. This interface provides read-only access to user data and is typically used for profile viewing and user interface display purposes.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Display user account information</li>
+<li>Provide user role information for authorization</li>
+<li>Abstract user data access for UI components</li>
+<li>Support user profile viewing functionality</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Encapsulates user information business logic</li>
+<li>Provides abstraction for different information display implementations</li>
+<li>Enables clean separation between data access and presentation</li>
+<li>Supports dependency injection and testing</li>
+</ul>
+<p>Usage Context:</p><ul>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> profile pages and account settings</li>
+<li>Authorization and role-based access control</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> information display in navigation bars</li>
+<li>Account verification and validation workflows</li>
+</ul>
+<p>Security Considerations:</p><ul>
+<li>Sensitive information should be filtered based on context</li>
+<li>Access control should be enforced at the service level</li>
+<li>Personal data should be handled according to privacy policies</li>
+<li>Role information should be accurate for security decisions</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;IUserInformationService&gt; userInfoService = </div>
+<div class="line">    std::make_unique&lt;UserInformationService&gt;(accountInfo);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Display user account information</span></div>
+<div class="line">userInfoService-&gt;printAccountInfo();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Check user role for authorization</span></div>
+<div class="line">std::string role = userInfoService-&gt;getRole();</div>
+<div class="line"><span class="keywordflow">if</span> (role == <span class="stringliteral">&quot;admin&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Grant administrative access</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classUserInformationService.html" title="Concrete implementation of user information display operations.">UserInformationService</a> </dd>
+<dd>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IUserInformationService_8h_source.html#l00065">65</a> of file <a class="el" href="IUserInformationService_8h_source.html">IUserInformationService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8590c6b3adce0cdf3fa8927e93f39d8c" name="a8590c6b3adce0cdf3fa8927e93f39d8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8590c6b3adce0cdf3fa8927e93f39d8c">&#9670;&#160;</a></span>~IUserInformationService()</h2>
@@ -136,6 +183,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup of derived classes. </p>
+<p>Ensures that concrete user information service implementations are properly destroyed when accessed through the interface pointer. </p>
 
 </div>
 </div>
@@ -163,6 +213,39 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the user's role for authorization purposes. </p>
+<p>Returns the role or permission level of the current user, which is used for authorization decisions and access control throughout the system. Common roles include "guest", "user", "admin", "manager".</p>
+<dl class="section return"><dt>Returns</dt><dd>String representation of the user's role</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns accurate, current role information </dd>
+<dd>
+Role string is consistent with system role definitions</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method is const as it does not modify the service state </dd>
+<dd>
+Role information should be current and not cached if dynamic </dd>
+<dd>
+Role strings should follow system-wide naming conventions </dd>
+<dd>
+Consider using enums instead of strings for type safety</dd></dl>
+<p>Common Role Values:</p><ul>
+<li>"guest": Anonymous user with limited access</li>
+<li>"user": Registered user with standard permissions</li>
+<li>"admin": Administrator with full system access</li>
+<li>"manager": Cinema manager with operational permissions</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line">std::string userRole = userInfoService-&gt;getRole();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Role-based authorization</span></div>
+<div class="line"><span class="keywordflow">if</span> (userRole == <span class="stringliteral">&quot;admin&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Enable administrative features</span></div>
+<div class="line">    showAdminPanel();</div>
+<div class="line">} <span class="keywordflow">else</span> <span class="keywordflow">if</span> (userRole == <span class="stringliteral">&quot;user&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Show standard user interface</span></div>
+<div class="line">    showUserDashboard();</div>
+<div class="line">} <span class="keywordflow">else</span> {</div>
+<div class="line">    <span class="comment">// Limit to guest functionality</span></div>
+<div class="line">    showGuestInterface();</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classUserInformationService.html#a92964bd967893eeb6c8c88ae0ff90287">UserInformationService</a>.</p>
 
 </div>
@@ -190,11 +273,40 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Displays user account information to output stream. </p>
+<p>Prints formatted user account information to the standard output or configured output stream. This method provides a standardized way to display user profile information for console interfaces or logging.</p>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> account information is formatted and displayed </dd>
+<dd>
+Sensitive information is appropriately filtered </dd>
+<dd>
+Output follows consistent formatting standards</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method is const as it does not modify the service state </dd>
+<dd>
+Sensitive information like passwords should never be displayed </dd>
+<dd>
+Output format should be user-friendly and readable </dd>
+<dd>
+Consider localization for international users</dd></dl>
+<p>Security Note:</p><ul>
+<li>Never display sensitive information like passwords</li>
+<li>Consider masking or truncating sensitive fields like email</li>
+<li>Ensure output is appropriate for the current security context</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="comment">// Display user information in console interface</span></div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Current User Information:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">userInfoService-&gt;printAccountInfo();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Example output:</span></div>
+<div class="line"><span class="comment">// Username: john_doe</span></div>
+<div class="line"><span class="comment">// Email: j***@example.com</span></div>
+<div class="line"><span class="comment">// Role: user</span></div>
+<div class="line"><span class="comment">// Member Since: 2024-01-15</span></div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classUserInformationService.html#ad8cafe3a39240827469d714b332c2d3d">UserInformationService</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>service/<a class="el" href="IUserInformationService_8h_source.html">IUserInformationService.h</a></li>
 </ul>
 </div><!-- contents -->

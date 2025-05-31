@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: IMovie Class Reference</title>
+<title>Movie Ticket Booking System: IMovie Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classIMovie.html','','classIMovie-members'); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">IMovie Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">IMovie Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Abstract interface defining the contract for movie entities.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IMovie_8h_source.html">model/IMovie.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -108,20 +111,71 @@ Inheritance diagram for IMovie:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae21798661a86d02f213b0aed9d3a781d" id="r_ae21798661a86d02f213b0aed9d3a781d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae21798661a86d02f213b0aed9d3a781d">~IMovie</a> ()</td></tr>
+<tr class="memdesc:ae21798661a86d02f213b0aed9d3a781d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper polymorphic destruction.  <br /></td></tr>
 <tr class="memitem:a254cdd4057cc257703eab741de9d927e" id="r_a254cdd4057cc257703eab741de9d927e"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a254cdd4057cc257703eab741de9d927e">getId</a> () const =0</td></tr>
+<tr class="memdesc:a254cdd4057cc257703eab741de9d927e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the movie's unique identifier.  <br /></td></tr>
 <tr class="memitem:a5bd043e6308ab1a5d4d17c847b012a00" id="r_a5bd043e6308ab1a5d4d17c847b012a00"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bd043e6308ab1a5d4d17c847b012a00">getTitle</a> () const =0</td></tr>
+<tr class="memdesc:a5bd043e6308ab1a5d4d17c847b012a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the movie title.  <br /></td></tr>
 <tr class="memitem:a6680c21b355060cc620711f988244e65" id="r_a6680c21b355060cc620711f988244e65"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6680c21b355060cc620711f988244e65">getGenre</a> () const =0</td></tr>
+<tr class="memdesc:a6680c21b355060cc620711f988244e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the movie genre.  <br /></td></tr>
 <tr class="memitem:abf1655c873d285a5436db974ff1a27b7" id="r_abf1655c873d285a5436db974ff1a27b7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf1655c873d285a5436db974ff1a27b7">getDescription</a> () const =0</td></tr>
+<tr class="memdesc:abf1655c873d285a5436db974ff1a27b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the movie description.  <br /></td></tr>
 <tr class="memitem:a5a8b84e582211fa85ffdbe4170e56d4f" id="r_a5a8b84e582211fa85ffdbe4170e56d4f"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8b84e582211fa85ffdbe4170e56d4f">getRating</a> () const =0</td></tr>
+<tr class="memdesc:a5a8b84e582211fa85ffdbe4170e56d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the movie rating.  <br /></td></tr>
 <tr class="memitem:ab6ec86a6ef5c4b4d42ab10948d9357fc" id="r_ab6ec86a6ef5c4b4d42ab10948d9357fc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6ec86a6ef5c4b4d42ab10948d9357fc">setId</a> (int id)=0</td></tr>
+<tr class="memdesc:ab6ec86a6ef5c4b4d42ab10948d9357fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the movie's unique identifier.  <br /></td></tr>
 <tr class="memitem:a3a2800b1ab59dc109781aeaba5be519f" id="r_a3a2800b1ab59dc109781aeaba5be519f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a2800b1ab59dc109781aeaba5be519f">setTitle</a> (const std::string &amp;title)=0</td></tr>
+<tr class="memdesc:a3a2800b1ab59dc109781aeaba5be519f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the movie title.  <br /></td></tr>
 <tr class="memitem:ad1db786fd5c9c43be398411813501ce3" id="r_ad1db786fd5c9c43be398411813501ce3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1db786fd5c9c43be398411813501ce3">setGenre</a> (const std::string &amp;genre)=0</td></tr>
+<tr class="memdesc:ad1db786fd5c9c43be398411813501ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the movie genre.  <br /></td></tr>
 <tr class="memitem:a4059bb0b186727c1b05e5d2c4ce7fc2c" id="r_a4059bb0b186727c1b05e5d2c4ce7fc2c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4059bb0b186727c1b05e5d2c4ce7fc2c">setDescription</a> (const std::string &amp;description)=0</td></tr>
+<tr class="memdesc:a4059bb0b186727c1b05e5d2c4ce7fc2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the movie description.  <br /></td></tr>
 <tr class="memitem:a881cfae548a20c2f438ae405e3557227" id="r_a881cfae548a20c2f438ae405e3557227"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881cfae548a20c2f438ae405e3557227">setRating</a> (float rating)=0</td></tr>
+<tr class="memdesc:a881cfae548a20c2f438ae405e3557227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the movie rating.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IMovie_8h_source.html#l00007">7</a> of file <a class="el" href="IMovie_8h_source.html">IMovie.h</a>.</p>
+<div class="textblock"><p>Abstract interface defining the contract for movie entities. </p>
+<p>This interface establishes the standard contract that all movie implementations must follow. It defines the essential properties and operations required for movie management in the booking system.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Define movie property access interface</li>
+<li>Establish consistent movie data structure</li>
+<li>Enable polymorphic movie handling</li>
+<li>Support different movie implementations</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Interface Segregation</b>: Focused interface for movie operations</li>
+<li><b>Strategy Pattern</b>: Enables different movie implementation strategies</li>
+<li><b>Template Method</b>: Defines template for movie property management</li>
+<li><b>Polymorphism</b>: Allows treating different movie types uniformly</li>
+</ul>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> Properties:</p><ul>
+<li>Unique identification (ID)</li>
+<li>Descriptive information (title, genre, description)</li>
+<li>Quality metrics (rating)</li>
+<li>Metadata for system management</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="keyword">class </span>ConcreteMovie : <span class="keyword">public</span> <a class="code hl_interface" href="classIMovie.html">IMovie</a> {</div>
+<div class="line">    <span class="comment">// Implement all pure virtual methods</span></div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">std::unique_ptr&lt;IMovie&gt; movie = std::make_unique&lt;ConcreteMovie&gt;();</div>
+<div class="line">movie-&gt;setTitle(<span class="stringliteral">&quot;Inception&quot;</span>);</div>
+<div class="line">movie-&gt;setGenre(<span class="stringliteral">&quot;Sci-Fi&quot;</span>);</div>
+<div class="line">movie-&gt;setRating(8.8f);</div>
+<div class="line"> </div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Movie: &quot;</span> &lt;&lt; movie-&gt;getTitle() </div>
+<div class="line">          &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; movie-&gt;getGenre() &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="ttc" id="aclassIMovie_html"><div class="ttname"><a href="classIMovie.html">IMovie</a></div><div class="ttdoc">Abstract interface defining the contract for movie entities.</div><div class="ttdef"><b>Definition</b> <a href="IMovie_8h_source.html#l00064">IMovie.h:64</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>All implementing classes must provide concrete implementations </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure proper validation in setter implementations</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> </dd>
+<dd>
+<a class="el" href="classIMovieRepository.html" title="Repository interface for movie and showtime data access operations.">IMovieRepository</a> </dd>
+<dd>
+MovieService </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IMovie_8h_source.html#l00064">64</a> of file <a class="el" href="IMovie_8h_source.html">IMovie.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae21798661a86d02f213b0aed9d3a781d" name="ae21798661a86d02f213b0aed9d3a781d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae21798661a86d02f213b0aed9d3a781d">&#9670;&#160;</a></span>~IMovie()</h2>
@@ -146,7 +200,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="IMovie_8h_source.html#l00009">9</a> of file <a class="el" href="IMovie_8h_source.html">IMovie.h</a>.</p>
+<p>Virtual destructor for proper polymorphic destruction. </p>
+<p>Ensures that derived class destructors are called correctly when deleting through base class pointers.</p>
+<dl class="section note"><dt>Note</dt><dd>Essential for proper resource cleanup in inheritance hierarchies </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IMovie_8h_source.html#l00074">74</a> of file <a class="el" href="IMovie_8h_source.html">IMovie.h</a>.</p>
 
 </div>
 </div>
@@ -173,6 +231,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the movie description. </p>
+<p>Returns a detailed description or synopsis of the movie. Provides users with plot information to aid in selection.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string Detailed movie description/synopsis</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Description should be informative but spoiler-free </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a4059bb0b186727c1b05e5d2c4ce7fc2c" title="Set the movie description.">setDescription()</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classMovie.html#a428c306153c0c089c2b5cb4f64e69f93">Movie</a>.</p>
 
@@ -201,6 +265,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the movie genre. </p>
+<p>Returns the primary genre classification for this movie. Used for categorization, filtering, and recommendations.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The movie genre (e.g., "Action", "Comedy", "Drama")</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Should follow standard genre classifications </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad1db786fd5c9c43be398411813501ce3" title="Set the movie genre.">setGenre()</a> </dd></dl>
+
 <p>Implemented in <a class="el" href="classMovie.html#a902b40ab706611aa2fae7f305f7973da">Movie</a>.</p>
 
 </div>
@@ -227,6 +297,13 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the movie's unique identifier. </p>
+<p>Returns the unique database identifier for this movie. Used for database operations and movie lookups.</p>
+<dl class="section return"><dt>Returns</dt><dd>int The unique movie ID</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns consistent ID for the same movie instance</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>ID should be unique across the entire movie database </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ab6ec86a6ef5c4b4d42ab10948d9357fc" title="Set the movie&#39;s unique identifier.">setId()</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classMovie.html#a7d8cc7cb893cd2a72207335747917c19">Movie</a>.</p>
 
@@ -255,6 +332,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the movie rating. </p>
+<p>Returns the movie's rating score, typically on a scale like 1-10. Used for quality indication and recommendation algorithms.</p>
+<dl class="section return"><dt>Returns</dt><dd>float The movie rating (e.g., 8.5 out of 10)</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns value within valid rating range</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Rating scale should be consistent across the system </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a881cfae548a20c2f438ae405e3557227" title="Set the movie rating.">setRating()</a> </dd></dl>
+
 <p>Implemented in <a class="el" href="classMovie.html#a62f92b13e8ce53f760e8e34f963c90a9">Movie</a>.</p>
 
 </div>
@@ -281,6 +365,13 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the movie title. </p>
+<p>Returns the full title of the movie as displayed to users. This is the primary identifier users will see.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The movie title</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns non-empty string for valid movies</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Title should be user-friendly and searchable </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a3a2800b1ab59dc109781aeaba5be519f" title="Set the movie title.">setTitle()</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classMovie.html#a32f6193541262429d0c02524a3f4c5e3">Movie</a>.</p>
 
@@ -309,6 +400,19 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the movie description. </p>
+<p>Assigns a detailed description or synopsis for this movie. Should provide helpful information without spoilers.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>The description text to assign</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>description should be non-empty and informative </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="#abf1655c873d285a5436db974ff1a27b7" title="Get the movie description.">getDescription()</a> returns the assigned description</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Consider length limits for database storage </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#abf1655c873d285a5436db974ff1a27b7" title="Get the movie description.">getDescription()</a> </dd></dl>
+
 <p>Implemented in <a class="el" href="classMovie.html#aaa82ff6ae1e0b4b1355f6d0ee0f6d99b">Movie</a>.</p>
 
 </div>
@@ -335,6 +439,19 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the movie genre. </p>
+<p>Assigns the genre classification for this movie. Should follow standard genre categories.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">genre</td><td>The genre to assign (e.g., "Action", "Comedy")</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>genre should be non-empty and from valid genre list </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="#a6680c21b355060cc620711f988244e65" title="Get the movie genre.">getGenre()</a> returns the assigned genre</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Consider validating against predefined genre list </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a6680c21b355060cc620711f988244e65" title="Get the movie genre.">getGenre()</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classMovie.html#aee4eda14b9dafcc13e81a7a9b431582a">Movie</a>.</p>
 
@@ -363,6 +480,20 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the movie's unique identifier. </p>
+<p>Assigns a unique identifier to this movie instance. Typically used during database persistence operations.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier for the movie</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>id should be positive for valid movies </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="#a254cdd4057cc257703eab741de9d927e" title="Get the movie&#39;s unique identifier.">getId()</a> returns the assigned id</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>ID assignment should be handled by database/repository layers </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Changing ID after persistence may cause data inconsistencies </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a254cdd4057cc257703eab741de9d927e" title="Get the movie&#39;s unique identifier.">getId()</a> </dd></dl>
+
 <p>Implemented in <a class="el" href="classMovie.html#aecb19d72e9a1d67e181bdae72626ad44">Movie</a>.</p>
 
 </div>
@@ -389,6 +520,25 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the movie rating. </p>
+<p>Assigns a quality rating score for this movie. Should be within the valid rating range for the system.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rating</td><td>The rating score to assign</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>rating should be within valid range (e.g., 0.0-10.0) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="#a5a8b84e582211fa85ffdbe4170e56d4f" title="Get the movie rating.">getRating()</a> returns the assigned rating</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If rating is outside valid range</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Rating scale should be clearly documented and consistent </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5a8b84e582211fa85ffdbe4170e56d4f" title="Get the movie rating.">getRating()</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classMovie.html#a8e3495c9813741eefc202cdffb1e4df5">Movie</a>.</p>
 
@@ -417,11 +567,30 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the movie title. </p>
+<p>Assigns the display title for this movie. Title should be unique and user-friendly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>The movie title to assign</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>title should be non-empty </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="#a5bd043e6308ab1a5d4d17c847b012a00" title="Get the movie title.">getTitle()</a> returns the assigned title</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If title is empty or invalid</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Title should be validated for appropriate length and content </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5bd043e6308ab1a5d4d17c847b012a00" title="Get the movie title.">getTitle()</a> </dd></dl>
+
 <p>Implemented in <a class="el" href="classMovie.html#ae8bf2578302dc409f7381f1de146d480">Movie</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>model/<a class="el" href="IMovie_8h_source.html">IMovie.h</a></li>
 </ul>
 </div><!-- contents -->

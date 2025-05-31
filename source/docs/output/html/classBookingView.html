@@ -93,27 +93,95 @@ $(function(){initNavTree('classBookingView.html','','classBookingView-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Data Transfer Object containing complete booking information for display.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="BookingView_8h_source.html">repository/BookingView.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c7463363bb0fd03234501c6fc632153" id="r_a8c7463363bb0fd03234501c6fc632153"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c7463363bb0fd03234501c6fc632153">BookingView</a> (const int &amp;<a class="el" href="#a0b07c9526a2265b00b18316a44d093f7">bookingID</a>, const int &amp;<a class="el" href="#a8dd7674eac01aa52e948eef6d6c8bec0">movieID</a>, const std::string &amp;title, const <a class="el" href="structShowTime.html">ShowTime</a> &amp;<a class="el" href="#aaf2686540421196a44f268391bae161c">showTime</a>, const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classISeat.html">ISeat</a> &gt; &gt; &amp;<a class="el" href="#a87df6a527dfb3c9c13687d78b2cb8c6f">bookedSeats</a>, const float &amp;<a class="el" href="#a765254e053a412c2ab2712460a009191">totalPrice</a>)</td></tr>
+<tr class="memdesc:a8c7463363bb0fd03234501c6fc632153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprehensive constructor for booking view.  <br /></td></tr>
+<tr class="memitem:a73e109a8d95d8f2d3267aecee4269ff0" id="r_a73e109a8d95d8f2d3267aecee4269ff0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73e109a8d95d8f2d3267aecee4269ff0">BookingView</a> ()</td></tr>
+<tr class="memdesc:a73e109a8d95d8f2d3267aecee4269ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
+<tr class="memitem:a9867d882c7775714e6a036ec23684243" id="r_a9867d882c7775714e6a036ec23684243"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9867d882c7775714e6a036ec23684243">getSeatCount</a> () const</td></tr>
+<tr class="memdesc:a9867d882c7775714e6a036ec23684243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate seat count.  <br /></td></tr>
+<tr class="memitem:a9e9bde63694a397eacb82431e3bf11fe" id="r_a9e9bde63694a397eacb82431e3bf11fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e9bde63694a397eacb82431e3bf11fe">isValid</a> () const</td></tr>
+<tr class="memdesc:a9e9bde63694a397eacb82431e3bf11fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate booking view data.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0b07c9526a2265b00b18316a44d093f7" id="r_a0b07c9526a2265b00b18316a44d093f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b07c9526a2265b00b18316a44d093f7">bookingID</a></td></tr>
+<tr class="memdesc:a0b07c9526a2265b00b18316a44d093f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique booking identifier.  <br /></td></tr>
 <tr class="memitem:a8dd7674eac01aa52e948eef6d6c8bec0" id="r_a8dd7674eac01aa52e948eef6d6c8bec0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dd7674eac01aa52e948eef6d6c8bec0">movieID</a></td></tr>
+<tr class="memdesc:a8dd7674eac01aa52e948eef6d6c8bec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associated movie identifier.  <br /></td></tr>
 <tr class="memitem:ad1e9ad194a129b59a084117c45dcbf66" id="r_ad1e9ad194a129b59a084117c45dcbf66"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1e9ad194a129b59a084117c45dcbf66">movieTitle</a></td></tr>
+<tr class="memdesc:ad1e9ad194a129b59a084117c45dcbf66"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title for display.  <br /></td></tr>
 <tr class="memitem:aaf2686540421196a44f268391bae161c" id="r_aaf2686540421196a44f268391bae161c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structShowTime.html">ShowTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2686540421196a44f268391bae161c">showTime</a></td></tr>
+<tr class="memdesc:aaf2686540421196a44f268391bae161c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete showtime information.  <br /></td></tr>
 <tr class="memitem:a87df6a527dfb3c9c13687d78b2cb8c6f" id="r_a87df6a527dfb3c9c13687d78b2cb8c6f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classISeat.html">ISeat</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87df6a527dfb3c9c13687d78b2cb8c6f">bookedSeats</a></td></tr>
+<tr class="memdesc:a87df6a527dfb3c9c13687d78b2cb8c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of reserved seats.  <br /></td></tr>
 <tr class="memitem:a765254e053a412c2ab2712460a009191" id="r_a765254e053a412c2ab2712460a009191"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a765254e053a412c2ab2712460a009191">totalPrice</a></td></tr>
+<tr class="memdesc:a765254e053a412c2ab2712460a009191"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total booking price.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00009">9</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<div class="textblock"><p>Data Transfer Object containing complete booking information for display. </p>
+<p>This class serves as a comprehensive DTO that aggregates all information related to a booking for presentation purposes. It combines booking details, movie information, showtime data, seat reservations, and pricing into a single convenient object.</p>
+<p>Key Features:</p><ul>
+<li>Complete booking information aggregation</li>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> and showtime details integration</li>
+<li>Seat reservation and pricing information</li>
+<li>Optimized for UI display and reporting</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Data Transfer Object (DTO)</b>: Optimized for data transfer between layers</li>
+<li><b>Composite</b>: Aggregates multiple related data entities</li>
+<li><b>View Object</b>: Specifically designed for presentation layer consumption</li>
+<li><b>Value Object</b>: Immutable data container for booking information</li>
+</ul>
+<p>Data Aggregation:</p><ul>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> identification and metadata</li>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> information (ID, title)</li>
+<li>Complete showtime details</li>
+<li>Reserved seat collection with details</li>
+<li>Total pricing calculation</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="comment">// Create seat collection</span></div>
+<div class="line">std::vector&lt;std::shared_ptr&lt;ISeat&gt;&gt; seats = {</div>
+<div class="line">    std::make_shared&lt;SingleSeat&gt;(<span class="stringliteral">&quot;A1&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SeatType::SINGLE</a>, 12.99f),</div>
+<div class="line">    std::make_shared&lt;SingleSeat&gt;(<span class="stringliteral">&quot;A2&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SeatType::SINGLE</a>, 12.99f)</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Create showtime</span></div>
+<div class="line"><a class="code hl_struct" href="structShowTime.html">ShowTime</a> showtime(101, <span class="stringliteral">&quot;2025-06-15&quot;</span>, <span class="stringliteral">&quot;19:30&quot;</span>, <span class="stringliteral">&quot;22:00&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Create booking view</span></div>
+<div class="line"><a class="code hl_class" href="classBookingView.html">BookingView</a> view(12345, 67, <span class="stringliteral">&quot;Inception&quot;</span>, showtime, seats, 25.98f);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Display booking information</span></div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Booking #&quot;</span> &lt;&lt; view.bookingID &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Movie: &quot;</span> &lt;&lt; view.movieTitle &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Showtime: &quot;</span> &lt;&lt; view.showTime.date &lt;&lt; <span class="stringliteral">&quot; at &quot;</span> &lt;&lt; view.showTime.startTime &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Seats: &quot;</span> &lt;&lt; view.bookedSeats.size() &lt;&lt; <span class="stringliteral">&quot; seats reserved&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Total: $&quot;</span> &lt;&lt; view.totalPrice &lt;&lt; std::endl;</div>
+<div class="ttc" id="aISeat_8h_html_a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516"><div class="ttname"><a href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SINGLE</a></div><div class="ttdeci">@ SINGLE</div><div class="ttdoc">Standard single-person seat.</div><div class="ttdef"><b>Definition</b> <a href="ISeat_8h_source.html#l00021">ISeat.h:21</a></div></div>
+<div class="ttc" id="aclassBookingView_html"><div class="ttname"><a href="classBookingView.html">BookingView</a></div><div class="ttdoc">Data Transfer Object containing complete booking information for display.</div><div class="ttdef"><b>Definition</b> <a href="BookingView_8h_source.html#l00076">BookingView.h:76</a></div></div>
+<div class="ttc" id="astructShowTime_html"><div class="ttname"><a href="structShowTime.html">ShowTime</a></div><div class="ttdoc">Data structure representing a movie showtime schedule.</div><div class="ttdef"><b>Definition</b> <a href="ShowTime_8h_source.html#l00059">ShowTime.h:59</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This class is optimized for read operations and display purposes </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Do not modify seat objects after creating <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> </dd>
+<dd>
+<a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> </dd>
+<dd>
+<a class="el" href="classBookingRepository.html" title="SQLite-based implementation of booking data access operations.">BookingRepository</a> </dd>
+<dd>
+<a class="el" href="classIBookingService.html" title="Interface defining booking operations for movie tickets.">IBookingService</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00076">76</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8c7463363bb0fd03234501c6fc632153" name="a8c7463363bb0fd03234501c6fc632153"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c7463363bb0fd03234501c6fc632153">&#9670;&#160;</a></span>BookingView()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7463363bb0fd03234501c6fc632153">&#9670;&#160;</a></span>BookingView() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +219,152 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Comprehensive constructor for booking view. </p>
+<p>Creates a complete booking view with all necessary information for display and processing purposes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bookingID</td><td>Unique identifier for the booking </td></tr>
+    <tr><td class="paramname">movieID</td><td>Identifier of the associated movie </td></tr>
+    <tr><td class="paramname">title</td><td>Title of the movie for display </td></tr>
+    <tr><td class="paramname">showTime</td><td>Complete showtime information </td></tr>
+    <tr><td class="paramname">bookedSeats</td><td>Collection of reserved seats </td></tr>
+    <tr><td class="paramname">totalPrice</td><td>Total cost for the booking</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>bookingID &gt; 0 (valid booking) </dd>
+<dd>
+movieID &gt; 0 (valid movie) </dd>
+<dd>
+title is non-empty </dd>
+<dd>
+bookedSeats is non-empty for valid bookings </dd>
+<dd>
+totalPrice &gt;= 0.0f </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>All booking information is properly initialized</dd></dl>
+<dl class="section user"><dt>Parameter Validation</dt><dd><ul>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> and movie IDs should be positive</li>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title should be meaningful and non-empty</li>
+<li>Showtime should contain valid date/time information</li>
+<li>Seat collection should not be empty for paid bookings</li>
+<li>Total price should be non-negative</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Constructor performs deep copy of seat information </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> constructor for showtime validation </dd>
+<dd>
+<a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for seat object requirements</dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line">std::vector&lt;std::shared_ptr&lt;ISeat&gt;&gt; seats;</div>
+<div class="line">seats.push_back(std::make_shared&lt;SingleSeat&gt;(<span class="stringliteral">&quot;A1&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SeatType::SINGLE</a>, 12.99f));</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structShowTime.html">ShowTime</a> show(101, <span class="stringliteral">&quot;2025-06-15&quot;</span>, <span class="stringliteral">&quot;19:30&quot;</span>, <span class="stringliteral">&quot;22:00&quot;</span>);</div>
+<div class="line"><a class="code hl_function" href="#a8c7463363bb0fd03234501c6fc632153">BookingView</a> view(12345, 67, <span class="stringliteral">&quot;Inception&quot;</span>, show, seats, 12.99f);</div>
+<div class="ttc" id="aclassBookingView_html_a8c7463363bb0fd03234501c6fc632153"><div class="ttname"><a href="#a8c7463363bb0fd03234501c6fc632153">BookingView::BookingView</a></div><div class="ttdeci">BookingView(const int &amp;bookingID, const int &amp;movieID, const std::string &amp;title, const ShowTime &amp;showTime, const std::vector&lt; std::shared_ptr&lt; ISeat &gt; &gt; &amp;bookedSeats, const float &amp;totalPrice)</div><div class="ttdoc">Comprehensive constructor for booking view.</div><div class="ttdef"><b>Definition</b> <a href="BookingView_8cpp_source.html#l00003">BookingView.cpp:3</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="BookingView_8cpp_source.html#l00003">3</a> of file <a class="el" href="BookingView_8cpp_source.html">BookingView.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a73e109a8d95d8f2d3267aecee4269ff0" name="a73e109a8d95d8f2d3267aecee4269ff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e109a8d95d8f2d3267aecee4269ff0">&#9670;&#160;</a></span>BookingView() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BookingView::BookingView </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Creates an uninitialized booking view. Useful for STL containers and scenarios where booking data will be assigned later.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>All numeric fields are set to 0/0.0f </dd>
+<dd>
+All string fields are empty </dd>
+<dd>
+Seat collection is empty</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Object is in invalid state until properly initialized </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Do not use uninitialized objects for display </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00204">204</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a9867d882c7775714e6a036ec23684243" name="a9867d882c7775714e6a036ec23684243"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9867d882c7775714e6a036ec23684243">&#9670;&#160;</a></span>getSeatCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t BookingView::getSeatCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate seat count. </p>
+<p>Convenience method to get the number of seats in this booking.</p>
+<dl class="section return"><dt>Returns</dt><dd>size_t Number of seats reserved in this booking</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Useful for display and validation purposes </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00215">215</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+
+</div>
+</div>
+<a id="a9e9bde63694a397eacb82431e3bf11fe" name="a9e9bde63694a397eacb82431e3bf11fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9bde63694a397eacb82431e3bf11fe">&#9670;&#160;</a></span>isValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BookingView::isValid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validate booking view data. </p>
+<p>Checks if the booking view contains valid data for display.</p>
+<dl class="section return"><dt>Returns</dt><dd>bool True if booking view is valid, false otherwise</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Performs basic validation of critical fields </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00226">226</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -168,7 +381,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00015">15</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p>Collection of reserved seats. </p>
+<p>Vector containing all seats that have been reserved as part of this booking. Each seat includes complete seat information.</p>
+<dl class="section note"><dt>Note</dt><dd>Seats should not be modified after booking creation </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for seat interface details </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00130">130</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -184,7 +402,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00011">11</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p>Unique booking identifier. </p>
+<p>Database primary key that uniquely identifies this booking across the entire system. Used for booking management and references.</p>
+<dl class="section note"><dt>Note</dt><dd>Should be positive for valid bookings </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00086">86</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -200,7 +422,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00012">12</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p>Associated movie identifier. </p>
+<p>Unique identifier of the movie associated with this booking. Links the booking to specific movie content.</p>
+<dl class="section note"><dt>Note</dt><dd>References <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> entity in the database </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovie.html#a7d8cc7cb893cd2a72207335747917c19" title="Get movie unique identifier.">Movie::getId()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00097">97</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -216,7 +443,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00013">13</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title for display. </p>
+<p>Human-readable title of the movie associated with this booking. Used for user interface display and reporting.</p>
+<dl class="section note"><dt>Note</dt><dd>Should be non-empty for valid bookings </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovie.html#a32f6193541262429d0c02524a3f4c5e3" title="Get movie title.">Movie::getTitle()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00108">108</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +464,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00014">14</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p>Complete showtime information. </p>
+<p>Full showtime details including date, start time, and end time for the specific screening associated with this booking.</p>
+<dl class="section note"><dt>Note</dt><dd>Contains complete temporal information for the booking </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> for detailed structure </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00119">119</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>
@@ -248,7 +485,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00016">16</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
+<p>Total booking price. </p>
+<p>Calculated total cost for this booking including all reserved seats, taxes, fees, and any applicable discounts.</p>
+<dl class="section note"><dt>Note</dt><dd>Should equal sum of all seat prices plus applicable fees </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#a0f09b8e0c9815cc476c73032854c843e" title="Calculates the price for this seat.">ISeat::price()</a> for individual seat pricing </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingView_8h_source.html#l00141">141</a> of file <a class="el" href="BookingView_8h_source.html">BookingView.h</a>.</p>
 
 </div>
 </div>

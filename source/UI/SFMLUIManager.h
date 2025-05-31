@@ -114,31 +114,56 @@ enum class UIState {
  */
 class SFMLUIManager {
 private:
+    // Window dimensions
+    unsigned int windowWidth = 1280;
+    unsigned int windowHeight = 720;
+    // Button dimensions
+    float buttonWidth = 250;  // Button width
+    float buttonHeight = 60;  // Button height
+    float buttonGap = 40;     // Gap between buttons
+    float buttonY = 500;      // Default vertical position for buttons
+
+    // GUI components
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
     sf::RenderWindow window;
     sf::Font font;
     UIState currentState;
+    UIState previousState;
     std::shared_ptr<SessionManager> sessionManager;
-      // UI state variables
+    
+    // UI state variables
     std::string inputUsername;
     std::string inputPassword;
     std::string inputEmail;
     std::string inputPhone;
     std::string statusMessage;
+    std::string successMessage;
     bool isInputtingUsername;
     bool isInputtingPassword;
     bool isInputtingEmail;
     bool isInputtingPhone;
     
+    // Navigation state
+    int selectedMovieIndex;
+    int selectedShowTimeIndex;
+    
+    // Data storage
+    std::vector<MovieDTO> movies;
+    std::vector<ShowTime> currentShowTimes;
+    std::vector<SeatView> currentSeats;
+    std::vector<std::string> selectedSeats;
+    std::vector<BookingView> bookingHistory;
+    
     // Admin management variables
     std::string editMovieTitle;
     std::string editMovieDescription;
     std::string editMovieGenre;
-    // Removed: std::string editMovieDuration;
     std::string editMoviePrice;
-    int editingMovieId;    bool isEditingTitle;
+    int editingMovieId;
+    bool isEditingTitle;
     bool isEditingDescription;
     bool isEditingGenre;
-    // Removed: bool isEditingDuration;
     bool isEditingPrice;
     
     // Showtime management variables
@@ -149,33 +174,14 @@ private:
     bool isEditingDate;
     bool isEditingStartTime;
     bool isEditingEndTime;
-      // Success message variables
-    std::string successMessage;
-    UIState previousState;
-    
-    // Movie data
-    std::vector<MovieDTO> movies;
-    
-    // Quản lý nhiều lịch chiếu khi thêm phim
-    std::vector<std::string> pendingShowtimes; // Lưu các showtime đang chờ thêm vào phim mới
-    bool isAddingShowtime; // Đánh dấu trạng thái đang thêm showtime
-    
-    // Scrolling variables
-    int movieListScrollOffset; // Số lượng phim được "cuộn qua" từ đầu danh sách trong quản lý
-    int movieViewScrollOffset; // Số lượng phim được "cuộn qua" từ đầu danh sách trong xem phim
-    int selectedMovieIndex;
-    std::vector<ShowTime> currentShowTimes;
-    int selectedShowTimeIndex;
-    std::vector<SeatView> currentSeats;
-    std::vector<std::string> selectedSeats;
-    std::vector<BookingView> bookingHistory;
-    
-    // UI helper methods
-    void handleEvents();
-    void update();
-    void render();    // Screen rendering methods
-    void renderGuestScreen();
+    std::vector<std::string> pendingShowtimes;
+    int movieListScrollOffset;
+    int movieViewScrollOffset;
+    bool isAddingShowtime;
+
+    // Screen render methods
     void renderLoginScreen();
+    void renderGuestScreen();
     void renderMainMenu();
     void renderMovieList();
     void renderMovieDetails();
@@ -187,39 +193,27 @@ private:
     void renderMovieManagement();
     void renderEditMovie();
     void renderShowtimeManagement();
-    void renderSuccessMessage();// Input handling
+    void renderSuccessMessage();
+    void renderPendingShowtimes();
+
+    // Event handlers
     void handleTextInput(unsigned int unicode);
     void handleKeyPress(sf::Keyboard::Key key);
     void handleMouseClick(sf::Vector2i mousePos);
-      // UI utility methods
+    void handleEvents();
+    void update();
+    void render();
+    bool isButtonClicked(const sf::RectangleShape& button, sf::Vector2i mousePos);
+
+    // UI utility methods
     sf::Text createText(const std::string& content, float x, float y, int size = 24);
     sf::RectangleShape createButton(float x, float y, float width, float height);
-    bool isButtonClicked(const sf::RectangleShape& button, sf::Vector2i mousePos);
-    
-    // Admin utility methods
     sf::RectangleShape createStyledButton(float x, float y, float width, float height, sf::Color color);
     sf::RectangleShape createInputField(float x, float y, float width, float height, bool isActive);
     void drawGradientBackground();
     void drawMovieCard(const MovieDTO& movie, float x, float y, bool isSelected);
     void showSuccessMessage(const std::string& message);
-    void deleteMovie(int movieId);
-    void updateMovie(int movieId);    void addMovie();
-    void resetEditingFlags();
-    void clearEditingFields();
-    void clearShowtimeFields();
-    
-    // Showtime management methods
-    void addShowtime(int movieId);
-    void deleteShowtime(int movieId, int showtimeId);
-    void resetShowtimeEditingFlags();
-    
-    // Multiple showtimes management methods
-    void addPendingShowtime();
-    void removePendingShowtime(int index);
-    void renderPendingShowtimes();
-    bool handlePendingShowtimesClick(sf::Vector2i mousePos);
-    void clearPendingShowtimes();
-    
+
     // Service interaction methods
     void attemptLogin();
     void attemptRegister();
@@ -230,6 +224,23 @@ private:
     void loadBookingHistory();
     void createBooking();
     void logout();
+
+    // Admin management methods
+    void deleteMovie(int movieId);
+    void updateMovie(int movieId);
+    void addMovie();
+    void resetEditingFlags();
+    void clearEditingFields();
+    void clearShowtimeFields();
+    
+    // Showtime management methods
+    void addShowtime(int movieId);
+    void deleteShowtime(int movieId, int showtimeId);
+    void resetShowtimeEditingFlags();
+    void addPendingShowtime();
+    void removePendingShowtime(int index);
+    bool handlePendingShowtimesClick(sf::Vector2i mousePos);
+    void clearPendingShowtimes();
 
 public:
     SFMLUIManager(std::shared_ptr<SessionManager> sessionMgr);

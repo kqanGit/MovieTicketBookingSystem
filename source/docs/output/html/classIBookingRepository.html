@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: IBookingRepository Class Reference</title>
+<title>Movie Ticket Booking System: IBookingRepository Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classIBookingRepository.html','','classIBookingReposit
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">IBookingRepository Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">IBookingRepository Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for booking data access operations.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IBookingRepository_8h_source.html">repository/IBookingRepository.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -100,22 +103,67 @@ Inheritance diagram for IBookingRepository:</div>
  <div class="center">
   <img src="classIBookingRepository.png" usemap="#IBookingRepository_map" alt=""/>
   <map id="IBookingRepository_map" name="IBookingRepository_map">
-<area href="classBookingRepository.html" alt="BookingRepository" shape="rect" coords="0,56,120,80"/>
+<area href="classBookingRepository.html" title="SQLite-based implementation of booking data access operations." alt="BookingRepository" shape="rect" coords="0,56,120,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac58e3cc3eb2223802cee86cebe1836a4" id="r_ac58e3cc3eb2223802cee86cebe1836a4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac58e3cc3eb2223802cee86cebe1836a4">~IBookingRepository</a> ()=default</td></tr>
+<tr class="memdesc:ac58e3cc3eb2223802cee86cebe1836a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 <tr class="memitem:a90b190cbe36477e48512c467f58f31c4" id="r_a90b190cbe36477e48512c467f58f31c4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90b190cbe36477e48512c467f58f31c4">addBooking</a> (const int &amp;userID, const int &amp;showTimeID)=0</td></tr>
+<tr class="memdesc:a90b190cbe36477e48512c467f58f31c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new booking record for a user and showtime.  <br /></td></tr>
 <tr class="memitem:abcfd5139be92aba52a81ac9f7187298b" id="r_abcfd5139be92aba52a81ac9f7187298b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcfd5139be92aba52a81ac9f7187298b">addBookedSeats</a> (const int &amp;bookingID, const std::vector&lt; std::string &gt; &amp;bookedSeats)=0</td></tr>
+<tr class="memdesc:abcfd5139be92aba52a81ac9f7187298b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associates specific seats with an existing booking.  <br /></td></tr>
 <tr class="memitem:a304af4d8d0380a5e7da72618d428b208" id="r_a304af4d8d0380a5e7da72618d428b208"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a304af4d8d0380a5e7da72618d428b208">getLatestBookingID</a> (const int &amp;userID)=0</td></tr>
+<tr class="memdesc:a304af4d8d0380a5e7da72618d428b208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the most recent booking ID for a specific user.  <br /></td></tr>
 <tr class="memitem:a4c30124ea9fb23e55a13ee73dbbc0e93" id="r_a4c30124ea9fb23e55a13ee73dbbc0e93"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="classBookingView.html">BookingView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c30124ea9fb23e55a13ee73dbbc0e93">viewAllBookings</a> (const int &amp;userID)=0</td></tr>
+<tr class="memdesc:a4c30124ea9fb23e55a13ee73dbbc0e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all booking history for a specific user.  <br /></td></tr>
 <tr class="memitem:aaccd4ea004b7776732a3438e4264f075" id="r_aaccd4ea004b7776732a3438e4264f075"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="classSeatView.html">SeatView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaccd4ea004b7776732a3438e4264f075">viewSeatsStatus</a> (const int &amp;showTimeID)=0</td></tr>
+<tr class="memdesc:aaccd4ea004b7776732a3438e4264f075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves seat availability status for a specific showtime.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IBookingRepository_8h_source.html#l00008">8</a> of file <a class="el" href="IBookingRepository_8h_source.html">IBookingRepository.h</a>.</p>
+<div class="textblock"><p>Interface for booking data access operations. </p>
+<p>The <a class="el" href="classIBookingRepository.html" title="Interface for booking data access operations.">IBookingRepository</a> interface defines the contract for all booking-related data access operations in the movie ticket booking system. This interface follows the Repository pattern, providing an abstraction layer between the business logic and data persistence mechanisms.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Manage booking creation and persistence</li>
+<li>Handle seat reservations and associations</li>
+<li>Provide booking history and status information</li>
+<li>Abstract database-specific operations</li>
+</ul>
+<p>Design Pattern: Repository Pattern</p><ul>
+<li>Encapsulates data access logic</li>
+<li>Provides testability through interface abstraction</li>
+<li>Enables multiple storage implementations (SQL, NoSQL, etc.)</li>
+<li>Centralizes booking-related data operations</li>
+</ul>
+<p>Implementation Considerations:</p><ul>
+<li>All operations should be transactional where appropriate</li>
+<li>Thread safety should be handled by concrete implementations</li>
+<li>Error handling should use exceptions for exceptional cases</li>
+<li>Data validation should occur at the service layer</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;IBookingRepository&gt; bookingRepo = </div>
+<div class="line">    std::make_unique&lt;BookingRepositorySQL&gt;(dbConnection);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Create a new booking</span></div>
+<div class="line">bookingRepo-&gt;addBooking(userId, showTimeId);</div>
+<div class="line"><span class="keywordtype">int</span> bookingId = bookingRepo-&gt;getLatestBookingID(userId);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Reserve seats for the booking</span></div>
+<div class="line">std::vector&lt;std::string&gt; seats = {<span class="stringliteral">&quot;A1&quot;</span>, <span class="stringliteral">&quot;A2&quot;</span>};</div>
+<div class="line">bookingRepo-&gt;addBookedSeats(bookingId, seats);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// View booking history</span></div>
+<div class="line"><span class="keyword">auto</span> bookings = bookingRepo-&gt;viewAllBookings(userId);</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd>BookingRepositorySQL </dd>
+<dd>
+<a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> </dd>
+<dd>
+<a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IBookingRepository_8h_source.html#l00064">64</a> of file <a class="el" href="IBookingRepository_8h_source.html">IBookingRepository.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac58e3cc3eb2223802cee86cebe1836a4" name="ac58e3cc3eb2223802cee86cebe1836a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac58e3cc3eb2223802cee86cebe1836a4">&#9670;&#160;</a></span>~IBookingRepository()</h2>
@@ -139,6 +187,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup of derived classes. </p>
+<p>Ensures that concrete repository implementations are properly destroyed when accessed through the interface pointer. </p>
 
 </div>
 </div>
@@ -170,6 +221,48 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Associates specific seats with an existing booking. </p>
+<p>Reserves the specified seats for the given booking, completing the seat selection process. This method should be called after a booking has been created with <a class="el" href="#a90b190cbe36477e48512c467f58f31c4" title="Creates a new booking record for a user and showtime.">addBooking()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bookingID</td><td>Unique identifier of the booking to associate seats with </td></tr>
+    <tr><td class="paramname">bookedSeats</td><td>Vector of seat identifiers to reserve (e.g., "A1", "B5")</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>bookingID must be a valid, existing booking identifier </dd>
+<dd>
+bookedSeats must not be empty </dd>
+<dd>
+All seats in bookedSeats must be valid seat identifiers </dd>
+<dd>
+All seats must be available (not already booked) </dd>
+<dd>
+All seats must belong to the same showtime as the booking </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>All specified seats are marked as booked </dd>
+<dd>
+Seats are associated with the booking </dd>
+<dd>
+Other users cannot book these seats</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if bookingID is invalid or bookedSeats is empty </td></tr>
+    <tr><td class="paramname">SeatUnavailableException</td><td>if any seat is already booked </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if seat reservation fails due to system issues</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This operation should be atomic - either all seats are booked or none </dd>
+<dd>
+Consider implementing timeout mechanisms for long-running transactions</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line">std::vector&lt;std::string&gt; selectedSeats = {<span class="stringliteral">&quot;A1&quot;</span>, <span class="stringliteral">&quot;A2&quot;</span>, <span class="stringliteral">&quot;A3&quot;</span>};</div>
+<div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    repository-&gt;addBookedSeats(bookingId, selectedSeats);</div>
+<div class="line">    <span class="comment">// All seats successfully reserved</span></div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> SeatUnavailableException&amp; e) {</div>
+<div class="line">    <span class="comment">// Some seats were already taken</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classBookingRepository.html#aa970e1f3f79f63cb68a4d7600487edc9">BookingRepository</a>.</p>
 
 </div>
@@ -201,6 +294,43 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creates a new booking record for a user and showtime. </p>
+<p>Initiates a new booking transaction by creating a booking record that associates a user with a specific movie showtime. This method creates the primary booking entity but does not reserve specific seats.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user making the booking </td></tr>
+    <tr><td class="paramname">showTimeID</td><td>Unique identifier of the movie showtime being booked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID must be a valid, existing user identifier </dd>
+<dd>
+showTimeID must be a valid, existing showtime identifier </dd>
+<dd>
+The showtime must not be in the past </dd>
+<dd>
+The showtime must have available capacity </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>A new booking record is created in the system </dd>
+<dd>
+The booking is associated with the specified user and showtime</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if userID or showTimeID is invalid </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if booking creation fails due to system issues </td></tr>
+    <tr><td class="paramname">BookingException</td><td>if showtime is full or no longer available</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method should be called before <a class="el" href="#abcfd5139be92aba52a81ac9f7187298b" title="Associates specific seats with an existing booking.">addBookedSeats()</a> </dd>
+<dd>
+Consider using database transactions for atomicity</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    repository-&gt;addBooking(12345, 67890);</div>
+<div class="line">    <span class="comment">// Booking successfully created</span></div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle booking creation failure</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classBookingRepository.html#ab5e721dfe96b1cf205c9e5720bb84b35">BookingRepository</a>.</p>
 
 </div>
@@ -228,6 +358,34 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the most recent booking ID for a specific user. </p>
+<p>Returns the identifier of the most recently created booking for the specified user. This is typically used immediately after creating a booking to obtain its ID for subsequent operations.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user to query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The booking ID of the user's most recent booking</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID must be a valid, existing user identifier </dd>
+<dd>
+The user must have at least one booking </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns the most recent booking ID</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if userID is invalid </td></tr>
+    <tr><td class="paramname">NoBookingFoundException</td><td>if user has no bookings </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if query fails due to system issues</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The "most recent" is determined by booking creation timestamp </dd>
+<dd>
+This method is typically called immediately after <a class="el" href="#a90b190cbe36477e48512c467f58f31c4" title="Creates a new booking record for a user and showtime.">addBooking()</a></dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line">repository-&gt;addBooking(userId, showTimeId);</div>
+<div class="line"><span class="keywordtype">int</span> newBookingId = repository-&gt;getLatestBookingID(userId);</div>
+<div class="line"><span class="comment">// Use newBookingId for seat reservation</span></div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classBookingRepository.html#ad546c89330daada956052eeb4e044b29">BookingRepository</a>.</p>
 
 </div>
@@ -255,6 +413,37 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves all booking history for a specific user. </p>
+<p>Returns a comprehensive list of all bookings made by the specified user, including booking details, movie information, showtime data, and associated seats. This provides a complete booking history view.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user to query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> objects containing complete booking information</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID must be a valid, existing user identifier </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns all bookings for the user (may be empty if no bookings exist) </dd>
+<dd>
+<a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> objects contain complete booking details</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if userID is invalid </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if query fails due to system issues</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Returns bookings in reverse chronological order (newest first) </dd>
+<dd>
+Each <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> contains denormalized data for efficient display </dd>
+<dd>
+Empty vector is returned if user has no bookings</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> userBookings = repository-&gt;viewAllBookings(userId);</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; booking : userBookings) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movie: &quot;</span> &lt;&lt; booking.movieTitle </div>
+<div class="line">              &lt;&lt; <span class="stringliteral">&quot; Date: &quot;</span> &lt;&lt; booking.showTime &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classBookingRepository.html#a15a084fd46178d1fb0c6cdb8dd67e717">BookingRepository</a>.</p>
 
 </div>
@@ -282,11 +471,46 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves seat availability status for a specific showtime. </p>
+<p>Returns the current booking status of all seats for the specified showtime, enabling seat selection interfaces to display available and booked seats appropriately.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">showTimeID</td><td>Unique identifier of the showtime to query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> objects containing seat details and status</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>showTimeID must be a valid, existing showtime identifier </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns all seats for the showtime with current status </dd>
+<dd>
+<a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> objects contain seat details and availability status</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if showTimeID is invalid </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if query fails due to system issues</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Status reflects real-time availability </dd>
+<dd>
+Includes both available and booked seats </dd>
+<dd>
+Seat order may be implementation-dependent</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> seatStatus = repository-&gt;viewSeatsStatus(showTimeId);</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; seatView : seatStatus) {</div>
+<div class="line">    <span class="keywordflow">if</span> (seatView.status == <a class="code hl_enumvalue" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">SeatStatus::AVAILABLE</a>) {</div>
+<div class="line">        renderAvailableSeat(seatView.seat);</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        renderBookedSeat(seatView.seat);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aSeatView_8h_html_ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e"><div class="ttname"><a href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">AVAILABLE</a></div><div class="ttdeci">@ AVAILABLE</div><div class="ttdoc">Seat is available for booking.</div><div class="ttdef"><b>Definition</b> <a href="SeatView_8h_source.html#l00021">SeatView.h:21</a></div></div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classBookingRepository.html#a57175cfeb3716bc5e3ec2d9840164541">BookingRepository</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>repository/<a class="el" href="IBookingRepository_8h_source.html">IBookingRepository.h</a></li>
 </ul>
 </div><!-- contents -->

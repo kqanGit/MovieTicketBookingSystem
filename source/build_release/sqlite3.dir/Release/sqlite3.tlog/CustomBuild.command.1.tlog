@@ -1,0 +1,10 @@
+^E:\JUST WRITE SOME CODE\OOP\MOVIETICKETBOOKINGSYSTEM\SOURCE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SE:/just write some code/OOP/MovieTicketBookingSystem/source" "-BE:/just write some code/OOP/MovieTicketBookingSystem/source/build_release" --check-stamp-file "E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

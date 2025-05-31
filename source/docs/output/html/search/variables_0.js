@@ -12,5 +12,6 @@ var searchData=
   ['_5frepo_9',['_repo',['../classBookingService.html#a7672f7203be2e2cb2e2e8552d1d7b3c1',1,'BookingService']]],
   ['_5fseatid_10',['_seatID',['../classCoupleSeat.html#a8f30a35ad35c796bcbe97061a77bc305',1,'CoupleSeat::_seatID'],['../classSingleSeat.html#a2446fbd2534b63f89c839af0c2dae637',1,'SingleSeat::_seatID']]],
   ['_5fservice_11',['_service',['../classBookingServiceVisitor.html#a21f239e2337ac7da54eb4866acf7ba23',1,'BookingServiceVisitor::_service'],['../classLoginServiceVisitor.html#ac934cda9715b51d5025d8dda27e5b5e5',1,'LoginServiceVisitor::_service'],['../classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b',1,'LogoutServiceVisitor::_service'],['../classMovieManagerServiceVisitor.html#adf43a6f2096bc97943fa9a97616d47f3',1,'MovieManagerServiceVisitor::_service'],['../classMovieViewerServiceVisitor.html#a2930e3fd100f696f0fa658eb1950e1ff',1,'MovieViewerServiceVisitor::_service'],['../classRegisterServiceVisitor.html#af7c9c829629b126a86edd81d21e1e9f5',1,'RegisterServiceVisitor::_service']]],
-  ['_5ftype_12',['_type',['../classCoupleSeat.html#a89bf1288b4655788dfe864e20b644360',1,'CoupleSeat::_type'],['../classSingleSeat.html#a610b9649a11c61a8d8068ba073f8e2f6',1,'SingleSeat::_type']]]
+  ['_5fservices_12',['_services',['../classServiceRegistry.html#a884296b3c7d41f7f0f91aa5925821f10',1,'ServiceRegistry']]],
+  ['_5ftype_13',['_type',['../classCoupleSeat.html#a89bf1288b4655788dfe864e20b644360',1,'CoupleSeat::_type'],['../classSingleSeat.html#a610b9649a11c61a8d8068ba073f8e2f6',1,'SingleSeat::_type']]]
 ];

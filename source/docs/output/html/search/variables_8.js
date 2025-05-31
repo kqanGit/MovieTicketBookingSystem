@@ -1,7 +1,7 @@
 var searchData=
 [
   ['id_0',['id',['../classMovie.html#a4265b536373191ad3dfe3057db52ae7a',1,'Movie::id'],['../classMovieDTO.html#a323f7ffeef10c77e2d4cc705e3a06ee7',1,'MovieDTO::id']]],
-  ['infoservice_1',['infoService',['../classAdmin.html#a262434e1cb825e24a1fa6f48d2e15b31',1,'Admin']]],
+  ['infoservice_1',['infoService',['../classAdmin.html#a262434e1cb825e24a1fa6f48d2e15b31',1,'Admin::infoService'],['../classUser.html#af6d9bceab394fbd70d5771b39541c19e',1,'User::infoService']]],
   ['inputemail_2',['inputEmail',['../classSFMLUIManager.html#a65b139775c731fc9d0d47ce3a6f18e86',1,'SFMLUIManager']]],
   ['inputpassword_3',['inputPassword',['../classSFMLUIManager.html#a57f42b889b5da62bcf94c281f6670361',1,'SFMLUIManager']]],
   ['inputphone_4',['inputPhone',['../classSFMLUIManager.html#a838a8fa79c265c840f31454f20c23014',1,'SFMLUIManager']]],

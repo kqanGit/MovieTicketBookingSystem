@@ -93,6 +93,9 @@ $(function(){initNavTree('classSingleSeat.html','','classSingleSeat-members'); }
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete implementation of <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for individual seating.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SingleSeat_8h_source.html">model/SingleSeat.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SingleSeat:</div>
@@ -107,12 +110,13 @@ Inheritance diagram for SingleSeat:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa92f33b790be701eed35cb9ad0c267d6" id="r_aa92f33b790be701eed35cb9ad0c267d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92f33b790be701eed35cb9ad0c267d6">SingleSeat</a> (std::string seatID, <a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a> <a class="el" href="#a2a385c73d5715594c27e866a69885ead">type</a>, float <a class="el" href="#af8a036a82e63f2f82393a26c592e9e64">price</a>)</td></tr>
+<tr class="memdesc:aa92f33b790be701eed35cb9ad0c267d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for single seat.  <br /></td></tr>
 <tr class="memitem:af8a036a82e63f2f82393a26c592e9e64" id="r_af8a036a82e63f2f82393a26c592e9e64"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8a036a82e63f2f82393a26c592e9e64">price</a> () const override</td></tr>
-<tr class="memdesc:af8a036a82e63f2f82393a26c592e9e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the price for this seat.  <br /></td></tr>
+<tr class="memdesc:af8a036a82e63f2f82393a26c592e9e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat price.  <br /></td></tr>
 <tr class="memitem:a2a385c73d5715594c27e866a69885ead" id="r_a2a385c73d5715594c27e866a69885ead"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a385c73d5715594c27e866a69885ead">type</a> () const override</td></tr>
-<tr class="memdesc:a2a385c73d5715594c27e866a69885ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type category of this seat.  <br /></td></tr>
+<tr class="memdesc:a2a385c73d5715594c27e866a69885ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat type.  <br /></td></tr>
 <tr class="memitem:a70525e41daeb6a36558a4c27c614a645" id="r_a70525e41daeb6a36558a4c27c614a645"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70525e41daeb6a36558a4c27c614a645">id</a> () const override</td></tr>
-<tr class="memdesc:a70525e41daeb6a36558a4c27c614a645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier for this seat.  <br /></td></tr>
+<tr class="memdesc:a70525e41daeb6a36558a4c27c614a645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the seat identifier.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classISeat"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classISeat')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classISeat.html">ISeat</a></td></tr>
 <tr class="memitem:a36756ba053988f3d4654f3743563ce0b inherit pub_methods_classISeat" id="r_a36756ba053988f3d4654f3743563ce0b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISeat.html#a36756ba053988f3d4654f3743563ce0b">~ISeat</a> ()=default</td></tr>
 <tr class="memdesc:a36756ba053988f3d4654f3743563ce0b inherit pub_methods_classISeat"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper inheritance.  <br /></td></tr>
@@ -120,12 +124,56 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2446fbd2534b63f89c839af0c2dae637" id="r_a2446fbd2534b63f89c839af0c2dae637"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2446fbd2534b63f89c839af0c2dae637">_seatID</a></td></tr>
+<tr class="memdesc:a2446fbd2534b63f89c839af0c2dae637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique seat identifier.  <br /></td></tr>
 <tr class="memitem:a17a54c4afe0ec9039bc903dca6dc01a4" id="r_a17a54c4afe0ec9039bc903dca6dc01a4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17a54c4afe0ec9039bc903dca6dc01a4">_price</a></td></tr>
+<tr class="memdesc:a17a54c4afe0ec9039bc903dca6dc01a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seat price in currency units.  <br /></td></tr>
 <tr class="memitem:a610b9649a11c61a8d8068ba073f8e2f6" id="r_a610b9649a11c61a8d8068ba073f8e2f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2">SeatType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a610b9649a11c61a8d8068ba073f8e2f6">_type</a></td></tr>
+<tr class="memdesc:a610b9649a11c61a8d8068ba073f8e2f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seat type classification.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00006">6</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
+<div class="textblock"><p>Concrete implementation of <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> for individual seating. </p>
+<p>This class represents a standard single seat in the movie theater, designed for one person. Single seats are the most common seating type and typically offer standard pricing and comfort levels.</p>
+<p>Key Features:</p><ul>
+<li>Standard individual seating option</li>
+<li>Base pricing tier for theater seating</li>
+<li>Designed for single occupancy</li>
+<li>Standard comfort and space allocation</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Strategy Pattern</b>: Implements <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> interface with single-seat-specific behavior</li>
+<li><b>Factory Pattern</b>: Created through <a class="el" href="classSeatFactory.html" title="Factory for creating different types of seat objects.">SeatFactory</a> for consistent instantiation</li>
+<li><b>Value Object</b>: Immutable seat representation with defined properties</li>
+<li><b>Template Method</b>: Follows <a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> contract for uniform seat handling</li>
+</ul>
+<p>Seat Characteristics:</p><ul>
+<li>Individual occupancy (one person)</li>
+<li>Standard pricing structure</li>
+<li>Basic comfort features</li>
+<li>Efficient theater space utilization</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="comment">// Create single seat through factory</span></div>
+<div class="line"><span class="keyword">auto</span> singleSeat = std::make_unique&lt;SingleSeat&gt;(<span class="stringliteral">&quot;A15&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SeatType::SINGLE</a>, 12.99f);</div>
+<div class="line"> </div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Seat ID: &quot;</span> &lt;&lt; singleSeat-&gt;id() &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Price: $&quot;</span> &lt;&lt; singleSeat-&gt;price() &lt;&lt; std::endl;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Type: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(singleSeat-&gt;type()) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Use in booking context</span></div>
+<div class="line">std::vector&lt;std::shared_ptr&lt;ISeat&gt;&gt; selectedSeats = {singleSeat};</div>
+<div class="line">bookingService-&gt;reserveSeats(showTimeId, selectedSeats);</div>
+<div class="ttc" id="aISeat_8h_html_a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516"><div class="ttname"><a href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SINGLE</a></div><div class="ttdeci">@ SINGLE</div><div class="ttdoc">Standard single-person seat.</div><div class="ttdef"><b>Definition</b> <a href="ISeat_8h_source.html#l00021">ISeat.h:21</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Single seats form the majority of theater seating inventory </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure proper seat ID format and positive pricing</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> </dd>
+<dd>
+<a class="el" href="classSeatFactory.html" title="Factory for creating different types of seat objects.">SeatFactory</a> </dd>
+<dd>
+<a class="el" href="classCoupleSeat.html" title="Concrete implementation of ISeat for couple seating.">CoupleSeat</a> </dd>
+<dd>
+<a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00063">63</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa92f33b790be701eed35cb9ad0c267d6" name="aa92f33b790be701eed35cb9ad0c267d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa92f33b790be701eed35cb9ad0c267d6">&#9670;&#160;</a></span>SingleSeat()</h2>
@@ -150,6 +198,33 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor for single seat. </p>
+<p>Creates a new single seat with specified identifier, type, and price. Initializes all seat properties for use in the booking system.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seatID</td><td>Unique identifier for the seat (e.g., "A15") </td></tr>
+    <tr><td class="paramname">type</td><td>Seat type (should be SeatType::SINGLE) </td></tr>
+    <tr><td class="paramname">price</td><td>Cost for booking this seat (must be positive)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>seatID is non-empty and unique within the theater </dd>
+<dd>
+price &gt; 0.0f </dd>
+<dd>
+type == SeatType::SINGLE </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Seat is ready for booking operations</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If seatID is empty or price is negative</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#aa92f33b790be701eed35cb9ad0c267d6">SingleSeat</a> seat(<span class="stringliteral">&quot;A15&quot;</span>, <a class="code hl_enumvalue" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2a3388f7110f6f25a54e215eb75d5d7516">SeatType::SINGLE</a>, 12.99f);</div>
+<div class="ttc" id="aclassSingleSeat_html_aa92f33b790be701eed35cb9ad0c267d6"><div class="ttname"><a href="#aa92f33b790be701eed35cb9ad0c267d6">SingleSeat::SingleSeat</a></div><div class="ttdeci">SingleSeat(std::string seatID, SeatType type, float price)</div><div class="ttdoc">Constructor for single seat.</div><div class="ttdef"><b>Definition</b> <a href="SingleSeat_8cpp_source.html#l00003">SingleSeat.cpp:3</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Constructor should validate input parameters for data integrity </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SingleSeat_8cpp_source.html#l00003">3</a> of file <a class="el" href="SingleSeat_8cpp_source.html">SingleSeat.cpp</a>.</p>
 
@@ -179,14 +254,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the unique identifier for this seat. </p>
-<p>Returns a unique string identifier that can be used to reference this specific seat in bookings and reservations.</p>
-<dl class="section return"><dt>Returns</dt><dd>std::string Unique seat identifier (e.g., "A1", "B2")</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns non-empty unique identifier</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>ID format may follow theater-specific conventions </dd>
-<dd>
-IDs should be human-readable for customer reference</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<p>Get the seat identifier. </p>
+<p>Returns the unique string identifier for this seat, used for booking references and theater layout management.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The unique seat identifier</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns non-empty string</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Seat ID format should be consistent across the theater </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#ae64ced2057fdffacefc940483679038e" title="Gets the unique identifier for this seat.">ISeat::id()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#ae64ced2057fdffacefc940483679038e">ISeat</a>.</p>
 
@@ -217,14 +290,12 @@ IDs should be human-readable for customer reference</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the price for this seat. </p>
-<p>Returns the current price for booking this seat, which may vary based on seat type, location, showtime, or other factors.</p>
-<dl class="section return"><dt>Returns</dt><dd>float The price of the seat in system currency</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns positive price value</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Price calculation may include dynamic pricing factors </dd>
-<dd>
-Currency and precision are system-dependent</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<p>Get the seat price. </p>
+<p>Returns the cost for booking this single seat. Single seats typically have standard pricing that serves as the baseline for the theater's pricing structure.</p>
+<dl class="section return"><dt>Returns</dt><dd>float The price for this seat in currency units</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns positive value</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Price may be subject to dynamic pricing based on demand </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#a0f09b8e0c9815cc476c73032854c843e" title="Calculates the price for this seat.">ISeat::price()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#a0f09b8e0c9815cc476c73032854c843e">ISeat</a>.</p>
 
@@ -255,15 +326,14 @@ Currency and precision are system-dependent</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the type category of this seat. </p>
-<p>Returns the seat type classification for booking logic, pricing, and display purposes.</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> The category of this seat</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns valid <a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> enum value</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Used for filtering and categorizing seats </dd>
+<p>Get the seat type. </p>
+<p>Returns the seat type classification, which should always be SeatType::SINGLE for this implementation.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> The seat type (SeatType::SINGLE)</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns SeatType::SINGLE</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Used for pricing, layout, and booking logic differentiation </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html#a3dc0b92e64464e2f9972867d0860343b" title="Gets the type category of this seat.">ISeat::type()</a> </dd>
 <dd>
-Affects pricing and booking constraints</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
-<dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
+<a class="el" href="ISeat_8h.html#a476531b8b779ebb4a8672ef5b44a4de2" title="Enumeration of available seat types in the theater.">SeatType</a> </dd></dl>
 
 <p>Implements <a class="el" href="classISeat.html#a3dc0b92e64464e2f9972867d0860343b">ISeat</a>.</p>
 
@@ -292,7 +362,12 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00009">9</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
+<p>Seat price in currency units. </p>
+<p>The cost for booking this single seat. Single seats typically have standard pricing that serves as the baseline for other seat types.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Must be positive value </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Price may vary based on showtime, movie popularity, seat location, etc. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00084">84</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +391,11 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00008">8</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
+<p>Unique seat identifier. </p>
+<p>String identifier that uniquely identifies this seat within the theater. Typically follows a format like "A15" (row A, seat 15).</p>
+<dl class="section note"><dt>Note</dt><dd>Must be unique within the theater/showtime context </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00073">73</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
 
 </div>
 </div>
@@ -340,7 +419,11 @@ Affects pricing and booking constraints</dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00010">10</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
+<p>Seat type classification. </p>
+<p>Indicates this is a single seat type for booking system categorization and pricing logic.</p>
+<dl class="section note"><dt>Note</dt><dd>Should always be SeatType::SINGLE for this class </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SingleSeat_8h_source.html#l00094">94</a> of file <a class="el" href="SingleSeat_8h_source.html">SingleSeat.h</a>.</p>
 
 </div>
 </div>

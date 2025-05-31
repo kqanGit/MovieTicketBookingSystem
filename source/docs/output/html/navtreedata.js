@@ -33,8 +33,7 @@ var NAVTREE =
     [ "Movie", "md_diagram_2Class__diagram_2Movie.html", null ],
     [ "SystemOverview", "md_diagram_2Class__diagram_2SystemOverview.html", null ],
     [ "VisitorPattern", "md_diagram_2Class__diagram_2VisitorPattern.html", null ],
-    [ "Hướng dẫn cài đặt wxWidgets trên Windows (MSYS2 UCRT64)", "md_UI_2install-wxWidgets.html", null ],
-    [ "Hướng Dẫn Cài Đặt Qt Trên Windows + VSCode", "md_UI_2installQt.html", null ],
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -60,8 +59,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AccountInformation_8h.html",
-"classBookingServiceVisitor.html#a34cadbdf82b36853ce670546954cb4e7",
-"classSFMLUIManager.html#a4c05532359813b764dd6040afcbd7440"
+"classBookingServiceVisitor.html#a21f239e2337ac7da54eb4866acf7ba23",
+"classSFMLUIManager.html#a2713fd94b00d3da82e77690a9339097e",
+"structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

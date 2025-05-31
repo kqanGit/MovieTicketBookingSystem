@@ -152,7 +152,7 @@ Private Attributes</h2></td></tr>
 <dl class="section user"><dt>Design Patterns Used</dt><dd><ul>
 <li>Repository Pattern: Implements <a class="el" href="classIMovieRepository.html" title="Repository interface for movie and showtime data access operations.">IMovieRepository</a> interface</li>
 <li>Singleton Pattern: Uses <a class="el" href="classDatabaseConnection.html" title="Singleton class for managing SQLite database connections.">DatabaseConnection</a> singleton</li>
-<li>DTO Pattern: Returns <a class="el" href="classMovieDTO.html">MovieDTO</a> objects for data transfer</li>
+<li>DTO Pattern: Returns <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> objects for data transfer</li>
 <li>RAII: Automatic resource management in destructor</li>
 </ul>
 </dd></dl>
@@ -183,9 +183,9 @@ Private Attributes</h2></td></tr>
 <dd>
 <a class="el" href="classDatabaseConnection.html" title="Singleton class for managing SQLite database connections.">DatabaseConnection</a> </dd>
 <dd>
-<a class="el" href="classMovieDTO.html">MovieDTO</a> </dd>
+<a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> </dd>
 <dd>
-<a class="el" href="structShowTime.html">ShowTime</a> </dd></dl>
+<a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MovieRepositorySQL_8h_source.html#l00076">76</a> of file <a class="el" href="MovieRepositorySQL_8h_source.html">MovieRepositorySQL.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -554,13 +554,13 @@ Associated bookings cancelled</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">Empty</td><td>vector if no movies exist </td></tr>
-    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classMovieDTO.html">MovieDTO</a> with movie information</td></tr>
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> with movie information</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Return value contains all movies in database</dd></dl>
 <dl class="section user"><dt>Performance Considerations</dt><dd>For large movie databases, consider implementing pagination or filtering mechanisms to limit returned results.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovieDTO.html">MovieDTO</a> for returned data structure </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> for returned data structure </dd></dl>
 
 <p>Implements <a class="el" href="classIMovieRepository.html#a7112148ffb035a9a0753ee88dc05f631">IMovieRepository</a>.</p>
 
@@ -608,7 +608,7 @@ Associated bookings cancelled</dd></dl>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>id &gt; 0 (valid movie identifier)</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIMovie.html">IMovie</a> interface for returned object capabilities </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> interface for returned object capabilities </dd></dl>
 
 <p>Implements <a class="el" href="classIMovieRepository.html#aae1347b65d511441e9c347216a5ada5b">IMovieRepository</a>.</p>
 
@@ -651,12 +651,12 @@ Associated bookings cancelled</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">Empty</td><td>vector if no showtimes exist </td></tr>
-    <tr><td class="paramname">Vector</td><td>of <a class="el" href="structShowTime.html">ShowTime</a> objects with schedule details</td></tr>
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> objects with schedule details</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>id &gt; 0 (valid movie identifier)</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structShowTime.html">ShowTime</a> for returned object structure </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structShowTime.html" title="Data structure representing a movie showtime schedule.">ShowTime</a> for returned object structure </dd></dl>
 
 <p>Implements <a class="el" href="classIMovieRepository.html#a52aac958c9bc83428fee2f1d36b5e5b9">IMovieRepository</a>.</p>
 

@@ -56,7 +56,13 @@ var classSFMLUIManager =
     [ "shutdown", "classSFMLUIManager.html#a96fe8ca5e73d2dc8bb34d7d6f088765a", null ],
     [ "update", "classSFMLUIManager.html#aaa65df1d53c173da6d8e851d3f3792b9", null ],
     [ "updateMovie", "classSFMLUIManager.html#a1eb70e4f65b30a574ee64567de98a9ab", null ],
+    [ "backgroundSprite", "classSFMLUIManager.html#ae8f89d9c0145f458368d39fca4e2b969", null ],
+    [ "backgroundTexture", "classSFMLUIManager.html#abc22130e59405eec41123f8d93f3789a", null ],
     [ "bookingHistory", "classSFMLUIManager.html#a57fd6523948077ca657a00817cd1e040", null ],
+    [ "buttonGap", "classSFMLUIManager.html#a693183b185ca33eae6f683271d4e1dd5", null ],
+    [ "buttonHeight", "classSFMLUIManager.html#a01dafbfb17dfcfcb399b390b63f62470", null ],
+    [ "buttonWidth", "classSFMLUIManager.html#a860bed39de389cd1e4db3b3522e50032", null ],
+    [ "buttonY", "classSFMLUIManager.html#a33e69cbaa7be40648cc4ddbe2aad36c5", null ],
     [ "currentSeats", "classSFMLUIManager.html#afba11158b58f6c596574fe259c2436b7", null ],
     [ "currentShowTimes", "classSFMLUIManager.html#aba3e1948388bee5e493337ef154a4f52", null ],
     [ "currentState", "classSFMLUIManager.html#a5f60e8b716849e6fcb793c6dfb17c692", null ],
@@ -97,5 +103,7 @@ var classSFMLUIManager =
     [ "sessionManager", "classSFMLUIManager.html#ab1fa0f868d454de265bef938de3d8a90", null ],
     [ "statusMessage", "classSFMLUIManager.html#ab514093f5586b81491a6dc8254274d8a", null ],
     [ "successMessage", "classSFMLUIManager.html#a62d36a3670ecb16392834ca2fd57e817", null ],
-    [ "window", "classSFMLUIManager.html#a4c43c2d2c9ad9a35c37cf8f504c986f1", null ]
+    [ "window", "classSFMLUIManager.html#a4c43c2d2c9ad9a35c37cf8f504c986f1", null ],
+    [ "windowHeight", "classSFMLUIManager.html#a3ab4c3109aa39d45e1f7ea7d0ab3186a", null ],
+    [ "windowWidth", "classSFMLUIManager.html#ae72e02370769b97d166cf5a4636fc32d", null ]
 ];

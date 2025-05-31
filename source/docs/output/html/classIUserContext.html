@@ -104,7 +104,8 @@ Inheritance diagram for IUserContext:</div>
   <img src="classIUserContext.png" usemap="#IUserContext_map" alt=""/>
   <map id="IUserContext_map" name="IUserContext_map">
 <area href="classAdmin.html" title="Administrator user context with elevated privileges." alt="Admin" shape="rect" coords="0,56,83,80"/>
-<area href="classGuest.html" alt="Guest" shape="rect" coords="93,56,176,80"/>
+<area href="classGuest.html" title="Implementation of IUserContext for anonymous guest users." alt="Guest" shape="rect" coords="93,56,176,80"/>
+<area href="classUser.html" title="Concrete implementation of IUserContext for regular users." alt="User" shape="rect" coords="186,56,269,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -215,11 +216,11 @@ Public Member Functions</h2></td></tr>
 </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIVisitor.html" title="Base interface for all visitor implementations.">IVisitor</a> </dd>
 <dd>
-<a class="el" href="classLoginServiceVisitor.html">LoginServiceVisitor</a> </dd>
+<a class="el" href="classLoginServiceVisitor.html" title="Concrete visitor for managing role-based access to login services.">LoginServiceVisitor</a> </dd>
 <dd>
-<a class="el" href="classBookingServiceVisitor.html">BookingServiceVisitor</a> </dd></dl>
+<a class="el" href="classBookingServiceVisitor.html" title="Visitor implementation for role-based booking service access.">BookingServiceVisitor</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classAdmin.html#a6dd6056caea58d5ff997309107aeaa0b">Admin</a>, and <a class="el" href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">Guest</a>.</p>
+<p>Implemented in <a class="el" href="classAdmin.html#a6dd6056caea58d5ff997309107aeaa0b">Admin</a>, <a class="el" href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">Guest</a>, and <a class="el" href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">User</a>.</p>
 
 </div>
 </div>
@@ -251,15 +252,15 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;IUserInformationService&gt; Service instance or nullptr</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">nullptr</td><td>For <a class="el" href="classGuest.html">Guest</a> context (no authenticated user) </td></tr>
+    <tr><td class="paramname">nullptr</td><td>For <a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> context (no authenticated user) </td></tr>
     <tr><td class="paramname">Valid</td><td>service For authenticated User/Admin contexts</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The returned service provides access to user profile management, booking history, and other user-specific data operations</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html">IUserInformationService</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserInformationService.html" title="Interface for user information display and management operations.">IUserInformationService</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classAdmin.html#a081fe70772ae1482097cf4e3186e24b0">Admin</a>, and <a class="el" href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">Guest</a>.</p>
+<p>Implemented in <a class="el" href="classAdmin.html#a081fe70772ae1482097cf4e3186e24b0">Admin</a>, <a class="el" href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">Guest</a>, and <a class="el" href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">User</a>.</p>
 
 </div>
 </div>

@@ -3,11 +3,11 @@
 #include <sstream>
 
 SFMLUIManager::SFMLUIManager(std::shared_ptr<SessionManager> sessionMgr)
-    : sessionManager(sessionMgr), currentState(UIState::GUEST_SCREEN),
-      selectedMovieIndex(0), selectedShowTimeIndex(0),
-      isInputtingUsername(true), isInputtingPassword(false),
-      isInputtingEmail(false), isInputtingPhone(false),
-      managingMovieId(-1), isEditingDate(false), isEditingStartTime(false), isEditingEndTime(false),
+    : sessionManager(sessionMgr), currentState(UIState::GUEST_SCREEN), previousState(UIState::GUEST_SCREEN),
+      selectedMovieIndex(0), selectedShowTimeIndex(0), editingMovieId(-1), managingMovieId(-1),
+      isInputtingUsername(true), isInputtingPassword(false), isInputtingEmail(false), isInputtingPhone(false),
+      isEditingTitle(false), isEditingDescription(false), isEditingGenre(false), isEditingPrice(false),
+      isEditingDate(false), isEditingStartTime(false), isEditingEndTime(false),
       movieListScrollOffset(0), movieViewScrollOffset(0), isAddingShowtime(false) {
 }
 
@@ -17,7 +17,7 @@ SFMLUIManager::~SFMLUIManager() {
 
 bool SFMLUIManager::initialize() {
     // Create window - SFML 2.6.2 syntax
-    window.create(sf::VideoMode(1200, 800), "Movie Ticket Booking System");
+    window.create(sf::VideoMode(windowWidth, windowHeight), "Movie Ticket Booking System");
     window.setFramerateLimit(60);
     
     // Initialize admin editing flags
@@ -43,12 +43,49 @@ bool SFMLUIManager::initialize() {
             break;
         }
     }
-    
-    if (!fontLoaded) {
+      if (!fontLoaded) {
         std::cout << "Warning: Could not load any font file. Text may not display correctly." << std::endl;
         // SFML will use default font, but it might not work well
+    }        
+      // Load background image - try multiple paths
+    bool backgroundLoaded = false;
+    std::vector<std::string> backgroundPaths = {
+        "./image/background@.png"};
+
+    for (const auto& path : backgroundPaths) {
+        if (backgroundTexture.loadFromFile(path)) {
+            std::cout << "Successfully loaded background image from: " << path << std::endl;
+            backgroundLoaded = true;
+            break;
+        } else {
+            std::cout << "Failed to load background image from: " << path << std::endl;
+        }
     }
     
+    if (!backgroundLoaded) {
+        std::cout << "ERROR: Could not load background image from any path!" << std::endl;
+        // Create a default colored texture if image loading fails
+        sf::Image defaultBg;
+        defaultBg.create(windowWidth, windowHeight, sf::Color(30, 30, 50)); // Dark blue background
+        backgroundTexture.loadFromImage(defaultBg);
+        std::cout << "Created a default background color instead" << std::endl;
+    }
+    backgroundSprite.setTexture(backgroundTexture);    // Scale background to window
+    sf::Vector2u texSize = backgroundTexture.getSize();
+    sf::Vector2u winSize = window.getSize();
+    
+    // Print texture and window sizes for debugging
+    std::cout << "Background texture size: " << texSize.x << "x" << texSize.y << std::endl;
+    std::cout << "Window size: " << winSize.x << "x" << winSize.y << std::endl;
+    
+    // Set the scaling to fit the window
+    float scaleX = static_cast<float>(winSize.x) / texSize.x;
+    float scaleY = static_cast<float>(winSize.y) / texSize.y;
+    
+    // Apply the scaling to the sprite
+    backgroundSprite.setScale(scaleX, scaleY);
+    std::cout << "Applied scale: " << scaleX << "x" << scaleY << std::endl;
+
     return true;
 }
 
@@ -225,29 +262,32 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
 }
 
 void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
-    // Handle button clicks based on current state   
-    switch (currentState) {        case UIState::GUEST_SCREEN: {
-            // Match the coordinates from renderGuestScreen()
-            sf::RectangleShape loginBtn = createStyledButton(450, 320, 300, 60, sf::Color(0, 150, 0));
-            sf::RectangleShape registerBtn = createStyledButton(450, 400, 300, 60, sf::Color(0, 100, 200));
-            sf::RectangleShape browseMoviesBtn = createStyledButton(450, 480, 300, 60, sf::Color(150, 100, 0));
-            
+    // Handle button clicks based on current state
+    switch (currentState) {
+        case UIState::GUEST_SCREEN: {
+            // Calculate button positions to match renderGuestScreen()
+            float w = buttonWidth;
+            float h = buttonHeight;
+            float gap = buttonGap;
+            float totalWidth = (w * 3) + (gap * 2);
+            float startX = (windowWidth - totalWidth) / 2;
+            float y = buttonY;
+            sf::RectangleShape loginBtn = createStyledButton(startX, y, w, h, sf::Color(0, 150, 0));
+            sf::RectangleShape registerBtn = createStyledButton(startX + w + gap, y, w, h, sf::Color(0, 100, 200));
+            sf::RectangleShape browseMoviesBtn = createStyledButton(startX + (w + gap) * 2, y, w, h, sf::Color(150, 100, 0));
             if (isButtonClicked(loginBtn, mousePos)) {
                 currentState = UIState::LOGIN_SCREEN;
-                // Clear input fields when switching to login
                 inputUsername.clear();
                 inputPassword.clear();
                 statusMessage.clear();
             } else if (isButtonClicked(registerBtn, mousePos)) {
                 currentState = UIState::REGISTER_SCREEN;
-                // Clear input fields when switching to register
                 inputUsername.clear();
                 inputPassword.clear();
                 inputEmail.clear();
                 inputPhone.clear();
                 statusMessage.clear();
             } else if (isButtonClicked(browseMoviesBtn, mousePos)) {
-                // Guest can browse movies without authentication
                 loadMovies();
                 currentState = UIState::MOVIE_LIST;
             }
@@ -277,43 +317,50 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isInputtingPassword = true;
             }
             break;
-        }
-          case UIState::MAIN_MENU: {
-            sf::RectangleShape moviesBtn = createButton(500, 300, 200, 50);
-            int buttonY = 370;
+        }        case UIState::MAIN_MENU: {
+            // Use member variables for button layout (matching renderMainMenu)
+            float w = buttonWidth * 0.72f; // Main menu buttons are smaller
+            float h = buttonHeight;
+            float gap = buttonGap * 0.75f;
+            float totalWidth = (w * 4) + (gap * 3);
+            float startX = (windowWidth - totalWidth) / 2;
+            float y = buttonY;
             
+            // Movies button
+            sf::RectangleShape moviesBtn = createButton(startX, y, w, h);
             if (isButtonClicked(moviesBtn, mousePos)) {
                 loadMovies();
                 currentState = UIState::MOVIE_LIST;
-            } else if (sessionManager->isUserAuthenticated()) {
-                sf::RectangleShape historyBtn = createButton(500, buttonY, 200, 50);
+            }
+            
+            // History button (only for authenticated users)
+            if (sessionManager->isUserAuthenticated()) {
+                sf::RectangleShape historyBtn = createButton(startX + (w + gap), y, w, h);
                 if (isButtonClicked(historyBtn, mousePos)) {
                     loadBookingHistory();
                     currentState = UIState::BOOKING_HISTORY;
                 }
-                buttonY += 70;
-                
-                // Admin panel access for admin users
-                if (sessionManager->getCurrentRole() == "Admin") {
-                    sf::RectangleShape adminBtn = createButton(500, buttonY, 200, 50);
-                    if (isButtonClicked(adminBtn, mousePos)) {
-                        currentState = UIState::ADMIN_PANEL;
-                    }
-                    buttonY += 70;
+            }
+            
+            // Admin panel button (only for admin users)
+            if (sessionManager->getCurrentRole() == "Admin") {
+                sf::RectangleShape adminBtn = createButton(startX + 2 * (w + gap), y, w, h);
+                if (isButtonClicked(adminBtn, mousePos)) {
+                    currentState = UIState::ADMIN_PANEL;
                 }
             }
             
-            // Logout button (position depends on previous buttons)
-            sf::RectangleShape logoutBtn = createButton(500, buttonY, 200, 50);
+            // Logout button
+            sf::RectangleShape logoutBtn = createButton(startX + 3 * (w + gap), y, w, h);
             if (isButtonClicked(logoutBtn, mousePos)) {
                 logout();
             }
             break;
-        }          case UIState::MOVIE_LIST: {
+        }case UIState::MOVIE_LIST: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             // Scroll buttons
-            sf::RectangleShape scrollUpBtn = createStyledButton(950, 150, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
-            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            sf::RectangleShape scrollUpBtn = createStyledButton(1150, 150, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            sf::RectangleShape scrollDownBtn = createStyledButton(1150, 600, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
             
             if (isButtonClicked(backBtn, mousePos)) {
                 // Return guests to guest screen, authenticated users to main menu
@@ -334,7 +381,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 int endIndex = std::min(movieViewScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
                 
                 for (int i = movieViewScrollOffset; i < endIndex; ++i) {
-                    int displayIndex = i - movieViewScrollOffset; // Display position
+                    int displayIndex = i - movieListScrollOffset; // Display position
                     // Use coordinates and dimensions from renderMovieList for movieBtn
                     sf::RectangleShape movieBtn = createButton(100, 150 + displayIndex * 90, 800, 70);
                     if (isButtonClicked(movieBtn, mousePos)) {
@@ -391,10 +438,9 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-        
-        case UIState::SEAT_SELECTION: {
+          case UIState::SEAT_SELECTION: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
+            sf::RectangleShape confirmBtn = createButton(900, 650, 200, 50);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::BOOKING_SCREEN;
@@ -531,11 +577,10 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         case UIState::MOVIE_MANAGEMENT: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             sf::RectangleShape addMovieBtn = createButton(200, 50, 150, 40);  // Match coordinates from render function
-            
-            // Scroll up button
-            sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
-            // Scroll down button
-            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
+              // Scroll up button - position updated to match renderMovieManagement
+            sf::RectangleShape scrollUpBtn = createStyledButton(950, 50, 50, 30, sf::Color(100, 100, 150));
+            // Scroll down button - position updated to match renderMovieManagement
+            sf::RectangleShape scrollDownBtn = createStyledButton(950, 680, 50, 30, sf::Color(100, 100, 150));
               if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::ADMIN_PANEL;
             } else if (isButtonClicked(addMovieBtn, mousePos)) {
@@ -665,7 +710,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         
         case UIState::SHOWTIME_MANAGEMENT: {
             // Only handle back button and delete buttons
-            sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+            sf::RectangleShape backButton = createStyledButton(50, 500, 100, 40, sf::Color(100, 100, 100));
             
             if (isButtonClicked(backButton, mousePos)) {
                 currentState = UIState::MOVIE_MANAGEMENT;
@@ -745,54 +790,54 @@ void SFMLUIManager::render() {
 }
 
 void SFMLUIManager::renderGuestScreen() {
-    // Draw gradient background
-    drawGradientBackground();
-    
-    // Main title
-    sf::Text title = createText("Movie Ticket Booking System", 300, 150, 50);
-    title.setFillColor(sf::Color::White);
-    window.draw(title);
-    
-    // Welcome message
-    sf::Text welcome = createText("Welcome! Please choose an option to continue", 350, 220, 24);
-    welcome.setFillColor(sf::Color(200, 200, 200));
-    window.draw(welcome);
-    
-    // Login button
-    sf::RectangleShape loginBtn = createStyledButton(450, 320, 300, 60, sf::Color(0, 150, 0));
-    window.draw(loginBtn);
-    
-    sf::Text loginText = createText("Login", 570, 340, 24);
-    loginText.setFillColor(sf::Color::White);
-    window.draw(loginText);
-    
-    // Register button
-    sf::RectangleShape registerBtn = createStyledButton(450, 400, 300, 60, sf::Color(0, 100, 200));
-    window.draw(registerBtn);
-    
-    sf::Text registerText = createText("Register", 555, 420, 24);
-    registerText.setFillColor(sf::Color::White);
-    window.draw(registerText);
-    
-    // Browse Movies button (Guest can view movies without logging in)
-    sf::RectangleShape browseBtn = createStyledButton(450, 480, 300, 60, sf::Color(150, 100, 0));
-    window.draw(browseBtn);
-    
-    sf::Text browseText = createText("Browse Movies", 530, 500, 24);
-    browseText.setFillColor(sf::Color::White);
-    window.draw(browseText);
+    backgroundSprite.setPosition(0, 0);
+    window.draw(backgroundSprite);
+
+    // Calculate button dimensions and positions
+    float w = buttonWidth;
+    float h = buttonHeight;
+    float gap = buttonGap;
+    float totalWidth = (w * 3) + (gap * 2);
+    float startX = (windowWidth - totalWidth) / 2;
+    float y = buttonY;
+
+    // Define button properties
+    std::vector<std::string> labels = { "Login", "Register", "Browse Movies" };
+    std::vector<sf::Color> colors = {
+        sf::Color(0, 150, 0),      // Green for Login
+        sf::Color(0, 100, 200),    // Blue for Register
+        sf::Color(150, 100, 0)     // Brown for Browse Movies
+    };    // Draw buttons in a centered horizontal row
+    for (int i = 0; i < labels.size(); ++i) {
+        float x = startX + i * (w + gap);
+
+        float h = 60;   // Keep same height
+        // Create button with hover effect
+        sf::RectangleShape button = createStyledButton(x, y, w, h, colors[i]);
+        window.draw(button);
+
+        // Center text in button
+        sf::Text text = createText(labels[i], 0, 0, 24);
+        float textX = x + (w - text.getLocalBounds().width) / 2;
+        float textY = y + (h - text.getLocalBounds().height) / 2;
+        text.setPosition(textX, textY);
+        text.setFillColor(sf::Color::White);
+        window.draw(text);
+    }
     
     // Footer message
-    sf::Text footer = createText("No account needed to browse movies", 420, 580, 18);
+    sf::Text footer = createText("No account needed to browse movies", 500, 580, 18);
     footer.setFillColor(sf::Color(150, 150, 150));
     window.draw(footer);
 }
 
 void SFMLUIManager::renderLoginScreen() {
-    // Title
-    sf::Text title = createText("Movie Ticket Booking System", 400, 100, 32);
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+
+    sf::Text title = createText("Login Account", 470, 100, 40);
     window.draw(title);
-    
+
     // Username field
     sf::RectangleShape usernameField = createButton(400, 250, 400, 40);
     usernameField.setFillColor(isInputtingUsername ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
@@ -841,63 +886,61 @@ void SFMLUIManager::renderLoginScreen() {
 }
 
 void SFMLUIManager::renderMainMenu() {
-    sf::Text title = createText("Main Menu", 500, 100, 32);
-    window.draw(title);
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
     
-    std::string welcomeMsg = "Welcome, " + sessionManager->getCurrentRole();
-    sf::Text welcome = createText(welcomeMsg, 500, 150, 20);
-    window.draw(welcome);
-    
-    // Movies button
-    sf::RectangleShape moviesBtn = createButton(500, 300, 200, 50);
-    moviesBtn.setFillColor(sf::Color(0, 150, 0));
-    window.draw(moviesBtn);
-    
-    sf::Text moviesText = createText("View Movies", 540, 315, 20);
-    window.draw(moviesText);
-    
-    int buttonY = 370;
-    
-    // History button (only for authenticated users)
-    if (sessionManager->isUserAuthenticated()) {
-        sf::RectangleShape historyBtn = createButton(500, buttonY, 200, 50);
-        historyBtn.setFillColor(sf::Color(150, 100, 0));
-        window.draw(historyBtn);
+    std::string welcomeMsg = "Logged in as: " + sessionManager->getCurrentRole();
+    sf::Text userText = createText(welcomeMsg, 500, 200, 40);
+    userText.setFillColor(sf::Color(200, 200, 255));
+    window.draw(userText);
+    // Use member variables for button layout
+    float w = buttonWidth * 0.72f; // Main menu buttons are smaller
+    float h = buttonHeight;
+    float gap = buttonGap * 0.75f;
+    float totalWidth = (w * 4) + (gap * 3);
+    float startX = (windowWidth - totalWidth) / 2;
+    float y = buttonY;
+    std::vector<std::string> labels = { "Movies", "History", "Admin", "Logout" };
+    std::vector<sf::Color> colors = {
+        sf::Color(0, 150, 0),
+        sf::Color(150, 100, 0),
+        sf::Color(100, 0, 150),
+        sf::Color(150, 0, 0)
+    };
+    // Draw buttons in a centered horizontal row
+
+    for (int i = 0; i < labels.size(); ++i) {
+        float x = startX + i * (w + gap);
         
-        sf::Text historyText = createText("Booking History", 520, buttonY + 15, 20);
-        window.draw(historyText);
-        
-        buttonY += 70;
+        // Create button with hover effect
+        sf::RectangleShape button = createButton(x, y, w, h);
+        button.setFillColor(colors[i]);
+        button.setOutlineThickness(2);
+        button.setOutlineColor(sf::Color(200, 200, 200, 100));
+        window.draw(button);
+
+        // Center text in button
+        sf::Text label = createText(labels[i], 0, 0, 20);
+        float textX = x + (w - label.getLocalBounds().width) / 2;
+        float textY = y + (h - label.getLocalBounds().height) / 2;
+        label.setPosition(textX, textY);
+        label.setFillColor(sf::Color::White);
+        label.setStyle(sf::Text::Bold);
+        window.draw(label);
     }
-    
-    // Admin Panel button (only for admin users)
-    if (sessionManager->getCurrentRole() == "Admin") {
-        sf::RectangleShape adminBtn = createButton(500, buttonY, 200, 50);
-        adminBtn.setFillColor(sf::Color(100, 0, 150));
-        window.draw(adminBtn);
-        
-        sf::Text adminText = createText("Admin Panel", 540, buttonY + 15, 20);
-        window.draw(adminText);
-        
-        buttonY += 70;
-    }
-    
-    // Logout button
-    sf::RectangleShape logoutBtn = createButton(500, buttonY, 200, 50);
-    logoutBtn.setFillColor(sf::Color(150, 0, 0));
-    window.draw(logoutBtn);
-    
-    sf::Text logoutText = createText("Logout", 560, buttonY + 15, 20);
-    window.draw(logoutText);
 }
 
+
 void SFMLUIManager::renderMovieList() {
+    // Only draw gradient background
+    drawGradientBackground();
+    
     // Create a stylish title with background
-    sf::RectangleShape titleBackground = createButton(300, 40, 500, 50);//
+    sf::RectangleShape titleBackground = createButton(400, 40, 500, 50);//
     titleBackground.setFillColor(sf::Color(80, 40, 120, 230));
     window.draw(titleBackground);
     
-    sf::Text title = createText("AVAILABLE MOVIES", 450, 50, 30);
+    sf::Text title = createText("AVAILABLE MOVIES", 500, 50, 30);
     title.setStyle(sf::Text::Bold);
     title.setFillColor(sf::Color(255, 240, 150)); // Goldish color for title
     title.setOutlineColor(sf::Color(100, 50, 150));
@@ -917,7 +960,7 @@ void SFMLUIManager::renderMovieList() {
     
     // Movie count with improved styling
     std::string movieCountText = "Total: " + std::to_string(movies.size()) + " movies";
-    sf::Text movieCount = createText(movieCountText, 450, 100, 18);
+    sf::Text movieCount = createText(movieCountText, 550, 100, 18);
     movieCount.setFillColor(sf::Color(180, 180, 255));
     movieCount.setStyle(sf::Text::Italic);
     window.draw(movieCount);
@@ -925,10 +968,10 @@ void SFMLUIManager::renderMovieList() {
     const int maxVisibleMovies = 6; // Adjusted for larger movie cards
     
     // Scroll up button with improved styling
-    sf::RectangleShape scrollUpBtn = createStyledButton(950, 150, 50, 40, sf::Color(80, 40, 120));
+    sf::RectangleShape scrollUpBtn = createStyledButton(1150, 150, 50, 40, sf::Color(80, 40, 120));
     scrollUpBtn.setOutlineThickness(2);
     scrollUpBtn.setOutlineColor(sf::Color(120, 80, 160));
-    sf::Text scrollUpText = createText("^", 968, 155, 20);
+    sf::Text scrollUpText = createText("^", 1168, 160, 20);
     if (movieViewScrollOffset > 0) {
         scrollUpBtn.setFillColor(sf::Color(80, 40, 120));
         scrollUpText.setFillColor(sf::Color(220, 220, 255));
@@ -940,10 +983,10 @@ void SFMLUIManager::renderMovieList() {
     window.draw(scrollUpText);
     
     // Scroll down button with improved styling
-    sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 40, sf::Color(80, 40, 120));
+    sf::RectangleShape scrollDownBtn = createStyledButton(1150, 600, 50, 40, sf::Color(80, 40, 120));
     scrollDownBtn.setOutlineThickness(2);
     scrollDownBtn.setOutlineColor(sf::Color(120, 80, 160));
-    sf::Text scrollDownText = createText("v", 968, 705, 20);
+    sf::Text scrollDownText = createText("v", 1168, 605, 20);
     if (movieViewScrollOffset + maxVisibleMovies < movies.size()) {
         scrollDownBtn.setFillColor(sf::Color(80, 40, 120));
         scrollDownText.setFillColor(sf::Color(220, 220, 255));
@@ -956,43 +999,50 @@ void SFMLUIManager::renderMovieList() {
       // Movie list with scrolling and enhanced visual effect
     int endIndex = std::min(movieViewScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
     for (int i = movieViewScrollOffset; i < endIndex; ++i) {
-        int displayIndex = i - movieViewScrollOffset; // Vị trí hiển thị trên màn hình
+        int displayIndex = i - movieListScrollOffset; // Vị trí hiển thị trên màn hình
         
-        // Create outer card with gradient effect
-        sf::RectangleShape movieCard = createButton(90, 145 + displayIndex * 90, 820, 80);
-        sf::Color cardColor(40, 40, 90, 255);
-        sf::Color highlightColor(70, 50, 120, 255);
-        movieCard.setFillColor(highlightColor);
-        window.draw(movieCard);
-        
-        // Inner button with gradient-like effect using a slightly smaller rectangle
-        sf::RectangleShape movieBtn = createButton(100, 150 + displayIndex * 90, 800, 70);
-        movieBtn.setFillColor(cardColor);
-        movieBtn.setOutlineThickness(2.0f);
-        movieBtn.setOutlineColor(sf::Color(100, 100, 150, 200));
-        window.draw(movieBtn);
-        
-        // Movie title with enhanced style
-        sf::Text movieTitle = createText(movies[i].title, 120, 160 + displayIndex * 90, 22);
-        movieTitle.setStyle(sf::Text::Bold);
-        movieTitle.setFillColor(sf::Color(220, 220, 255));
-        window.draw(movieTitle);
-        
-        // Movie details with better formatting
-        std::string movieDetails = "Genre: " + movies[i].genre + " | Rating: " + std::to_string(movies[i].rating);
-        sf::Text detailsText = createText(movieDetails, 120, 190 + displayIndex * 90, 16);
-        detailsText.setFillColor(sf::Color(180, 180, 220));
-        detailsText.setStyle(sf::Text::Italic);
-        window.draw(detailsText);
-        
-        // Add a "View Details" hint
-        sf::Text viewText = createText("Click to view details", 700, 190 + displayIndex * 90, 14);
-        viewText.setFillColor(sf::Color(150, 200, 255));
-        window.draw(viewText);
+       // Dịch sang phải +100 pixels
+int offsetX = 100;
+
+// Create outer card
+sf::RectangleShape movieCard = createButton(90 + offsetX, 145 + displayIndex * 90, 820, 80);
+sf::Color cardColor(40, 40, 90, 255);
+sf::Color highlightColor(70, 50, 120, 255);
+movieCard.setFillColor(highlightColor);
+window.draw(movieCard);
+
+// Inner button
+sf::RectangleShape movieBtn = createButton(100 + offsetX, 150 + displayIndex * 90, 800, 70);
+movieBtn.setFillColor(cardColor);
+movieBtn.setOutlineThickness(2.0f);
+movieBtn.setOutlineColor(sf::Color(100, 100, 150, 200));
+window.draw(movieBtn);
+
+// Movie title
+sf::Text movieTitle = createText(movies[i].title, 120 + offsetX, 160 + displayIndex * 90, 22);
+movieTitle.setStyle(sf::Text::Bold);
+movieTitle.setFillColor(sf::Color(220, 220, 255));
+window.draw(movieTitle);
+
+// Movie details
+std::string movieDetails = "Genre: " + movies[i].genre + " | Rating: " + std::to_string(movies[i].rating);
+sf::Text detailsText = createText(movieDetails, 120 + offsetX, 190 + displayIndex * 90, 16);
+detailsText.setFillColor(sf::Color(180, 180, 220));
+detailsText.setStyle(sf::Text::Italic);
+window.draw(detailsText);
+
+// View Details hint
+sf::Text viewText = createText("Click to view details", 700 + offsetX, 190 + displayIndex * 90, 14);
+viewText.setFillColor(sf::Color(150, 200, 255));
+window.draw(viewText);
+
     }
 }
 
 void SFMLUIManager::renderMovieDetails() {
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
     if (selectedMovieIndex < movies.size()) {
         const auto& movie = movies[selectedMovieIndex];
         
@@ -1213,7 +1263,7 @@ void SFMLUIManager::renderMovieDetails() {
             
             sf::Text loginPromptText = createText("GO TO LOGIN", 440, 605, 18);
             loginPromptText.setStyle(sf::Text::Bold);
-            loginPromptText.setFillColor(sf::Color(220, 240, 255));
+            loginPromptText.setFillColor(sf::Color(220,240,255));
             window.draw(loginPromptText);
             
             // Add a login icon
@@ -1232,6 +1282,9 @@ void SFMLUIManager::renderMovieDetails() {
 }
 
 void SFMLUIManager::renderBookingScreen() {
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
     sf::Text title = createText("Select Showtime", 450, 50, 28);
     window.draw(title);
     
@@ -1257,7 +1310,10 @@ void SFMLUIManager::renderBookingScreen() {
 }
 
 void SFMLUIManager::renderSeatSelection() {
-    sf::Text title = createText("Select Seats", 500, 50, 28);
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
+    sf::Text title = createText("Select Seats", 550, 50, 35);
     window.draw(title);
     
     // Back button
@@ -1442,52 +1498,83 @@ void SFMLUIManager::renderSeatSelection() {
     sf::Text instructions = createText("Click on available seats to select them for booking", 220, 675, 14);
     instructions.setFillColor(sf::Color(200, 200, 200));
     window.draw(instructions);      // Selected seats info
-    if (!selectedSeats.empty()) {
-        // Background for selected seats info
-        sf::RectangleShape selectedBg(sf::Vector2f(700, 40));
-        selectedBg.setPosition(200, 710);
-        selectedBg.setFillColor(sf::Color(60, 80, 60, 200));
-        selectedBg.setOutlineThickness(1);
-        selectedBg.setOutlineColor(sf::Color(0, 150, 0));
-        window.draw(selectedBg);
+    // if (!selectedSeats.empty()) {
+    //     // Background for selected seats info
+    //     sf::RectangleShape selectedBg(sf::Vector2f(700, 40));
+    //     selectedBg.setPosition(200, 710);
+    //     selectedBg.setFillColor(sf::Color(60, 80, 60, 200));
+    //     selectedBg.setOutlineThickness(1);
+    //     selectedBg.setOutlineColor(sf::Color(0, 150, 0));
+    //     window.draw(selectedBg);
         
-        // Title for selected seats
-        sf::Text selectedTitle = createText("Selected Seats:", 220, 720, 16);
-        selectedTitle.setStyle(sf::Text::Bold);
-        selectedTitle.setFillColor(sf::Color(220, 255, 220));
-        window.draw(selectedTitle);
+        // // Title for selected seats
+        // sf::Text selectedTitle = createText("Selected Seats:", 220, 720, 16);
+        // selectedTitle.setStyle(sf::Text::Bold);
+        // selectedTitle.setFillColor(sf::Color(220, 255, 220));
+        // window.draw(selectedTitle);
         
-        // Display each seat as a mini icon with text
-        float xPos = 340;
+        // // Display each seat as a mini icon with text
+        // float xPos = 340;
+        // for (const auto& seat : selectedSeats) {
+        //     // Small seat icon
+        //     sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
+        //     seatIcon.setPosition(xPos, 722);
+        //     seatIcon.setFillColor(sf::Color::Green);
+        //     window.draw(seatIcon);
+        //       // Seat ID text
+        //     sf::Text seatText = createText(seat, xPos + 20, 720, 16);
+        //     seatText.setFillColor(sf::Color(220, 255, 220));
+        //     window.draw(seatText);
+            
+        //     xPos += 60; // Space between seats
+        // }
+
+    //}
+
+        // Display each seat as a mini icon with text in a square/grid layout (right side)
+        float gridStartX = 950;  // Gần cạnh phải của cửa sổ (1280px)
+        float gridStartY = 100;  // Bắt đầu phía dưới
+        int seatsPerRow = 3;     // Số ghế trên mỗi hàng
+        int seatGap = 60;        // Khoảng cách giữa các ghế
+        int index = 0;
+
         for (const auto& seat : selectedSeats) {
-            // Small seat icon
-            sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
-            seatIcon.setPosition(xPos, 722);
-            seatIcon.setFillColor(sf::Color::Green);
-            window.draw(seatIcon);
-            
-            // Seat ID text
-            sf::Text seatText = createText(seat, xPos + 20, 720, 16);
-            seatText.setFillColor(sf::Color(220, 255, 220));
-            window.draw(seatText);
-            
-            xPos += 60; // Space between seats
-        }
+        int row = index / seatsPerRow;
+        int col = index % seatsPerRow;
+
+        float xPos = gridStartX + col * seatGap;
+        float yPos = gridStartY + row * seatGap;
+
+        // Small seat icon
+        sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
+        seatIcon.setPosition(xPos, yPos);
+        seatIcon.setFillColor(sf::Color::Green);
+        window.draw(seatIcon);
+
+        // Seat ID text (hiển thị ngay bên phải biểu tượng ghế)
+        sf::Text seatText = createText(seat, xPos + 20, yPos - 2, 16);
+        seatText.setFillColor(sf::Color(220, 255, 220));
+        window.draw(seatText);
+
+        ++index;
         
-        // Confirm button with enhanced styling
-        sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
+        // Confirm button with enhanced styling (moved to the right side)
+        sf::RectangleShape confirmBtn = createButton(1050, 650, 200, 50);
         confirmBtn.setFillColor(sf::Color(0, 150, 0));
         confirmBtn.setOutlineThickness(2);
         confirmBtn.setOutlineColor(sf::Color(100, 255, 100));
         window.draw(confirmBtn);
         
-        sf::Text confirmText = createText("Confirm Booking", 530, 775, 18);
+        sf::Text confirmText = createText("Confirm Booking", 1085, 665, 18);
         confirmText.setStyle(sf::Text::Bold);
         window.draw(confirmText);
     }
 }
 
 void SFMLUIManager::renderBookingHistory() {
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
     sf::Text title = createText("Booking History", 450, 50, 28);
     window.draw(title);
     
@@ -1525,8 +1612,14 @@ void SFMLUIManager::renderBookingHistory() {
     }
 }
 
+
+
 void SFMLUIManager::renderRegisterScreen() {
-    sf::Text title = createText("Register New Account", 450, 100, 28);
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
+    // Title
+    sf::Text title = createText("Register New Account", 400, 100, 40);
     window.draw(title);
     
     // Username field
@@ -1596,33 +1689,37 @@ void SFMLUIManager::renderRegisterScreen() {
     }
 }
 
+
 void SFMLUIManager::renderAdminPanel() {
     drawGradientBackground();
     
-    sf::Text title = createText("Admin Panel", 500, 100, 32);
+    sf::Text title = createText("Admin Panel", 500, 100, 45);
     title.setFillColor(sf::Color::White);
     window.draw(title);
     
     // Movie Management button
-    sf::RectangleShape movieMgmtBtn = createButton(500, 300, 200, 50);
+    sf::RectangleShape movieMgmtBtn = createButton(530, 300, 200, 50);
     movieMgmtBtn.setFillColor(sf::Color(0, 150, 0));
     window.draw(movieMgmtBtn);
     
-    sf::Text movieMgmtText = createText("Movie Management", 510, 315, 18);
+    sf::Text movieMgmtText = createText("Movie Management", 545, 315, 18);
     movieMgmtText.setFillColor(sf::Color::White);
     window.draw(movieMgmtText);
     
     // Back to Main Menu button
-    sf::RectangleShape backBtn = createButton(500, 380, 200, 50);
+    sf::RectangleShape backBtn = createButton(530, 380, 200, 50);
     backBtn.setFillColor(sf::Color(100, 100, 100));
     window.draw(backBtn);
     
-    sf::Text backText = createText("Back to Main Menu", 515, 395, 18);
+    sf::Text backText = createText("Back to Main Menu", 545, 395, 18);
     backText.setFillColor(sf::Color::White);
     window.draw(backText);
 }
 
 void SFMLUIManager::renderMovieManagement() {
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
     sf::Text title = createText("Movie Management", 450, 50, 28);
     window.draw(title);
     
@@ -1650,10 +1747,9 @@ void SFMLUIManager::renderMovieManagement() {
     
     // Scroll buttons
     const int maxVisibleMovies = 7; // Số phim tối đa hiển thị đồng thời
-    
-    // Scroll up button
-    sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
-    sf::Text scrollUpText = createText("^", 968, 115, 18);
+      // Scroll up button - moved higher
+    sf::RectangleShape scrollUpBtn = createStyledButton(950, 50, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollUpText = createText("^", 968, 55, 18);
     if (movieListScrollOffset > 0) {
         scrollUpBtn.setFillColor(sf::Color(100, 100, 150));
         scrollUpText.setFillColor(sf::Color::White);
@@ -1663,10 +1759,9 @@ void SFMLUIManager::renderMovieManagement() {
     }
     window.draw(scrollUpBtn);
     window.draw(scrollUpText);
-    
-    // Scroll down button
-    sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
-    sf::Text scrollDownText = createText("v", 968, 705, 18);
+      // Scroll down button - positioned at the bottom of the screen
+    sf::RectangleShape scrollDownBtn = createStyledButton(950, 680, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollDownText = createText("v", 968, 685, 18);
     if (movieListScrollOffset + maxVisibleMovies < movies.size()) {
         scrollDownBtn.setFillColor(sf::Color(100, 100, 150));
         scrollDownText.setFillColor(sf::Color::White);
@@ -1680,7 +1775,7 @@ void SFMLUIManager::renderMovieManagement() {
     // Movie list for management - với cơ chế cuộn
     int endIndex = std::min(movieListScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
     for (int i = movieListScrollOffset; i < endIndex; ++i) {
-        int displayIndex = i - movieListScrollOffset; // Vị trí hiển thị trên màn hình
+        int displayIndex = i - movieListScrollOffset; // Display position
         sf::RectangleShape movieRow = createButton(100, 150 + displayIndex * 80, 800, 70);
         movieRow.setFillColor(sf::Color(50, 50, 100));
         window.draw(movieRow);
@@ -1714,6 +1809,9 @@ void SFMLUIManager::renderMovieManagement() {
 }
 
 void SFMLUIManager::renderEditMovie() {
+    // Only draw gradient background for non-guest screens
+    drawGradientBackground();
+    
     sf::Text title = createText("Edit Movie", 500, 50, 28);
     window.draw(title);
     
@@ -1770,7 +1868,7 @@ void SFMLUIManager::renderEditMovie() {
     sf::Text ratingText = createText(editMoviePrice, 630, 410, 18);
     window.draw(ratingText);
       // Showtime section (only show when adding new movie)
-    if (editingMovieId == -1) {
+      if (editingMovieId == -1) {
         sf::Text showtimeLabel = createText("Initial Showtimes:", 300, 460, 20);
         showtimeLabel.setFillColor(sf::Color(200, 200, 255));
         window.draw(showtimeLabel);
@@ -1827,7 +1925,7 @@ void SFMLUIManager::renderEditMovie() {
 void SFMLUIManager::renderSuccessMessage() {
     // Background overlay
     sf::RectangleShape overlay;
-    overlay.setSize(sf::Vector2f(1200, 800));
+    overlay.setSize(sf::Vector2f(windowWidth, windowHeight));
     overlay.setFillColor(sf::Color(0, 0, 0, 128));
     window.draw(overlay);
     
@@ -2299,13 +2397,12 @@ void SFMLUIManager::renderShowtimeManagement() {
         
         sf::Text deleteText = createText("Delete",  720, 312 + i * 30, 12);
         deleteText.setFillColor(sf::Color::White);
-        window.draw(deleteText);
-    }
-      // Back button
-    sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+        window.draw(deleteText);    }
+      // Back button - moved up from bottom of screen to be more visible
+    sf::RectangleShape backButton = createStyledButton(50, 500, 100, 40, sf::Color(100, 100, 100));
     window.draw(backButton);
     
-    sf::Text backText = createText("Back", 85, 735, 16);
+    sf::Text backText = createText("Back", 85, 515, 16);
     backText.setFillColor(sf::Color::White);
     window.draw(backText);
 }
@@ -2380,13 +2477,13 @@ sf::RectangleShape SFMLUIManager::createInputField(float x, float y, float width
 
 void SFMLUIManager::drawGradientBackground() {
     // Create a simple gradient background using multiple rectangles
-    for (int i = 0; i < 800; i += 10) {
+    for (int i = 0; i < windowHeight; i += 10) {
         sf::RectangleShape strip;
-        strip.setSize(sf::Vector2f(1200, 10));
+        strip.setSize(sf::Vector2f(windowWidth, 10));
         strip.setPosition(sf::Vector2f(0, i));
         
         // Calculate gradient color
-        float ratio = static_cast<float>(i) / 800.0f;
+        float ratio = static_cast<float>(i) / static_cast<float>(windowHeight);
         int colorValue = static_cast<int>(20 + ratio * 40); // From dark to slightly lighter
         strip.setFillColor(sf::Color(colorValue, colorValue, colorValue + 10));
         window.draw(strip);

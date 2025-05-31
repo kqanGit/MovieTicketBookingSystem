@@ -93,6 +93,9 @@ $(function(){initNavTree('classMovieManagerService.html','','classMovieManagerSe
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete implementation of movie management operations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="MovieManagerService_8h_source.html">service/MovieManagerService.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MovieManagerService:</div>
@@ -100,26 +103,65 @@ Inheritance diagram for MovieManagerService:</div>
  <div class="center">
   <img src="classMovieManagerService.png" usemap="#MovieManagerService_map" alt=""/>
   <map id="MovieManagerService_map" name="MovieManagerService_map">
-<area href="classIMovieManagerService.html" alt="IMovieManagerService" shape="rect" coords="0,0,145,24"/>
+<area href="classIMovieManagerService.html" title="Interface for movie management operations." alt="IMovieManagerService" shape="rect" coords="0,0,145,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aff12cae2a6fa3af1ab673b7ebe903a39" id="r_aff12cae2a6fa3af1ab673b7ebe903a39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff12cae2a6fa3af1ab673b7ebe903a39">MovieManagerService</a> (std::shared_ptr&lt; <a class="el" href="classIMovieRepository.html">IMovieRepository</a> &gt; r)</td></tr>
+<tr class="memdesc:aff12cae2a6fa3af1ab673b7ebe903a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <a class="el" href="classMovieManagerService.html" title="Concrete implementation of movie management operations.">MovieManagerService</a> with repository dependency.  <br /></td></tr>
 <tr class="memitem:ab629683cda5b116eade329ef56cc1be3" id="r_ab629683cda5b116eade329ef56cc1be3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab629683cda5b116eade329ef56cc1be3">addMovie</a> (std::shared_ptr&lt; <a class="el" href="classIMovie.html">IMovie</a> &gt; movie, std::vector&lt; std::string &gt; ShowTimes) override</td></tr>
+<tr class="memdesc:ab629683cda5b116eade329ef56cc1be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new movie with showtimes to the system catalog.  <br /></td></tr>
 <tr class="memitem:a80621281f60c8f1d1c6c5b7ec1a2b0e6" id="r_a80621281f60c8f1d1c6c5b7ec1a2b0e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80621281f60c8f1d1c6c5b7ec1a2b0e6">deleteMovie</a> (int id) override</td></tr>
+<tr class="memdesc:a80621281f60c8f1d1c6c5b7ec1a2b0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a movie and all associated data from the system.  <br /></td></tr>
 <tr class="memitem:aa9b3c50df97920646255e4c04c070b61" id="r_aa9b3c50df97920646255e4c04c070b61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9b3c50df97920646255e4c04c070b61">deleteShowTime</a> (int movieId, int ShowTimeId) override</td></tr>
+<tr class="memdesc:aa9b3c50df97920646255e4c04c070b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a specific showtime from a movie.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classIMovieManagerService"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIMovieManagerService')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classIMovieManagerService.html">IMovieManagerService</a></td></tr>
 <tr class="memitem:a2d9e770e82a4c94c54ec2d9c2eb92be9 inherit pub_methods_classIMovieManagerService" id="r_a2d9e770e82a4c94c54ec2d9c2eb92be9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMovieManagerService.html#a2d9e770e82a4c94c54ec2d9c2eb92be9">~IMovieManagerService</a> ()</td></tr>
+<tr class="memdesc:a2d9e770e82a4c94c54ec2d9c2eb92be9 inherit pub_methods_classIMovieManagerService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:acdf6540357d612bbb1eb6ce1ea6e9525" id="r_acdf6540357d612bbb1eb6ce1ea6e9525"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIMovieRepository.html">IMovieRepository</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf6540357d612bbb1eb6ce1ea6e9525">repo</a></td></tr>
+<tr class="memdesc:acdf6540357d612bbb1eb6ce1ea6e9525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repository for movie data access operations.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MovieManagerService_8h_source.html#l00013">13</a> of file <a class="el" href="MovieManagerService_8h_source.html">MovieManagerService.h</a>.</p>
+<div class="textblock"><p>Concrete implementation of movie management operations. </p>
+<p>The <a class="el" href="classMovieManagerService.html" title="Concrete implementation of movie management operations.">MovieManagerService</a> class provides the concrete implementation of all movie management functionality for cinema administrators. This service handles movie catalog management, showtime scheduling, and administrative operations while ensuring data integrity and business rule compliance.</p>
+<p>Implementation Features:</p><ul>
+<li>Integrates with <a class="el" href="classIMovieRepository.html" title="Repository interface for movie and showtime data access operations.">IMovieRepository</a> for data persistence</li>
+<li>Validates business rules for movie management</li>
+<li>Handles transaction management for complex operations</li>
+<li>Provides error handling and logging for administrative actions</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Implements <a class="el" href="classIMovieManagerService.html" title="Interface for movie management operations.">IMovieManagerService</a> interface</li>
+<li>Uses Repository pattern for data access</li>
+<li>Encapsulates movie management business logic</li>
+<li>Provides dependency injection through constructor</li>
+</ul>
+<p>Business Rules Enforced:</p><ul>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> titles must be unique within the system</li>
+<li>Showtimes must be in valid format and future dates</li>
+<li>Movies with active bookings cannot be deleted</li>
+<li>Showtime conflicts are prevented through validation</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> movieRepo = std::make_shared&lt;MovieRepositorySQL&gt;(dbConnection);</div>
+<div class="line"><span class="keyword">auto</span> movieManager = std::make_unique&lt;MovieManagerService&gt;(movieRepo);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Add a new movie with showtimes</span></div>
+<div class="line"><span class="keyword">auto</span> movie = std::make_shared&lt;Movie&gt;(<span class="stringliteral">&quot;Inception&quot;</span>, 148, <span class="stringliteral">&quot;Sci-Fi&quot;</span>);</div>
+<div class="line">std::vector&lt;std::string&gt; times = {<span class="stringliteral">&quot;14:00&quot;</span>, <span class="stringliteral">&quot;17:30&quot;</span>, <span class="stringliteral">&quot;21:00&quot;</span>};</div>
+<div class="line">movieManager-&gt;addMovie(movie, times);</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classIMovieManagerService.html" title="Interface for movie management operations.">IMovieManagerService</a> </dd>
+<dd>
+<a class="el" href="classIMovieRepository.html" title="Repository interface for movie and showtime data access operations.">IMovieRepository</a> </dd>
+<dd>
+<a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieManagerService_8h_source.html#l00063">63</a> of file <a class="el" href="MovieManagerService_8h_source.html">MovieManagerService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aff12cae2a6fa3af1ab673b7ebe903a39" name="aff12cae2a6fa3af1ab673b7ebe903a39"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff12cae2a6fa3af1ab673b7ebe903a39">&#9670;&#160;</a></span>MovieManagerService()</h2>
@@ -144,6 +186,33 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructs <a class="el" href="classMovieManagerService.html" title="Concrete implementation of movie management operations.">MovieManagerService</a> with repository dependency. </p>
+<p>Creates a new <a class="el" href="classMovieManagerService.html" title="Concrete implementation of movie management operations.">MovieManagerService</a> instance with the provided movie repository. The repository is used for all data persistence operations and must remain valid for the lifetime of the service.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>Shared pointer to movie repository implementation</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>r must not be null </dd>
+<dd>
+Repository must be properly initialized and connected </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Service is ready for movie management operations</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if repository pointer is null</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Repository is stored as shared_ptr to allow shared ownership </dd>
+<dd>
+Service lifetime is independent of repository creation context</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> movieRepo = std::make_shared&lt;MovieRepositorySQL&gt;(connection);</div>
+<div class="line"><span class="keyword">auto</span> movieManager = std::make_unique&lt;MovieManagerService&gt;(movieRepo);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Service is ready to use</span></div>
+<div class="line">movieManager-&gt;addMovie(movie, showtimes);</div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="MovieManagerService_8cpp_source.html#l00003">3</a> of file <a class="el" href="MovieManagerService_8cpp_source.html">MovieManagerService.cpp</a>.</p>
 
 </div>
@@ -176,6 +245,61 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Adds a new movie with showtimes to the system catalog. </p>
+<p>Creates a new movie entry in the system database along with the specified showtimes. This method validates all input data, checks for conflicts, and ensures transactional consistency.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movie</td><td>Shared pointer to the movie object to add </td></tr>
+    <tr><td class="paramname">ShowTimes</td><td>Vector of showtime strings in HH:MM format</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>movie must not be null and contain valid data </dd>
+<dd>
+ShowTimes must not be empty and contain valid time formats </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title must not already exist in the system </dd>
+<dd>
+Showtimes must not conflict with existing schedules </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> is added to the system catalog </dd>
+<dd>
+All showtimes are created and associated with the movie </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> becomes available for booking</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if movie is null or data is invalid </td></tr>
+    <tr><td class="paramname">DuplicateMovieException</td><td>if movie title already exists </td></tr>
+    <tr><td class="paramname">InvalidShowTimeException</td><td>if showtime format is invalid </td></tr>
+    <tr><td class="paramname">ScheduleConflictException</td><td>if showtimes conflict </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if database operation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Operation is transactional - either all data is saved or none </dd>
+<dd>
+Showtime validation includes format and future date checks </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title uniqueness is enforced at the service level</dd></dl>
+<p>Implementation Details:</p><ul>
+<li>Validates movie object completeness</li>
+<li>Parses and validates showtime formats</li>
+<li>Checks for title uniqueness before insertion</li>
+<li>Uses repository transaction support if available</li>
+<li>Logs administrative actions for audit purposes</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> movie = std::make_shared&lt;Movie&gt;(<span class="stringliteral">&quot;The Matrix&quot;</span>, 136, <span class="stringliteral">&quot;Action&quot;</span>);</div>
+<div class="line">std::vector&lt;std::string&gt; showtimes = {<span class="stringliteral">&quot;10:00&quot;</span>, <span class="stringliteral">&quot;14:30&quot;</span>, <span class="stringliteral">&quot;18:00&quot;</span>, <span class="stringliteral">&quot;21:30&quot;</span>};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    movieManager-&gt;addMovie(movie, showtimes);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movie added successfully!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> DuplicateMovieException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movie already exists: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to add movie: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implements <a class="el" href="classIMovieManagerService.html#a977e83ac80c423722f291c8943d65934">IMovieManagerService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="MovieManagerService_8cpp_source.html#l00005">5</a> of file <a class="el" href="MovieManagerService_8cpp_source.html">MovieManagerService.cpp</a>.</p>
@@ -205,6 +329,54 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Removes a movie and all associated data from the system. </p>
+<p>Completely removes a movie from the system catalog, including all showtimes, seat configurations, and related data. This operation includes validation to prevent deletion of movies with active bookings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier of the movie to delete</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>id must be a valid, existing movie identifier </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> should not have active future bookings </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> is removed from the system catalog </dd>
+<dd>
+All associated showtimes are deleted </dd>
+<dd>
+All related configurations are cleaned up </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> is no longer available for booking</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if id is invalid </td></tr>
+    <tr><td class="paramname">MovieNotFoundException</td><td>if movie does not exist </td></tr>
+    <tr><td class="paramname">ActiveBookingsException</td><td>if movie has active bookings </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if deletion operation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Considers implementing soft deletion for audit purposes </dd>
+<dd>
+Validates no active bookings exist before deletion </dd>
+<dd>
+Operation is transactional for data consistency</dd></dl>
+<p>Implementation Details:</p><ul>
+<li>Verifies movie existence before deletion</li>
+<li>Checks for active bookings that would prevent deletion</li>
+<li>Cascades deletion to all related entities</li>
+<li>Uses database transactions for consistency</li>
+<li>Logs deletion actions for audit trail</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    movieManager-&gt;deleteMovie(movieId);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movie deleted successfully!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> ActiveBookingsException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Cannot delete movie with active bookings.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> MovieNotFoundException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movie not found.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implements <a class="el" href="classIMovieManagerService.html#abbe92eed5cabd273b2a23be27f66bb69">IMovieManagerService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="MovieManagerService_8cpp_source.html#l00023">23</a> of file <a class="el" href="MovieManagerService_8cpp_source.html">MovieManagerService.cpp</a>.</p>
@@ -238,6 +410,59 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Removes a specific showtime from a movie. </p>
+<p>Deletes a single showtime entry without affecting the movie or other showtimes. This method validates the relationship between movie and showtime and checks for active bookings before deletion.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movieId</td><td>Unique identifier of the movie </td></tr>
+    <tr><td class="paramname">ShowTimeId</td><td>Unique identifier of the showtime to delete</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>movieId must be a valid, existing movie identifier </dd>
+<dd>
+ShowTimeId must be a valid, existing showtime identifier </dd>
+<dd>
+ShowTimeId must belong to the specified movie </dd>
+<dd>
+Showtime should not have active bookings </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Specified showtime is removed from the movie </dd>
+<dd>
+Other showtimes remain unaffected </dd>
+<dd>
+Showtime is no longer available for booking</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if movieId or ShowTimeId is invalid </td></tr>
+    <tr><td class="paramname">MovieNotFoundException</td><td>if movie does not exist </td></tr>
+    <tr><td class="paramname">ShowTimeNotFoundException</td><td>if showtime does not exist </td></tr>
+    <tr><td class="paramname">ShowTimeMismatchException</td><td>if showtime doesn't belong to movie </td></tr>
+    <tr><td class="paramname">ActiveBookingsException</td><td>if showtime has active bookings </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if deletion fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Validates showtime ownership by the specified movie </dd>
+<dd>
+Checks for customer bookings before deletion </dd>
+<dd>
+May trigger customer notifications for affected bookings</dd></dl>
+<p>Implementation Details:</p><ul>
+<li>Verifies movie and showtime existence</li>
+<li>Validates showtime belongs to the specified movie</li>
+<li>Checks for any customer bookings for the showtime</li>
+<li>Handles customer notification if bookings exist</li>
+<li>Uses transactions for data consistency</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    movieManager-&gt;deleteShowTime(movieId, showTimeId);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Showtime removed successfully!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> ActiveBookingsException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Cannot remove showtime with active bookings.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> ShowTimeMismatchException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Showtime does not belong to this movie.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implements <a class="el" href="classIMovieManagerService.html#a747d02274fb638d723b16bfc7212f613">IMovieManagerService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="MovieManagerService_8cpp_source.html#l00029">29</a> of file <a class="el" href="MovieManagerService_8cpp_source.html">MovieManagerService.cpp</a>.</p>
@@ -265,7 +490,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieManagerService_8h_source.html#l00015">15</a> of file <a class="el" href="MovieManagerService_8h_source.html">MovieManagerService.h</a>.</p>
+<p>Repository for movie data access operations. </p>
+<p>Shared pointer to the movie repository implementation used for all database operations. This follows the dependency injection pattern, allowing for different repository implementations. </p>
+
+<p class="definition">Definition at line <a class="el" href="MovieManagerService_8h_source.html#l00072">72</a> of file <a class="el" href="MovieManagerService_8h_source.html">MovieManagerService.h</a>.</p>
 
 </div>
 </div>

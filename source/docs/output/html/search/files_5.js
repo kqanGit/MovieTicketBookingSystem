@@ -9,12 +9,10 @@ var searchData=
   ['imoviemanagerservice_2eh_6',['IMovieManagerService.h',['../IMovieManagerService_8h.html',1,'']]],
   ['imovierepository_2eh_7',['IMovieRepository.h',['../IMovieRepository_8h.html',1,'']]],
   ['imovieviewerservice_2eh_8',['IMovieViewerService.h',['../IMovieViewerService_8h.html',1,'']]],
-  ['install_2dwxwidgets_2emd_9',['install-wxWidgets.md',['../install-wxWidgets_8md.html',1,'']]],
-  ['installqt_2emd_10',['installQt.md',['../installQt_8md.html',1,'']]],
-  ['iregisterservice_2eh_11',['IRegisterService.h',['../IRegisterService_8h.html',1,'']]],
-  ['iseat_2eh_12',['ISeat.h',['../ISeat_8h.html',1,'']]],
-  ['iservicevisitor_2eh_13',['IServiceVisitor.h',['../IServiceVisitor_8h.html',1,'']]],
-  ['iusercontext_2eh_14',['IUserContext.h',['../IUserContext_8h.html',1,'']]],
-  ['iuserinformationservice_2eh_15',['IUserInformationService.h',['../IUserInformationService_8h.html',1,'']]],
-  ['ivisitor_2eh_16',['IVisitor.h',['../IVisitor_8h.html',1,'']]]
+  ['iregisterservice_2eh_9',['IRegisterService.h',['../IRegisterService_8h.html',1,'']]],
+  ['iseat_2eh_10',['ISeat.h',['../ISeat_8h.html',1,'']]],
+  ['iservicevisitor_2eh_11',['IServiceVisitor.h',['../IServiceVisitor_8h.html',1,'']]],
+  ['iusercontext_2eh_12',['IUserContext.h',['../IUserContext_8h.html',1,'']]],
+  ['iuserinformationservice_2eh_13',['IUserInformationService.h',['../IUserInformationService_8h.html',1,'']]],
+  ['ivisitor_2eh_14',['IVisitor.h',['../IVisitor_8h.html',1,'']]]
 ];

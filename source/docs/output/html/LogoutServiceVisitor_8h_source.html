@@ -92,42 +92,51 @@ $(function(){initNavTree('LogoutServiceVisitor_8h_source.html','',''); });
   <div class="headertitle"><div class="title">LogoutServiceVisitor.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="LogoutServiceVisitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _LOGINSERVICEVISITOR_H_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _LOGINSERVICEVISITOR_H_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">IServiceVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="ILogoutService_8h.html">../service/ILogoutService.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="ServiceRegistry_8h.html">../core/ServiceRegistry.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">class </span>User;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">class </span><a class="code hl_class" href="classAdmin.html">Admin</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classLogoutServiceVisitor.html">   14</a></span><span class="keyword">class </span><a class="code hl_function" href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor</a> : <span class="keyword">public</span> IServiceVisitor {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">   16</a></span>    std::shared_ptr&lt;ILogoutService&gt; <a class="code hl_variable" href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">_service</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_function" href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor</a>();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::shared_ptr&lt;ILogoutService&gt; <a class="code hl_function" href="classLogoutServiceVisitor.html#a4664d7948034db1dcf274e804fa552b3">getLogoutService</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;Guest&gt; role) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;User&gt; role) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;Admin&gt; role) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
+<a href="LogoutServiceVisitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef LOGOUTSERVICEVISITOR_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define LOGOUTSERVICEVISITOR_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">IServiceVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="ILogoutService_8h.html">../service/ILogoutService.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="ServiceRegistry_8h.html">../core/ServiceRegistry.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">class </span><a class="code hl_class" href="classUser.html">User</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">class </span><a class="code hl_class" href="classAdmin.html">Admin</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classLogoutServiceVisitor.html">   56</a></span><span class="keyword">class </span><a class="code hl_function" href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIServiceVisitor.html">IServiceVisitor</a> {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">   64</a></span>    std::shared_ptr&lt;ILogoutService&gt; <a class="code hl_variable" href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">_service</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    std::shared_ptr&lt;ILogoutService&gt; <a class="code hl_function" href="classLogoutServiceVisitor.html#a4664d7948034db1dcf274e804fa552b3">getLogoutService</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;Guest&gt; role) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;User&gt; role) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">service</a>(std::shared_ptr&lt;Admin&gt; role) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>};</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aILogoutService_8h_html"><div class="ttname"><a href="ILogoutService_8h.html">ILogoutService.h</a></div></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aILogoutService_8h_html"><div class="ttname"><a href="ILogoutService_8h.html">ILogoutService.h</a></div><div class="ttdoc">Logout service interface definition.</div></div>
 <div class="ttc" id="aIServiceVisitor_8h_html"><div class="ttname"><a href="IServiceVisitor_8h.html">IServiceVisitor.h</a></div><div class="ttdoc">Service visitor interface for role-based operations.</div></div>
 <div class="ttc" id="aServiceRegistry_8h_html"><div class="ttname"><a href="ServiceRegistry_8h.html">ServiceRegistry.h</a></div><div class="ttdoc">Global service registry for dependency injection and singleton management.</div></div>
 <div class="ttc" id="aclassAdmin_html"><div class="ttname"><a href="classAdmin.html">Admin</a></div><div class="ttdoc">Administrator user context with elevated privileges.</div><div class="ttdef"><b>Definition</b> <a href="Admin_8h_source.html#l00066">Admin.h:66</a></div></div>
-<div class="ttc" id="aclassGuest_html"><div class="ttname"><a href="classGuest.html">Guest</a></div><div class="ttdef"><b>Definition</b> <a href="Guest_8h_source.html#l00009">Guest.h:9</a></div></div>
-<div class="ttc" id="aclassLogoutServiceVisitor_html_a4664d7948034db1dcf274e804fa552b3"><div class="ttname"><a href="classLogoutServiceVisitor.html#a4664d7948034db1dcf274e804fa552b3">LogoutServiceVisitor::getLogoutService</a></div><div class="ttdeci">std::shared_ptr&lt; ILogoutService &gt; getLogoutService()</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00022">LogoutServiceVisitor.cpp:22</a></div></div>
-<div class="ttc" id="aclassLogoutServiceVisitor_html_a666b256d7b4f81dc5daf75f58b81bb57"><div class="ttname"><a href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor::LogoutServiceVisitor</a></div><div class="ttdeci">LogoutServiceVisitor()</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00006">LogoutServiceVisitor.cpp:6</a></div></div>
-<div class="ttc" id="aclassLogoutServiceVisitor_html_a74bdfac57f464608aaee5435e322051d"><div class="ttname"><a href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">LogoutServiceVisitor::service</a></div><div class="ttdeci">void service(std::shared_ptr&lt; Guest &gt; role) override</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00010">LogoutServiceVisitor.cpp:10</a></div></div>
-<div class="ttc" id="aclassLogoutServiceVisitor_html_a89ca0bdf1803d7cd1ea0c0b0551b2a5b"><div class="ttname"><a href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">LogoutServiceVisitor::_service</a></div><div class="ttdeci">std::shared_ptr&lt; ILogoutService &gt; _service</div><div class="ttdef"><b>Definition</b> <a href="#l00016">LogoutServiceVisitor.h:16</a></div></div>
+<div class="ttc" id="aclassGuest_html"><div class="ttname"><a href="classGuest.html">Guest</a></div><div class="ttdoc">Implementation of IUserContext for anonymous guest users.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8h_source.html#l00070">Guest.h:70</a></div></div>
+<div class="ttc" id="aclassIServiceVisitor_html"><div class="ttname"><a href="classIServiceVisitor.html">IServiceVisitor</a></div><div class="ttdoc">Visitor interface for role-based service operations.</div><div class="ttdef"><b>Definition</b> <a href="IServiceVisitor_8h_source.html#l00052">IServiceVisitor.h:52</a></div></div>
+<div class="ttc" id="aclassLogoutServiceVisitor_html_a4664d7948034db1dcf274e804fa552b3"><div class="ttname"><a href="classLogoutServiceVisitor.html#a4664d7948034db1dcf274e804fa552b3">LogoutServiceVisitor::getLogoutService</a></div><div class="ttdeci">std::shared_ptr&lt; ILogoutService &gt; getLogoutService()</div><div class="ttdoc">Retrieves the cached logout service instance.</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00022">LogoutServiceVisitor.cpp:22</a></div></div>
+<div class="ttc" id="aclassLogoutServiceVisitor_html_a666b256d7b4f81dc5daf75f58b81bb57"><div class="ttname"><a href="classLogoutServiceVisitor.html#a666b256d7b4f81dc5daf75f58b81bb57">LogoutServiceVisitor::LogoutServiceVisitor</a></div><div class="ttdeci">LogoutServiceVisitor()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00006">LogoutServiceVisitor.cpp:6</a></div></div>
+<div class="ttc" id="aclassLogoutServiceVisitor_html_a74bdfac57f464608aaee5435e322051d"><div class="ttname"><a href="classLogoutServiceVisitor.html#a74bdfac57f464608aaee5435e322051d">LogoutServiceVisitor::service</a></div><div class="ttdeci">void service(std::shared_ptr&lt; Guest &gt; role) override</div><div class="ttdoc">Denies logout service access for Guest users.</div><div class="ttdef"><b>Definition</b> <a href="LogoutServiceVisitor_8cpp_source.html#l00010">LogoutServiceVisitor.cpp:10</a></div></div>
+<div class="ttc" id="aclassLogoutServiceVisitor_html_a89ca0bdf1803d7cd1ea0c0b0551b2a5b"><div class="ttname"><a href="classLogoutServiceVisitor.html#a89ca0bdf1803d7cd1ea0c0b0551b2a5b">LogoutServiceVisitor::_service</a></div><div class="ttdeci">std::shared_ptr&lt; ILogoutService &gt; _service</div><div class="ttdoc">Cached logout service instance.</div><div class="ttdef"><b>Definition</b> <a href="#l00064">LogoutServiceVisitor.h:64</a></div></div>
+<div class="ttc" id="aclassUser_html"><div class="ttname"><a href="classUser.html">User</a></div><div class="ttdoc">Concrete implementation of IUserContext for regular users.</div><div class="ttdef"><b>Definition</b> <a href="User_8h_source.html#l00043">User.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

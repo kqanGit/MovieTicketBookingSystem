@@ -93,24 +93,91 @@ $(function(){initNavTree('classMovieDTO.html','','classMovieDTO-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Data Transfer Object for efficient movie data transmission.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="MovieDTO_8h_source.html">repository/MovieDTO.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a13d8004c1343222d17202193867e8995" id="r_a13d8004c1343222d17202193867e8995"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> ()</td></tr>
+<tr class="memdesc:a13d8004c1343222d17202193867e8995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="memitem:a9b1c052191721fca540cd2666eafdcff" id="r_a9b1c052191721fca540cd2666eafdcff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b1c052191721fca540cd2666eafdcff">MovieDTO</a> (int <a class="el" href="#a323f7ffeef10c77e2d4cc705e3a06ee7">id</a>, const std::string &amp;<a class="el" href="#a271a77027205dbcd48d5eb4c47e7b753">title</a>, const std::string &amp;<a class="el" href="#a89b787ff2048832fb588043c29c15692">genre</a>, float <a class="el" href="#a65cdb244483a0bd0f899f9d943ba76ac">rating</a>)</td></tr>
+<tr class="memdesc:a9b1c052191721fca540cd2666eafdcff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor.  <br /></td></tr>
 <tr class="memitem:aa600cba3d035d1f376454e6630037c9f" id="r_aa600cba3d035d1f376454e6630037c9f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa600cba3d035d1f376454e6630037c9f">operator==</a> (const <a class="el" href="classMovieDTO.html">MovieDTO</a> &amp;other) const</td></tr>
+<tr class="memdesc:aa600cba3d035d1f376454e6630037c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison operator.  <br /></td></tr>
+<tr class="memitem:aec7e27c73a52f58be80c3c4bb2a7c1f6" id="r_aec7e27c73a52f58be80c3c4bb2a7c1f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec7e27c73a52f58be80c3c4bb2a7c1f6">operator!=</a> (const <a class="el" href="classMovieDTO.html">MovieDTO</a> &amp;other) const</td></tr>
+<tr class="memdesc:aec7e27c73a52f58be80c3c4bb2a7c1f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison operator.  <br /></td></tr>
+<tr class="memitem:ab3d3a6b21bbfcd543568be1641da31df" id="r_ab3d3a6b21bbfcd543568be1641da31df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3d3a6b21bbfcd543568be1641da31df">isValid</a> () const</td></tr>
+<tr class="memdesc:ab3d3a6b21bbfcd543568be1641da31df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if DTO contains valid data.  <br /></td></tr>
+<tr class="memitem:a66c4081569524d8adbf8fd89b7deefe5" id="r_a66c4081569524d8adbf8fd89b7deefe5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66c4081569524d8adbf8fd89b7deefe5">toString</a> () const</td></tr>
+<tr class="memdesc:a66c4081569524d8adbf8fd89b7deefe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert to string representation.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a323f7ffeef10c77e2d4cc705e3a06ee7" id="r_a323f7ffeef10c77e2d4cc705e3a06ee7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a323f7ffeef10c77e2d4cc705e3a06ee7">id</a></td></tr>
+<tr class="memdesc:a323f7ffeef10c77e2d4cc705e3a06ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique movie identifier.  <br /></td></tr>
 <tr class="memitem:a271a77027205dbcd48d5eb4c47e7b753" id="r_a271a77027205dbcd48d5eb4c47e7b753"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a271a77027205dbcd48d5eb4c47e7b753">title</a></td></tr>
+<tr class="memdesc:a271a77027205dbcd48d5eb4c47e7b753"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title for display.  <br /></td></tr>
 <tr class="memitem:a89b787ff2048832fb588043c29c15692" id="r_a89b787ff2048832fb588043c29c15692"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89b787ff2048832fb588043c29c15692">genre</a></td></tr>
+<tr class="memdesc:a89b787ff2048832fb588043c29c15692"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> genre classification.  <br /></td></tr>
 <tr class="memitem:a65cdb244483a0bd0f899f9d943ba76ac" id="r_a65cdb244483a0bd0f899f9d943ba76ac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65cdb244483a0bd0f899f9d943ba76ac">rating</a></td></tr>
+<tr class="memdesc:a65cdb244483a0bd0f899f9d943ba76ac"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> quality rating.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00008">8</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<div class="textblock"><p>Data Transfer Object for efficient movie data transmission. </p>
+<p>This class serves as a lightweight Data Transfer Object (DTO) for movie information exchange between different layers of the application. It provides a simplified representation of movie data optimized for network transmission, caching, and display purposes.</p>
+<p>Key Features:</p><ul>
+<li>Lightweight movie data representation</li>
+<li>Optimized for serialization and transmission</li>
+<li>Simplified structure for easy manipulation</li>
+<li>Value semantics with comparison support</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Data Transfer Object (DTO)</b>: Optimized for data transfer between layers</li>
+<li><b>Value Object</b>: Immutable data container with value semantics</li>
+<li><b>Plain Old Data (POD)</b>: Simple structure for easy serialization</li>
+<li><b>Mapper Pattern</b>: Used with <a class="el" href="classMovieMapper.html" title="Provides mapping functionality between Movie entities and MovieDTO objects.">MovieMapper</a> for entity conversion</li>
+</ul>
+<p>Use Cases:</p><ul>
+<li>API responses and requests</li>
+<li>Cache storage and retrieval</li>
+<li>UI data binding and display</li>
+<li>Database query result representation</li>
+<li>Inter-service communication</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="comment">// Create movie DTO</span></div>
+<div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> movie(1, <span class="stringliteral">&quot;Inception&quot;</span>, <span class="stringliteral">&quot;Sci-Fi&quot;</span>, 8.8f);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Use in API response</span></div>
+<div class="line">std::vector&lt;MovieDTO&gt; movies = movieService-&gt;getAllMovies();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Serialize for transmission</span></div>
+<div class="line">json movieJson = {</div>
+<div class="line">    {<span class="stringliteral">&quot;id&quot;</span>, movie.id},</div>
+<div class="line">    {<span class="stringliteral">&quot;title&quot;</span>, movie.title},</div>
+<div class="line">    {<span class="stringliteral">&quot;genre&quot;</span>, movie.genre},</div>
+<div class="line">    {<span class="stringliteral">&quot;rating&quot;</span>, movie.rating}</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Compare movies</span></div>
+<div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> other(1, <span class="stringliteral">&quot;Inception&quot;</span>, <span class="stringliteral">&quot;Sci-Fi&quot;</span>, 8.8f);</div>
+<div class="line"><span class="keywordflow">if</span> (movie == other) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Movies are identical&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassMovieDTO_html_a13d8004c1343222d17202193867e8995"><div class="ttname"><a href="#a13d8004c1343222d17202193867e8995">MovieDTO::MovieDTO</a></div><div class="ttdeci">MovieDTO()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> <a href="MovieDTO_8h_source.html#l00129">MovieDTO.h:129</a></div></div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>DTOs are designed to be lightweight and fast to create/copy </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>DTOs should not contain business logic - use entity classes for that</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> </dd>
+<dd>
+<a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> </dd>
+<dd>
+<a class="el" href="classMovieMapper.html" title="Provides mapping functionality between Movie entities and MovieDTO objects.">MovieMapper</a> </dd>
+<dd>
+<a class="el" href="classIMovieRepository.html" title="Repository interface for movie and showtime data access operations.">IMovieRepository</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00075">75</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a13d8004c1343222d17202193867e8995" name="a13d8004c1343222d17202193867e8995"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13d8004c1343222d17202193867e8995">&#9670;&#160;</a></span>MovieDTO() <span class="overload">[1/2]</span></h2>
@@ -135,7 +202,16 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00015">15</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p>Default constructor. </p>
+<p>Creates an uninitialized movie DTO with default values. Useful for containers and scenarios where data will be assigned later.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>id == 0 (invalid state) </dd>
+<dd>
+rating == 0.0f (no rating) </dd>
+<dd>
+title and genre are empty strings</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Object is in invalid state until properly initialized </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00129">129</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>
@@ -168,11 +244,104 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Parameterized constructor. </p>
+<p>Creates a movie DTO with all necessary information provided. This is the preferred way to create valid movie DTOs.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique movie identifier (should be positive) </td></tr>
+    <tr><td class="paramname">title</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title (should be non-empty) </td></tr>
+    <tr><td class="paramname">genre</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> genre (should be valid genre) </td></tr>
+    <tr><td class="paramname">rating</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> rating (should be within valid range)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>id &gt; 0 for valid movies </dd>
+<dd>
+title is non-empty and meaningful </dd>
+<dd>
+genre follows standard classifications </dd>
+<dd>
+rating is within valid range (e.g., 0.0-10.0) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>All fields are initialized with provided values</dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> movie(1, <span class="stringliteral">&quot;Inception&quot;</span>, <span class="stringliteral">&quot;Sci-Fi&quot;</span>, 8.8f);</div>
+<div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> comedy(2, <span class="stringliteral">&quot;The Hangover&quot;</span>, <span class="stringliteral">&quot;Comedy&quot;</span>, 7.7f);</div>
+</div><!-- fragment --> </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="MovieDTO_8cpp_source.html#l00003">3</a> of file <a class="el" href="MovieDTO_8cpp_source.html">MovieDTO.cpp</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab3d3a6b21bbfcd543568be1641da31df" name="ab3d3a6b21bbfcd543568be1641da31df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3d3a6b21bbfcd543568be1641da31df">&#9670;&#160;</a></span>isValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MovieDTO::isValid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if DTO contains valid data. </p>
+<p>Validates that the DTO contains meaningful data that can be used for business operations.</p>
+<dl class="section return"><dt>Returns</dt><dd>bool True if DTO is valid, false otherwise</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Checks for positive ID, non-empty title, and valid rating </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00208">208</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+
+</div>
+</div>
+<a id="aec7e27c73a52f58be80c3c4bb2a7c1f6" name="aec7e27c73a52f58be80c3c4bb2a7c1f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7e27c73a52f58be80c3c4bb2a7c1f6">&#9670;&#160;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MovieDTO::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMovieDTO.html">MovieDTO</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inequality comparison operator. </p>
+<p>Compares two movie DTOs for inequality. Convenience operator that negates the equality comparison.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> DTO to compare against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if any field differs, false if all equal</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Implemented as negation of operator== </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00194">194</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+
+</div>
+</div>
 <a id="aa600cba3d035d1f376454e6630037c9f" name="aa600cba3d035d1f376454e6630037c9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa600cba3d035d1f376454e6630037c9f">&#9670;&#160;</a></span>operator==()</h2>
 
@@ -196,7 +365,59 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00019">19</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p>Equality comparison operator. </p>
+<p>Compares two movie DTOs for complete equality across all fields. Useful for testing, caching, and duplicate detection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> DTO to compare against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if all fields are equal, false otherwise</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Compares all fields: id, title, genre, and rating </dd>
+<dd>
+Floating-point rating comparison uses exact equality</dd></dl>
+<dl class="section user"><dt>Example</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> movie1(1, <span class="stringliteral">&quot;Inception&quot;</span>, <span class="stringliteral">&quot;Sci-Fi&quot;</span>, 8.8f);</div>
+<div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> movie2(1, <span class="stringliteral">&quot;Inception&quot;</span>, <span class="stringliteral">&quot;Sci-Fi&quot;</span>, 8.8f);</div>
+<div class="line"><a class="code hl_function" href="#a13d8004c1343222d17202193867e8995">MovieDTO</a> movie3(2, <span class="stringliteral">&quot;Avatar&quot;</span>, <span class="stringliteral">&quot;Action&quot;</span>, 7.9f);</div>
+<div class="line"> </div>
+<div class="line">assert(movie1 == movie2);  <span class="comment">// true - identical content</span></div>
+<div class="line">assert(!(movie1 == movie3)); <span class="comment">// false - different content</span></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00178">178</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+
+</div>
+</div>
+<a id="a66c4081569524d8adbf8fd89b7deefe5" name="a66c4081569524d8adbf8fd89b7deefe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66c4081569524d8adbf8fd89b7deefe5">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string MovieDTO::toString </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert to string representation. </p>
+<p>Creates a human-readable string representation of the movie DTO for debugging and logging purposes.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::string String representation of the movie</dd></dl>
+<dl class="section user"><dt>Example Output</dt><dd>"Movie[ID=1, Title='Inception', Genre='Sci-Fi', Rating=8.8]" </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00223">223</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>
@@ -213,7 +434,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00012">12</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> genre classification. </p>
+<p>Genre category for the movie used for filtering, categorization, and recommendation purposes.</p>
+<dl class="section note"><dt>Note</dt><dd>Should follow standard genre classifications </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00105">105</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +454,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00010">10</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p>Unique movie identifier. </p>
+<p>Database primary key that uniquely identifies the movie across the entire system.</p>
+<dl class="section note"><dt>Note</dt><dd>0 indicates uninitialized or invalid movie </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00085">85</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>
@@ -245,7 +474,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00013">13</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> quality rating. </p>
+<p>Numeric rating representing movie quality, typically on a scale like 1-10 or similar rating system.</p>
+<dl class="section note"><dt>Note</dt><dd>0.0f indicates uninitialized or no rating </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00115">115</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +494,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00011">11</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
+<p><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title for display. </p>
+<p>Human-readable title of the movie used for display and user interface purposes.</p>
+<dl class="section note"><dt>Note</dt><dd>Should be non-empty for valid movies </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieDTO_8h_source.html#l00095">95</a> of file <a class="el" href="MovieDTO_8h_source.html">MovieDTO.h</a>.</p>
 
 </div>
 </div>

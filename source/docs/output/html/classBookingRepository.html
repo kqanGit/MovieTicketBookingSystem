@@ -93,6 +93,9 @@ $(function(){initNavTree('classBookingRepository.html','','classBookingRepositor
 </div><!--header-->
 <div class="contents">
 
+<p>SQLite-based implementation of booking data access operations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="BookingRepositorySQL_8h_source.html">repository/BookingRepositorySQL.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BookingRepository:</div>
@@ -100,29 +103,81 @@ Inheritance diagram for BookingRepository:</div>
  <div class="center">
   <img src="classBookingRepository.png" usemap="#BookingRepository_map" alt=""/>
   <map id="BookingRepository_map" name="BookingRepository_map">
-<area href="classIBookingRepository.html" alt="IBookingRepository" shape="rect" coords="0,0,120,24"/>
+<area href="classIBookingRepository.html" title="Interface for booking data access operations." alt="IBookingRepository" shape="rect" coords="0,0,120,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4bd1d96cfd24d78959273e079acc0b92" id="r_a4bd1d96cfd24d78959273e079acc0b92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bd1d96cfd24d78959273e079acc0b92">BookingRepository</a> (std::string dbFilePath)</td></tr>
+<tr class="memdesc:a4bd1d96cfd24d78959273e079acc0b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with database file path.  <br /></td></tr>
 <tr class="memitem:ab5e721dfe96b1cf205c9e5720bb84b35" id="r_ab5e721dfe96b1cf205c9e5720bb84b35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e721dfe96b1cf205c9e5720bb84b35">addBooking</a> (const int &amp;userID, const int &amp;showTimeID) override</td></tr>
+<tr class="memdesc:ab5e721dfe96b1cf205c9e5720bb84b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new booking for user and showtime.  <br /></td></tr>
 <tr class="memitem:aa970e1f3f79f63cb68a4d7600487edc9" id="r_aa970e1f3f79f63cb68a4d7600487edc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa970e1f3f79f63cb68a4d7600487edc9">addBookedSeats</a> (const int &amp;bookingID, const std::vector&lt; std::string &gt; &amp;bookedSeats) override</td></tr>
+<tr class="memdesc:aa970e1f3f79f63cb68a4d7600487edc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add booked seats to an existing booking.  <br /></td></tr>
 <tr class="memitem:ad546c89330daada956052eeb4e044b29" id="r_ad546c89330daada956052eeb4e044b29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad546c89330daada956052eeb4e044b29">getLatestBookingID</a> (const int &amp;userID) override</td></tr>
+<tr class="memdesc:ad546c89330daada956052eeb4e044b29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the most recent booking ID for a user.  <br /></td></tr>
 <tr class="memitem:a15a084fd46178d1fb0c6cdb8dd67e717" id="r_a15a084fd46178d1fb0c6cdb8dd67e717"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classBookingView.html">BookingView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15a084fd46178d1fb0c6cdb8dd67e717">viewAllBookings</a> (const int &amp;userID) override</td></tr>
+<tr class="memdesc:a15a084fd46178d1fb0c6cdb8dd67e717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve all bookings for a specific user.  <br /></td></tr>
 <tr class="memitem:a57175cfeb3716bc5e3ec2d9840164541" id="r_a57175cfeb3716bc5e3ec2d9840164541"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classSeatView.html">SeatView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57175cfeb3716bc5e3ec2d9840164541">viewSeatsStatus</a> (const int &amp;showTimeID) override</td></tr>
+<tr class="memdesc:a57175cfeb3716bc5e3ec2d9840164541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get seat availability status for a showtime.  <br /></td></tr>
 <tr class="memitem:ac3336aae7cc4ba4fef89f020fbf84607" id="r_ac3336aae7cc4ba4fef89f020fbf84607"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3336aae7cc4ba4fef89f020fbf84607">~BookingRepository</a> ()</td></tr>
+<tr class="memdesc:ac3336aae7cc4ba4fef89f020fbf84607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for cleanup.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classIBookingRepository"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIBookingRepository')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classIBookingRepository.html">IBookingRepository</a></td></tr>
 <tr class="memitem:ac58e3cc3eb2223802cee86cebe1836a4 inherit pub_methods_classIBookingRepository" id="r_ac58e3cc3eb2223802cee86cebe1836a4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIBookingRepository.html#ac58e3cc3eb2223802cee86cebe1836a4">~IBookingRepository</a> ()=default</td></tr>
+<tr class="memdesc:ac58e3cc3eb2223802cee86cebe1836a4 inherit pub_methods_classIBookingRepository"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a582a84a15bcd6f49697078c45ae6a45f" id="r_a582a84a15bcd6f49697078c45ae6a45f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDatabaseConnection.html">DatabaseConnection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a582a84a15bcd6f49697078c45ae6a45f">_dbConnection</a></td></tr>
+<tr class="memdesc:a582a84a15bcd6f49697078c45ae6a45f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database connection for booking operations.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8h_source.html#l00010">10</a> of file <a class="el" href="BookingRepositorySQL_8h_source.html">BookingRepositorySQL.h</a>.</p>
+<div class="textblock"><p>SQLite-based implementation of booking data access operations. </p>
+<p>This class provides concrete implementation of booking repository operations using SQLite database backend. It handles all booking-related database operations including seat reservations, booking history, and availability management.</p>
+<p>Key Features:</p><ul>
+<li>Complete booking lifecycle management</li>
+<li>Seat availability tracking and reservation</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> booking history and retrieval</li>
+<li>Theater seat status management</li>
+<li>Transaction support for booking operations</li>
+</ul>
+<p>Design Patterns:</p><ul>
+<li><b>Repository Pattern</b>: Concrete implementation of <a class="el" href="classIBookingRepository.html" title="Interface for booking data access operations.">IBookingRepository</a></li>
+<li><b>Data Access Object (DAO)</b>: Encapsulates booking database operations</li>
+<li><b>Unit of Work</b>: Manages booking transactions and seat reservations</li>
+<li><b>View Object</b>: Uses <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> and <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> for data presentation</li>
+</ul>
+<p>Database Operations:</p><ul>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> creation and management</li>
+<li>Seat reservation and status tracking</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> booking history queries</li>
+<li>Showtime seat availability checks</li>
+</ul>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> bookingRepo = std::make_unique&lt;BookingRepository&gt;(<span class="stringliteral">&quot;database.db&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Create a booking</span></div>
+<div class="line">bookingRepo-&gt;addBooking(userId, showTimeId);</div>
+<div class="line"><span class="keywordtype">int</span> bookingId = bookingRepo-&gt;getLatestBookingID(userId);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Reserve seats</span></div>
+<div class="line">std::vector&lt;std::string&gt; seats = {<span class="stringliteral">&quot;A1&quot;</span>, <span class="stringliteral">&quot;A2&quot;</span>};</div>
+<div class="line">bookingRepo-&gt;addBookedSeats(bookingId, seats);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// View booking history</span></div>
+<div class="line"><span class="keyword">auto</span> bookings = bookingRepo-&gt;viewAllBookings(userId);</div>
+</div><!-- fragment --></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>All operations are transactional to ensure data consistency </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Database connection must remain valid throughout repository lifetime</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIBookingRepository.html" title="Interface for booking data access operations.">IBookingRepository</a> </dd>
+<dd>
+<a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> </dd>
+<dd>
+<a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> </dd>
+<dd>
+<a class="el" href="classDatabaseConnection.html" title="Singleton class for managing SQLite database connections.">DatabaseConnection</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8h_source.html#l00072">72</a> of file <a class="el" href="BookingRepositorySQL_8h_source.html">BookingRepositorySQL.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4bd1d96cfd24d78959273e079acc0b92" name="a4bd1d96cfd24d78959273e079acc0b92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4bd1d96cfd24d78959273e079acc0b92">&#9670;&#160;</a></span>BookingRepository()</h2>
@@ -139,7 +194,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00004">4</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p>Constructor with database file path. </p>
+<p>Initializes the booking repository with a database connection to the specified SQLite database file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dbFilePath</td><td>Path to the SQLite database file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Database file path is valid and accessible </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Database connection is established </dd>
+<dd>
+Repository is ready for booking operations</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If database connection fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Creates database file if it doesn't exist </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classDatabaseConnection.html" title="Singleton class for managing SQLite database connections.">DatabaseConnection</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00005">5</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -158,7 +234,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00011">11</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p>Destructor for cleanup. </p>
+<p>Properly cleans up database connections and resources. Ensures no memory leaks or connection issues.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>All database connections are properly closed </dd>
+<dd>
+All resources are released</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Automatically called when repository is destroyed </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00012">12</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,9 +273,44 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Add booked seats to an existing booking. </p>
+<p>Associates specific seats with a booking, completing the reservation process. Updates seat availability and creates booking-seat relationships.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bookingID</td><td>Unique identifier of the booking </td></tr>
+    <tr><td class="paramname">bookedSeats</td><td>Vector of seat IDs to be reserved</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>bookingID &gt; 0 (valid booking exists) </dd>
+<dd>
+bookedSeats is non-empty </dd>
+<dd>
+All seats in bookedSeats are available for the showtime </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>All specified seats are marked as booked </dd>
+<dd>
+Booking-seat relationships are created in database</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If any seat is already booked </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>If booking doesn't exist</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Atomicity</dt><dd><ul>
+<li>All seats are booked as a single transaction</li>
+<li>If any seat fails, entire operation is rolled back</li>
+<li>Ensures booking consistency</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Seat IDs must correspond to valid seats for the showtime </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ab5e721dfe96b1cf205c9e5720bb84b35" title="Create a new booking for user and showtime.">addBooking()</a> to create the booking first </dd>
+<dd>
+<a class="el" href="#a57175cfeb3716bc5e3ec2d9840164541" title="Get seat availability status for a showtime.">viewSeatsStatus()</a> to check seat availability </dd></dl>
+
 <p>Implements <a class="el" href="classIBookingRepository.html#abcfd5139be92aba52a81ac9f7187298b">IBookingRepository</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00026">26</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00027">27</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,9 +341,41 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Create a new booking for user and showtime. </p>
+<p>Creates a new booking record linking a user to a specific showtime. This is the first step in the booking process before seat selection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user making the booking </td></tr>
+    <tr><td class="paramname">showTimeID</td><td>Unique identifier of the movie showtime</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID &gt; 0 (valid user) </dd>
+<dd>
+showTimeID &gt; 0 (valid showtime) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>New booking record is created in database </dd>
+<dd>
+<a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> can be retrieved using <a class="el" href="#ad546c89330daada956052eeb4e044b29" title="Get the most recent booking ID for a user.">getLatestBookingID()</a></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If booking creation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Database Operations</dt><dd><ul>
+<li>Validates user and showtime existence</li>
+<li>Creates booking record with timestamp</li>
+<li>Returns generated booking ID for subsequent operations</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method only creates the booking container, not seat reservations </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aa970e1f3f79f63cb68a4d7600487edc9" title="Add booked seats to an existing booking.">addBookedSeats()</a> for seat reservation </dd>
+<dd>
+<a class="el" href="#ad546c89330daada956052eeb4e044b29" title="Get the most recent booking ID for a user.">getLatestBookingID()</a> to retrieve the created booking ID </dd></dl>
+
 <p>Implements <a class="el" href="classIBookingRepository.html#a90b190cbe36477e48512c467f58f31c4">IBookingRepository</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00015">15</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00016">16</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -252,9 +402,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the most recent booking ID for a user. </p>
+<p>Retrieves the booking ID of the user's most recently created booking. Used to link seat reservations to newly created bookings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int The latest booking ID for the user</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Positive</td><td>integer if user has bookings </td></tr>
+    <tr><td class="paramname">0</td><td>or negative if no bookings found</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID &gt; 0 (valid user)</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Bookings are ordered by creation timestamp </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ab5e721dfe96b1cf205c9e5720bb84b35" title="Create a new booking for user and showtime.">addBooking()</a> creates bookings that can be retrieved </dd></dl>
+
 <p>Implements <a class="el" href="classIBookingRepository.html#a304af4d8d0380a5e7da72618d428b208">IBookingRepository</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00153">153</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00154">154</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -281,9 +451,38 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieve all bookings for a specific user. </p>
+<p>Gets complete booking history for a user including movie details, showtime information, reserved seats, and pricing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userID</td><td>Unique identifier of the user </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;BookingView&gt; Collection of user's booking information</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Empty</td><td>vector if user has no bookings </td></tr>
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> objects with complete booking details</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>userID &gt; 0 (valid user) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Each <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> contains complete booking information</dd></dl>
+<dl class="section user"><dt>BookingView Contents</dt><dd><ul>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> identification and metadata</li>
+<li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> information (title, ID)</li>
+<li>Showtime details (date, time)</li>
+<li>Reserved seat information</li>
+<li>Total booking price</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Results are typically ordered by booking date (newest first) </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> for complete data structure </dd></dl>
+
 <p>Implements <a class="el" href="classIBookingRepository.html#a4c30124ea9fb23e55a13ee73dbbc0e93">IBookingRepository</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00038">38</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00039">39</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -310,9 +509,38 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get seat availability status for a showtime. </p>
+<p>Retrieves the current status (available/booked) of all seats for a specific movie showtime. Used for seat selection interface.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">showTimeID</td><td>Unique identifier of the movie showtime </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;SeatView&gt; Collection of seat status information</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> objects showing seat availability </td></tr>
+    <tr><td class="paramname">Empty</td><td>vector if showtime doesn't exist</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>showTimeID &gt; 0 (valid showtime) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Each <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> contains seat details and current status</dd></dl>
+<dl class="section user"><dt>SeatView Contents</dt><dd><ul>
+<li>Seat information (ID, type, price)</li>
+<li>Current availability status</li>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> status for the specific showtime</li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Status reflects real-time seat availability </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> for complete data structure </dd>
+<dd>
+<a class="el" href="#aa970e1f3f79f63cb68a4d7600487edc9" title="Add booked seats to an existing booking.">addBookedSeats()</a> for seat reservation </dd></dl>
+
 <p>Implements <a class="el" href="classIBookingRepository.html#aaccd4ea004b7776732a3438e4264f075">IBookingRepository</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00110">110</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8cpp_source.html#l00111">111</a> of file <a class="el" href="BookingRepositorySQL_8cpp_source.html">BookingRepositorySQL.cpp</a>.</p>
 
 </div>
 </div>
@@ -337,7 +565,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8h_source.html#l00012">12</a> of file <a class="el" href="BookingRepositorySQL_8h_source.html">BookingRepositorySQL.h</a>.</p>
+<p>Database connection for booking operations. </p>
+<p>Pointer to the database connection used for all booking-related database operations. Initialized during construction.</p>
+<dl class="section note"><dt>Note</dt><dd>Repository owns and manages this connection </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="BookingRepositorySQL_8h_source.html#l00082">82</a> of file <a class="el" href="BookingRepositorySQL_8h_source.html">BookingRepositorySQL.h</a>.</p>
 
 </div>
 </div>

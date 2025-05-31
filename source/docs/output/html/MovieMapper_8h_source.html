@@ -92,35 +92,34 @@ $(function(){initNavTree('MovieMapper_8h_source.html','',''); });
   <div class="headertitle"><div class="title">MovieMapper.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="MovieMapper_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MOVIEMAPPER_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MOVIEMAPPER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="IMovie_8h.html">../model/IMovie.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MovieDTO_8h.html">MovieDTO.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<a href="MovieMapper_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classMovieMapper.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="classMovieMapper.html">MovieMapper</a> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">// Chuyển từ IMovie sang MovieDTO</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> <a class="code hl_function" href="classMovieMapper.html#a815231cf0f3fa0746ab72609da13efb6">toDTO</a>(<span class="keyword">const</span> std::shared_ptr&lt;IMovie&gt;&amp; movie);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// Chuyển từ MovieDTO sang Movie (tạo đối tượng mới)</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> std::shared_ptr&lt;IMovie&gt; <a class="code hl_function" href="classMovieMapper.html#a3ea7ba387aa64c03ecd5029982abaa88">toEntity</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a>&amp; dto);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Cập nhật đối tượng Movie từ DTO</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMovieMapper.html#a2b0b0ebb002ecb76f84da2731eb0f823">updateFromDTO</a>(std::shared_ptr&lt;IMovie&gt; movie, <span class="keyword">const</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a>&amp; dto);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef MOVIEMAPPER_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define MOVIEMAPPER_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="IMovie_8h.html">../model/IMovie.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="MovieDTO_8h.html">MovieDTO.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span></div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="};">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classMovieMapper.html">   51</a></span><span class="keyword">class </span><a class="code hl_class" href="classMovieMapper.html">MovieMapper</a> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">static</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> <a class="code hl_function" href="classMovieMapper.html#a815231cf0f3fa0746ab72609da13efb6">toDTO</a>(<span class="keyword">const</span> std::shared_ptr&lt;IMovie&gt;&amp; movie);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">static</span> std::shared_ptr&lt;IMovie&gt; <a class="code hl_function" href="classMovieMapper.html#a3ea7ba387aa64c03ecd5029982abaa88">toEntity</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a>&amp; dto);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMovieMapper.html#a2b0b0ebb002ecb76f84da2731eb0f823">updateFromDTO</a>(std::shared_ptr&lt;IMovie&gt; movie, <span class="keyword">const</span> <a class="code hl_class" href="classMovieDTO.html">MovieDTO</a>&amp; dto);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>};</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif </span><span class="comment">// MOVIEMAPPER_H</span></div>
-<div class="ttc" id="aIMovie_8h_html"><div class="ttname"><a href="IMovie_8h.html">IMovie.h</a></div></div>
-<div class="ttc" id="aMovieDTO_8h_html"><div class="ttname"><a href="MovieDTO_8h.html">MovieDTO.h</a></div></div>
-<div class="ttc" id="aclassMovieDTO_html"><div class="ttname"><a href="classMovieDTO.html">MovieDTO</a></div><div class="ttdef"><b>Definition</b> <a href="MovieDTO_8h_source.html#l00008">MovieDTO.h:8</a></div></div>
-<div class="ttc" id="aclassMovieMapper_html"><div class="ttname"><a href="classMovieMapper.html">MovieMapper</a></div><div class="ttdef"><b>Definition</b> <a href="#l00008">MovieMapper.h:8</a></div></div>
-<div class="ttc" id="aclassMovieMapper_html_a2b0b0ebb002ecb76f84da2731eb0f823"><div class="ttname"><a href="classMovieMapper.html#a2b0b0ebb002ecb76f84da2731eb0f823">MovieMapper::updateFromDTO</a></div><div class="ttdeci">static void updateFromDTO(std::shared_ptr&lt; IMovie &gt; movie, const MovieDTO &amp;dto)</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00026">MovieMapper.cpp:26</a></div></div>
-<div class="ttc" id="aclassMovieMapper_html_a3ea7ba387aa64c03ecd5029982abaa88"><div class="ttname"><a href="classMovieMapper.html#a3ea7ba387aa64c03ecd5029982abaa88">MovieMapper::toEntity</a></div><div class="ttdeci">static std::shared_ptr&lt; IMovie &gt; toEntity(const MovieDTO &amp;dto)</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00016">MovieMapper.cpp:16</a></div></div>
-<div class="ttc" id="aclassMovieMapper_html_a815231cf0f3fa0746ab72609da13efb6"><div class="ttname"><a href="classMovieMapper.html#a815231cf0f3fa0746ab72609da13efb6">MovieMapper::toDTO</a></div><div class="ttdeci">static MovieDTO toDTO(const std::shared_ptr&lt; IMovie &gt; &amp;movie)</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00007">MovieMapper.cpp:7</a></div></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#endif </span><span class="comment">// MOVIEMAPPER_H</span></div>
+<div class="ttc" id="aIMovie_8h_html"><div class="ttname"><a href="IMovie_8h.html">IMovie.h</a></div><div class="ttdoc">Abstract interface for movie entities in the booking system.</div></div>
+<div class="ttc" id="aMovieDTO_8h_html"><div class="ttname"><a href="MovieDTO_8h.html">MovieDTO.h</a></div><div class="ttdoc">Data Transfer Object for movie information exchange.</div></div>
+<div class="ttc" id="aclassMovieDTO_html"><div class="ttname"><a href="classMovieDTO.html">MovieDTO</a></div><div class="ttdoc">Data Transfer Object for efficient movie data transmission.</div><div class="ttdef"><b>Definition</b> <a href="MovieDTO_8h_source.html#l00075">MovieDTO.h:75</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html"><div class="ttname"><a href="classMovieMapper.html">MovieMapper</a></div><div class="ttdoc">Provides mapping functionality between Movie entities and MovieDTO objects.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">MovieMapper.h:51</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a2b0b0ebb002ecb76f84da2731eb0f823"><div class="ttname"><a href="classMovieMapper.html#a2b0b0ebb002ecb76f84da2731eb0f823">MovieMapper::updateFromDTO</a></div><div class="ttdeci">static void updateFromDTO(std::shared_ptr&lt; IMovie &gt; movie, const MovieDTO &amp;dto)</div><div class="ttdoc">Updates an existing IMovie entity with data from a MovieDTO.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00026">MovieMapper.cpp:26</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a3ea7ba387aa64c03ecd5029982abaa88"><div class="ttname"><a href="classMovieMapper.html#a3ea7ba387aa64c03ecd5029982abaa88">MovieMapper::toEntity</a></div><div class="ttdeci">static std::shared_ptr&lt; IMovie &gt; toEntity(const MovieDTO &amp;dto)</div><div class="ttdoc">Creates an IMovie entity from a MovieDTO object.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00016">MovieMapper.cpp:16</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a815231cf0f3fa0746ab72609da13efb6"><div class="ttname"><a href="classMovieMapper.html#a815231cf0f3fa0746ab72609da13efb6">MovieMapper::toDTO</a></div><div class="ttdeci">static MovieDTO toDTO(const std::shared_ptr&lt; IMovie &gt; &amp;movie)</div><div class="ttdoc">Converts an IMovie entity to a MovieDTO object.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00007">MovieMapper.cpp:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

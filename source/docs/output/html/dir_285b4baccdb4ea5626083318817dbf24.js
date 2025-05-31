@@ -2,7 +2,7 @@ var dir_285b4baccdb4ea5626083318817dbf24 =
 [
     [ "BookingService.cpp", "BookingService_8cpp.html", null ],
     [ "BookingService.h", "BookingService_8h.html", "BookingService_8h" ],
-    [ "IBookingService.h", "IBookingService_8h.html", null ],
+    [ "IBookingService.h", "IBookingService_8h.html", "IBookingService_8h" ],
     [ "ILoginService.h", "ILoginService_8h.html", "ILoginService_8h" ],
     [ "ILogoutService.h", "ILogoutService_8h.html", "ILogoutService_8h" ],
     [ "IMovieManagerService.h", "IMovieManagerService_8h.html", "IMovieManagerService_8h" ],

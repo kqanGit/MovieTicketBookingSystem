@@ -5,7 +5,7 @@ var searchData=
   ['selectedseats_2',['selectedSeats',['../classSFMLUIManager.html#a31cc193d581099a236df7609192e5742',1,'SFMLUIManager']]],
   ['selectedshowtimeindex_3',['selectedShowTimeIndex',['../classSFMLUIManager.html#a1681d2dfecdbf5675e54919f1a1db5a2',1,'SFMLUIManager']]],
   ['sessionmanager_4',['sessionManager',['../classApp.html#a9987e9b596217fe0a35fe482aa54c970',1,'App::sessionManager'],['../classSFMLUIManager.html#ab1fa0f868d454de265bef938de3d8a90',1,'SFMLUIManager::sessionManager']]],
-  ['showtime_5',['showTime',['../classBookingView.html#aaf2686540421196a44f268391bae161c',1,'BookingView']]],
+  ['showtime_5',['showTime',['../structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62',1,'Booking::showTime'],['../classBookingView.html#aaf2686540421196a44f268391bae161c',1,'BookingView::showTime']]],
   ['showtimeid_6',['showTimeID',['../structShowTime.html#abaceff9680a7803fbfde8ffab133b507',1,'ShowTime']]],
   ['showtimes_7',['showTimes',['../classMovie.html#adec94ef1febd86647f084754addbd870',1,'Movie']]],
   ['starttime_8',['startTime',['../structShowTime.html#ae434377761ccd05ec7050cc9ba3410c8',1,'ShowTime']]],

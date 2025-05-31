@@ -92,6 +92,9 @@ $(function(){initNavTree('SeatView_8h.html','',''); });
   <div class="headertitle"><div class="title">SeatView.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Seat view model for UI representation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ISeat_8h_source.html">../model/ISeat.h</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div>
@@ -100,14 +103,22 @@ $(function(){initNavTree('SeatView_8h.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:SeatView" id="r_SeatView"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSeatView.html">SeatView</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">View model combining seat information with its booking status.  <a href="classSeatView.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ade6bb1ecbc1044a6f6b53edd38ac5e19" id="r_ade6bb1ecbc1044a6f6b53edd38ac5e19"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade6bb1ecbc1044a6f6b53edd38ac5e19">SeatStatus</a> { <a class="el" href="#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">AVAILABLE</a>
 , <a class="el" href="#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e9c8cc9bb6c305bb69a1cd45be7f2f4">BOOKED</a>
  }</td></tr>
+<tr class="memdesc:ade6bb1ecbc1044a6f6b53edd38ac5e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration representing the availability status of a seat.  <a href="#ade6bb1ecbc1044a6f6b53edd38ac5e19">More...</a><br /></td></tr>
 </table>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Seat view model for UI representation. </p>
+<dl class="section author"><dt>Author</dt><dd><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> Ticket <a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> System Team </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 <a id="ade6bb1ecbc1044a6f6b53edd38ac5e19" name="ade6bb1ecbc1044a6f6b53edd38ac5e19"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade6bb1ecbc1044a6f6b53edd38ac5e19">&#9670;&#160;</a></span>SeatStatus</h2>
 
@@ -119,12 +130,17 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Enumeration representing the availability status of a seat. </p>
+<p>This enumeration defines the possible states a seat can be in within the booking system context. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e" name="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e"></a>AVAILABLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e9c8cc9bb6c305bb69a1cd45be7f2f4" name="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e9c8cc9bb6c305bb69a1cd45be7f2f4"></a>BOOKED&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e" name="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e"></a>AVAILABLE&#160;</td><td class="fielddoc"><p>Seat is available for booking. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e9c8cc9bb6c305bb69a1cd45be7f2f4" name="ade6bb1ecbc1044a6f6b53edd38ac5e19a1e9c8cc9bb6c305bb69a1cd45be7f2f4"></a>BOOKED&#160;</td><td class="fielddoc"><p>Seat has been reserved/booked. </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00005">5</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00020">20</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
 
 </div>
 </div>

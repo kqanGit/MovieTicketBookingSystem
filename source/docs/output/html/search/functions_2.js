@@ -5,7 +5,7 @@ var searchData=
   ['clearshowtimefields_2',['clearShowtimeFields',['../classSFMLUIManager.html#a96703c05802fc054812a6154109daaa0',1,'SFMLUIManager']]],
   ['connect_3',['connect',['../classDatabaseConnection.html#afbd0ce997f1e187bc95deadc4a54ebf5',1,'DatabaseConnection']]],
   ['coupleseat_4',['CoupleSeat',['../classCoupleSeat.html#a0579878ba98b8bb82c86f2de6876a2ab',1,'CoupleSeat']]],
-  ['createbooking_5',['createBooking',['../classBookingService.html#a5651bb85632bc074a2bb1eafd06a4fd5',1,'BookingService::createBooking()'],['../classSFMLUIManager.html#a9c57f1a7223d1845e9f3835899676189',1,'SFMLUIManager::createBooking()']]],
+  ['createbooking_5',['createBooking',['../classBookingService.html#a5651bb85632bc074a2bb1eafd06a4fd5',1,'BookingService::createBooking()'],['../classIBookingService.html#a55129066d6ab39ff22e322a82af55e21',1,'IBookingService::createBooking()'],['../classSFMLUIManager.html#a9c57f1a7223d1845e9f3835899676189',1,'SFMLUIManager::createBooking()']]],
   ['createbutton_6',['createButton',['../classSFMLUIManager.html#a79095cf1253a17e88339a56d9c20f3d0',1,'SFMLUIManager']]],
   ['createinputfield_7',['createInputField',['../classSFMLUIManager.html#af64370427a8afb21088bbae2550117b6',1,'SFMLUIManager']]],
   ['createseat_8',['createSeat',['../classSeatFactory.html#ad783d581c39d0d4cd21e62e6b8f6065a',1,'SeatFactory']]],

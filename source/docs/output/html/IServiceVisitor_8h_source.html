@@ -92,40 +92,40 @@ $(function(){initNavTree('IServiceVisitor_8h_source.html','',''); });
   <div class="headertitle"><div class="title">IServiceVisitor.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="IServiceVisitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ISERVICEVISITOR_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ISERVICEVISITOR_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">IVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a>;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">class </span>User;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">class </span><a class="code hl_class" href="classAdmin.html">Admin</a>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef ISERVICEVISITOR_H</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define ISERVICEVISITOR_H</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">IVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// Forward declarations</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">class </span>User;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">class </span><a class="code hl_class" href="classAdmin.html">Admin</a>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">class </span>IServiceVisitor : <span class="keyword">public</span> <a class="code hl_interface" href="classIVisitor.html">IVisitor</a> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> service(std::shared_ptr&lt;Guest&gt; role) = 0;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> service(std::shared_ptr&lt;User&gt; role) = 0;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> service(std::shared_ptr&lt;Admin&gt; role) = 0;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">#endif </span></div>
+<a href="IServiceVisitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef ISERVICEVISITOR_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define ISERVICEVISITOR_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">IVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Forward declarations</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">class </span><a class="code hl_class" href="classUser.html">User</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">class </span><a class="code hl_class" href="classAdmin.html">Admin</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classIServiceVisitor.html">   52</a></span><span class="keyword">class </span><a class="code hl_interface" href="classIServiceVisitor.html">IServiceVisitor</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIVisitor.html">IVisitor</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classIServiceVisitor.html#ab5cf1f7ca67ad6686753f623ecbc4e50">   71</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIServiceVisitor.html#ab5cf1f7ca67ad6686753f623ecbc4e50">service</a>(std::shared_ptr&lt;Guest&gt; role) = 0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classIServiceVisitor.html#a5d9b340598de8b2e1fa4e7851867b198">   89</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIServiceVisitor.html#a5d9b340598de8b2e1fa4e7851867b198">service</a>(std::shared_ptr&lt;User&gt; role) = 0;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classIServiceVisitor.html#a626c3c25ffb3b418913e79ea20e93fda">  108</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIServiceVisitor.html#a626c3c25ffb3b418913e79ea20e93fda">service</a>(std::shared_ptr&lt;Admin&gt; role) = 0;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
+</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif </span></div>
 <div class="ttc" id="aIVisitor_8h_html"><div class="ttname"><a href="IVisitor_8h.html">IVisitor.h</a></div><div class="ttdoc">Base interface for the Visitor pattern implementation.</div></div>
 <div class="ttc" id="aclassAdmin_html"><div class="ttname"><a href="classAdmin.html">Admin</a></div><div class="ttdoc">Administrator user context with elevated privileges.</div><div class="ttdef"><b>Definition</b> <a href="Admin_8h_source.html#l00066">Admin.h:66</a></div></div>
-<div class="ttc" id="aclassGuest_html"><div class="ttname"><a href="classGuest.html">Guest</a></div><div class="ttdef"><b>Definition</b> <a href="Guest_8h_source.html#l00009">Guest.h:9</a></div></div>
+<div class="ttc" id="aclassGuest_html"><div class="ttname"><a href="classGuest.html">Guest</a></div><div class="ttdoc">Implementation of IUserContext for anonymous guest users.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8h_source.html#l00070">Guest.h:70</a></div></div>
+<div class="ttc" id="aclassIServiceVisitor_html"><div class="ttname"><a href="classIServiceVisitor.html">IServiceVisitor</a></div><div class="ttdoc">Visitor interface for role-based service operations.</div><div class="ttdef"><b>Definition</b> <a href="#l00052">IServiceVisitor.h:52</a></div></div>
+<div class="ttc" id="aclassIServiceVisitor_html_a5d9b340598de8b2e1fa4e7851867b198"><div class="ttname"><a href="classIServiceVisitor.html#a5d9b340598de8b2e1fa4e7851867b198">IServiceVisitor::service</a></div><div class="ttdeci">virtual void service(std::shared_ptr&lt; User &gt; role)=0</div><div class="ttdoc">Provides service operations for registered Users.</div></div>
+<div class="ttc" id="aclassIServiceVisitor_html_a626c3c25ffb3b418913e79ea20e93fda"><div class="ttname"><a href="classIServiceVisitor.html#a626c3c25ffb3b418913e79ea20e93fda">IServiceVisitor::service</a></div><div class="ttdeci">virtual void service(std::shared_ptr&lt; Admin &gt; role)=0</div><div class="ttdoc">Provides service operations for Admin users.</div></div>
+<div class="ttc" id="aclassIServiceVisitor_html_ab5cf1f7ca67ad6686753f623ecbc4e50"><div class="ttname"><a href="classIServiceVisitor.html#ab5cf1f7ca67ad6686753f623ecbc4e50">IServiceVisitor::service</a></div><div class="ttdeci">virtual void service(std::shared_ptr&lt; Guest &gt; role)=0</div><div class="ttdoc">Provides service operations for Guest users.</div></div>
 <div class="ttc" id="aclassIVisitor_html"><div class="ttname"><a href="classIVisitor.html">IVisitor</a></div><div class="ttdoc">Base interface for all visitor implementations.</div><div class="ttdef"><b>Definition</b> <a href="IVisitor_8h_source.html#l00043">IVisitor.h:43</a></div></div>
+<div class="ttc" id="aclassUser_html"><div class="ttname"><a href="classUser.html">User</a></div><div class="ttdoc">Concrete implementation of IUserContext for regular users.</div><div class="ttdef"><b>Definition</b> <a href="User_8h_source.html#l00043">User.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

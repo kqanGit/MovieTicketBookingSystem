@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['viewallbookings_0',['viewAllBookings',['../classBookingRepository.html#a15a084fd46178d1fb0c6cdb8dd67e717',1,'BookingRepository::viewAllBookings()'],['../classIBookingRepository.html#a4c30124ea9fb23e55a13ee73dbbc0e93',1,'IBookingRepository::viewAllBookings()']]],
-  ['viewbookinghistory_1',['viewBookingHistory',['../classBookingService.html#a31b065ce2c320e316a70baabd16da076',1,'BookingService']]],
-  ['viewseatsstatus_2',['viewSeatsStatus',['../classBookingRepository.html#a57175cfeb3716bc5e3ec2d9840164541',1,'BookingRepository::viewSeatsStatus()'],['../classIBookingRepository.html#aaccd4ea004b7776732a3438e4264f075',1,'IBookingRepository::viewSeatsStatus()'],['../classBookingService.html#aed85bd164d6b0eed3144bc28d6f80796',1,'BookingService::viewSeatsStatus()']]],
-  ['visitor_20pattern_3',['Visitor Pattern',['../index.html#visitor_pattern',1,'']]],
-  ['visitorpattern_4',['VisitorPattern',['../md_diagram_2Class__diagram_2VisitorPattern.html',1,'']]],
-  ['visitorpattern_2emd_5',['VisitorPattern.md',['../VisitorPattern_8md.html',1,'']]],
-  ['vscode_6',['Hướng Dẫn Cài Đặt Qt Trên Windows + VSCode',['../md_UI_2installQt.html',1,'']]]
+  ['window_0',['window',['../classSFMLUIManager.html#a4c43c2d2c9ad9a35c37cf8f504c986f1',1,'SFMLUIManager']]],
+  ['windowheight_1',['windowHeight',['../classSFMLUIManager.html#a3ab4c3109aa39d45e1f7ea7d0ab3186a',1,'SFMLUIManager']]],
+  ['windowwidth_2',['windowWidth',['../classSFMLUIManager.html#ae72e02370769b97d166cf5a4636fc32d',1,'SFMLUIManager']]]
 ];

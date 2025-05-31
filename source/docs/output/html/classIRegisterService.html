@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: IRegisterService Class Reference</title>
+<title>Movie Ticket Booking System: IRegisterService Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classIRegisterService.html','','classIRegisterService-
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">IRegisterService Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">IRegisterService Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for user registration operations.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IRegisterService_8h_source.html">service/IRegisterService.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -100,18 +103,64 @@ Inheritance diagram for IRegisterService:</div>
  <div class="center">
   <img src="classIRegisterService.png" usemap="#IRegisterService_map" alt=""/>
   <map id="IRegisterService_map" name="IRegisterService_map">
-<area href="classRegisterService.html" alt="RegisterService" shape="rect" coords="0,56,105,80"/>
+<area href="classRegisterService.html" title="Concrete implementation of user registration operations." alt="RegisterService" shape="rect" coords="0,56,105,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aea2ff2149ce33d04626e2270c0a2995e" id="r_aea2ff2149ce33d04626e2270c0a2995e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea2ff2149ce33d04626e2270c0a2995e">registerUser</a> (const <a class="el" href="structAccountInformation.html">AccountInformation</a> &amp;info)=0</td></tr>
+<tr class="memdesc:aea2ff2149ce33d04626e2270c0a2995e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new user account in the system.  <br /></td></tr>
 <tr class="memitem:adc10081796ae78104f251f0f189113a4" id="r_adc10081796ae78104f251f0f189113a4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc10081796ae78104f251f0f189113a4">~IRegisterService</a> ()=default</td></tr>
+<tr class="memdesc:adc10081796ae78104f251f0f189113a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IRegisterService_8h_source.html#l00007">7</a> of file <a class="el" href="IRegisterService_8h_source.html">IRegisterService.h</a>.</p>
+<div class="textblock"><p>Interface for user registration operations. </p>
+<p>The <a class="el" href="classIRegisterService.html" title="Interface for user registration operations.">IRegisterService</a> interface defines the contract for user registration functionality in the movie ticket booking system. This interface follows the Service pattern and Separation of Concerns principle by focusing solely on registration logic without handling context creation.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Validate user registration information</li>
+<li>Create new user accounts in the system</li>
+<li>Ensure data integrity and uniqueness constraints</li>
+<li>Handle registration business rules</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Encapsulates registration business logic</li>
+<li>Provides abstraction for different registration implementations</li>
+<li>Enables dependency injection and unit testing</li>
+<li>Separates registration concerns from authentication and context management</li>
+</ul>
+<p>Separation of Concerns:</p><ul>
+<li>Registration service only handles account creation</li>
+<li>Does not manage user sessions or contexts</li>
+<li>Authentication and context creation are handled by separate services</li>
+<li>Focused responsibility improves maintainability and testability</li>
+</ul>
+<p>Security Considerations:</p><ul>
+<li>Password validation and hashing should be implemented</li>
+<li>Input sanitization should be performed</li>
+<li>Rate limiting may be applied to prevent abuse</li>
+<li>Audit logging should track registration attempts</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;IRegisterService&gt; registerService = </div>
+<div class="line">    std::make_unique&lt;RegisterService&gt;(authRepo);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a> newUser(<span class="stringliteral">&quot;john.doe&quot;</span>, <span class="stringliteral">&quot;securePassword123&quot;</span>, <span class="stringliteral">&quot;john@email.com&quot;</span>);</div>
+<div class="line"><span class="keywordtype">bool</span> success = registerService-&gt;registerUser(newUser);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (success) {</div>
+<div class="line">    <span class="comment">// Registration successful, proceed with login</span></div>
+<div class="line">} <span class="keywordflow">else</span> {</div>
+<div class="line">    <span class="comment">// Handle registration failure</span></div>
+<div class="line">}</div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> </dd>
+<dd>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd>
+<dd>
+<a class="el" href="classIAuthenticationRepository.html" title="Repository interface for user authentication data persistence.">IAuthenticationRepository</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="IRegisterService_8h_source.html#l00067">67</a> of file <a class="el" href="IRegisterService_8h_source.html">IRegisterService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adc10081796ae78104f251f0f189113a4" name="adc10081796ae78104f251f0f189113a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc10081796ae78104f251f0f189113a4">&#9670;&#160;</a></span>~IRegisterService()</h2>
@@ -135,6 +184,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup of derived classes. </p>
+<p>Ensures that concrete register service implementations are properly destroyed when accessed through the interface pointer. </p>
 
 </div>
 </div>
@@ -162,11 +214,71 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Registers a new user account in the system. </p>
+<p>Creates a new user account using the provided account information. This method validates the input data, ensures uniqueness constraints, and persists the new account to the system. It follows the principle of Separation of Concerns by only handling registration logic.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>Account information containing user details (username, password, email, etc.) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if registration is successful, false otherwise</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>info must contain valid account information </dd>
+<dd>
+username must not already exist in the system </dd>
+<dd>
+email must not already be registered (if email uniqueness is required) </dd>
+<dd>
+password must meet system security requirements </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>New user account is created and persisted if successful </dd>
+<dd>
+<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> can subsequently authenticate with the provided credentials</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if account information is invalid </td></tr>
+    <tr><td class="paramname">DuplicateUserException</td><td>if username or email already exists </td></tr>
+    <tr><td class="paramname">WeakPasswordException</td><td>if password doesn't meet security requirements </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if database operation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method does not create user contexts or handle authentication </dd>
+<dd>
+Password should be hashed before storage (handled by implementation) </dd>
+<dd>
+Consider implementing email verification workflow </dd>
+<dd>
+Return value indicates success/failure; exceptions for specific errors</dd></dl>
+<p>Business Rules:</p><ul>
+<li>Username must be unique across the system</li>
+<li>Password must meet minimum security standards</li>
+<li>Email format must be valid</li>
+<li>All required fields must be provided</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a> userInfo;</div>
+<div class="line">userInfo.setUsername(<span class="stringliteral">&quot;newuser&quot;</span>);</div>
+<div class="line">userInfo.setPassword(<span class="stringliteral">&quot;StrongPassword123!&quot;</span>);</div>
+<div class="line">userInfo.setEmail(<span class="stringliteral">&quot;user@example.com&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keywordtype">bool</span> success = registerService-&gt;registerUser(userInfo);</div>
+<div class="line">    <span class="keywordflow">if</span> (success) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Registration successful!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">        <span class="comment">// Redirect to login page</span></div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Registration failed. Please try again.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> DuplicateUserException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Username already exists.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> WeakPasswordException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Password does not meet requirements.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classRegisterService.html#a5d052e6acc8e1cf621948da3bc0a550c">RegisterService</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>service/<a class="el" href="IRegisterService_8h_source.html">IRegisterService.h</a></li>
 </ul>
 </div><!-- contents -->

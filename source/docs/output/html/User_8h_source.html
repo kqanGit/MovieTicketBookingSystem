@@ -92,43 +92,41 @@ $(function(){initNavTree('User_8h_source.html','',''); });
   <div class="headertitle"><div class="title">User.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="User_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef USER_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define USER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">../visitor/IVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">../visitor/IServiceVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="IUserContext_8h.html">../context/IUserContext.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UserInformationService_8h.html">../service/UserInformationService.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef USER_H</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define USER_H</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">../visitor/IVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">../visitor/IServiceVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="IUserContext_8h.html">../context/IUserContext.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="UserInformationService_8h.html">../service/UserInformationService.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">class </span>User : <span class="keyword">public</span> <a class="code hl_interface" href="classIUserContext.html">IUserContext</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;User&gt; {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::shared_ptr&lt;UserInformationService&gt; infoService;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    User(<span class="keyword">const</span> AccountInformation&amp; acc);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classIUserContext.html#a3b2633a5e1491406fe793abdfda437bf">accept</a>(std::shared_ptr&lt;IVisitor&gt; service) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::shared_ptr&lt;IUserInformationService&gt; <a class="code hl_function" href="classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3">getUserInformationService</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>};</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif</span></div>
+<a href="User_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef USER_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define USER_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">../visitor/IVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">../visitor/IServiceVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="IUserContext_8h.html">../context/IUserContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="UserInformationService_8h.html">../service/UserInformationService.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUser.html">   43</a></span><span class="keyword">class </span><a class="code hl_function" href="classUser.html#a728df52c18270b459ea316fc08339e03">User</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIUserContext.html">IUserContext</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;User&gt; {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">   51</a></span>    std::shared_ptr&lt;UserInformationService&gt; <a class="code hl_variable" href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">infoService</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_function" href="classUser.html#a728df52c18270b459ea316fc08339e03">User</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a>&amp; acc);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">accept</a>(std::shared_ptr&lt;IVisitor&gt; service) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::shared_ptr&lt;IUserInformationService&gt; <a class="code hl_function" href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">getUserInformationService</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>};</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aIServiceVisitor_8h_html"><div class="ttname"><a href="IServiceVisitor_8h.html">IServiceVisitor.h</a></div><div class="ttdoc">Service visitor interface for role-based operations.</div></div>
 <div class="ttc" id="aIUserContext_8h_html"><div class="ttname"><a href="IUserContext_8h.html">IUserContext.h</a></div><div class="ttdoc">User context interface defining role-based behavior.</div></div>
 <div class="ttc" id="aIVisitor_8h_html"><div class="ttname"><a href="IVisitor_8h.html">IVisitor.h</a></div><div class="ttdoc">Base interface for the Visitor pattern implementation.</div></div>
-<div class="ttc" id="aUserInformationService_8h_html"><div class="ttname"><a href="UserInformationService_8h.html">UserInformationService.h</a></div></div>
+<div class="ttc" id="aUserInformationService_8h_html"><div class="ttname"><a href="UserInformationService_8h.html">UserInformationService.h</a></div><div class="ttdoc">Concrete implementation of user information service.</div></div>
 <div class="ttc" id="aclassIUserContext_html"><div class="ttname"><a href="classIUserContext.html">IUserContext</a></div><div class="ttdoc">Service for user information management.</div><div class="ttdef"><b>Definition</b> <a href="IUserContext_8h_source.html#l00047">IUserContext.h:47</a></div></div>
-<div class="ttc" id="aclassIUserContext_html_a3b2633a5e1491406fe793abdfda437bf"><div class="ttname"><a href="classIUserContext.html#a3b2633a5e1491406fe793abdfda437bf">IUserContext::accept</a></div><div class="ttdeci">virtual void accept(std::shared_ptr&lt; IVisitor &gt; service)=0</div><div class="ttdoc">Accept a visitor service for operation dispatch.</div></div>
-<div class="ttc" id="aclassIUserContext_html_a495cf7e953e90ef9cc5aad2b24ec63e3"><div class="ttname"><a href="classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3">IUserContext::getUserInformationService</a></div><div class="ttdeci">virtual std::shared_ptr&lt; IUserInformationService &gt; getUserInformationService() const =0</div><div class="ttdoc">Get user information service for this context.</div></div>
+<div class="ttc" id="aclassUser_html_a3ed2803262cef434b3ad975e9cd8a0aa"><div class="ttname"><a href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">User::getUserInformationService</a></div><div class="ttdeci">std::shared_ptr&lt; IUserInformationService &gt; getUserInformationService() const override</div><div class="ttdoc">Retrieves the user information service.</div><div class="ttdef"><b>Definition</b> <a href="User_8cpp_source.html#l00011">User.cpp:11</a></div></div>
+<div class="ttc" id="aclassUser_html_a728df52c18270b459ea316fc08339e03"><div class="ttname"><a href="classUser.html#a728df52c18270b459ea316fc08339e03">User::User</a></div><div class="ttdeci">User(const AccountInformation &amp;acc)</div><div class="ttdoc">Constructs a User with account information.</div><div class="ttdef"><b>Definition</b> <a href="User_8cpp_source.html#l00015">User.cpp:15</a></div></div>
+<div class="ttc" id="aclassUser_html_abe94d9e2f56f8401bf5192d09d01c9ce"><div class="ttname"><a href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">User::accept</a></div><div class="ttdeci">void accept(std::shared_ptr&lt; IVisitor &gt; service) override</div><div class="ttdoc">Accepts a service visitor for operations.</div><div class="ttdef"><b>Definition</b> <a href="User_8cpp_source.html#l00004">User.cpp:4</a></div></div>
+<div class="ttc" id="aclassUser_html_af6d9bceab394fbd70d5771b39541c19e"><div class="ttname"><a href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">User::infoService</a></div><div class="ttdeci">std::shared_ptr&lt; UserInformationService &gt; infoService</div><div class="ttdoc">Service for handling user information operations.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">User.h:51</a></div></div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

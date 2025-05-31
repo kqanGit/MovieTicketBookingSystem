@@ -92,35 +92,34 @@ $(function(){initNavTree('AdminContextCreator_8h_source.html','',''); });
   <div class="headertitle"><div class="title">AdminContextCreator.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="AdminContextCreator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// AdminContextCreator.h</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef ADMIN_CONTEXT_CREATOR_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define ADMIN_CONTEXT_CREATOR_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="UserContextFactory_8h.html">UserContextFactory.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="Admin_8h.html">../model/Admin.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="AccountInformation_8h.html">../model/AccountInformation.h</a>&quot;</span></div>
+<a href="AdminContextCreator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classAdminContextCreator.html">    9</a></span><span class="keyword">class </span><a class="code hl_function" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator</a> : <span class="keyword">public</span> <a class="code hl_class" href="classUserContextFactory.html">UserContextFactory</a> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">   11</a></span>    <a class="code hl_function" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// Bổ sung override để không còn abstract // Không dùng hàm này</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    std::unique_ptr&lt;IUserContext&gt; <a class="code hl_function" href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">CreateUser</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::unique_ptr&lt;IUserContext&gt; <a class="code hl_function" href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">CreateUser</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a>&amp; info) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef ADMIN_CONTEXT_CREATOR_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define ADMIN_CONTEXT_CREATOR_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UserContextFactory_8h.html">UserContextFactory.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Admin_8h.html">../model/Admin.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="AccountInformation_8h.html">../model/AccountInformation.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAdminContextCreator.html">   55</a></span><span class="keyword">class </span><a class="code hl_function" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator</a> : <span class="keyword">public</span> <a class="code hl_class" href="classUserContextFactory.html">UserContextFactory</a> {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">   65</a></span>    <a class="code hl_function" href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::unique_ptr&lt;IUserContext&gt; <a class="code hl_function" href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">CreateUser</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::unique_ptr&lt;IUserContext&gt; <a class="code hl_function" href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">CreateUser</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a>&amp; info) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>};</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aAccountInformation_8h_html"><div class="ttname"><a href="AccountInformation_8h.html">AccountInformation.h</a></div></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aAccountInformation_8h_html"><div class="ttname"><a href="AccountInformation_8h.html">AccountInformation.h</a></div><div class="ttdoc">User account information data structure.</div></div>
 <div class="ttc" id="aAdmin_8h_html"><div class="ttname"><a href="Admin_8h.html">Admin.h</a></div><div class="ttdoc">Administrator user context implementation.</div></div>
 <div class="ttc" id="aUserContextFactory_8h_html"><div class="ttname"><a href="UserContextFactory_8h.html">UserContextFactory.h</a></div><div class="ttdoc">Abstract factory for creating user context objects.</div></div>
-<div class="ttc" id="aclassAdminContextCreator_html_a922890dd8113478b03c24d75f73c58b6"><div class="ttname"><a href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">AdminContextCreator::CreateUser</a></div><div class="ttdeci">std::unique_ptr&lt; IUserContext &gt; CreateUser() override</div><div class="ttdoc">Creates a user context without account information.</div><div class="ttdef"><b>Definition</b> <a href="AdminContextCreator_8cpp_source.html#l00010">AdminContextCreator.cpp:10</a></div></div>
-<div class="ttc" id="aclassAdminContextCreator_html_aa02576ae39b601cad255823c81067bba"><div class="ttname"><a href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator::AdminContextCreator</a></div><div class="ttdeci">AdminContextCreator()=default</div></div>
+<div class="ttc" id="aclassAdminContextCreator_html_a922890dd8113478b03c24d75f73c58b6"><div class="ttname"><a href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">AdminContextCreator::CreateUser</a></div><div class="ttdeci">std::unique_ptr&lt; IUserContext &gt; CreateUser() override</div><div class="ttdoc">Create default administrator context (not recommended)</div><div class="ttdef"><b>Definition</b> <a href="AdminContextCreator_8cpp_source.html#l00010">AdminContextCreator.cpp:10</a></div></div>
+<div class="ttc" id="aclassAdminContextCreator_html_aa02576ae39b601cad255823c81067bba"><div class="ttname"><a href="classAdminContextCreator.html#aa02576ae39b601cad255823c81067bba">AdminContextCreator::AdminContextCreator</a></div><div class="ttdeci">AdminContextCreator()=default</div><div class="ttdoc">Default constructor.</div></div>
 <div class="ttc" id="aclassUserContextFactory_html"><div class="ttname"><a href="classUserContextFactory.html">UserContextFactory</a></div><div class="ttdoc">Abstract factory for creating user context instances.</div><div class="ttdef"><b>Definition</b> <a href="UserContextFactory_8h_source.html#l00051">UserContextFactory.h:51</a></div></div>
-<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00007">AccountInformation.h:7</a></div></div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

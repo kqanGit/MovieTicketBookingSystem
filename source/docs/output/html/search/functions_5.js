@@ -18,10 +18,13 @@ var searchData=
   ['getrating_15',['getRating',['../classIMovie.html#a5a8b84e582211fa85ffdbe4170e56d4f',1,'IMovie::getRating()'],['../classMovie.html#a62f92b13e8ce53f760e8e34f963c90a9',1,'Movie::getRating()']]],
   ['getregisterservice_16',['getRegisterService',['../classRegisterServiceVisitor.html#a43140821f1391e2f9e36f0e8ca2a99d4',1,'RegisterServiceVisitor']]],
   ['getrole_17',['getRole',['../classIUserInformationService.html#a341b05de90beb3ecbe7072a7f66be1a5',1,'IUserInformationService::getRole()'],['../classUserInformationService.html#a92964bd967893eeb6c8c88ae0ff90287',1,'UserInformationService::getRole()']]],
-  ['getshowtimes_18',['getShowTimes',['../classMovie.html#a981e218f627f98086a63d7eb7509e9c7',1,'Movie']]],
-  ['getshowtimesbymovieid_19',['getShowTimesByMovieId',['../classIMovieRepository.html#a52aac958c9bc83428fee2f1d36b5e5b9',1,'IMovieRepository::getShowTimesByMovieId()'],['../classMovieRepositorySQL.html#a1808ad31aee9be80f8df9fbea3bcc900',1,'MovieRepositorySQL::getShowTimesByMovieId()']]],
-  ['gettitle_20',['getTitle',['../classIMovie.html#a5bd043e6308ab1a5d4d17c847b012a00',1,'IMovie::getTitle()'],['../classMovie.html#a32f6193541262429d0c02524a3f4c5e3',1,'Movie::getTitle()']]],
-  ['getuserbyusername_21',['getUserByUserName',['../classAuthenticationRepositorySQL.html#a8f4d19c60a92be4ae00158c3ddc4568a',1,'AuthenticationRepositorySQL::getUserByUserName()'],['../classIAuthenticationRepository.html#acaa453e9e229faca511d6b7c7c920008',1,'IAuthenticationRepository::getUserByUserName()']]],
-  ['getuserinformationservice_22',['getUserInformationService',['../classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3',1,'IUserContext::getUserInformationService()'],['../classAdmin.html#a081fe70772ae1482097cf4e3186e24b0',1,'Admin::getUserInformationService()'],['../classGuest.html#ac720d672af23563e926d830e8d9abb1f',1,'Guest::getUserInformationService()']]],
-  ['guestcontextcreator_23',['GuestContextCreator',['../classGuestContextCreator.html#af6d841cbefa48f189b3fa5bdda86166e',1,'GuestContextCreator']]]
+  ['getseatcount_18',['getSeatCount',['../classBookingView.html#a9867d882c7775714e6a036ec23684243',1,'BookingView']]],
+  ['getshowtimes_19',['getShowTimes',['../classMovie.html#a981e218f627f98086a63d7eb7509e9c7',1,'Movie']]],
+  ['getshowtimesbymovieid_20',['getShowTimesByMovieId',['../classIMovieRepository.html#a52aac958c9bc83428fee2f1d36b5e5b9',1,'IMovieRepository::getShowTimesByMovieId()'],['../classMovieRepositorySQL.html#a1808ad31aee9be80f8df9fbea3bcc900',1,'MovieRepositorySQL::getShowTimesByMovieId()']]],
+  ['getsingleton_21',['getSingleton',['../classServiceRegistry.html#a0835cab308200a06d98ed7764cfb2cb4',1,'ServiceRegistry']]],
+  ['gettitle_22',['getTitle',['../classIMovie.html#a5bd043e6308ab1a5d4d17c847b012a00',1,'IMovie::getTitle()'],['../classMovie.html#a32f6193541262429d0c02524a3f4c5e3',1,'Movie::getTitle()']]],
+  ['getuserbyusername_23',['getUserByUserName',['../classAuthenticationRepositorySQL.html#a8f4d19c60a92be4ae00158c3ddc4568a',1,'AuthenticationRepositorySQL::getUserByUserName()'],['../classIAuthenticationRepository.html#acaa453e9e229faca511d6b7c7c920008',1,'IAuthenticationRepository::getUserByUserName()']]],
+  ['getuserinformationservice_24',['getUserInformationService',['../classIUserContext.html#a495cf7e953e90ef9cc5aad2b24ec63e3',1,'IUserContext::getUserInformationService()'],['../classAdmin.html#a081fe70772ae1482097cf4e3186e24b0',1,'Admin::getUserInformationService()'],['../classGuest.html#ac720d672af23563e926d830e8d9abb1f',1,'Guest::getUserInformationService()'],['../classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa',1,'User::getUserInformationService()']]],
+  ['guest_25',['Guest',['../classGuest.html#a0b3ff80ba45275e5ef264ea92037493d',1,'Guest']]],
+  ['guestcontextcreator_26',['GuestContextCreator',['../classGuestContextCreator.html#af6d841cbefa48f189b3fa5bdda86166e',1,'GuestContextCreator']]]
 ];

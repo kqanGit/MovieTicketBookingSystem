@@ -93,6 +93,9 @@ $(function(){initNavTree('classRegisterService.html','','classRegisterService-me
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete implementation of user registration operations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="RegisterService_8h_source.html">service/RegisterService.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RegisterService:</div>
@@ -100,25 +103,63 @@ Inheritance diagram for RegisterService:</div>
  <div class="center">
   <img src="classRegisterService.png" usemap="#RegisterService_map" alt=""/>
   <map id="RegisterService_map" name="RegisterService_map">
-<area href="classIRegisterService.html" alt="IRegisterService" shape="rect" coords="0,0,105,24"/>
+<area href="classIRegisterService.html" title="Interface for user registration operations." alt="IRegisterService" shape="rect" coords="0,0,105,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adf2f437052453dec14ab4600c312bf05" id="r_adf2f437052453dec14ab4600c312bf05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf2f437052453dec14ab4600c312bf05">RegisterService</a> ()</td></tr>
+<tr class="memdesc:adf2f437052453dec14ab4600c312bf05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a>.  <br /></td></tr>
 <tr class="memitem:a19f55789400f88956a4296b4cc2db0b7" id="r_a19f55789400f88956a4296b4cc2db0b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19f55789400f88956a4296b4cc2db0b7">RegisterService</a> (<a class="el" href="classIAuthenticationRepository.html">IAuthenticationRepository</a> *r)</td></tr>
+<tr class="memdesc:a19f55789400f88956a4296b4cc2db0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> with repository dependency.  <br /></td></tr>
 <tr class="memitem:a5d052e6acc8e1cf621948da3bc0a550c" id="r_a5d052e6acc8e1cf621948da3bc0a550c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d052e6acc8e1cf621948da3bc0a550c">registerUser</a> (const <a class="el" href="structAccountInformation.html">AccountInformation</a> &amp;info) override</td></tr>
+<tr class="memdesc:a5d052e6acc8e1cf621948da3bc0a550c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new user account in the system.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classIRegisterService"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIRegisterService')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classIRegisterService.html">IRegisterService</a></td></tr>
 <tr class="memitem:adc10081796ae78104f251f0f189113a4 inherit pub_methods_classIRegisterService" id="r_adc10081796ae78104f251f0f189113a4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIRegisterService.html#adc10081796ae78104f251f0f189113a4">~IRegisterService</a> ()=default</td></tr>
+<tr class="memdesc:adc10081796ae78104f251f0f189113a4 inherit pub_methods_classIRegisterService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a12fdabdd003fa0d07286c2b748bd9081" id="r_a12fdabdd003fa0d07286c2b748bd9081"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIAuthenticationRepository.html">IAuthenticationRepository</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12fdabdd003fa0d07286c2b748bd9081">repo</a></td></tr>
+<tr class="memdesc:a12fdabdd003fa0d07286c2b748bd9081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repository for authentication data access operations.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00007">7</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
+<div class="textblock"><p>Concrete implementation of user registration operations. </p>
+<p>The <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> class provides the concrete implementation of user registration functionality for the movie ticket booking system. This service handles account creation while following the Separation of Concerns principle by focusing solely on registration logic.</p>
+<p>Implementation Features:</p><ul>
+<li>Integrates with <a class="el" href="classIAuthenticationRepository.html" title="Repository interface for user authentication data persistence.">IAuthenticationRepository</a> for data persistence</li>
+<li>Validates user input according to business rules</li>
+<li>Ensures username and email uniqueness</li>
+<li>Handles password security requirements</li>
+<li>Provides comprehensive error handling</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Implements <a class="el" href="classIRegisterService.html" title="Interface for user registration operations.">IRegisterService</a> interface</li>
+<li>Uses Repository pattern for data access</li>
+<li>Follows Separation of Concerns principle</li>
+<li>Enables dependency injection for testing</li>
+</ul>
+<p>Security Features:</p><ul>
+<li>Input validation and sanitization</li>
+<li>Password strength enforcement</li>
+<li>Duplicate account prevention</li>
+<li>Secure data handling practices</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> authRepo = std::make_unique&lt;AuthenticationRepositorySQL&gt;(dbConnection);</div>
+<div class="line"><span class="keyword">auto</span> registerService = std::make_unique&lt;RegisterService&gt;(authRepo.get());</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a> newUser(<span class="stringliteral">&quot;username&quot;</span>, <span class="stringliteral">&quot;password&quot;</span>, <span class="stringliteral">&quot;email@example.com&quot;</span>);</div>
+<div class="line"><span class="keywordtype">bool</span> success = registerService-&gt;registerUser(newUser);</div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classIRegisterService.html" title="Interface for user registration operations.">IRegisterService</a> </dd>
+<dd>
+<a class="el" href="classIAuthenticationRepository.html" title="Repository interface for user authentication data persistence.">IAuthenticationRepository</a> </dd>
+<dd>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00056">56</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adf2f437052453dec14ab4600c312bf05" name="adf2f437052453dec14ab4600c312bf05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf2f437052453dec14ab4600c312bf05">&#9670;&#160;</a></span>RegisterService() <span class="overload">[1/2]</span></h2>
@@ -143,7 +184,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00011">11</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
+<p>Default constructor for <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a>. </p>
+<p>Creates a <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> instance with no repository connection. The repository must be set before the service can be used for registration operations.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>Service is created with null repository </dd>
+<dd>
+Repository must be set before use</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This constructor is provided for scenarios where repository injection happens after construction </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00081">81</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
 
 </div>
 </div>
@@ -170,7 +218,26 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00012">12</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
+<p>Constructs <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> with repository dependency. </p>
+<p>Creates a <a class="el" href="classRegisterService.html" title="Concrete implementation of user registration operations.">RegisterService</a> instance with the provided authentication repository for data access operations. The repository must remain valid for the lifetime of the service.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>Pointer to authentication repository implementation</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>r should be a valid, initialized repository (null is allowed but service won't function) </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Service is ready for registration operations if repository is valid</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Repository pointer is stored as-is; caller retains ownership </dd>
+<dd>
+Service will not function properly if repository is null</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> authRepo = std::make_unique&lt;AuthenticationRepositorySQL&gt;(connection);</div>
+<div class="line"><span class="keyword">auto</span> registerService = std::make_unique&lt;RegisterService&gt;(authRepo.get());</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Service is ready for user registration</span></div>
+<div class="line"><span class="keywordtype">bool</span> success = registerService-&gt;registerUser(accountInfo);</div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00107">107</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
 
 </div>
 </div>
@@ -198,6 +265,80 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Registers a new user account in the system. </p>
+<p>Creates a new user account using the provided account information. This method validates all input data, enforces business rules, checks for duplicate accounts, and persists the new user to the database.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>Account information containing user registration details </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if registration succeeds, false if it fails</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>info must contain valid and complete account information </dd>
+<dd>
+Repository must be properly initialized and connected </dd>
+<dd>
+Username must not already exist in the system </dd>
+<dd>
+Email must not already be registered (if email uniqueness required) </dd>
+<dd>
+Password must meet system security requirements </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>New user account is created and persisted if successful </dd>
+<dd>
+<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> can authenticate with provided credentials after successful registration</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if account information is invalid or incomplete </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if repository is null or database operation fails </td></tr>
+    <tr><td class="paramname">DuplicateUserException</td><td>if username or email already exists </td></tr>
+    <tr><td class="paramname">WeakPasswordException</td><td>if password doesn't meet requirements</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method only handles registration; context creation is separate </dd>
+<dd>
+Password hashing should be handled by the repository layer </dd>
+<dd>
+Input validation includes format checking and business rule enforcement </dd>
+<dd>
+Transactional behavior depends on repository implementation</dd></dl>
+<p>Validation Rules Applied:</p><ul>
+<li>Username must be non-empty and follow naming conventions</li>
+<li>Password must meet minimum security standards</li>
+<li>Email must be in valid format (if provided)</li>
+<li>All required fields must be populated</li>
+<li>Username uniqueness across the system</li>
+</ul>
+<p>Implementation Details:</p><ul>
+<li>Validates repository availability before proceeding</li>
+<li>Performs comprehensive input validation</li>
+<li>Checks for existing users with same username/email</li>
+<li>Delegates actual persistence to repository</li>
+<li>Provides detailed error information for failures</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a> userInfo;</div>
+<div class="line">userInfo.setUsername(<span class="stringliteral">&quot;newuser123&quot;</span>);</div>
+<div class="line">userInfo.setPassword(<span class="stringliteral">&quot;SecurePassword!@#&quot;</span>);</div>
+<div class="line">userInfo.setEmail(<span class="stringliteral">&quot;user@example.com&quot;</span>);</div>
+<div class="line">userInfo.setRole(<span class="stringliteral">&quot;user&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keywordtype">bool</span> success = registerService-&gt;registerUser(userInfo);</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">if</span> (success) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Registration successful! Please log in.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">        <span class="comment">// Redirect to login page</span></div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Registration failed. Please check your information.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> DuplicateUserException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Username already exists. Please choose another.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> WeakPasswordException&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Password must be stronger. &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Registration error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implements <a class="el" href="classIRegisterService.html#aea2ff2149ce33d04626e2270c0a2995e">IRegisterService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="RegisterService_8cpp_source.html#l00004">4</a> of file <a class="el" href="RegisterService_8cpp_source.html">RegisterService.cpp</a>.</p>
@@ -225,7 +366,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00009">9</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
+<p>Repository for authentication data access operations. </p>
+<p>Raw pointer to the authentication repository used for user account persistence. The repository handles all database operations related to user account management. </p>
+
+<p class="definition">Definition at line <a class="el" href="RegisterService_8h_source.html#l00065">65</a> of file <a class="el" href="RegisterService_8h_source.html">RegisterService.h</a>.</p>
 
 </div>
 </div>

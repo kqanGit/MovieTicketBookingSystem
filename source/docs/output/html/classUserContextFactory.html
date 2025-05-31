@@ -103,9 +103,9 @@ Inheritance diagram for UserContextFactory:</div>
  <div class="center">
   <img src="classUserContextFactory.png" usemap="#UserContextFactory_map" alt=""/>
   <map id="UserContextFactory_map" name="UserContextFactory_map">
-<area href="classAdminContextCreator.html" alt="AdminContextCreator" shape="rect" coords="0,56,132,80"/>
-<area href="classGuestContextCreator.html" alt="GuestContextCreator" shape="rect" coords="142,56,274,80"/>
-<area href="classUserContextCreator.html" alt="UserContextCreator" shape="rect" coords="284,56,416,80"/>
+<area href="classAdminContextCreator.html" title="Concrete factory for creating administrator user contexts." alt="AdminContextCreator" shape="rect" coords="0,56,132,80"/>
+<area href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts." alt="GuestContextCreator" shape="rect" coords="142,56,274,80"/>
+<area href="classUserContextCreator.html" title="Concrete factory for creating authenticated user contexts." alt="UserContextCreator" shape="rect" coords="284,56,416,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <li><b>Factory Method Pattern</b>: Defines interface for object creation</li>
 <li><b>Strategy Pattern</b>: Different context creation strategies per role</li>
 </ul>
-<p><b>User Context Types:</b></p><ul>
-<li><b><a class="el" href="classGuest.html">Guest</a> Context</b>: For unauthenticated users with limited access</li>
-<li><b>User Context</b>: For authenticated regular users with standard privileges</li>
+<p><b><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> Context Types:</b></p><ul>
+<li><b><a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> Context</b>: For unauthenticated users with limited access</li>
+<li><b><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> Context</b>: For authenticated regular users with standard privileges</li>
 <li><b><a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> Context</b>: For administrators with elevated permissions</li>
 </ul>
 <p><b>Benefits:</b></p><ul>
@@ -139,13 +139,13 @@ Public Member Functions</h2></td></tr>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
 <dd>
-<a class="el" href="classUserContextCreator.html">UserContextCreator</a> </dd>
+<a class="el" href="classUserContextCreator.html" title="Concrete factory for creating authenticated user contexts.">UserContextCreator</a> </dd>
 <dd>
-<a class="el" href="classAdminContextCreator.html">AdminContextCreator</a> </dd>
+<a class="el" href="classAdminContextCreator.html" title="Concrete factory for creating administrator user contexts.">AdminContextCreator</a> </dd>
 <dd>
-<a class="el" href="classGuestContextCreator.html">GuestContextCreator</a> </dd>
+<a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a> </dd>
 <dd>
-<a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="UserContextFactory_8h_source.html#l00051">51</a> of file <a class="el" href="UserContextFactory_8h_source.html">UserContextFactory.h</a>.</p>
@@ -207,12 +207,12 @@ Public Member Functions</h2></td></tr>
 <dl class="section post"><dt>Postcondition</dt><dd>Returns fully initialized user context for guest access </dd>
 <dd>
 Context has appropriate service access restrictions</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Typically used for <a class="el" href="classGuest.html">Guest</a> user context creation </dd>
+<dl class="section note"><dt>Note</dt><dd>Typically used for <a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> user context creation </dd>
 <dd>
 Created context should have limited permissions</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
 <dd>
-<a class="el" href="classGuest.html">Guest</a> </dd></dl>
+<a class="el" href="classGuest.html" title="Implementation of IUserContext for anonymous guest users.">Guest</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p>Implemented in <a class="el" href="classAdminContextCreator.html#a922890dd8113478b03c24d75f73c58b6">AdminContextCreator</a>, <a class="el" href="classGuestContextCreator.html#a4706b0f039b3b84feef2152fb8682169">GuestContextCreator</a>, and <a class="el" href="classUserContextCreator.html#a7012c16a1dec17384518eee5c558eb5e">UserContextCreator</a>.</p>
@@ -264,16 +264,16 @@ Context is configured for the user's specific role</dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Used for authenticated User and <a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> context creation </dd>
+<dl class="section note"><dt>Note</dt><dd>Used for authenticated <a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> and <a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> context creation </dd>
 <dd>
 Context permissions are based on account role</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
 <dd>
-User </dd>
+<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> </dd>
 <dd>
 <a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a> </dd>
 <dd>
-<a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p>Implemented in <a class="el" href="classAdminContextCreator.html#abff50b2a847d06c7231d3191a96ef344">AdminContextCreator</a>, <a class="el" href="classGuestContextCreator.html#ad575058a108d928a70f8c7cf78d5f96f">GuestContextCreator</a>, and <a class="el" href="classUserContextCreator.html#a0546bd1a4eee8d0968f8bf5a3d480a6a">UserContextCreator</a>.</p>

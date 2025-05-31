@@ -95,22 +95,32 @@ $(function(){initNavTree('User_8cpp_source.html','',''); });
 <a href="User_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="User_8h.html">User.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">void</span> User::accept(std::shared_ptr&lt;IVisitor&gt; service) {</div>
+<div class="foldopen" id="foldopen00004" data-start="{" data-end="}">
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">    4</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">User::accept</a>(std::shared_ptr&lt;IVisitor&gt; service) {</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    std::shared_ptr&lt;IServiceVisitor&gt; serviceVisitor = std::dynamic_pointer_cast&lt;IServiceVisitor&gt;(service);</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="keywordflow">if</span> (serviceVisitor) {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        serviceVisitor-&gt;service(std::shared_ptr&lt;User&gt;(<span class="keyword">this</span>, [](User*){})); <span class="comment">// Non-owning shared_ptr</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        serviceVisitor-&gt;service(std::shared_ptr&lt;User&gt;(<span class="keyword">this</span>, [](<a class="code hl_function" href="classUser.html#a728df52c18270b459ea316fc08339e03">User</a>*){})); <span class="comment">// Non-owning shared_ptr</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    }</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>}</div>
+</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>std::shared_ptr&lt;IUserInformationService&gt; User::getUserInformationService()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">return</span> infoService;</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">   11</a></span>std::shared_ptr&lt;IUserInformationService&gt; <a class="code hl_function" href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">User::getUserInformationService</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">infoService</a>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>User::User(<span class="keyword">const</span> <a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a>&amp; acc) {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    infoService = std::make_shared&lt;UserInformationService&gt;(acc);</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUser.html#a728df52c18270b459ea316fc08339e03">   15</a></span><a class="code hl_function" href="classUser.html#a728df52c18270b459ea316fc08339e03">User::User</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structAccountInformation.html">AccountInformation</a>&amp; acc) {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_variable" href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">infoService</a> = std::make_shared&lt;UserInformationService&gt;(acc);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+</div>
 <div class="ttc" id="aUser_8h_html"><div class="ttname"><a href="User_8h.html">User.h</a></div><div class="ttdoc">Regular user implementation with standard privileges.</div></div>
-<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00007">AccountInformation.h:7</a></div></div>
+<div class="ttc" id="aclassUser_html_a3ed2803262cef434b3ad975e9cd8a0aa"><div class="ttname"><a href="classUser.html#a3ed2803262cef434b3ad975e9cd8a0aa">User::getUserInformationService</a></div><div class="ttdeci">std::shared_ptr&lt; IUserInformationService &gt; getUserInformationService() const override</div><div class="ttdoc">Retrieves the user information service.</div><div class="ttdef"><b>Definition</b> <a href="#l00011">User.cpp:11</a></div></div>
+<div class="ttc" id="aclassUser_html_a728df52c18270b459ea316fc08339e03"><div class="ttname"><a href="classUser.html#a728df52c18270b459ea316fc08339e03">User::User</a></div><div class="ttdeci">User(const AccountInformation &amp;acc)</div><div class="ttdoc">Constructs a User with account information.</div><div class="ttdef"><b>Definition</b> <a href="#l00015">User.cpp:15</a></div></div>
+<div class="ttc" id="aclassUser_html_abe94d9e2f56f8401bf5192d09d01c9ce"><div class="ttname"><a href="classUser.html#abe94d9e2f56f8401bf5192d09d01c9ce">User::accept</a></div><div class="ttdeci">void accept(std::shared_ptr&lt; IVisitor &gt; service) override</div><div class="ttdoc">Accepts a service visitor for operations.</div><div class="ttdef"><b>Definition</b> <a href="#l00004">User.cpp:4</a></div></div>
+<div class="ttc" id="aclassUser_html_af6d9bceab394fbd70d5771b39541c19e"><div class="ttname"><a href="classUser.html#af6d9bceab394fbd70d5771b39541c19e">User::infoService</a></div><div class="ttdeci">std::shared_ptr&lt; UserInformationService &gt; infoService</div><div class="ttdoc">Service for handling user information operations.</div><div class="ttdef"><b>Definition</b> <a href="User_8h_source.html#l00051">User.h:51</a></div></div>
+<div class="ttc" id="astructAccountInformation_html"><div class="ttname"><a href="structAccountInformation.html">AccountInformation</a></div><div class="ttdoc">Data structure containing user account information and credentials.</div><div class="ttdef"><b>Definition</b> <a href="AccountInformation_8h_source.html#l00061">AccountInformation.h:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

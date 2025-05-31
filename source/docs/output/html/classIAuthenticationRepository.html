@@ -103,7 +103,7 @@ Inheritance diagram for IAuthenticationRepository:</div>
  <div class="center">
   <img src="classIAuthenticationRepository.png" usemap="#IAuthenticationRepository_map" alt=""/>
   <map id="IAuthenticationRepository_map" name="IAuthenticationRepository_map">
-<area href="classAuthenticationRepositorySQL.html" alt="AuthenticationRepositorySQL" shape="rect" coords="0,56,177,80"/>
+<area href="classAuthenticationRepositorySQL.html" title="SQLite-based implementation of user authentication data access." alt="AuthenticationRepositorySQL" shape="rect" coords="0,56,177,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Repository interface for user authentication data persistence. </p>
 <p>This interface defines the contract for accessing and managing user authentication data, implementing the Repository pattern to abstract data storage implementation details.</p>
 <p>The repository provides:</p><ul>
-<li>User account creation and storage</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> account creation and storage</li>
 <li>Credential verification and user retrieval</li>
 <li>Abstraction over data storage mechanisms</li>
 <li>Support for different persistence backends</li>
@@ -130,9 +130,9 @@ Public Member Functions</h2></td></tr>
 <li><b>Dependency Inversion</b>: High-level code depends on abstractions</li>
 <li><b>Strategy Pattern</b>: Allows different storage implementations</li>
 </ul>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classAuthenticationRepositorySQL.html">AuthenticationRepositorySQL</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classAuthenticationRepositorySQL.html" title="SQLite-based implementation of user authentication data access.">AuthenticationRepositorySQL</a> </dd>
 <dd>
-<a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="IAuthenticationRepository_8h_source.html#l00038">38</a> of file <a class="el" href="IAuthenticationRepository_8h_source.html">IAuthenticationRepository.h</a>.</p>
@@ -212,7 +212,7 @@ password should be properly hashed </dd></dl>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This operation should be atomic to prevent partial user creation </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>In production, ensure password is hashed before storage</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p>Implemented in <a class="el" href="classAuthenticationRepositorySQL.html#a1206595d15472f4ecca502dbabf53b65">AuthenticationRepositorySQL</a>.</p>
@@ -255,7 +255,7 @@ password should be properly hashed </dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAccountInformation.html">AccountInformation</a> for the authenticated user</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> for the authenticated user</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>username and password must not be empty </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Returns valid account information if credentials match</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
@@ -268,7 +268,7 @@ password should be properly hashed </dd></dl>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This method should implement proper security measures </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Consider rate limiting to prevent brute force attacks</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p>Implemented in <a class="el" href="classAuthenticationRepositorySQL.html#a8f4d19c60a92be4ae00158c3ddc4568a">AuthenticationRepositorySQL</a>.</p>

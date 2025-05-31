@@ -93,6 +93,9 @@ $(function(){initNavTree('classLogoutService.html','','classLogoutService-member
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete implementation of user logout operations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="LogoutService_8h_source.html">service/LogoutService.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for LogoutService:</div>
@@ -100,20 +103,51 @@ Inheritance diagram for LogoutService:</div>
  <div class="center">
   <img src="classLogoutService.png" usemap="#LogoutService_map" alt=""/>
   <map id="LogoutService_map" name="LogoutService_map">
-<area href="classILogoutService.html" alt="ILogoutService" shape="rect" coords="0,0,97,24"/>
+<area href="classILogoutService.html" title="Interface for user logout operations." alt="ILogoutService" shape="rect" coords="0,0,97,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a65bdfdb4d4a027e6b129dc730c873399" id="r_a65bdfdb4d4a027e6b129dc730c873399"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65bdfdb4d4a027e6b129dc730c873399">LogoutService</a> ()=default</td></tr>
+<tr class="memdesc:a65bdfdb4d4a027e6b129dc730c873399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a>.  <br /></td></tr>
 <tr class="memitem:af8b304125702762a6bf2e78035b52271" id="r_af8b304125702762a6bf2e78035b52271"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classIUserContext.html">IUserContext</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8b304125702762a6bf2e78035b52271">logout</a> () override</td></tr>
+<tr class="memdesc:af8b304125702762a6bf2e78035b52271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs user logout and creates guest context.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classILogoutService"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classILogoutService')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classILogoutService.html">ILogoutService</a></td></tr>
 <tr class="memitem:a29bc589e1854ddaa92bdf6307f0a6306 inherit pub_methods_classILogoutService" id="r_a29bc589e1854ddaa92bdf6307f0a6306"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classILogoutService.html#a29bc589e1854ddaa92bdf6307f0a6306">~ILogoutService</a> ()=default</td></tr>
+<tr class="memdesc:a29bc589e1854ddaa92bdf6307f0a6306 inherit pub_methods_classILogoutService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="LogoutService_8h_source.html#l00008">8</a> of file <a class="el" href="LogoutService_8h_source.html">LogoutService.h</a>.</p>
+<div class="textblock"><p>Concrete implementation of user logout operations. </p>
+<p>The <a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a> class provides the concrete implementation of logout functionality for the movie ticket booking system. This service handles the transition from any authenticated user state back to guest state, ensuring proper cleanup and context creation.</p>
+<p>Implementation Features:</p><ul>
+<li>Creates guest context using <a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a></li>
+<li>Handles logout for all user types (<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a>, <a class="el" href="classAdmin.html" title="Administrator user context with elevated privileges.">Admin</a>)</li>
+<li>Provides stateless operation design</li>
+<li>Thread-safe logout operations</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Implements <a class="el" href="classILogoutService.html" title="Interface for user logout operations.">ILogoutService</a> interface</li>
+<li>Encapsulates logout business logic</li>
+<li>Uses Factory pattern for context creation</li>
+<li>Provides clean separation of concerns</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;ILogoutService&gt; logoutService = </div>
+<div class="line">    std::make_unique&lt;LogoutService&gt;();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Perform logout operation</span></div>
+<div class="line"><span class="keyword">auto</span> guestContext = logoutService-&gt;logout();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Context is now ready for guest operations</span></div>
+<div class="line">sessionManager.setContext(std::move(guestContext));</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classILogoutService.html" title="Interface for user logout operations.">ILogoutService</a> </dd>
+<dd>
+<a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a> </dd>
+<dd>
+<a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogoutService_8h_source.html#l00053">53</a> of file <a class="el" href="LogoutService_8h_source.html">LogoutService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a65bdfdb4d4a027e6b129dc730c873399" name="a65bdfdb4d4a027e6b129dc730c873399"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65bdfdb4d4a027e6b129dc730c873399">&#9670;&#160;</a></span>LogoutService()</h2>
@@ -137,6 +171,11 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor for <a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a>. </p>
+<p>Creates a new <a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a> instance with default configuration. The service is stateless and can be reused for multiple logout operations.</p>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a> is ready for logout operations</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Service is stateless and thread-safe for concurrent use </dd></dl>
 
 </div>
 </div>
@@ -164,6 +203,48 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Performs user logout and creates guest context. </p>
+<p>Terminates the current user session and creates a new guest context using the <a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a>. This implementation handles logout for all user types and ensures proper state transition.</p>
+<dl class="section return"><dt>Returns</dt><dd>Unique pointer to a newly created guest context</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Current user session is terminated </dd>
+<dd>
+Returns a valid guest context with appropriate permissions </dd>
+<dd>
+System is ready for guest operations or new authentication</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if guest context creation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Implementation uses <a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a> for context creation </dd>
+<dd>
+Operation is stateless and can be called multiple times safely </dd>
+<dd>
+No user data cleanup is required as service is stateless</dd></dl>
+<p>Implementation Details:</p><ul>
+<li>Uses <a class="el" href="classGuestContextCreator.html" title="Concrete factory for creating guest user contexts.">GuestContextCreator</a> to create the guest context</li>
+<li>Does not require current user information</li>
+<li>Always returns a valid guest context</li>
+<li>Thread-safe operation</li>
+</ul>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_function" href="#a65bdfdb4d4a027e6b129dc730c873399">LogoutService</a> logoutService;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keyword">auto</span> guestContext = logoutService.<a class="code hl_function" href="#af8b304125702762a6bf2e78035b52271">logout</a>();</div>
+<div class="line">    <span class="comment">// Successfully logged out, now in guest mode</span></div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// Set the new context in session manager</span></div>
+<div class="line">    sessionManager.setContext(std::move(guestContext));</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// User can now perform guest operations</span></div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle logout failure (rare occurrence)</span></div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">&quot;Logout failed: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassLogoutService_html_a65bdfdb4d4a027e6b129dc730c873399"><div class="ttname"><a href="#a65bdfdb4d4a027e6b129dc730c873399">LogoutService::LogoutService</a></div><div class="ttdeci">LogoutService()=default</div><div class="ttdoc">Default constructor for LogoutService.</div></div>
+<div class="ttc" id="aclassLogoutService_html_af8b304125702762a6bf2e78035b52271"><div class="ttname"><a href="#af8b304125702762a6bf2e78035b52271">LogoutService::logout</a></div><div class="ttdeci">std::unique_ptr&lt; IUserContext &gt; logout() override</div><div class="ttdoc">Performs user logout and creates guest context.</div><div class="ttdef"><b>Definition</b> <a href="LogoutService_8cpp_source.html#l00004">LogoutService.cpp:4</a></div></div>
+</div><!-- fragment --> 
 <p>Implements <a class="el" href="classILogoutService.html#a020bfa05dcf8515166cd8a7e5bc47161">ILogoutService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="LogoutService_8cpp_source.html#l00004">4</a> of file <a class="el" href="LogoutService_8cpp_source.html">LogoutService.cpp</a>.</p>

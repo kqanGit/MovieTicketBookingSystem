@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movie Ticket Booking System: ILogoutService Class Reference</title>
+<title>Movie Ticket Booking System: ILogoutService Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,9 +89,12 @@ $(function(){initNavTree('classILogoutService.html','','classILogoutService-memb
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">ILogoutService Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">ILogoutService Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for user logout operations.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ILogoutService_8h_source.html">service/ILogoutService.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -100,18 +103,48 @@ Inheritance diagram for ILogoutService:</div>
  <div class="center">
   <img src="classILogoutService.png" usemap="#ILogoutService_map" alt=""/>
   <map id="ILogoutService_map" name="ILogoutService_map">
-<area href="classLogoutService.html" alt="LogoutService" shape="rect" coords="0,56,97,80"/>
+<area href="classLogoutService.html" title="Concrete implementation of user logout operations." alt="LogoutService" shape="rect" coords="0,56,97,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a020bfa05dcf8515166cd8a7e5bc47161" id="r_a020bfa05dcf8515166cd8a7e5bc47161"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classIUserContext.html">IUserContext</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a020bfa05dcf8515166cd8a7e5bc47161">logout</a> ()=0</td></tr>
+<tr class="memdesc:a020bfa05dcf8515166cd8a7e5bc47161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs user logout and returns guest context.  <br /></td></tr>
 <tr class="memitem:a29bc589e1854ddaa92bdf6307f0a6306" id="r_a29bc589e1854ddaa92bdf6307f0a6306"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29bc589e1854ddaa92bdf6307f0a6306">~ILogoutService</a> ()=default</td></tr>
+<tr class="memdesc:a29bc589e1854ddaa92bdf6307f0a6306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ILogoutService_8h_source.html#l00007">7</a> of file <a class="el" href="ILogoutService_8h_source.html">ILogoutService.h</a>.</p>
+<div class="textblock"><p>Interface for user logout operations. </p>
+<p>The <a class="el" href="classILogoutService.html" title="Interface for user logout operations.">ILogoutService</a> interface defines the contract for handling user logout operations in the movie ticket booking system. This interface follows the Service pattern, providing a clean abstraction for logout-related business logic.</p>
+<p>Key Responsibilities:</p><ul>
+<li>Handle user session termination</li>
+<li>Create appropriate guest context after logout</li>
+<li>Manage user state transitions</li>
+<li>Provide clean separation between authentication logic and UI</li>
+</ul>
+<p>Design Pattern: Service Pattern</p><ul>
+<li>Encapsulates logout business logic</li>
+<li>Provides abstraction for different logout implementations</li>
+<li>Enables dependency injection and testing</li>
+<li>Separates concerns between UI and business logic</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::unique_ptr&lt;ILogoutService&gt; logoutService = </div>
+<div class="line">    std::make_unique&lt;LogoutService&gt;();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Perform logout operation</span></div>
+<div class="line"><span class="keyword">auto</span> guestContext = logoutService-&gt;logout();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Continue with guest context</span></div>
+<div class="line">sessionManager.setContext(std::move(guestContext));</div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classLogoutService.html" title="Concrete implementation of user logout operations.">LogoutService</a> </dd>
+<dd>
+<a class="el" href="classIUserContext.html" title="Service for user information management.">IUserContext</a> </dd>
+<dd>
+<a class="el" href="classSessionManager.html" title="Manages user sessions and context transitions in the movie booking system.">SessionManager</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ILogoutService_8h_source.html#l00051">51</a> of file <a class="el" href="ILogoutService_8h_source.html">ILogoutService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a29bc589e1854ddaa92bdf6307f0a6306" name="a29bc589e1854ddaa92bdf6307f0a6306"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29bc589e1854ddaa92bdf6307f0a6306">&#9670;&#160;</a></span>~ILogoutService()</h2>
@@ -135,6 +168,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup of derived classes. </p>
+<p>Ensures that concrete logout service implementations are properly destroyed when accessed through the interface pointer. </p>
 
 </div>
 </div>
@@ -162,11 +198,38 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Performs user logout and returns guest context. </p>
+<p>Terminates the current user session and creates a new guest context for continued system usage. This method handles the transition from authenticated user state to guest state.</p>
+<dl class="section return"><dt>Returns</dt><dd>Unique pointer to a guest user context</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Current user session is terminated </dd>
+<dd>
+Returns a valid guest context </dd>
+<dd>
+System is ready for guest operations or new login</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if context creation fails</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method is safe to call multiple times </dd>
+<dd>
+The returned context allows guest-level operations </dd>
+<dd>
+Any user-specific data should be cleared during logout</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keywordflow">try</span> {</div>
+<div class="line">    <span class="keyword">auto</span> guestContext = logoutService-&gt;logout();</div>
+<div class="line">    <span class="comment">// Successfully logged out, now in guest mode</span></div>
+<div class="line">    sessionManager.setContext(std::move(guestContext));</div>
+<div class="line">} <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">    <span class="comment">// Handle logout failure</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 <p>Implemented in <a class="el" href="classLogoutService.html#af8b304125702762a6bf2e78035b52271">LogoutService</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>service/<a class="el" href="ILogoutService_8h_source.html">ILogoutService.h</a></li>
 </ul>
 </div><!-- contents -->

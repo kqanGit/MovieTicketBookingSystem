@@ -101,8 +101,11 @@ $(function(){initNavTree('classBookingService.html','','classBookingService-memb
 Inheritance diagram for BookingService:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classBookingService.png" alt=""/>
- </div></div>
+  <img src="classBookingService.png" usemap="#BookingService_map" alt=""/>
+  <map id="BookingService_map" name="BookingService_map">
+<area href="classIBookingService.html" title="Interface defining booking operations for movie tickets." alt="IBookingService" shape="rect" coords="0,0,104,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -114,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a31b065ce2c320e316a70baabd16da076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve user's booking history.  <br /></td></tr>
 <tr class="memitem:aed85bd164d6b0eed3144bc28d6f80796" id="r_aed85bd164d6b0eed3144bc28d6f80796"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classSeatView.html">SeatView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed85bd164d6b0eed3144bc28d6f80796">viewSeatsStatus</a> (const int &amp;showTimeID) override</td></tr>
 <tr class="memdesc:aed85bd164d6b0eed3144bc28d6f80796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check seat availability for a showtime.  <br /></td></tr>
+<tr class="inherit_header pub_methods_classIBookingService"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIBookingService')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classIBookingService.html">IBookingService</a></td></tr>
+<tr class="memitem:a9e8df42c300c144f7d5899ca16b9b0a4 inherit pub_methods_classIBookingService" id="r_a9e8df42c300c144f7d5899ca16b9b0a4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIBookingService.html#a9e8df42c300c144f7d5899ca16b9b0a4">~IBookingService</a> ()=default</td></tr>
+<tr class="memdesc:a9e8df42c300c144f7d5899ca16b9b0a4 inherit pub_methods_classIBookingService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper inheritance.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -122,18 +128,18 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Concrete implementation of movie ticket booking operations. </p>
-<p>This class handles all movie ticket booking-related business logic including ticket reservation, booking history management, and seat availability checking. It implements the IBookingService interface and coordinates with booking repositories for data persistence.</p>
+<p>This class handles all movie ticket booking-related business logic including ticket reservation, booking history management, and seat availability checking. It implements the <a class="el" href="classIBookingService.html" title="Interface defining booking operations for movie tickets.">IBookingService</a> interface and coordinates with booking repositories for data persistence.</p>
 <p>Key Features:</p><ul>
 <li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> ticket reservation and booking</li>
-<li>User booking history retrieval</li>
+<li><a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a> booking history retrieval</li>
 <li>Real-time seat availability checking</li>
 <li>Multi-seat booking support</li>
 <li>Integration with showtime management</li>
 <li>ACID transaction support for booking operations</li>
 </ul>
 <dl class="section user"><dt>Design Patterns Used</dt><dd><ul>
-<li>Strategy Pattern: Implements IBookingService interface</li>
-<li>Repository Pattern: Uses <a class="el" href="classIBookingRepository.html">IBookingRepository</a> for data access</li>
+<li>Strategy Pattern: Implements <a class="el" href="classIBookingService.html" title="Interface defining booking operations for movie tickets.">IBookingService</a> interface</li>
+<li>Repository Pattern: Uses <a class="el" href="classIBookingRepository.html" title="Interface for booking data access operations.">IBookingRepository</a> for data access</li>
 <li>Dependency Injection: Repository injected via constructor</li>
 <li>RAII: Uses smart pointers for automatic memory management</li>
 </ul>
@@ -150,13 +156,13 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclassBookingService_html_ac7d075e055e3396639fd4629ef5b1c3f"><div class="ttname"><a href="#ac7d075e055e3396639fd4629ef5b1c3f">BookingService::BookingService</a></div><div class="ttdeci">BookingService(std::shared_ptr&lt; IBookingRepository &gt; repo)</div><div class="ttdoc">Constructor with repository dependency injection.</div><div class="ttdef"><b>Definition</b> <a href="BookingService_8cpp_source.html#l00003">BookingService.cpp:3</a></div></div>
 </div><!-- fragment --></dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>All booking operations should be executed within database transactions</dd></dl>
-<dl class="section see"><dt>See also</dt><dd>IBookingService </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classIBookingService.html" title="Interface defining booking operations for movie tickets.">IBookingService</a> </dd>
 <dd>
-<a class="el" href="classIBookingRepository.html">IBookingRepository</a> </dd>
+<a class="el" href="classIBookingRepository.html" title="Interface for booking data access operations.">IBookingRepository</a> </dd>
 <dd>
-<a class="el" href="classBookingView.html">BookingView</a> </dd>
+<a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> </dd>
 <dd>
-<a class="el" href="classSeatView.html">SeatView</a> </dd></dl>
+<a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="BookingService_8h_source.html#l00061">61</a> of file <a class="el" href="BookingService_8h_source.html">BookingService.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -227,7 +233,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -249,11 +255,11 @@ showTimeID &gt; 0 (valid showtime identifier) </dd>
 !seats.empty() (at least one seat to book) </dd>
 <dd>
 All seats in the vector are available for booking</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Booking record created in database </dd>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> record created in database </dd>
 <dd>
 All specified seats marked as occupied </dd>
 <dd>
-User's booking history updated</dd></dl>
+<a class="el" href="classUser.html" title="Concrete implementation of IUserContext for regular users.">User</a>'s booking history updated</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::invalid_argument</td><td>if any seat is already booked </td></tr>
@@ -264,6 +270,8 @@ User's booking history updated</dd></dl>
 <dl class="section user"><dt>Transaction Behavior</dt><dd>This operation is atomic - either all seats are booked successfully or none are booked if any error occurs.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Concurrent booking attempts for same seats may conflict</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#aed85bd164d6b0eed3144bc28d6f80796" title="Check seat availability for a showtime.">viewSeatsStatus()</a> to check availability before booking </dd></dl>
+
+<p>Implements <a class="el" href="classIBookingService.html#a55129066d6ab39ff22e322a82af55e21">IBookingService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="BookingService_8cpp_source.html#l00006">6</a> of file <a class="el" href="BookingService_8cpp_source.html">BookingService.cpp</a>.</p>
 
@@ -287,7 +295,7 @@ User's booking history updated</dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -304,20 +312,22 @@ User's booking history updated</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">Empty</td><td>vector if user has no bookings </td></tr>
-    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classBookingView.html">BookingView</a> objects with booking details</td></tr>
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> objects with booking details</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>userID &gt; 0 (valid user identifier)</dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Return value contains chronologically ordered booking history</dd></dl>
-<dl class="section user"><dt>Returned Information</dt><dd>Each <a class="el" href="classBookingView.html">BookingView</a> includes:<ul>
-<li>Booking ID and timestamp</li>
+<dl class="section user"><dt>Returned Information</dt><dd>Each <a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> includes:<ul>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> ID and timestamp</li>
 <li><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> title and showtime information</li>
 <li>Seat details and pricing</li>
-<li>Booking status (confirmed, cancelled, etc.)</li>
+<li><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> status (confirmed, cancelled, etc.)</li>
 </ul>
 </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classBookingView.html">BookingView</a> for detailed structure information </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classBookingView.html" title="Data Transfer Object containing complete booking information for display.">BookingView</a> for detailed structure information </dd></dl>
+
+<p>Implements <a class="el" href="classIBookingService.html#ad183f42f5ee5570eb1bd84ef46e2e1b1">IBookingService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="BookingService_8cpp_source.html#l00016">16</a> of file <a class="el" href="BookingService_8cpp_source.html">BookingService.cpp</a>.</p>
 
@@ -341,7 +351,7 @@ User's booking history updated</dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -357,14 +367,14 @@ User's booking history updated</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;SeatView&gt; List of all seats with their availability status</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classSeatView.html">SeatView</a> objects representing theater layout </td></tr>
+    <tr><td class="paramname">Vector</td><td>of <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> objects representing theater layout </td></tr>
     <tr><td class="paramname">Empty</td><td>vector if showtime doesn't exist</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>showTimeID &gt; 0 (valid showtime identifier)</dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Return value reflects real-time seat availability</dd></dl>
-<dl class="section user"><dt>Seat Information Provided</dt><dd>Each <a class="el" href="classSeatView.html">SeatView</a> includes:<ul>
+<dl class="section user"><dt>Seat Information Provided</dt><dd>Each <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> includes:<ul>
 <li>Seat identifier (row and number)</li>
 <li>Availability status (available, occupied, reserved)</li>
 <li>Seat type (regular, premium, couple)</li>
@@ -372,9 +382,11 @@ User's booking history updated</dd></dl>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Results may change between calls due to concurrent bookings</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSeatView.html">SeatView</a> for detailed seat information structure </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> for detailed seat information structure </dd>
 <dd>
 <a class="el" href="#a5651bb85632bc074a2bb1eafd06a4fd5" title="Create a new movie ticket booking.">createBooking()</a> to reserve available seats </dd></dl>
+
+<p>Implements <a class="el" href="classIBookingService.html#a3c46878529549353dad22d30f9d7a591">IBookingService</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="BookingService_8cpp_source.html#l00012">12</a> of file <a class="el" href="BookingService_8cpp_source.html">BookingService.cpp</a>.</p>
 

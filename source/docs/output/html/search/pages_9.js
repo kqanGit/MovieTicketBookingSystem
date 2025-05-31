@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['layer_0',['Layer',['../index.html#business_layer',1,'Business Logic Layer'],['../index.html#data_layer',1,'Data Access Layer'],['../index.html#model_modules',1,'Model Layer'],['../index.html#presentation_layer',1,'Presentation Layer'],['../index.html#repository_modules',1,'Repository Layer'],['../index.html#service_modules',1,'Service Layer']]],
-  ['license_1',['License',['../index.html#license_sec',1,'']]],
-  ['logic_20layer_2',['Business Logic Layer',['../index.html#business_layer',1,'']]]
+  ['management_0',['Session Management',['../index.html#session_usage',1,'']]],
+  ['model_20layer_1',['Model Layer',['../index.html#model_modules',1,'']]],
+  ['modules_2',['Modules',['../index.html#core_modules',1,'Core Modules'],['../index.html#modules_sec',1,'System Modules']]],
+  ['movie_3',['Movie',['../md_diagram_2Class__diagram_2Movie.html',1,'']]],
+  ['movie_20ticket_20booking_20system_20api_20documentation_4',['Movie Ticket Booking System - API Documentation',['../index.html',1,'']]]
 ];

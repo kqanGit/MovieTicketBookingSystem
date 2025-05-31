@@ -92,29 +92,36 @@ $(function(){initNavTree('Guest_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Guest.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Guest_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Guest.h</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef GUEST_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define GUEST_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">../visitor/IVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="IUserContext_8h.html">../context/IUserContext.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">../visitor/IServiceVisitor.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;memory&gt;</span> <span class="comment">// Thêm để sử dụng unique_ptr</span></div>
+<a href="Guest_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classGuest.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classGuest.html">Guest</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIUserContext.html">IUserContext</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Guest&gt; {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">accept</a>(std::shared_ptr&lt;IVisitor&gt; service) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    std::shared_ptr&lt;IUserInformationService&gt; <a class="code hl_function" href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">getUserInformationService</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>};</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef GUEST_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define GUEST_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="IVisitor_8h.html">../visitor/IVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="IUserContext_8h.html">../context/IUserContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="IServiceVisitor_8h.html">../visitor/IServiceVisitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;memory&gt;</span> <span class="comment">// Thêm để sử dụng unique_ptr</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="};">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classGuest.html">   70</a></span><span class="keyword">class </span><a class="code hl_function" href="classGuest.html#a0b3ff80ba45275e5ef264ea92037493d">Guest</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIUserContext.html">IUserContext</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Guest&gt; {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classGuest.html#a0b3ff80ba45275e5ef264ea92037493d">   83</a></span>    <a class="code hl_function" href="classGuest.html#a0b3ff80ba45275e5ef264ea92037493d">Guest</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">accept</a>(std::shared_ptr&lt;IVisitor&gt; service) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    std::shared_ptr&lt;IUserInformationService&gt; <a class="code hl_function" href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">getUserInformationService</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classGuest.html#a282f32f5c415f3add224c74700e095c0">  165</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classGuest.html#a282f32f5c415f3add224c74700e095c0">~Guest</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>};</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aIServiceVisitor_8h_html"><div class="ttname"><a href="IServiceVisitor_8h.html">IServiceVisitor.h</a></div><div class="ttdoc">Service visitor interface for role-based operations.</div></div>
 <div class="ttc" id="aIUserContext_8h_html"><div class="ttname"><a href="IUserContext_8h.html">IUserContext.h</a></div><div class="ttdoc">User context interface defining role-based behavior.</div></div>
 <div class="ttc" id="aIVisitor_8h_html"><div class="ttname"><a href="IVisitor_8h.html">IVisitor.h</a></div><div class="ttdoc">Base interface for the Visitor pattern implementation.</div></div>
-<div class="ttc" id="aclassGuest_html"><div class="ttname"><a href="classGuest.html">Guest</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">Guest.h:9</a></div></div>
-<div class="ttc" id="aclassGuest_html_ab2fe82ed3253e569d6ec97aa83a34d0f"><div class="ttname"><a href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">Guest::accept</a></div><div class="ttdeci">void accept(std::shared_ptr&lt; IVisitor &gt; service) override</div><div class="ttdoc">Accept a visitor service for operation dispatch.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8cpp_source.html#l00005">Guest.cpp:5</a></div></div>
-<div class="ttc" id="aclassGuest_html_ac720d672af23563e926d830e8d9abb1f"><div class="ttname"><a href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">Guest::getUserInformationService</a></div><div class="ttdeci">std::shared_ptr&lt; IUserInformationService &gt; getUserInformationService() const override</div><div class="ttdoc">Get user information service for this context.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8cpp_source.html#l00012">Guest.cpp:12</a></div></div>
+<div class="ttc" id="aclassGuest_html_a0b3ff80ba45275e5ef264ea92037493d"><div class="ttname"><a href="classGuest.html#a0b3ff80ba45275e5ef264ea92037493d">Guest::Guest</a></div><div class="ttdeci">Guest()=default</div><div class="ttdoc">Default constructor.</div></div>
+<div class="ttc" id="aclassGuest_html_a282f32f5c415f3add224c74700e095c0"><div class="ttname"><a href="classGuest.html#a282f32f5c415f3add224c74700e095c0">Guest::~Guest</a></div><div class="ttdeci">virtual ~Guest()=default</div><div class="ttdoc">Virtual destructor.</div></div>
+<div class="ttc" id="aclassGuest_html_ab2fe82ed3253e569d6ec97aa83a34d0f"><div class="ttname"><a href="classGuest.html#ab2fe82ed3253e569d6ec97aa83a34d0f">Guest::accept</a></div><div class="ttdeci">void accept(std::shared_ptr&lt; IVisitor &gt; service) override</div><div class="ttdoc">Accept a visitor for service operations.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8cpp_source.html#l00005">Guest.cpp:5</a></div></div>
+<div class="ttc" id="aclassGuest_html_ac720d672af23563e926d830e8d9abb1f"><div class="ttname"><a href="classGuest.html#ac720d672af23563e926d830e8d9abb1f">Guest::getUserInformationService</a></div><div class="ttdeci">std::shared_ptr&lt; IUserInformationService &gt; getUserInformationService() const override</div><div class="ttdoc">Get user information service for guests.</div><div class="ttdef"><b>Definition</b> <a href="Guest_8cpp_source.html#l00012">Guest.cpp:12</a></div></div>
 <div class="ttc" id="aclassIUserContext_html"><div class="ttname"><a href="classIUserContext.html">IUserContext</a></div><div class="ttdoc">Service for user information management.</div><div class="ttdef"><b>Definition</b> <a href="IUserContext_8h_source.html#l00047">IUserContext.h:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

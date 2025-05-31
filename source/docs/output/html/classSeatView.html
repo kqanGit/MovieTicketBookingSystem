@@ -93,20 +93,56 @@ $(function(){initNavTree('classSeatView.html','','classSeatView-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>View model combining seat information with its booking status.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SeatView_8h_source.html">repository/SeatView.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad7a27daf72c75d5a894efd52a0100927" id="r_ad7a27daf72c75d5a894efd52a0100927"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7a27daf72c75d5a894efd52a0100927">SeatView</a> (std::shared_ptr&lt; <a class="el" href="classISeat.html">ISeat</a> &gt; <a class="el" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a>, const <a class="el" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19">SeatStatus</a> &amp;<a class="el" href="#a571fbfa2a81490dd246aabb7261c0949">status</a>)</td></tr>
+<tr class="memdesc:ad7a27daf72c75d5a894efd52a0100927"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> with seat data and status.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abd57bd93ddb52ea975a8a4b6c01dae1b" id="r_abd57bd93ddb52ea975a8a4b6c01dae1b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classISeat.html">ISeat</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a></td></tr>
+<tr class="memdesc:abd57bd93ddb52ea975a8a4b6c01dae1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The seat domain object containing seat details.  <br /></td></tr>
 <tr class="memitem:a571fbfa2a81490dd246aabb7261c0949" id="r_a571fbfa2a81490dd246aabb7261c0949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19">SeatStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a571fbfa2a81490dd246aabb7261c0949">status</a></td></tr>
+<tr class="memdesc:a571fbfa2a81490dd246aabb7261c0949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current booking status of the seat.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00010">10</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
+<div class="textblock"><p>View model combining seat information with its booking status. </p>
+<p>The <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> class implements the View Model pattern, providing a composite object that combines seat domain data with presentation-specific status information. This class is primarily used by the UI layer to display seat information along with their current booking status.</p>
+<p>Key Features:</p><ul>
+<li>Combines domain object (<a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a>) with status information</li>
+<li>Lightweight wrapper for UI presentation</li>
+<li>Immutable design after construction</li>
+<li>Thread-safe for read operations</li>
+</ul>
+<p>Design Pattern: View Model</p><ul>
+<li>Separates presentation logic from domain logic</li>
+<li>Provides UI-specific data structure</li>
+<li>Enables clean data binding in user interfaces</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="comment">// Create a seat view for UI display</span></div>
+<div class="line">std::shared_ptr&lt;ISeat&gt; <a class="code hl_variable" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a> = seatFactory.createSingleSeat(<span class="stringliteral">&quot;A1&quot;</span>, 100.0);</div>
+<div class="line"><a class="code hl_function" href="#ad7a27daf72c75d5a894efd52a0100927">SeatView</a> seatView(<a class="code hl_variable" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a>, <a class="code hl_enumvalue" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">SeatStatus::AVAILABLE</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Use in UI rendering</span></div>
+<div class="line"><span class="keywordflow">if</span> (seatView.status == <a class="code hl_enumvalue" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">SeatStatus::AVAILABLE</a>) {</div>
+<div class="line">    renderAvailableSeat(seatView.seat);</div>
+<div class="line">} <span class="keywordflow">else</span> {</div>
+<div class="line">    renderBookedSeat(seatView.seat);</div>
+<div class="line">}</div>
+<div class="ttc" id="aSeatView_8h_html_ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e"><div class="ttname"><a href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">AVAILABLE</a></div><div class="ttdeci">@ AVAILABLE</div><div class="ttdoc">Seat is available for booking.</div><div class="ttdef"><b>Definition</b> <a href="SeatView_8h_source.html#l00021">SeatView.h:21</a></div></div>
+<div class="ttc" id="aclassSeatView_html_abd57bd93ddb52ea975a8a4b6c01dae1b"><div class="ttname"><a href="#abd57bd93ddb52ea975a8a4b6c01dae1b">SeatView::seat</a></div><div class="ttdeci">std::shared_ptr&lt; ISeat &gt; seat</div><div class="ttdoc">The seat domain object containing seat details.</div><div class="ttdef"><b>Definition</b> <a href="SeatView_8h_source.html#l00073">SeatView.h:73</a></div></div>
+<div class="ttc" id="aclassSeatView_html_ad7a27daf72c75d5a894efd52a0100927"><div class="ttname"><a href="#ad7a27daf72c75d5a894efd52a0100927">SeatView::SeatView</a></div><div class="ttdeci">SeatView(std::shared_ptr&lt; ISeat &gt; seat, const SeatStatus &amp;status)</div><div class="ttdoc">Constructs a SeatView with seat data and status.</div><div class="ttdef"><b>Definition</b> <a href="SeatView_8cpp_source.html#l00003">SeatView.cpp:3</a></div></div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classISeat.html" title="Abstract interface for theater seat implementations.">ISeat</a> </dd>
+<dd>
+<a class="el" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19" title="Enumeration representing the availability status of a seat.">SeatStatus</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00063">63</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad7a27daf72c75d5a894efd52a0100927" name="ad7a27daf72c75d5a894efd52a0100927"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7a27daf72c75d5a894efd52a0100927">&#9670;&#160;</a></span>SeatView()</h2>
@@ -127,6 +163,34 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs a <a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> with seat data and status. </p>
+<p>Creates a new view model instance that combines the seat domain object with its current booking status for UI presentation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seat</td><td>Shared pointer to the seat entity </td></tr>
+    <tr><td class="paramname">status</td><td>Current booking status of the seat</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>seat must not be null </dd>
+<dd>
+status must be a valid <a class="el" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19" title="Enumeration representing the availability status of a seat.">SeatStatus</a> value </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="classSeatView.html" title="View model combining seat information with its booking status.">SeatView</a> is initialized with provided seat and status</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if seat is null</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The constructor creates a lightweight wrapper without copying seat data </dd>
+<dd>
+The seat object is shared, so modifications to the underlying seat will be reflected in this view</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> <a class="code hl_variable" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a> = std::make_shared&lt;SingleSeat&gt;(<span class="stringliteral">&quot;B5&quot;</span>, 150.0);</div>
+<div class="line"><a class="code hl_function" href="#ad7a27daf72c75d5a894efd52a0100927">SeatView</a> view(<a class="code hl_variable" href="#abd57bd93ddb52ea975a8a4b6c01dae1b">seat</a>, <a class="code hl_enumvalue" href="SeatView_8h.html#ade6bb1ecbc1044a6f6b53edd38ac5e19a1e229ccb8b53a57de4ebb11c2d15272e">SeatStatus::AVAILABLE</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// View is ready for UI binding</span></div>
+<div class="line">displaySeat(view);</div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="SeatView_8cpp_source.html#l00003">3</a> of file <a class="el" href="SeatView_8cpp_source.html">SeatView.cpp</a>.</p>
 
 </div>
@@ -144,7 +208,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00012">12</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
+<p>The seat domain object containing seat details. </p>
+<p>Shared pointer to the underlying seat entity that contains all the seat-specific information such as ID, type, and price.</p>
+<dl class="section note"><dt>Note</dt><dd>This should never be null after construction </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00073">73</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
 
 </div>
 </div>
@@ -160,7 +228,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00013">13</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
+<p>Current booking status of the seat. </p>
+<p>Indicates whether the seat is currently available for booking or has already been reserved by another customer. </p>
+
+<p class="definition">Definition at line <a class="el" href="SeatView_8h_source.html#l00081">81</a> of file <a class="el" href="SeatView_8h_source.html">SeatView.h</a>.</p>
 
 </div>
 </div>

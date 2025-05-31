@@ -126,11 +126,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a86e46c1cbf1b1a13c4756673dcf9bbff" id="r_a86e46c1cbf1b1a13c4756673dcf9bbff"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIMovieRepository.html">IMovieRepository</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e46c1cbf1b1a13c4756673dcf9bbff">_movieRepository</a></td></tr>
 <tr class="memdesc:a86e46c1cbf1b1a13c4756673dcf9bbff"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> repository for movie data management.  <br /></td></tr>
 <tr class="memitem:a9805ccfb6ab3e8bde4dde160e74f1ab6" id="r_a9805ccfb6ab3e8bde4dde160e74f1ab6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIBookingRepository.html">IBookingRepository</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9805ccfb6ab3e8bde4dde160e74f1ab6">_bookingRepository</a></td></tr>
-<tr class="memdesc:a9805ccfb6ab3e8bde4dde160e74f1ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Booking repository for ticket booking operations.  <br /></td></tr>
+<tr class="memdesc:a9805ccfb6ab3e8bde4dde160e74f1ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> repository for ticket booking operations.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main application class that orchestrates the entire movie ticket booking system. </p>
-<p>This class serves as the entry point and main controller for the <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> Ticket Booking System. It manages the initialization of all services, repositories, and the main application loop.</p>
+<p>This class serves as the entry point and main controller for the <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> Ticket <a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> System. It manages the initialization of all services, repositories, and the main application loop.</p>
 <p>The <a class="el" href="classApp.html" title="Main application class that orchestrates the entire movie ticket booking system.">App</a> class implements the following responsibilities:</p><ul>
 <li>Initialize database connections and repositories</li>
 <li>Set up the service layer and dependency injection</li>
@@ -147,7 +147,7 @@ Private Attributes</h2></td></tr>
 </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classSessionManager.html" title="Manages user sessions and context transitions in the movie booking system.">SessionManager</a> </dd>
 <dd>
-<a class="el" href="classSFMLUIManager.html">SFMLUIManager</a> </dd>
+<a class="el" href="classSFMLUIManager.html" title="Complete user interface management using SFML graphics library.">SFMLUIManager</a> </dd>
 <dd>
 <a class="el" href="classDatabaseConnection.html" title="Singleton class for managing SQLite database connections.">DatabaseConnection</a> </dd></dl>
 
@@ -365,7 +365,7 @@ SessionManager::processEvents() </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Booking repository for ticket booking operations. </p>
+<p><a class="el" href="structBooking.html" title="Represents a movie ticket booking record.">Booking</a> repository for ticket booking operations. </p>
 <p>Handles booking transactions, seat reservations, and booking history management. </p>
 
 <p class="definition">Definition at line <a class="el" href="App_8h_source.html#l00105">105</a> of file <a class="el" href="App_8h_source.html">App.h</a>.</p>

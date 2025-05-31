@@ -92,35 +92,39 @@ $(function(){initNavTree('Booking_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Booking.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Booking_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _BOOKING_H_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _BOOKING_H_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="ShowTime_8h.html">ShowTime.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef _BOOKING_H_</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define _BOOKING_H_</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="ShowTime_8h.html">ShowTime.h</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">struct </span>Booking {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">int</span> bookingID;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">int</span> movieID;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::string movieTitle;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    ShowTime showTime;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    Booking(</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; bookingID,</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; movieID,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">const</span> std::string&amp; movieTitle,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keyword">const</span> ShowTime&amp; showTime</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    );</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif  </span></div>
-<div class="ttc" id="aShowTime_8h_html"><div class="ttname"><a href="ShowTime_8h.html">ShowTime.h</a></div></div>
+<a href="Booking_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef _BOOKING_H_</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define _BOOKING_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ShowTime_8h.html">ShowTime.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structBooking.html">   35</a></span><span class="keyword">struct </span><a class="code hl_function" href="structBooking.html#a5aac3a2e175f48f32dd64cfb78c578e1">Booking</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structBooking.html#a4a2e10af96f401ba1bfd1f07c037f1cb">   42</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBooking.html#a4a2e10af96f401ba1bfd1f07c037f1cb">bookingID</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structBooking.html#a060ab584adf57aa7903e30ab97bcdba3">   50</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBooking.html#a060ab584adf57aa7903e30ab97bcdba3">movieID</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structBooking.html#a7ea9656e65c4808a35178bd8798c7394">   58</a></span>    std::string <a class="code hl_variable" href="structBooking.html#a7ea9656e65c4808a35178bd8798c7394">movieTitle</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62">   66</a></span>    <a class="code hl_struct" href="structShowTime.html">ShowTime</a> <a class="code hl_variable" href="structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62">showTime</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_function" href="structBooking.html#a5aac3a2e175f48f32dd64cfb78c578e1">Booking</a>(</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; <a class="code hl_variable" href="structBooking.html#a4a2e10af96f401ba1bfd1f07c037f1cb">bookingID</a>,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; <a class="code hl_variable" href="structBooking.html#a060ab584adf57aa7903e30ab97bcdba3">movieID</a>,</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">const</span> std::string&amp; <a class="code hl_variable" href="structBooking.html#a7ea9656e65c4808a35178bd8798c7394">movieTitle</a>,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structShowTime.html">ShowTime</a>&amp; <a class="code hl_variable" href="structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62">showTime</a></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    );</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aShowTime_8h_html"><div class="ttname"><a href="ShowTime_8h.html">ShowTime.h</a></div><div class="ttdoc">Movie showtime data structure for scheduling information.</div></div>
+<div class="ttc" id="astructBooking_html_a060ab584adf57aa7903e30ab97bcdba3"><div class="ttname"><a href="structBooking.html#a060ab584adf57aa7903e30ab97bcdba3">Booking::movieID</a></div><div class="ttdeci">int movieID</div><div class="ttdoc">ID of the booked movie.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">Booking.h:50</a></div></div>
+<div class="ttc" id="astructBooking_html_a0facdc7db309cb80c8281a0af1a7bf62"><div class="ttname"><a href="structBooking.html#a0facdc7db309cb80c8281a0af1a7bf62">Booking::showTime</a></div><div class="ttdeci">ShowTime showTime</div><div class="ttdoc">Showtime details for this booking.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">Booking.h:66</a></div></div>
+<div class="ttc" id="astructBooking_html_a4a2e10af96f401ba1bfd1f07c037f1cb"><div class="ttname"><a href="structBooking.html#a4a2e10af96f401ba1bfd1f07c037f1cb">Booking::bookingID</a></div><div class="ttdeci">int bookingID</div><div class="ttdoc">Unique identifier for this booking.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">Booking.h:42</a></div></div>
+<div class="ttc" id="astructBooking_html_a5aac3a2e175f48f32dd64cfb78c578e1"><div class="ttname"><a href="structBooking.html#a5aac3a2e175f48f32dd64cfb78c578e1">Booking::Booking</a></div><div class="ttdeci">Booking(const int &amp;bookingID, const int &amp;movieID, const std::string &amp;movieTitle, const ShowTime &amp;showTime)</div><div class="ttdoc">Constructs a Booking with all required information.</div><div class="ttdef"><b>Definition</b> <a href="Booking_8cpp_source.html#l00002">Booking.cpp:2</a></div></div>
+<div class="ttc" id="astructBooking_html_a7ea9656e65c4808a35178bd8798c7394"><div class="ttname"><a href="structBooking.html#a7ea9656e65c4808a35178bd8798c7394">Booking::movieTitle</a></div><div class="ttdeci">std::string movieTitle</div><div class="ttdoc">Title of the booked movie.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">Booking.h:58</a></div></div>
+<div class="ttc" id="astructShowTime_html"><div class="ttname"><a href="structShowTime.html">ShowTime</a></div><div class="ttdoc">Data structure representing a movie showtime schedule.</div><div class="ttdef"><b>Definition</b> <a href="ShowTime_8h_source.html#l00059">ShowTime.h:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

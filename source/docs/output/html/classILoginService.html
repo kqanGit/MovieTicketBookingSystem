@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <p>The service uses dependency inversion principle, allowing the high-level authentication logic to depend on abstractions rather than concrete implementations.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classLoginService.html" title="Concrete implementation of user authentication service.">LoginService</a> </dd>
 <dd>
-<a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="ILoginService_8h_source.html#l00031">31</a> of file <a class="el" href="ILoginService_8h_source.html">ILoginService.h</a>.</p>
@@ -191,10 +191,10 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::optional&lt;AccountInformation&gt; containing account info if successful, std::nullopt if authentication fails</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>username and password must not be empty </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>If successful, returns valid <a class="el" href="structAccountInformation.html">AccountInformation</a> with user details</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>If successful, returns valid <a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> with user details</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>In production systems, passwords should be properly hashed and salted </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>This method may block during database/network operations</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html">AccountInformation</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structAccountInformation.html" title="Data structure containing user account information and credentials.">AccountInformation</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>v1.0 </dd></dl>
 
 <p>Implemented in <a class="el" href="classLoginService.html#a96d6fedd6d92c74bb7aabbd379a154f1">LoginService</a>.</p>

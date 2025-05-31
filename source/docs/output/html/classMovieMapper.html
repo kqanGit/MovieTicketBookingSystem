@@ -93,17 +93,50 @@ $(function(){initNavTree('classMovieMapper.html','','classMovieMapper-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Provides mapping functionality between <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> entities and <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> objects.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="MovieMapper_8h_source.html">repository/MovieMapper.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a815231cf0f3fa0746ab72609da13efb6" id="r_a815231cf0f3fa0746ab72609da13efb6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classMovieDTO.html">MovieDTO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a815231cf0f3fa0746ab72609da13efb6">toDTO</a> (const std::shared_ptr&lt; <a class="el" href="classIMovie.html">IMovie</a> &gt; &amp;movie)</td></tr>
+<tr class="memdesc:a815231cf0f3fa0746ab72609da13efb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity to a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> object.  <br /></td></tr>
 <tr class="memitem:a3ea7ba387aa64c03ecd5029982abaa88" id="r_a3ea7ba387aa64c03ecd5029982abaa88"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classIMovie.html">IMovie</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ea7ba387aa64c03ecd5029982abaa88">toEntity</a> (const <a class="el" href="classMovieDTO.html">MovieDTO</a> &amp;dto)</td></tr>
+<tr class="memdesc:a3ea7ba387aa64c03ecd5029982abaa88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity from a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> object.  <br /></td></tr>
 <tr class="memitem:a2b0b0ebb002ecb76f84da2731eb0f823" id="r_a2b0b0ebb002ecb76f84da2731eb0f823"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b0b0ebb002ecb76f84da2731eb0f823">updateFromDTO</a> (std::shared_ptr&lt; <a class="el" href="classIMovie.html">IMovie</a> &gt; movie, const <a class="el" href="classMovieDTO.html">MovieDTO</a> &amp;dto)</td></tr>
+<tr class="memdesc:a2b0b0ebb002ecb76f84da2731eb0f823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates an existing <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity with data from a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a>.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MovieMapper_8h_source.html#l00008">8</a> of file <a class="el" href="MovieMapper_8h_source.html">MovieMapper.h</a>.</p>
+<div class="textblock"><p>Provides mapping functionality between <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> entities and <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> objects. </p>
+<p>The <a class="el" href="classMovieMapper.html" title="Provides mapping functionality between Movie entities and MovieDTO objects.">MovieMapper</a> class implements the Data Mapper pattern, providing static methods for converting between domain objects (<a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a>) and data transfer objects (<a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a>). This separation allows for clean data transformation between the business layer and persistence layer while maintaining proper abstraction.</p>
+<p>Key Features:</p><ul>
+<li>Bidirectional mapping between entities and DTOs</li>
+<li>Static utility methods for clean API usage</li>
+<li>Thread-safe operations (stateless design)</li>
+<li>Null-safe implementations</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>This class follows the static utility pattern - all methods are static and the class cannot be instantiated.</dd></dl>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="comment">// Convert entity to DTO for database operations</span></div>
+<div class="line">std::shared_ptr&lt;IMovie&gt; movie = getMovieFromSomewhere();</div>
+<div class="line"><a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> dto = <a class="code hl_function" href="#a815231cf0f3fa0746ab72609da13efb6">MovieMapper::toDTO</a>(movie);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Convert DTO back to entity after database retrieval</span></div>
+<div class="line"><a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> retrievedDto = database.getMovie(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="keyword">auto</span> entity = <a class="code hl_function" href="#a3ea7ba387aa64c03ecd5029982abaa88">MovieMapper::toEntity</a>(retrievedDto);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Update existing entity with DTO data</span></div>
+<div class="line"><a class="code hl_function" href="#a2b0b0ebb002ecb76f84da2731eb0f823">MovieMapper::updateFromDTO</a>(existingMovie, updatedDto);</div>
+<div class="ttc" id="aclassMovieDTO_html"><div class="ttname"><a href="classMovieDTO.html">MovieDTO</a></div><div class="ttdoc">Data Transfer Object for efficient movie data transmission.</div><div class="ttdef"><b>Definition</b> <a href="MovieDTO_8h_source.html#l00075">MovieDTO.h:75</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a2b0b0ebb002ecb76f84da2731eb0f823"><div class="ttname"><a href="#a2b0b0ebb002ecb76f84da2731eb0f823">MovieMapper::updateFromDTO</a></div><div class="ttdeci">static void updateFromDTO(std::shared_ptr&lt; IMovie &gt; movie, const MovieDTO &amp;dto)</div><div class="ttdoc">Updates an existing IMovie entity with data from a MovieDTO.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00026">MovieMapper.cpp:26</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a3ea7ba387aa64c03ecd5029982abaa88"><div class="ttname"><a href="#a3ea7ba387aa64c03ecd5029982abaa88">MovieMapper::toEntity</a></div><div class="ttdeci">static std::shared_ptr&lt; IMovie &gt; toEntity(const MovieDTO &amp;dto)</div><div class="ttdoc">Creates an IMovie entity from a MovieDTO object.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00016">MovieMapper.cpp:16</a></div></div>
+<div class="ttc" id="aclassMovieMapper_html_a815231cf0f3fa0746ab72609da13efb6"><div class="ttname"><a href="#a815231cf0f3fa0746ab72609da13efb6">MovieMapper::toDTO</a></div><div class="ttdeci">static MovieDTO toDTO(const std::shared_ptr&lt; IMovie &gt; &amp;movie)</div><div class="ttdoc">Converts an IMovie entity to a MovieDTO object.</div><div class="ttdef"><b>Definition</b> <a href="MovieMapper_8cpp_source.html#l00007">MovieMapper.cpp:7</a></div></div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> </dd>
+<dd>
+<a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="MovieMapper_8h_source.html#l00051">51</a> of file <a class="el" href="MovieMapper_8h_source.html">MovieMapper.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a815231cf0f3fa0746ab72609da13efb6" name="a815231cf0f3fa0746ab72609da13efb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a815231cf0f3fa0746ab72609da13efb6">&#9670;&#160;</a></span>toDTO()</h2>
@@ -128,6 +161,28 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Converts an <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity to a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> object. </p>
+<p>Transforms a domain movie object into a data transfer object suitable for database operations or serialization. All movie properties are mapped to their corresponding DTO fields.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movie</td><td>Shared pointer to the movie entity to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> object containing the mapped data</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>movie must not be null </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returned DTO contains all data from the input movie</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if movie pointer is null</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method is thread-safe and does not modify the input entity</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line">std::shared_ptr&lt;IMovie&gt; movie = std::make_shared&lt;Movie&gt;(<span class="stringliteral">&quot;Inception&quot;</span>, 148, <span class="stringliteral">&quot;Sci-Fi&quot;</span>);</div>
+<div class="line"><a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> dto = <a class="code hl_function" href="#a815231cf0f3fa0746ab72609da13efb6">MovieMapper::toDTO</a>(movie);</div>
+<div class="line"><span class="comment">// dto now contains all movie data for persistence operations</span></div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="MovieMapper_8cpp_source.html#l00007">7</a> of file <a class="el" href="MovieMapper_8cpp_source.html">MovieMapper.cpp</a>.</p>
 
 </div>
@@ -155,6 +210,30 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creates an <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity from a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> object. </p>
+<p>Constructs a new movie domain object from the provided DTO data. This method creates a concrete <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> implementation that implements the <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> interface.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dto</td><td>The <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> containing the source data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the newly created movie entity</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>dto must contain valid movie data </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns a valid <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> implementation with DTO data</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if DTO contains invalid data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Creates a new <a class="el" href="classMovie.html" title="Concrete implementation of movie entity in the booking system.">Movie</a> instance - does not reuse existing objects </dd>
+<dd>
+The returned object is completely independent of the input DTO</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> dto(<span class="stringliteral">&quot;Avatar&quot;</span>, 162, <span class="stringliteral">&quot;Action&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> movie = <a class="code hl_function" href="#a3ea7ba387aa64c03ecd5029982abaa88">MovieMapper::toEntity</a>(dto);</div>
+<div class="line"><span class="comment">// movie is now a fully functional IMovie object</span></div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="MovieMapper_8cpp_source.html#l00016">16</a> of file <a class="el" href="MovieMapper_8cpp_source.html">MovieMapper.cpp</a>.</p>
 
 </div>
@@ -186,6 +265,33 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates an existing <a class="el" href="classIMovie.html" title="Abstract interface defining the contract for movie entities.">IMovie</a> entity with data from a <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a>. </p>
+<p>Modifies the properties of an existing movie object using the values from the provided DTO. This is useful for updating entities with new data from the database without creating new objects.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movie</td><td>Shared pointer to the movie entity to update </td></tr>
+    <tr><td class="paramname">dto</td><td>The <a class="el" href="classMovieDTO.html" title="Data Transfer Object for efficient movie data transmission.">MovieDTO</a> containing the new data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>movie must not be null </dd>
+<dd>
+dto must contain valid movie data </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>movie contains all updated data from dto</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if movie is null or dto is invalid</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method modifies the existing movie object in-place </dd>
+<dd>
+Thread safety depends on the underlying movie implementation</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line">std::shared_ptr&lt;IMovie&gt; movie = getExistingMovie();</div>
+<div class="line"><a class="code hl_class" href="classMovieDTO.html">MovieDTO</a> updatedData(<span class="stringliteral">&quot;New Title&quot;</span>, 120, <span class="stringliteral">&quot;Drama&quot;</span>);</div>
+<div class="line"><a class="code hl_function" href="#a2b0b0ebb002ecb76f84da2731eb0f823">MovieMapper::updateFromDTO</a>(movie, updatedData);</div>
+<div class="line"><span class="comment">// movie now has the updated properties</span></div>
+</div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="MovieMapper_8cpp_source.html#l00026">26</a> of file <a class="el" href="MovieMapper_8cpp_source.html">MovieMapper.cpp</a>.</p>
 
 </div>

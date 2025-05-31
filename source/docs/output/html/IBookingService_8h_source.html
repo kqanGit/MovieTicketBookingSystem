@@ -92,35 +92,36 @@ $(function(){initNavTree('IBookingService_8h_source.html','',''); });
   <div class="headertitle"><div class="title">IBookingService.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="IBookingService_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _IBOOKINGSERVICE_H_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _IBOOKINGSERVICE_H_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="SeatView_8h.html">../repository/SeatView.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="BookingView_8h.html">../repository/BookingView.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifndef _IBOOKINGSERVICE_H_</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define _IBOOKINGSERVICE_H_</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="SeatView_8h.html">../repository/SeatView.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="BookingView_8h.html">../repository/BookingView.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">class </span>IBookingService {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">virtual</span> ~IBookingService() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> createBooking(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; userID, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; showTimeID, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seats) = 0;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">virtual</span> std::vector&lt;BookingView&gt; viewBookingHistory(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; userID) = 0;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">virtual</span> std::vector&lt;SeatView&gt; viewSeatsStatus(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; showTimeID) = 0;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>};</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aBookingView_8h_html"><div class="ttname"><a href="BookingView_8h.html">BookingView.h</a></div></div>
-<div class="ttc" id="aSeatView_8h_html"><div class="ttname"><a href="SeatView_8h.html">SeatView.h</a></div></div>
+<a href="IBookingService_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef _IBOOKINGSERVICE_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define _IBOOKINGSERVICE_H_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="SeatView_8h.html">../repository/SeatView.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="BookingView_8h.html">../repository/BookingView.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classIBookingService.html">   35</a></span><span class="keyword">class </span><a class="code hl_interface" href="classIBookingService.html">IBookingService</a> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classIBookingService.html#a9e8df42c300c144f7d5899ca16b9b0a4">   40</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classIBookingService.html#a9e8df42c300c144f7d5899ca16b9b0a4">~IBookingService</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classIBookingService.html#a55129066d6ab39ff22e322a82af55e21">   68</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIBookingService.html#a55129066d6ab39ff22e322a82af55e21">createBooking</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; userID, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; showTimeID, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seats) = 0;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classIBookingService.html#ad183f42f5ee5570eb1bd84ef46e2e1b1">   91</a></span>    <span class="keyword">virtual</span> std::vector&lt;BookingView&gt; <a class="code hl_function" href="classIBookingService.html#ad183f42f5ee5570eb1bd84ef46e2e1b1">viewBookingHistory</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; userID) = 0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classIBookingService.html#a3c46878529549353dad22d30f9d7a591">  116</a></span>    <span class="keyword">virtual</span> std::vector&lt;SeatView&gt; <a class="code hl_function" href="classIBookingService.html#a3c46878529549353dad22d30f9d7a591">viewSeatsStatus</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; showTimeID) = 0;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>};</div>
+</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aBookingView_8h_html"><div class="ttname"><a href="BookingView_8h.html">BookingView.h</a></div><div class="ttdoc">Data Transfer Object for complete booking information display.</div></div>
+<div class="ttc" id="aSeatView_8h_html"><div class="ttname"><a href="SeatView_8h.html">SeatView.h</a></div><div class="ttdoc">Seat view model for UI representation.</div></div>
+<div class="ttc" id="aclassIBookingService_html"><div class="ttname"><a href="classIBookingService.html">IBookingService</a></div><div class="ttdoc">Interface defining booking operations for movie tickets.</div><div class="ttdef"><b>Definition</b> <a href="#l00035">IBookingService.h:35</a></div></div>
+<div class="ttc" id="aclassIBookingService_html_a3c46878529549353dad22d30f9d7a591"><div class="ttname"><a href="classIBookingService.html#a3c46878529549353dad22d30f9d7a591">IBookingService::viewSeatsStatus</a></div><div class="ttdeci">virtual std::vector&lt; SeatView &gt; viewSeatsStatus(const int &amp;showTimeID)=0</div><div class="ttdoc">Retrieves seat availability status for a showtime.</div></div>
+<div class="ttc" id="aclassIBookingService_html_a55129066d6ab39ff22e322a82af55e21"><div class="ttname"><a href="classIBookingService.html#a55129066d6ab39ff22e322a82af55e21">IBookingService::createBooking</a></div><div class="ttdeci">virtual void createBooking(const int &amp;userID, const int &amp;showTimeID, const std::vector&lt; std::string &gt; &amp;seats)=0</div><div class="ttdoc">Creates a new booking for specified seats and showtime.</div></div>
+<div class="ttc" id="aclassIBookingService_html_a9e8df42c300c144f7d5899ca16b9b0a4"><div class="ttname"><a href="classIBookingService.html#a9e8df42c300c144f7d5899ca16b9b0a4">IBookingService::~IBookingService</a></div><div class="ttdeci">virtual ~IBookingService()=default</div><div class="ttdoc">Virtual destructor for proper inheritance.</div></div>
+<div class="ttc" id="aclassIBookingService_html_ad183f42f5ee5570eb1bd84ef46e2e1b1"><div class="ttname"><a href="classIBookingService.html#ad183f42f5ee5570eb1bd84ef46e2e1b1">IBookingService::viewBookingHistory</a></div><div class="ttdeci">virtual std::vector&lt; BookingView &gt; viewBookingHistory(const int &amp;userID)=0</div><div class="ttdoc">Retrieves booking history for a specific user.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
