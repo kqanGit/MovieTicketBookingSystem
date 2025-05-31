@@ -205,8 +205,8 @@ Our implementation showcases multiple sophisticated design patterns for enterpri
 | **Role** | **Name** | **Student ID** | **Primary Responsibilities** |
 |----------|----------|----------------|------------------------------|
 | **Team Leader** | Bùi Minh Quân | 23120337 | Project architecture, booking system, documentation, team coordination |
-| **Backend Developer** | Bửu Huỳnh Vĩnh Phúc | 23120328 | Authentication system, database design, security implementation |
-| **Frontend Developer** | Trương Thành Phát | 23120319 | Movie management, UI design, database modeling |
+| **Member** | Bửu Huỳnh Vĩnh Phúc | 23120328 | Authentication system, database design, security implementation |
+| **Member** | Trương Thành Phát | 23120319 | Movie management, UI design, database modeling |
 
 ### Detailed Task Distribution
 
