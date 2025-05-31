@@ -4,10 +4,10 @@ direction TB
 
     %% Core Singletons
     class ServiceRegistry {
-        <<singleton>>
-        +getInstance()
-        +registerService()
-        +getService()
+        <<static>>
+        +addSingleton~T~(shared_ptr~T~ service)
+        +getSingleton~T~()
+        -_services: map~ string, shared_ptr~void~ ~
     }
 
     class SessionManager {
@@ -189,17 +189,17 @@ direction TB
     BookingRepositorySQL --> DatabaseConnection
     MovieRepositorySQL --> DatabaseConnection
 
-    %% Core System Dependencies
-    ServiceRegistry --> LoginService
-    ServiceRegistry --> RegisterService
-    ServiceRegistry --> BookingService
-    ServiceRegistry --> MovieViewerService
-    ServiceRegistry --> MovieManagerService
-    ServiceRegistry --> UserInformationService
-    ServiceRegistry --> LogoutService
-    ServiceRegistry --> AuthenticationRepositorySQL
-    ServiceRegistry --> BookingRepositorySQL
-    ServiceRegistry --> MovieRepositorySQL
+    %% ServiceRegistry stores all services
+    ServiceRegistry ..> ILoginService : stores
+    ServiceRegistry ..> IRegisterService : stores
+    ServiceRegistry ..> IBookingService : stores
+    ServiceRegistry ..> IMovieViewerService : stores
+    ServiceRegistry ..> IMovieManagerService : stores
+    ServiceRegistry ..> IUserInformationService : stores
+    ServiceRegistry ..> ILogoutService : stores
+    ServiceRegistry ..> IAuthenticationRepository : stores
+    ServiceRegistry ..> IBookingRepository : stores
+    ServiceRegistry ..> IMovieRepository : stores
 
     SessionManager --> AccountInformation
 ```
