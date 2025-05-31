@@ -1499,20 +1499,20 @@ void SFMLUIManager::renderSeatSelection() {
     sf::Text instructions = createText("Click on available seats to select them for booking", 220, 675, 14);
     instructions.setFillColor(sf::Color(200, 200, 200));
     window.draw(instructions);      // Selected seats info
-    if (!selectedSeats.empty()) {
-        // Background for selected seats info
-        sf::RectangleShape selectedBg(sf::Vector2f(700, 40));
-        selectedBg.setPosition(200, 710);
-        selectedBg.setFillColor(sf::Color(60, 80, 60, 200));
-        selectedBg.setOutlineThickness(1);
-        selectedBg.setOutlineColor(sf::Color(0, 150, 0));
-        window.draw(selectedBg);
+    // if (!selectedSeats.empty()) {
+    //     // Background for selected seats info
+    //     sf::RectangleShape selectedBg(sf::Vector2f(700, 40));
+    //     selectedBg.setPosition(200, 710);
+    //     selectedBg.setFillColor(sf::Color(60, 80, 60, 200));
+    //     selectedBg.setOutlineThickness(1);
+    //     selectedBg.setOutlineColor(sf::Color(0, 150, 0));
+    //     window.draw(selectedBg);
         
-        // Title for selected seats
-        sf::Text selectedTitle = createText("Selected Seats:", 220, 720, 16);
-        selectedTitle.setStyle(sf::Text::Bold);
-        selectedTitle.setFillColor(sf::Color(220, 255, 220));
-        window.draw(selectedTitle);
+        // // Title for selected seats
+        // sf::Text selectedTitle = createText("Selected Seats:", 220, 720, 16);
+        // selectedTitle.setStyle(sf::Text::Bold);
+        // selectedTitle.setFillColor(sf::Color(220, 255, 220));
+        // window.draw(selectedTitle);
         
         // // Display each seat as a mini icon with text
         // float xPos = 340;
@@ -1530,7 +1530,7 @@ void SFMLUIManager::renderSeatSelection() {
         //     xPos += 60; // Space between seats
         // }
 
-    }
+    //}
 
         // Display each seat as a mini icon with text in a square/grid layout (right side)
         float gridStartX = 950;  // Gần cạnh phải của cửa sổ (1280px)
