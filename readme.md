@@ -198,7 +198,6 @@ Our implementation showcases multiple sophisticated design patterns for enterpri
 
 ---
 
-## 👥 Team Information
 
 ### Development Team
 
@@ -245,6 +244,10 @@ Our implementation showcases multiple sophisticated design patterns for enterpri
 | **Bùi Minh Quân** | 34% | Architecture, Booking, Leadership | System design, core booking logic, project coordination |
 | **Bửu Huỳnh Vĩnh Phúc** | 33% |  Authenticate, Database, API | Authentication system, API |
 | **Trương Thành Phát** | 33% | Frontend, UI/UX, Movies | User interface, movie management, visual design, video demo GUI |
+
+### Commit activities
+
+![GitHub Commit Activity](image/commit_activity.png)
 
 ### Grade Distribution Policy
 - **Equal Distribution**: All team members receive the same grade based on overall project quality
@@ -461,6 +464,9 @@ The project uses Doxygen for comprehensive API documentation generation. Follow 
 # Navigate to docs directory
 cd source/docs
 
+# First time setup: Enable PowerShell script execution (if needed)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 # Generate documentation using PowerShell script
 .\generate_docs.ps1
 
@@ -474,6 +480,19 @@ cd source/docs
 .\generate_docs.ps1 -Clean
 ```
 
+**Troubleshooting PowerShell Script Execution:**
+If you encounter "execution of scripts is disabled" error:
+```powershell
+# Option 1: Enable for current user (Recommended)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Option 2: Enable for current session only
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+# Option 3: Run script with bypass flag
+PowerShell -ExecutionPolicy Bypass -File .\generate_docs.ps1
+```
+
 **Manual Generation (if PowerShell script is not available):**
 ```powershell
 # Navigate to docs directory
@@ -483,6 +502,8 @@ cd source/docs
 doxygen Doxyfile
 
 # Documentation will be generated in output/ directory
+cd output/html
+index.html
 ```
 
 **Documentation Output:**
