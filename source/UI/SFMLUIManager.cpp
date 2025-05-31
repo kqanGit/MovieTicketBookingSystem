@@ -2028,7 +2028,6 @@ void SFMLUIManager::createBooking() {
             
             // Booking successful - show success message
             previousState = UIState::MAIN_MENU;
-            selectedSeats.clear();
             
             // Create detailed success message
             std::string movieTitle = (selectedMovieIndex < movies.size()) ? movies[selectedMovieIndex].title : "Movie";
@@ -2039,12 +2038,13 @@ void SFMLUIManager::createBooking() {
                 if (i > 0) seatsInfo += ", ";
                 seatsInfo += selectedSeats[i];
             }
-              successMessage = std::string("Booking Successful!\n\n") +
+            successMessage = std::string("Booking Successful!\n\n") +
                            "Movie: " + movieTitle + "\n" +
                            "Show Time: " + showTimeInfo + "\n" +
                            "Seats: " + seatsInfo + "\n\n" +
                            "Thank you for your booking!";
             
+            selectedSeats.clear(); // Moved here
             currentState = UIState::SUCCESS_MESSAGE;
         } catch (const std::exception& e) {
             statusMessage = "Booking failed: " + std::string(e.what());
@@ -2189,9 +2189,9 @@ void SFMLUIManager::addMovie() {
             // Create success message showing the total number of showtimes
             std::string showtimeMessage;
             if (movieShowTimes.empty()) {
-                showtimeMessage = "\\nNo showtimes added. You can add them later.";
+                showtimeMessage = "\nNo showtimes added. You can add them later.";
             } else {
-                showtimeMessage = "\\n" + std::to_string(movieShowTimes.size()) + " showtime(s) added to the movie.";
+                showtimeMessage = "\n" + std::to_string(movieShowTimes.size()) + " showtime(s) added to the movie.";
             }
             
             showSuccessMessage("New movie \'" + editMovieTitle + "\' added successfully!" + showtimeMessage); // Keep user-facing message format
