@@ -577,11 +577,10 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         case UIState::MOVIE_MANAGEMENT: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             sf::RectangleShape addMovieBtn = createButton(200, 50, 150, 40);  // Match coordinates from render function
-            
-            // Scroll up button
-            sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
-            // Scroll down button
-            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
+              // Scroll up button - position updated to match renderMovieManagement
+            sf::RectangleShape scrollUpBtn = createStyledButton(950, 50, 50, 30, sf::Color(100, 100, 150));
+            // Scroll down button - position updated to match renderMovieManagement
+            sf::RectangleShape scrollDownBtn = createStyledButton(950, 680, 50, 30, sf::Color(100, 100, 150));
               if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::ADMIN_PANEL;
             } else if (isButtonClicked(addMovieBtn, mousePos)) {
@@ -711,7 +710,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         
         case UIState::SHOWTIME_MANAGEMENT: {
             // Only handle back button and delete buttons
-            sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+            sf::RectangleShape backButton = createStyledButton(50, 500, 100, 40, sf::Color(100, 100, 100));
             
             if (isButtonClicked(backButton, mousePos)) {
                 currentState = UIState::MOVIE_MANAGEMENT;
@@ -1748,10 +1747,9 @@ void SFMLUIManager::renderMovieManagement() {
     
     // Scroll buttons
     const int maxVisibleMovies = 7; // Số phim tối đa hiển thị đồng thời
-    
-    // Scroll up button
-    sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
-    sf::Text scrollUpText = createText("^", 968, 115, 18);
+      // Scroll up button - moved higher
+    sf::RectangleShape scrollUpBtn = createStyledButton(950, 50, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollUpText = createText("^", 968, 55, 18);
     if (movieListScrollOffset > 0) {
         scrollUpBtn.setFillColor(sf::Color(100, 100, 150));
         scrollUpText.setFillColor(sf::Color::White);
@@ -1761,10 +1759,9 @@ void SFMLUIManager::renderMovieManagement() {
     }
     window.draw(scrollUpBtn);
     window.draw(scrollUpText);
-    
-    // Scroll down button
-    sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
-    sf::Text scrollDownText = createText("v", 968, 705, 18);
+      // Scroll down button - positioned at the bottom of the screen
+    sf::RectangleShape scrollDownBtn = createStyledButton(950, 680, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollDownText = createText("v", 968, 685, 18);
     if (movieListScrollOffset + maxVisibleMovies < movies.size()) {
         scrollDownBtn.setFillColor(sf::Color(100, 100, 150));
         scrollDownText.setFillColor(sf::Color::White);
@@ -2400,13 +2397,12 @@ void SFMLUIManager::renderShowtimeManagement() {
         
         sf::Text deleteText = createText("Delete",  720, 312 + i * 30, 12);
         deleteText.setFillColor(sf::Color::White);
-        window.draw(deleteText);
-    }
-      // Back button
-    sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
+        window.draw(deleteText);    }
+      // Back button - moved up from bottom of screen to be more visible
+    sf::RectangleShape backButton = createStyledButton(50, 500, 100, 40, sf::Color(100, 100, 100));
     window.draw(backButton);
     
-    sf::Text backText = createText("Back", 85, 735, 16);
+    sf::Text backText = createText("Back", 85, 515, 16);
     backText.setFillColor(sf::Color::White);
     window.draw(backText);
 }
