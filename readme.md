@@ -417,16 +417,16 @@ lcov --capture --directory . --output-file coverage.info
 
 ### Academic Assessment Framework
 
-| **Evaluation Criteria** | **Weight** | **Our Implementation** | **Score** |
-|--------------------------|------------|-------------------------|-----------|
-| **System Correctness** | 25% | ✅ Complete functional system with all planned features | Excellent |
-| **OOP Implementation** | 20% | ✅ Comprehensive use of classes, inheritance, polymorphism, encapsulation | Excellent |
-| **System Design Quality** | 15% | ✅ Clean architecture, clear separation of concerns, scalable design | Excellent |
-| **Design Patterns Usage** | 15% | ✅ Multiple patterns: Singleton, Factory, Repository, DI, Visitor | Excellent |
-| **Testing & Quality** | 10% | ✅ Comprehensive unit testing, manual testing, code review | Very Good |
-| **User Interface** | 8% | ✅ Intuitive SFML-based GUI with complete functionality | Very Good |
-| **Team Collaboration** | 4% | ✅ Effective task distribution, version control, communication | Excellent |
-| **Documentation** | 3% | ✅ Complete UML diagrams, code documentation, user manual | Excellent |
+| **Evaluation Criteria** | **Weight** | **Our Implementation** |
+|--------------------------|------------|-------------------------|
+| **System Correctness** | 25% | ✅ Complete functional system with all planned features |
+| **OOP Implementation** | 20% | ✅ Comprehensive use of classes, inheritance, polymorphism, encapsulation | 
+| **System Design Quality** | 15% | ✅ Clean architecture, clear separation of concerns, scalable design | 
+| **Design Patterns Usage** | 15% | ✅ Multiple patterns: Singleton, Factory, Repository, Strategy, Visitor | 
+| **Testing & Quality** | 10% | ✅ Comprehensive unit testing, manual testing, coding convention | 
+| **User Interface** | 8% | ✅ Intuitive SFML-based GUI with complete functionality | 
+| **Team Collaboration** | 4% | ✅ Effective task distribution, version control, communication | 
+| **Documentation** | 3% | ✅ Complete UML diagrams, code documentation, user manual | 
 
 ### Technical Achievement Highlights
 
