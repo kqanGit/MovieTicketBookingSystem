@@ -1,6 +1,6 @@
-^E:\JUST WRITE SOME CODE\OOP\MOVIETICKETBOOKINGSYSTEM\SOURCE\BUILD\CMAKEFILES\12B88B2840C10C81D7DA4EACC95328A4\GENERATE.STAMP.RULE
+^D:\OOP\LYTHUYET\PROJECT\MOVIETICKETBOOKINGSYSTEM\SOURCE\BUILD\CMAKEFILES\507C730DE8F0BFC087D5BC3D7570FE41\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SE:/just write some code/OOP/MovieTicketBookingSystem/source" "-BE:/just write some code/OOP/MovieTicketBookingSystem/source/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/just write some code/OOP/MovieTicketBookingSystem/source/build/MovieTicketBookingSystem.sln"
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source -BD:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build/MovieTicketBookingSystem.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

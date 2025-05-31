@@ -62,13 +62,12 @@ private:
     std::string editMovieTitle;
     std::string editMovieDescription;
     std::string editMovieGenre;
-    std::string editMovieDuration;
+    // Removed: std::string editMovieDuration;
     std::string editMoviePrice;
-    int editingMovieId;
-    bool isEditingTitle;
+    int editingMovieId;    bool isEditingTitle;
     bool isEditingDescription;
     bool isEditingGenre;
-    bool isEditingDuration;
+    // Removed: bool isEditingDuration;
     bool isEditingPrice;
     
     // Showtime management variables
@@ -79,13 +78,20 @@ private:
     bool isEditingDate;
     bool isEditingStartTime;
     bool isEditingEndTime;
-    
-    // Success message variables
+      // Success message variables
     std::string successMessage;
     UIState previousState;
     
     // Movie data
     std::vector<MovieDTO> movies;
+    
+    // Quản lý nhiều lịch chiếu khi thêm phim
+    std::vector<std::string> pendingShowtimes; // Lưu các showtime đang chờ thêm vào phim mới
+    bool isAddingShowtime; // Đánh dấu trạng thái đang thêm showtime
+    
+    // Scrolling variables
+    int movieListScrollOffset; // Số lượng phim được "cuộn qua" từ đầu danh sách trong quản lý
+    int movieViewScrollOffset; // Số lượng phim được "cuộn qua" từ đầu danh sách trong xem phim
     int selectedMovieIndex;
     std::vector<ShowTime> currentShowTimes;
     int selectedShowTimeIndex;
@@ -135,6 +141,13 @@ private:
     void addShowtime(int movieId);
     void deleteShowtime(int movieId, int showtimeId);
     void resetShowtimeEditingFlags();
+    
+    // Multiple showtimes management methods
+    void addPendingShowtime();
+    void removePendingShowtime(int index);
+    void renderPendingShowtimes();
+    bool handlePendingShowtimesClick(sf::Vector2i mousePos);
+    void clearPendingShowtimes();
     
     // Service interaction methods
     void attemptLogin();

@@ -7,7 +7,8 @@ SFMLUIManager::SFMLUIManager(std::shared_ptr<SessionManager> sessionMgr)
       selectedMovieIndex(0), selectedShowTimeIndex(0),
       isInputtingUsername(true), isInputtingPassword(false),
       isInputtingEmail(false), isInputtingPhone(false),
-      managingMovieId(-1), isEditingDate(false), isEditingStartTime(false), isEditingEndTime(false) {
+      managingMovieId(-1), isEditingDate(false), isEditingStartTime(false), isEditingEndTime(false),
+      movieListScrollOffset(0), movieViewScrollOffset(0), isAddingShowtime(false) {
 }
 
 SFMLUIManager::~SFMLUIManager() {
@@ -23,7 +24,6 @@ bool SFMLUIManager::initialize() {
     isEditingTitle = false;
     isEditingDescription = false;
     isEditingGenre = false;
-    isEditingDuration = false;
     isEditingPrice = false;    editingMovieId = -1;
     previousState = UIState::GUEST_SCREEN;
     
@@ -80,6 +80,35 @@ void SFMLUIManager::handleEvents() {
                 handleMouseClick(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
             }
         }
+          // Handle mouse wheel scrolling for movie management and movie list screens
+        if (event.type == sf::Event::MouseWheelScrolled && 
+            event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+            
+            const int maxVisibleMovies = 7;
+            
+            if (currentState == UIState::MOVIE_MANAGEMENT) {
+                if (event.mouseWheelScroll.delta > 0 && movieListScrollOffset > 0) {
+                    // Scroll up
+                    movieListScrollOffset--;
+                }
+                else if (event.mouseWheelScroll.delta < 0 && 
+                        (movieListScrollOffset + maxVisibleMovies < movies.size())) {
+                    // Scroll down
+                    movieListScrollOffset++;
+                }
+            }
+            else if (currentState == UIState::MOVIE_LIST) {
+                if (event.mouseWheelScroll.delta > 0 && movieViewScrollOffset > 0) {
+                    // Scroll up
+                    movieViewScrollOffset--;
+                }
+                else if (event.mouseWheelScroll.delta < 0 && 
+                        (movieViewScrollOffset + maxVisibleMovies < movies.size())) {
+                    // Scroll down
+                    movieViewScrollOffset++;
+                }
+            }
+        }
     }
 }
 
@@ -102,15 +131,14 @@ void SFMLUIManager::handleTextInput(unsigned int unicode) {
                 inputEmail += inputChar;
             } else if (isInputtingPhone) {
                 inputPhone += inputChar;
-            }        } else if (currentState == UIState::EDIT_MOVIE) {
+            }        
+        } else if (currentState == UIState::EDIT_MOVIE) {
             if (isEditingTitle) {
                 editMovieTitle += inputChar;
             } else if (isEditingDescription) {
                 editMovieDescription += inputChar;
             } else if (isEditingGenre) {
-                editMovieGenre += inputChar;
-            } else if (isEditingDuration) {
-                editMovieDuration += inputChar;
+                editMovieGenre += inputChar;            // Removed Movie Duration
             } else if (isEditingPrice) {
                 editMoviePrice += inputChar;
             } else if (isEditingDate) {
@@ -155,9 +183,7 @@ void SFMLUIManager::handleKeyPress(sf::Keyboard::Key key) {
             } else if (isEditingDescription && !editMovieDescription.empty()) {
                 editMovieDescription.pop_back();
             } else if (isEditingGenre && !editMovieGenre.empty()) {
-                editMovieGenre.pop_back();
-            } else if (isEditingDuration && !editMovieDuration.empty()) {
-                editMovieDuration.pop_back();
+                editMovieGenre.pop_back();            // Removed Movie Duration
             } else if (isEditingPrice && !editMoviePrice.empty()) {
                 editMoviePrice.pop_back();
             } else if (isEditingDate && !newShowtimeDate.empty()) {
@@ -283,9 +309,12 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 logout();
             }
             break;
-        }
-          case UIState::MOVIE_LIST: {
+        }          case UIState::MOVIE_LIST: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
+            // Scroll buttons
+            sf::RectangleShape scrollUpBtn = createStyledButton(950, 150, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 40, sf::Color(80, 40, 120)); // Matched renderMovieList
+            
             if (isButtonClicked(backBtn, mousePos)) {
                 // Return guests to guest screen, authenticated users to main menu
                 if (sessionManager->isUserAuthenticated()) {
@@ -294,17 +323,27 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                     currentState = UIState::GUEST_SCREEN;
                 }
                 break;
-            }
-            
-            // Check movie selection
-            for (size_t i = 0; i < movies.size(); ++i) {
-                sf::RectangleShape movieBtn = createButton(100, 150 + i * 80, 1000, 70);
-                if (isButtonClicked(movieBtn, mousePos)) {
-                    selectedMovieIndex = i;
-                    loadMovieDetails(movies[i].id);
-                    loadShowTimes(movies[i].id);
-                    currentState = UIState::MOVIE_DETAILS;
-                    break;
+            } else if (isButtonClicked(scrollUpBtn, mousePos) && movieViewScrollOffset > 0) {
+                movieViewScrollOffset--;
+            } else if (isButtonClicked(scrollDownBtn, mousePos) &&
+                       (movieViewScrollOffset + 6 < movies.size())) { // 6 is maxVisibleMovies from renderMovieList
+                movieViewScrollOffset++;
+            } else {
+                // Check movie selection - Adjusted to match renderMovieList
+                const int maxVisibleMovies = 6; // Matches renderMovieList
+                int endIndex = std::min(movieViewScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
+                
+                for (int i = movieViewScrollOffset; i < endIndex; ++i) {
+                    int displayIndex = i - movieViewScrollOffset; // Display position
+                    // Use coordinates and dimensions from renderMovieList for movieBtn
+                    sf::RectangleShape movieBtn = createButton(100, 150 + displayIndex * 90, 800, 70);
+                    if (isButtonClicked(movieBtn, mousePos)) {
+                        selectedMovieIndex = i;
+                        loadMovieDetails(movies[i].id); // Load details for the selected movie
+                        loadShowTimes(movies[i].id);    // Load showtimes for the selected movie
+                        currentState = UIState::MOVIE_DETAILS;
+                        break; 
+                    }
                 }
             }
             break;
@@ -313,24 +352,21 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             
             if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::MOVIE_LIST;
-            } else if (!currentShowTimes.empty()) {
-                if (sessionManager->isUserAuthenticated()) {
-                    // Authenticated users can book tickets
-                    sf::RectangleShape bookBtn = createButton(500, 600, 200, 50);
-                    if (isButtonClicked(bookBtn, mousePos)) {
-                        currentState = UIState::BOOKING_SCREEN;
-                    }
-                } else {
-                    // Guests get a login prompt button
-                    sf::RectangleShape loginPromptBtn = createButton(500, 630, 200, 40);
-                    if (isButtonClicked(loginPromptBtn, mousePos)) {
-                        currentState = UIState::LOGIN_SCREEN;
-                        // Clear any previous input
-                        inputUsername.clear();
-                        inputPassword.clear();
-                        statusMessage.clear();
-                    }
+                currentState = UIState::MOVIE_LIST; // Go back to movie list
+            } else if (!currentShowTimes.empty() && sessionManager->isUserAuthenticated()) {
+                // Match coordinates from renderMovieDetails
+                sf::RectangleShape bookBtn = createButton(400, 555, 200, 50);
+                if (isButtonClicked(bookBtn, mousePos)) {
+                    currentState = UIState::BOOKING_SCREEN;
+                    // selectedMovieIndex should already be set from MOVIE_LIST state
+                    // loadShowTimes(movies[selectedMovieIndex].id); // Already loaded when going to details
+                }
+            } else if (!currentShowTimes.empty() && !sessionManager->isUserAuthenticated()) {
+                // Match coordinates from renderMovieDetails for the "GO TO LOGIN" button
+                sf::RectangleShape loginPromptBtn = createButton(400, 595, 200, 40);
+                if (isButtonClicked(loginPromptBtn, mousePos)) {
+                    currentState = UIState::LOGIN_SCREEN;
+                    statusMessage.clear(); // Clear any previous login messages
                 }
             }
             break;
@@ -358,38 +394,75 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
         
         case UIState::SEAT_SELECTION: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape confirmBtn = createButton(500, 700, 200, 50);
+            sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::BOOKING_SCREEN;
                 selectedSeats.clear();
             } else if (isButtonClicked(confirmBtn, mousePos) && !selectedSeats.empty()) {
-                createBooking();
+                createBooking();            
             } else {
                 // Check seat selection
-                int seatsPerRow = 10;
                 int seatSize = 40;
                 int seatSpacing = 45;
                 int startX = 200;
                 int startY = 200;
                 
+                // Tạo map để nhóm ghế theo hàng
+                std::map<char, std::vector<std::pair<std::string, SeatStatus>>> seatsByRow;
+                
+                // Nhóm các ghế theo hàng
                 for (size_t i = 0; i < currentSeats.size(); ++i) {
-                    int row = i / seatsPerRow;
-                    int col = i % seatsPerRow;
-                    int seatX = startX + col * seatSpacing;
-                    int seatY = startY + row * seatSpacing;
+                    std::string seatId = currentSeats[i].seat->id();
+                    char row = seatId[0]; // Lấy chữ cái đầu tiên (hàng)
+                    seatsByRow[row].push_back({seatId, currentSeats[i].status});
+                }
+                
+                bool seatClicked = false;
+                int rowIndex = 0;
+                
+                // Kiểm tra các ghế theo hàng
+                for (const auto& rowPair : seatsByRow) {
+                    if (seatClicked) break;
                     
-                    sf::RectangleShape seat = createButton(seatX, seatY, seatSize, seatSize);
-                    if (isButtonClicked(seat, mousePos) && currentSeats[i].status == SeatStatus::AVAILABLE) {
-                        std::string seatId = currentSeats[i].seat->id();
-                        auto it = std::find(selectedSeats.begin(), selectedSeats.end(), seatId);
-                        if (it != selectedSeats.end()) {
-                            selectedSeats.erase(it);
-                        } else {
-                            selectedSeats.push_back(seatId);
+                    const auto& seats = rowPair.second;
+                    for (size_t i = 0; i < seats.size(); ++i) {
+                        const auto& [seatId, status] = seats[i];
+                        
+                        // Chỉ lấy số từ ID ghế
+                        int seatNumber = 0;
+                        if (seatId.length() > 1) {
+                            try {
+                                seatNumber = std::stoi(seatId.substr(1)) - 1;
+                            } catch (const std::exception&) {
+                                seatNumber = i;
+                            }
                         }
-                        break;
-                    }
+                          int seatX = startX + seatNumber * seatSpacing;
+                        int seatY = startY + rowIndex * seatSpacing;
+                        
+                        // Determine seat type for proper sizing
+                        SeatType type = SeatType::SINGLE; // Default
+                        for (const auto& currentSeat : currentSeats) {
+                            if (currentSeat.seat->id() == seatId) {
+                                type = currentSeat.seat->type();
+                                break;
+                            }
+                        }                          // Create hit detection area with uniform size for all seat types
+                        sf::RectangleShape seat;
+                        seat = createButton(seatX, seatY, seatSize, seatSize);
+                        
+                        if (isButtonClicked(seat, mousePos) && status == SeatStatus::AVAILABLE) {
+                            auto it = std::find(selectedSeats.begin(), selectedSeats.end(), seatId);
+                            if (it != selectedSeats.end()) {
+                                selectedSeats.erase(it);
+                            } else {
+                                selectedSeats.push_back(seatId);
+                            }
+                            seatClicked = true;
+                            break;
+                        }                    }
+                    rowIndex++;
                 }
             }
             break;
@@ -402,7 +475,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-          case UIState::REGISTER_SCREEN: {
+        case UIState::REGISTER_SCREEN: {
             sf::RectangleShape registerBtn = createButton(500, 500, 200, 50);
             sf::RectangleShape backBtn = createButton(500, 570, 200, 50);
             sf::RectangleShape usernameField = createButton(400, 250, 400, 40);
@@ -430,8 +503,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isInputtingPassword = true;
                 isInputtingEmail = false;
                 isInputtingPhone = false;
-            } else if (isButtonClicked(emailField, mousePos)) {
-                isInputtingUsername = false;
+            } else if (isButtonClicked(emailField, mousePos)) {                isInputtingUsername = false;
                 isInputtingPassword = false;
                 isInputtingEmail = true;
                 isInputtingPhone = false;
@@ -442,11 +514,12 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isInputtingPhone = true;
             }
             break;
-        }        case UIState::ADMIN_PANEL: {
+        }
+        
+        case UIState::ADMIN_PANEL: {
             sf::RectangleShape backBtn = createButton(500, 380, 200, 50);
             sf::RectangleShape manageMoviesBtn = createButton(500, 300, 200, 50);
-            
-            if (isButtonClicked(backBtn, mousePos)) {
+              if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::MAIN_MENU;
             } else if (isButtonClicked(manageMoviesBtn, mousePos)) {
                 loadMovies();
@@ -454,29 +527,60 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-          case UIState::MOVIE_MANAGEMENT: {
+        
+        case UIState::MOVIE_MANAGEMENT: {
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
             sf::RectangleShape addMovieBtn = createButton(200, 50, 150, 40);  // Match coordinates from render function
             
-            if (isButtonClicked(backBtn, mousePos)) {
-                currentState = UIState::ADMIN_PANEL;            } else if (isButtonClicked(addMovieBtn, mousePos)) {
+            // Scroll up button
+            sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
+            // Scroll down button
+            sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
+              if (isButtonClicked(backBtn, mousePos)) {
+                currentState = UIState::ADMIN_PANEL;
+            } else if (isButtonClicked(addMovieBtn, mousePos)) {
                 // Reset edit fields for new movie
                 clearEditingFields();
                 isEditingTitle = true;
-                currentState = UIState::EDIT_MOVIE;} else {
+                currentState = UIState::EDIT_MOVIE;
+            } else if (isButtonClicked(scrollUpBtn, mousePos) && movieListScrollOffset > 0) {
+                // Scroll up when there are movies to show above
+                movieListScrollOffset--;
+            } else if (isButtonClicked(scrollDownBtn, mousePos) && 
+                      (movieListScrollOffset + 7 < movies.size())) { // 7 is maxVisibleMovies
+                // Scroll down when there are more movies below
+                movieListScrollOffset++;
+            } else {
                 // Check for edit/delete buttons on movie cards (coordinates match renderMovieManagement)
-                for (size_t i = 0; i < movies.size(); ++i) {
-                    sf::RectangleShape editBtn = createButton(920, 155 + i * 80, 80, 30);
-                    sf::RectangleShape deleteBtn = createButton(1010, 155 + i * 80, 80, 30);
-                    sf::RectangleShape showtimeBtn = createButton(1100, 155 + i * 80, 80, 25);
+                const int maxVisibleMovies = 7;
+                int endIndex = std::min(movieListScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
+                
+                for (int i = movieListScrollOffset; i < endIndex; ++i) {
+                    int displayIndex = i - movieListScrollOffset; // Display position
+                    
+                    sf::RectangleShape editBtn = createButton(920, 155 + displayIndex * 80, 80, 30);
+                    sf::RectangleShape deleteBtn = createButton(1010, 155 + displayIndex * 80, 80, 30);
+                    sf::RectangleShape showtimeBtn = createButton(1100, 155 + displayIndex * 80, 80, 25);
                     
                     if (isButtonClicked(editBtn, mousePos)) {
                         editingMovieId = movies[i].id;
                         editMovieTitle = movies[i].title;
                         editMovieGenre = movies[i].genre;
-                        editMovieDescription = ""; // MovieDTO doesn't have description
-                        editMovieDuration = "120"; // Default
-                        editMoviePrice = "10.0"; // Default
+                        // Lấy description từ service (nếu có)
+                        auto visitor = std::make_shared<MovieViewerServiceVisitor>();
+                        sessionManager->getCurrentContext()->accept(visitor);
+                        auto movieService = visitor->getMovieViewerService();
+                        if (movieService) {
+                            auto detail = movieService->showMovieDetail(movies[i].id);
+                            if (detail) {
+                                editMovieDescription = detail->getDescription();
+                            } else {
+                                editMovieDescription = "";
+                            }
+                        } else {
+                            editMovieDescription = "";
+                        }                        // Removed Movie Duration
+                        editMoviePrice = std::to_string(movies[i].rating); // Use actual movie rating
                         resetEditingFlags();
                         isEditingTitle = true;
                         currentState = UIState::EDIT_MOVIE;
@@ -496,20 +600,26 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-          case UIState::EDIT_MOVIE: {
+        
+        case UIState::EDIT_MOVIE: {
+            // Check for clicks on pending showtimes buttons first
+            if (handlePendingShowtimesClick(mousePos)) {
+                // If we handled a click on the pending showtimes section
+                break;
+            }
+            
             sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-            sf::RectangleShape saveBtn = createButton(500, 550, 200, 50);
+            sf::RectangleShape saveBtn = createButton(180, 492, 80, 50);            
             sf::RectangleShape titleField = createButton(400, 150, 400, 40);
             sf::RectangleShape descField = createButton(400, 220, 400, 80);
             sf::RectangleShape genreField = createButton(400, 330, 400, 40);
-            sf::RectangleShape durationField = createButton(400, 400, 200, 40);
-            sf::RectangleShape priceField = createButton(620, 400, 180, 40);
+            sf::RectangleShape ratingField = createButton(620, 400, 180, 40);
             
             if (isButtonClicked(backBtn, mousePos)) {
                 currentState = UIState::MOVIE_MANAGEMENT;
+                clearPendingShowtimes();
             } else if (isButtonClicked(saveBtn, mousePos)) {
                 if (editingMovieId == -1) {
-                    // Add new movie
                     addMovie();
                 } else {
                     updateMovie(editingMovieId);
@@ -524,11 +634,8 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 isEditingDescription = true;
             } else if (isButtonClicked(genreField, mousePos)) {
                 resetEditingFlags();
-                isEditingGenre = true;
-            } else if (isButtonClicked(durationField, mousePos)) {
-                resetEditingFlags();
-                isEditingDuration = true;
-            } else if (isButtonClicked(priceField, mousePos)) {
+                isEditingGenre = true;            
+            } else if (isButtonClicked(ratingField, mousePos)) {
                 resetEditingFlags();
                 isEditingPrice = true;
             }
@@ -547,15 +654,16 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
                 } else if (isButtonClicked(startField, mousePos)) {
                     resetShowtimeEditingFlags();
                     isEditingStartTime = true;
-                    resetEditingFlags();
-                } else if (isButtonClicked(endField, mousePos)) {
+                    resetEditingFlags();                } else if (isButtonClicked(endField, mousePos)) {
                     resetShowtimeEditingFlags();
                     isEditingEndTime = true;
                     resetEditingFlags();
                 }
             }
             break;
-        }case UIState::SHOWTIME_MANAGEMENT: {
+        }
+        
+        case UIState::SHOWTIME_MANAGEMENT: {
             // Only handle back button and delete buttons
             sf::RectangleShape backButton = createStyledButton(50, 720, 100, 40, sf::Color(100, 100, 100));
             
@@ -574,7 +682,7 @@ void SFMLUIManager::handleMouseClick(sf::Vector2i mousePos) {
             }
             break;
         }
-          case UIState::SUCCESS_MESSAGE: {
+        case UIState::SUCCESS_MESSAGE: {
             sf::RectangleShape okBtn = createButton(500, 520, 200, 50);
             if (isButtonClicked(okBtn, mousePos)) {
                 currentState = previousState;
@@ -589,13 +697,15 @@ void SFMLUIManager::update() {
 }
 
 void SFMLUIManager::render() {
-    window.clear(sf::Color::Black);
-      switch (currentState) {
+    window.clear(sf::Color::Black);    switch (currentState) {
         case UIState::GUEST_SCREEN:
             renderGuestScreen();
             break;
         case UIState::LOGIN_SCREEN:
             renderLoginScreen();
+            break;
+        case UIState::REGISTER_SCREEN:
+            renderRegisterScreen();
             break;
         case UIState::MAIN_MENU:
             renderMainMenu();
@@ -611,19 +721,16 @@ void SFMLUIManager::render() {
             break;
         case UIState::SEAT_SELECTION:
             renderSeatSelection();
-            break;
-        case UIState::BOOKING_HISTORY:
+            break;        case UIState::BOOKING_HISTORY:
             renderBookingHistory();
-            break;
-        case UIState::REGISTER_SCREEN:
-            renderRegisterScreen();
             break;
         case UIState::ADMIN_PANEL:
             renderAdminPanel();
             break;
         case UIState::MOVIE_MANAGEMENT:
             renderMovieManagement();
-            break;        case UIState::EDIT_MOVIE:
+            break;        
+        case UIState::EDIT_MOVIE:
             renderEditMovie();
             break;
         case UIState::SHOWTIME_MANAGEMENT:
@@ -642,7 +749,7 @@ void SFMLUIManager::renderGuestScreen() {
     drawGradientBackground();
     
     // Main title
-    sf::Text title = createText("Movie Ticket Booking System", 300, 150, 40);
+    sf::Text title = createText("Movie Ticket Booking System", 300, 150, 50);
     title.setFillColor(sf::Color::White);
     window.draw(title);
     
@@ -785,26 +892,103 @@ void SFMLUIManager::renderMainMenu() {
 }
 
 void SFMLUIManager::renderMovieList() {
-    sf::Text title = createText("Available Movies", 450, 50, 28);
+    // Create a stylish title with background
+    sf::RectangleShape titleBackground = createButton(300, 40, 500, 50);//
+    titleBackground.setFillColor(sf::Color(80, 40, 120, 230));
+    window.draw(titleBackground);
+    
+    sf::Text title = createText("AVAILABLE MOVIES", 450, 50, 30);
+    title.setStyle(sf::Text::Bold);
+    title.setFillColor(sf::Color(255, 240, 150)); // Goldish color for title
+    title.setOutlineColor(sf::Color(100, 50, 150));
+    title.setOutlineThickness(1.5);
     window.draw(title);
     
-    // Back button
+    // Back button with improved styling
     sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-    backBtn.setFillColor(sf::Color(100, 100, 100));
+    backBtn.setFillColor(sf::Color(60, 60, 100));
+    backBtn.setOutlineThickness(2);
+    backBtn.setOutlineColor(sf::Color(100, 100, 150));
     window.draw(backBtn);
     
     sf::Text backText = createText("Back", 80, 60, 18);
+    backText.setFillColor(sf::Color(220, 220, 255));
     window.draw(backText);
     
-    // Movie list
-    for (size_t i = 0; i < movies.size(); ++i) {
-        sf::RectangleShape movieBtn = createButton(100, 150 + i * 80, 1000, 70);
-        movieBtn.setFillColor(sf::Color(50, 50, 100));
+    // Movie count with improved styling
+    std::string movieCountText = "Total: " + std::to_string(movies.size()) + " movies";
+    sf::Text movieCount = createText(movieCountText, 450, 100, 18);
+    movieCount.setFillColor(sf::Color(180, 180, 255));
+    movieCount.setStyle(sf::Text::Italic);
+    window.draw(movieCount);
+      // Enhanced scroll buttons
+    const int maxVisibleMovies = 6; // Adjusted for larger movie cards
+    
+    // Scroll up button with improved styling
+    sf::RectangleShape scrollUpBtn = createStyledButton(950, 150, 50, 40, sf::Color(80, 40, 120));
+    scrollUpBtn.setOutlineThickness(2);
+    scrollUpBtn.setOutlineColor(sf::Color(120, 80, 160));
+    sf::Text scrollUpText = createText("^", 968, 155, 20);
+    if (movieViewScrollOffset > 0) {
+        scrollUpBtn.setFillColor(sf::Color(80, 40, 120));
+        scrollUpText.setFillColor(sf::Color(220, 220, 255));
+    } else {
+        scrollUpBtn.setFillColor(sf::Color(50, 30, 70));
+        scrollUpText.setFillColor(sf::Color(150, 150, 180));
+    }
+    window.draw(scrollUpBtn);
+    window.draw(scrollUpText);
+    
+    // Scroll down button with improved styling
+    sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 40, sf::Color(80, 40, 120));
+    scrollDownBtn.setOutlineThickness(2);
+    scrollDownBtn.setOutlineColor(sf::Color(120, 80, 160));
+    sf::Text scrollDownText = createText("v", 968, 705, 20);
+    if (movieViewScrollOffset + maxVisibleMovies < movies.size()) {
+        scrollDownBtn.setFillColor(sf::Color(80, 40, 120));
+        scrollDownText.setFillColor(sf::Color(220, 220, 255));
+    } else {
+        scrollDownBtn.setFillColor(sf::Color(50, 30, 70));
+        scrollDownText.setFillColor(sf::Color(150, 150, 180));
+    }
+    window.draw(scrollDownBtn);
+    window.draw(scrollDownText);
+      // Movie list with scrolling and enhanced visual effect
+    int endIndex = std::min(movieViewScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
+    for (int i = movieViewScrollOffset; i < endIndex; ++i) {
+        int displayIndex = i - movieViewScrollOffset; // Vị trí hiển thị trên màn hình
+        
+        // Create outer card with gradient effect
+        sf::RectangleShape movieCard = createButton(90, 145 + displayIndex * 90, 820, 80);
+        sf::Color cardColor(40, 40, 90, 255);
+        sf::Color highlightColor(70, 50, 120, 255);
+        movieCard.setFillColor(highlightColor);
+        window.draw(movieCard);
+        
+        // Inner button with gradient-like effect using a slightly smaller rectangle
+        sf::RectangleShape movieBtn = createButton(100, 150 + displayIndex * 90, 800, 70);
+        movieBtn.setFillColor(cardColor);
+        movieBtn.setOutlineThickness(2.0f);
+        movieBtn.setOutlineColor(sf::Color(100, 100, 150, 200));
         window.draw(movieBtn);
         
-        std::string movieInfo = movies[i].title + " - " + movies[i].genre + " (Rating: " + std::to_string(movies[i].rating) + ")";
-        sf::Text movieText = createText(movieInfo, 110, 170 + i * 80, 18);
-        window.draw(movieText);
+        // Movie title with enhanced style
+        sf::Text movieTitle = createText(movies[i].title, 120, 160 + displayIndex * 90, 22);
+        movieTitle.setStyle(sf::Text::Bold);
+        movieTitle.setFillColor(sf::Color(220, 220, 255));
+        window.draw(movieTitle);
+        
+        // Movie details with better formatting
+        std::string movieDetails = "Genre: " + movies[i].genre + " | Rating: " + std::to_string(movies[i].rating);
+        sf::Text detailsText = createText(movieDetails, 120, 190 + displayIndex * 90, 16);
+        detailsText.setFillColor(sf::Color(180, 180, 220));
+        detailsText.setStyle(sf::Text::Italic);
+        window.draw(detailsText);
+        
+        // Add a "View Details" hint
+        sf::Text viewText = createText("Click to view details", 700, 190 + displayIndex * 90, 14);
+        viewText.setFillColor(sf::Color(150, 200, 255));
+        window.draw(viewText);
     }
 }
 
@@ -812,57 +996,237 @@ void SFMLUIManager::renderMovieDetails() {
     if (selectedMovieIndex < movies.size()) {
         const auto& movie = movies[selectedMovieIndex];
         
-        sf::Text title = createText("Movie Details", 450, 50, 28);
+        // Create a stylish header with background
+        sf::RectangleShape headerBg = createButton(300, 40, 600, 50);
+        headerBg.setFillColor(sf::Color(80, 40, 120, 230));
+        window.draw(headerBg);
+        
+        sf::Text title = createText("MOVIE DETAILS", 450, 50, 30);
+        title.setStyle(sf::Text::Bold);
+        title.setFillColor(sf::Color(255, 240, 150)); // Goldish color for title
+        title.setOutlineColor(sf::Color(100, 50, 150));
+        title.setOutlineThickness(1.5);
         window.draw(title);
         
-        // Back button
+        // Back button with improved styling
         sf::RectangleShape backBtn = createButton(50, 50, 100, 40);
-        backBtn.setFillColor(sf::Color(100, 100, 100));
+        backBtn.setFillColor(sf::Color(60, 60, 100));
+        backBtn.setOutlineThickness(2);
+        backBtn.setOutlineColor(sf::Color(100, 100, 150));
         window.draw(backBtn);
         
         sf::Text backText = createText("Back", 80, 60, 18);
+        backText.setFillColor(sf::Color(220, 220, 255));
         window.draw(backText);
         
-        // Movie information
-        sf::Text movieTitle = createText("Title: " + movie.title, 100, 150, 24);
+        // Movie card background
+        sf::RectangleShape movieCardBg = createButton(90, 120, 820, 400);
+        movieCardBg.setFillColor(sf::Color(30, 30, 60, 200));
+        movieCardBg.setOutlineThickness(2);
+        movieCardBg.setOutlineColor(sf::Color(100, 80, 140));
+        window.draw(movieCardBg);
+        
+        // Movie information with better styling
+        sf::Text movieTitle = createText(movie.title, 100, 140, 32);
+        movieTitle.setStyle(sf::Text::Bold);
+        movieTitle.setFillColor(sf::Color(220, 220, 255));
+        movieTitle.setOutlineThickness(1);
+        movieTitle.setOutlineColor(sf::Color(100, 80, 140));
         window.draw(movieTitle);
+                
+        // Create genre label with tag-like design
+        sf::RectangleShape genreTag = createButton(100, 190, 120 + movie.genre.length() * 8, 30);
+        genreTag.setFillColor(sf::Color(60, 80, 120));
+        genreTag.setOutlineThickness(1);
+        genreTag.setOutlineColor(sf::Color(100, 120, 180));
+        window.draw(genreTag);
         
-        sf::Text movieGenre = createText("Genre: " + movie.genre, 100, 200, 20);
-        window.draw(movieGenre);
+        sf::Text genreLabel = createText("GENRE: " + movie.genre, 110, 195, 18);
+        genreLabel.setFillColor(sf::Color(180, 200, 255));
+        window.draw(genreLabel);
         
-        sf::Text movieRating = createText("Rating: " + std::to_string(movie.rating), 100, 250, 20);
-        window.draw(movieRating);
+        // Rating with star visualization
+        sf::CircleShape star(12, 5);
+        star.setPosition(100, 230);
+        star.setFillColor(sf::Color(255, 215, 0)); // Gold color
+        window.draw(star);
         
-        // Show times
-        sf::Text showtimesTitle = createText("Available Showtimes:", 100, 320, 22);
+        sf::Text ratingLabel = createText("Rating: " + std::to_string(movie.rating) + "/5", 130, 230, 20);
+        ratingLabel.setFillColor(sf::Color(255, 220, 100));
+        window.draw(ratingLabel);
+          // Get description from MovieViewerService
+        std::string description;
+        auto visitor = std::make_shared<MovieViewerServiceVisitor>();
+        sessionManager->getCurrentContext()->accept(visitor);
+        auto movieService = visitor->getMovieViewerService();
+        if (movieService) {
+            auto detail = movieService->showMovieDetail(movie.id);
+            if (detail) {
+                description = detail->getDescription();
+            }
+        }
+        
+        // Description section with styled background
+        sf::RectangleShape descriptionBg = createButton(100, 265, 800, 110);
+        descriptionBg.setFillColor(sf::Color(40, 40, 70, 200));
+        descriptionBg.setOutlineThickness(1);
+        descriptionBg.setOutlineColor(sf::Color(100, 100, 150));
+        window.draw(descriptionBg);
+        
+        sf::Text descTitle = createText("DESCRIPTION", 110, 270, 16);
+        descTitle.setStyle(sf::Text::Bold);
+        descTitle.setFillColor(sf::Color(180, 180, 255));
+        window.draw(descTitle);
+        
+        if (!description.empty()) {
+            // Wrap text if it's too long
+            std::string wrappedDesc = description;
+            if (wrappedDesc.length() > 100) {
+                // Simple text wrapping - insert line breaks
+                int pos = 0;
+                int lineLength = 85; // Characters per line
+                while (pos + lineLength < wrappedDesc.length()) {
+                    // Find a good place to break (space)
+                    int breakPos = wrappedDesc.rfind(' ', pos + lineLength);
+                    if (breakPos != std::string::npos && breakPos > pos) {
+                        wrappedDesc.replace(breakPos, 1, "\n");
+                        pos = breakPos + 1;
+                    } else {
+                        pos += lineLength;
+                    }
+                }
+            }
+            
+            sf::Text descText = createText(wrappedDesc, 110, 295, 16);
+            descText.setFillColor(sf::Color(220, 220, 220));
+            window.draw(descText);
+        } else {
+            sf::Text noDesc = createText("No description available", 110, 295, 16);
+            noDesc.setFillColor(sf::Color(180, 180, 180));
+            noDesc.setStyle(sf::Text::Italic);
+            window.draw(noDesc);
+        }
+        
+        // Showtimes section with styled header
+        sf::RectangleShape showtimesBg = createButton(100, 390, 800, 130);
+        showtimesBg.setFillColor(sf::Color(40, 40, 70, 200));
+        showtimesBg.setOutlineThickness(1);
+        showtimesBg.setOutlineColor(sf::Color(100, 100, 150));
+        window.draw(showtimesBg);
+        
+        sf::Text showtimesTitle = createText("AVAILABLE SHOWTIMES", 110, 395, 18);
+        showtimesTitle.setStyle(sf::Text::Bold);
+        showtimesTitle.setFillColor(sf::Color(180, 180, 255));
         window.draw(showtimesTitle);
         
-        for (size_t i = 0; i < currentShowTimes.size(); ++i) {
-            const auto& showtime = currentShowTimes[i];
-            std::string showtimeInfo = showtime.date + " " + showtime.startTime + " - " + showtime.endTime;
-            sf::Text showtimeText = createText(showtimeInfo, 120, 360 + i * 30, 18);
-            window.draw(showtimeText);
-        }
-          // Book button (only for authenticated users)
+        if (currentShowTimes.empty()) {
+            sf::Text noShowtimes = createText("No showtimes available for this movie", 110, 425, 16);
+            noShowtimes.setFillColor(sf::Color(180, 180, 180));
+            noShowtimes.setStyle(sf::Text::Italic);
+            window.draw(noShowtimes);
+        } else {
+            for (size_t i = 0; i < currentShowTimes.size() && i < 3; ++i) {
+                const auto& showtime = currentShowTimes[i];
+                
+                // Create a styled card for each showtime
+                sf::RectangleShape showtimeCard = createButton(120, 425 + i * 30, 400, 25);
+                showtimeCard.setFillColor(sf::Color(60, 60, 90));
+                showtimeCard.setOutlineThickness(1);
+                showtimeCard.setOutlineColor(sf::Color(100, 100, 150));
+                window.draw(showtimeCard);
+                
+                std::string showtimeInfo = showtime.date + " | " + showtime.startTime + " - " + showtime.endTime;
+                sf::Text showtimeText = createText(showtimeInfo, 130, 427 + i * 30, 16);
+                showtimeText.setFillColor(sf::Color(220, 220, 250));
+                window.draw(showtimeText);
+                
+                // Add a small clock icon
+                sf::CircleShape clockIcon(8);
+                clockIcon.setPosition(535, 427 + i * 30);
+                clockIcon.setFillColor(sf::Color(180, 180, 220));
+                window.draw(clockIcon);
+            }
+            
+            // If there are more showtimes than we can display
+            if (currentShowTimes.size() > 3) {
+                sf::Text moreShowtimes = createText("+" + std::to_string(currentShowTimes.size() - 3) + " more showtimes...", 120, 485, 14);
+                moreShowtimes.setFillColor(sf::Color(160, 160, 200));
+                moreShowtimes.setStyle(sf::Text::Italic);
+                window.draw(moreShowtimes);
+            }
+        }        // Call-to-action section with styled background
+        sf::RectangleShape ctaBg = createButton(100, 535, 800, 100);
+        ctaBg.setFillColor(sf::Color(40, 40, 70, 200));
+        ctaBg.setOutlineThickness(1);
+        ctaBg.setOutlineColor(sf::Color(100, 100, 150));
+        window.draw(ctaBg);
+        
+        // Book button (only for authenticated users)
         if (!currentShowTimes.empty() && sessionManager->isUserAuthenticated()) {
-            sf::RectangleShape bookBtn = createButton(500, 600, 200, 50);
+            // Create a gradient-like button with two rectangles
+            sf::RectangleShape bookBtnShadow = createButton(400, 560, 210, 55);
+            bookBtnShadow.setFillColor(sf::Color(0, 80, 0));
+            bookBtnShadow.setOutlineThickness(1);
+            bookBtnShadow.setOutlineColor(sf::Color(0, 200, 0));
+            window.draw(bookBtnShadow);
+            
+            sf::RectangleShape bookBtn = createButton(400, 555, 200, 50);
             bookBtn.setFillColor(sf::Color(0, 150, 0));
+            bookBtn.setOutlineThickness(1);
+            bookBtn.setOutlineColor(sf::Color(0, 200, 0));
             window.draw(bookBtn);
             
-            sf::Text bookText = createText("Book Tickets", 540, 615, 20);
+            sf::Text bookText = createText("BOOK TICKETS", 435, 570, 22);
+            bookText.setStyle(sf::Text::Bold);
+            bookText.setFillColor(sf::Color::White);
             window.draw(bookText);
+            
+            // Add a ticket icon
+            sf::RectangleShape ticketIcon(sf::Vector2f(20, 15));
+            ticketIcon.setPosition(405, 575);
+            ticketIcon.setFillColor(sf::Color::White);
+            window.draw(ticketIcon);
         } else if (!currentShowTimes.empty() && !sessionManager->isUserAuthenticated()) {
-            // Message for guests
-            sf::Text guestMessage = createText("Please login to book tickets", 450, 600, 18);
-            guestMessage.setFillColor(sf::Color(200, 200, 0));
+            // Message for guests with stylish design
+            sf::RectangleShape messageBox = createButton(350, 555, 300, 30);
+            messageBox.setFillColor(sf::Color(60, 60, 0, 180));
+            messageBox.setOutlineThickness(1);
+            messageBox.setOutlineColor(sf::Color(200, 200, 0));
+            window.draw(messageBox);
+            
+            sf::Text guestMessage = createText("Please login to book tickets", 400, 560, 18);
+            guestMessage.setFillColor(sf::Color(255, 255, 150));
             window.draw(guestMessage);
             
-            sf::RectangleShape loginPromptBtn = createButton(500, 630, 200, 40);
+            // Attractive login button
+            sf::RectangleShape loginShadow = createButton(400, 600, 210, 45);
+            loginShadow.setFillColor(sf::Color(0, 60, 100));
+            loginShadow.setOutlineThickness(1);
+            loginShadow.setOutlineColor(sf::Color(100, 180, 255));
+            window.draw(loginShadow);
+            
+            sf::RectangleShape loginPromptBtn = createButton(400, 595, 200, 40);
             loginPromptBtn.setFillColor(sf::Color(0, 100, 150));
+            loginPromptBtn.setOutlineThickness(1);
+            loginPromptBtn.setOutlineColor(sf::Color(100, 180, 255));
             window.draw(loginPromptBtn);
             
-            sf::Text loginPromptText = createText("Go to Login", 550, 640, 18);
+            sf::Text loginPromptText = createText("GO TO LOGIN", 440, 605, 18);
+            loginPromptText.setStyle(sf::Text::Bold);
+            loginPromptText.setFillColor(sf::Color(220, 240, 255));
             window.draw(loginPromptText);
+            
+            // Add a login icon
+            sf::CircleShape userIcon(10);
+            userIcon.setPosition(415, 605);
+            userIcon.setFillColor(sf::Color(220, 240, 255));
+            window.draw(userIcon);
+        } else {
+            // Message when no showtimes are available
+            sf::Text noBookingText = createText("No showtimes available for booking", 350, 570, 20);
+            noBookingText.setFillColor(sf::Color(180, 180, 180));
+            noBookingText.setStyle(sf::Text::Italic);
+            window.draw(noBookingText);
         }
     }
 }
@@ -903,67 +1267,222 @@ void SFMLUIManager::renderSeatSelection() {
     
     sf::Text backText = createText("Back", 80, 60, 18);
     window.draw(backText);
+      // Screen indicator - improved to look more like a theater screen
+    sf::RectangleShape screenBorder = createButton(290, 120, 420, 30);
+    screenBorder.setFillColor(sf::Color(50, 50, 50));
+    screenBorder.setOutlineThickness(2);
+    screenBorder.setOutlineColor(sf::Color(100, 100, 100));
+    window.draw(screenBorder);
     
-    // Screen indicator
-    sf::RectangleShape screen = createButton(300, 120, 400, 20);
-    screen.setFillColor(sf::Color::White);
+    sf::RectangleShape screen = createButton(300, 125, 400, 20);
+    screen.setFillColor(sf::Color(220, 220, 220));
     window.draw(screen);
     
-    sf::Text screenText = createText("SCREEN", 470, 125, 16);
+    sf::Text screenText = createText("SCREEN", 470, 127, 16);
     screenText.setFillColor(sf::Color::Black);
     window.draw(screenText);
     
     // Seat grid
-    int seatsPerRow = 10;
     int seatSize = 40;
     int seatSpacing = 45;
     int startX = 200;
     int startY = 200;
+      // Arrange seats by row (first letter)
+    std::map<char, std::vector<std::pair<std::string, SeatStatus>>> seatsByRow;
     
+    // Group seats by row (first character of seat ID)
     for (size_t i = 0; i < currentSeats.size(); ++i) {
-        int row = i / seatsPerRow;
-        int col = i % seatsPerRow;
-        int seatX = startX + col * seatSpacing;
-        int seatY = startY + row * seatSpacing;
-        
-        sf::RectangleShape seat = createButton(seatX, seatY, seatSize, seatSize);
-        
         std::string seatId = currentSeats[i].seat->id();
-        bool isSelected = std::find(selectedSeats.begin(), selectedSeats.end(), seatId) != selectedSeats.end();
-        
-        if (currentSeats[i].status == SeatStatus::BOOKED) {
-            seat.setFillColor(sf::Color::Red);
-        } else if (isSelected) {
-            seat.setFillColor(sf::Color::Green);
-        } else {
-            seat.setFillColor(sf::Color::Blue);
-        }
-        
-        window.draw(seat);
-        
-        sf::Text seatText = createText(seatId, seatX + 5, seatY + 10, 12);
-        window.draw(seatText);
+        char row = seatId[0]; // Get first character (e.g., 'A' from 'A1')
+        seatsByRow[row].push_back({seatId, currentSeats[i].status});
     }
+      // Display column numbers at the top with highlighting
+    sf::RectangleShape columnHeaderBg(sf::Vector2f(520, 30));
+    columnHeaderBg.setPosition(float(startX - 10), float(startY - 40));
+    columnHeaderBg.setFillColor(sf::Color(40, 40, 60));
+    columnHeaderBg.setOutlineThickness(1);
+    columnHeaderBg.setOutlineColor(sf::Color(100, 100, 100));
+    window.draw(columnHeaderBg);
     
-    // Legend
-    sf::Text legend = createText("Blue: Available | Red: Booked | Green: Selected", 200, 650, 16);
-    window.draw(legend);
-    
-    // Selected seats info
-    if (!selectedSeats.empty()) {
-        std::string selectedInfo = "Selected: ";
-        for (const auto& seat : selectedSeats) {
-            selectedInfo += seat + " ";
-        }
-        sf::Text selectedText = createText(selectedInfo, 200, 680, 16);
-        window.draw(selectedText);
+    for (int col = 1; col <= 10; ++col) {
+        // Circle background for column numbers
+        sf::CircleShape colBg(10);
+        colBg.setPosition(float(startX + (col-1) * seatSpacing + 10), float(startY - 35));
+        colBg.setFillColor(sf::Color(60, 60, 80));
+        colBg.setOutlineThickness(1);
+        colBg.setOutlineColor(sf::Color(120, 120, 120));
+        window.draw(colBg);
         
-        // Confirm button
-        sf::RectangleShape confirmBtn = createButton(500, 700, 200, 50);
+        sf::Text colText = createText(std::to_string(col), startX + (col-1) * seatSpacing + 15, startY - 30, 14);
+        colText.setFillColor(sf::Color(220, 220, 220));
+        window.draw(colText);
+    }
+      // Display row names
+    int rowIndex = 0;
+    for (const auto& rowPair : seatsByRow) {
+        char rowName = rowPair.first;
+        
+        // Display row name on the left with a background for better visibility
+        sf::CircleShape rowBg(12);
+        rowBg.setPosition(float(startX - 35), float(startY + rowIndex * seatSpacing + 7));
+        rowBg.setFillColor(sf::Color(60, 60, 60));
+        rowBg.setOutlineThickness(1);
+        rowBg.setOutlineColor(sf::Color(150, 150, 150));
+        window.draw(rowBg);
+        
+        sf::Text rowText = createText(std::string(1, rowName), startX - 30, startY + rowIndex * seatSpacing + 10, 16);
+        rowText.setFillColor(sf::Color(220, 220, 0)); // Yellow
+        window.draw(rowText);
+        
+        // Hiển thị ghế của hàng đó
+        const auto& seats = rowPair.second;
+        for (size_t i = 0; i < seats.size(); ++i) {
+            const auto& [seatId, status] = seats[i];
+            
+            // Chỉ lấy số từ ID ghế (ví dụ: '1' từ 'A1')
+            int seatNumber = 0;
+            if (seatId.length() > 1) {
+                try {
+                    seatNumber = std::stoi(seatId.substr(1)) - 1; // -1 vì số ghế bắt đầu từ 1, nhưng index bắt đầu từ 0
+                } catch (const std::exception&) {
+                    seatNumber = i; // Fallback nếu không thể chuyển đổi
+                }
+            }
+            
+            int seatX = startX + seatNumber * seatSpacing;
+            int seatY = startY + rowIndex * seatSpacing;
+            
+            sf::RectangleShape seat = createButton(seatX, seatY, seatSize, seatSize);
+            
+            bool isSelected = std::find(selectedSeats.begin(), selectedSeats.end(), seatId) != selectedSeats.end();
+            
+            if (status == SeatStatus::BOOKED) {
+                seat.setFillColor(sf::Color::Red);
+            } else if (isSelected) {
+                seat.setFillColor(sf::Color::Green);
+            } else {
+                // Màu khác cho ghế Single và Couple để dễ phân biệt
+                SeatType type = SeatType::SINGLE; // Mặc định là Single
+                
+                // Tìm kiếm thông tin loại ghế từ danh sách currentSeats
+                for (const auto& currentSeat : currentSeats) {
+                    if (currentSeat.seat->id() == seatId) {
+                        type = currentSeat.seat->type();
+                        break;
+                    }
+                }                
+                // Use different colors for different seat types, but keep the size the same
+                if (type == SeatType::COUPLE) {
+                    seat.setFillColor(sf::Color(100, 100, 255)); // Blue-purple for Couple
+                    
+                    // Add a small love heart icon or symbol
+                    sf::CircleShape heart(5);
+                    heart.setPosition(float(seatX + seatSize - 12), float(seatY + 5));
+                    heart.setFillColor(sf::Color(255, 150, 150));
+                    window.draw(heart);
+                } else {
+                    seat.setFillColor(sf::Color(0, 150, 255));    // Sky blue for Single
+                }
+            }
+            
+            window.draw(seat);
+            
+            sf::Text seatText = createText(seatId, seatX + 5, seatY + 10, 12);
+            window.draw(seatText);        }
+        
+        rowIndex++;
+    }
+    // Legend with visual indicators
+    // Background for the legend
+    sf::RectangleShape legendBg(sf::Vector2f(700, 60));
+    legendBg.setPosition(200, 640);
+    legendBg.setFillColor(sf::Color(40, 40, 50, 150));
+    legendBg.setOutlineThickness(1);
+    legendBg.setOutlineColor(sf::Color(100, 100, 100));
+    window.draw(legendBg);
+    
+    // Legend title
+    sf::Text legendTitle = createText("Seat Legend:", 220, 650, 16);
+    legendTitle.setStyle(sf::Text::Bold);
+    window.draw(legendTitle);
+      // Single seat indicator
+    sf::RectangleShape singleSeatIcon(sf::Vector2f(20, 20));
+    singleSeatIcon.setPosition(330, 650);
+    singleSeatIcon.setFillColor(sf::Color(0, 150, 255));
+    window.draw(singleSeatIcon);
+    sf::Text singleSeatText = createText("Single", 355, 650, 16);
+    window.draw(singleSeatText);
+    
+    // Couple seat indicator
+    sf::RectangleShape coupleSeatIcon(sf::Vector2f(30, 20));
+    coupleSeatIcon.setPosition(420, 650);
+    coupleSeatIcon.setFillColor(sf::Color(100, 100, 255));
+    window.draw(coupleSeatIcon);
+    
+    sf::Text coupleSeatText = createText("Couple", 455, 650, 16);
+    window.draw(coupleSeatText);
+    
+    // Booked seat indicator
+    sf::RectangleShape bookedSeatIcon(sf::Vector2f(20, 20));
+    bookedSeatIcon.setPosition(520, 650);
+    bookedSeatIcon.setFillColor(sf::Color::Red);
+    window.draw(bookedSeatIcon);
+    sf::Text bookedSeatText = createText("Booked", 545, 650, 16);
+    window.draw(bookedSeatText);
+    
+    // Selected seat indicator
+    sf::RectangleShape selectedSeatIcon(sf::Vector2f(20, 20));
+    selectedSeatIcon.setPosition(620, 650);
+    selectedSeatIcon.setFillColor(sf::Color::Green);
+    window.draw(selectedSeatIcon);
+    sf::Text selectedSeatText = createText("Selected", 645, 650, 16);
+    window.draw(selectedSeatText);
+    
+    // Instructions text
+    sf::Text instructions = createText("Click on available seats to select them for booking", 220, 675, 14);
+    instructions.setFillColor(sf::Color(200, 200, 200));
+    window.draw(instructions);      // Selected seats info
+    if (!selectedSeats.empty()) {
+        // Background for selected seats info
+        sf::RectangleShape selectedBg(sf::Vector2f(700, 40));
+        selectedBg.setPosition(200, 710);
+        selectedBg.setFillColor(sf::Color(60, 80, 60, 200));
+        selectedBg.setOutlineThickness(1);
+        selectedBg.setOutlineColor(sf::Color(0, 150, 0));
+        window.draw(selectedBg);
+        
+        // Title for selected seats
+        sf::Text selectedTitle = createText("Selected Seats:", 220, 720, 16);
+        selectedTitle.setStyle(sf::Text::Bold);
+        selectedTitle.setFillColor(sf::Color(220, 255, 220));
+        window.draw(selectedTitle);
+        
+        // Display each seat as a mini icon with text
+        float xPos = 340;
+        for (const auto& seat : selectedSeats) {
+            // Small seat icon
+            sf::RectangleShape seatIcon(sf::Vector2f(16, 16));
+            seatIcon.setPosition(xPos, 722);
+            seatIcon.setFillColor(sf::Color::Green);
+            window.draw(seatIcon);
+            
+            // Seat ID text
+            sf::Text seatText = createText(seat, xPos + 20, 720, 16);
+            seatText.setFillColor(sf::Color(220, 255, 220));
+            window.draw(seatText);
+            
+            xPos += 60; // Space between seats
+        }
+        
+        // Confirm button with enhanced styling
+        sf::RectangleShape confirmBtn = createButton(500, 760, 200, 50);
         confirmBtn.setFillColor(sf::Color(0, 150, 0));
+        confirmBtn.setOutlineThickness(2);
+        confirmBtn.setOutlineColor(sf::Color(100, 255, 100));
         window.draw(confirmBtn);
         
-        sf::Text confirmText = createText("Confirm Booking", 530, 715, 18);
+        sf::Text confirmText = createText("Confirm Booking", 530, 775, 18);
+        confirmText.setStyle(sf::Text::Bold);
         window.draw(confirmText);
     }
 }
@@ -1062,16 +1581,14 @@ void SFMLUIManager::renderRegisterScreen() {
     
     sf::Text registerText = createText("Register", 560, 515, 20);
     window.draw(registerText);
-    
-    // Back button
+      // Back button
     sf::RectangleShape backBtn = createButton(500, 570, 200, 50);
     backBtn.setFillColor(sf::Color(100, 100, 100));
     window.draw(backBtn);
     
     sf::Text backText = createText("Back to Login", 540, 585, 20);
     window.draw(backText);
-    
-    // Status message
+      // Status message
     if (!statusMessage.empty()) {
         sf::Text status = createText(statusMessage, 400, 640, 16);
         status.setFillColor(sf::Color::Red);
@@ -1125,37 +1642,73 @@ void SFMLUIManager::renderMovieManagement() {
     sf::Text addText = createText("Add Movie", 230, 60, 18);
     window.draw(addText);
     
-    // Movie list for management
-    for (size_t i = 0; i < movies.size(); ++i) {
-        sf::RectangleShape movieRow = createButton(100, 150 + i * 80, 800, 70);
+    // Hiển thị thông tin về tổng số phim
+    std::string movieCountText = "Total: " + std::to_string(movies.size()) + " movies";
+    sf::Text movieCount = createText(movieCountText, 450, 90, 16);
+    movieCount.setFillColor(sf::Color(200, 200, 200));
+    window.draw(movieCount);
+    
+    // Scroll buttons
+    const int maxVisibleMovies = 7; // Số phim tối đa hiển thị đồng thời
+    
+    // Scroll up button
+    sf::RectangleShape scrollUpBtn = createStyledButton(950, 110, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollUpText = createText("^", 968, 115, 18);
+    if (movieListScrollOffset > 0) {
+        scrollUpBtn.setFillColor(sf::Color(100, 100, 150));
+        scrollUpText.setFillColor(sf::Color::White);
+    } else {
+        scrollUpBtn.setFillColor(sf::Color(70, 70, 70));
+        scrollUpText.setFillColor(sf::Color(150, 150, 150));
+    }
+    window.draw(scrollUpBtn);
+    window.draw(scrollUpText);
+    
+    // Scroll down button
+    sf::RectangleShape scrollDownBtn = createStyledButton(950, 700, 50, 30, sf::Color(100, 100, 150));
+    sf::Text scrollDownText = createText("v", 968, 705, 18);
+    if (movieListScrollOffset + maxVisibleMovies < movies.size()) {
+        scrollDownBtn.setFillColor(sf::Color(100, 100, 150));
+        scrollDownText.setFillColor(sf::Color::White);
+    } else {
+        scrollDownBtn.setFillColor(sf::Color(70, 70, 70));
+        scrollDownText.setFillColor(sf::Color(150, 150, 150));
+    }
+    window.draw(scrollDownBtn);
+    window.draw(scrollDownText);
+    
+    // Movie list for management - với cơ chế cuộn
+    int endIndex = std::min(movieListScrollOffset + maxVisibleMovies, static_cast<int>(movies.size()));
+    for (int i = movieListScrollOffset; i < endIndex; ++i) {
+        int displayIndex = i - movieListScrollOffset; // Vị trí hiển thị trên màn hình
+        sf::RectangleShape movieRow = createButton(100, 150 + displayIndex * 80, 800, 70);
         movieRow.setFillColor(sf::Color(50, 50, 100));
         window.draw(movieRow);
         
         std::string movieInfo = movies[i].title + " - " + movies[i].genre;
-        sf::Text movieText = createText(movieInfo, 110, 170 + i * 80, 18);
+        sf::Text movieText = createText(movieInfo, 110, 170 + displayIndex * 80, 18);
         window.draw(movieText);
-        
-        // Edit button
-        sf::RectangleShape editBtn = createButton(920, 155 + i * 80, 80, 30);
+          // Edit button
+        sf::RectangleShape editBtn = createButton(920, 155 + displayIndex * 80, 80, 30);
         editBtn.setFillColor(sf::Color(0, 100, 150));
         window.draw(editBtn);
         
-        sf::Text editText = createText("Edit", 940, 165 + i * 80, 16);
+        sf::Text editText = createText("Edit", 940, 165 + displayIndex * 80, 16);
         window.draw(editText);
           // Delete button
-        sf::RectangleShape deleteBtn = createButton(1010, 155 + i * 80, 80, 30);
+        sf::RectangleShape deleteBtn = createButton(1010, 155 + displayIndex * 80, 80, 30);
         deleteBtn.setFillColor(sf::Color(150, 0, 0));
         window.draw(deleteBtn);
         
-        sf::Text deleteText = createText("Delete", 1025, 165 + i * 80, 16);
+        sf::Text deleteText = createText("Delete", 1025, 165 + displayIndex * 80, 16);
         window.draw(deleteText);
         
         // Showtimes button
-        sf::RectangleShape showtimeBtn = createButton(1100, 155 + i * 80, 80, 25);
+        sf::RectangleShape showtimeBtn = createButton(1100, 155 + displayIndex * 80, 80, 30);
         showtimeBtn.setFillColor(sf::Color(150, 100, 0));
         window.draw(showtimeBtn);
         
-        sf::Text showtimeText = createText("Times", 1118, 163 + i * 80, 14);
+        sf::Text showtimeText = createText("Times", 1118, 163 + displayIndex * 80, 16);
         window.draw(showtimeText);
     }
 }
@@ -1172,11 +1725,11 @@ void SFMLUIManager::renderEditMovie() {
     sf::Text backText = createText("Back", 80, 60, 18);
     window.draw(backText);
       // Save button
-    sf::RectangleShape saveBtn = createButton(500, 550, 200, 50);
+    sf::RectangleShape saveBtn = createButton(180, 492, 80, 50);
     saveBtn.setFillColor(sf::Color(0, 150, 0));
     window.draw(saveBtn);
     
-    sf::Text saveText = createText("Save", 580, 565, 18);
+    sf::Text saveText = createText("Save", 200, 505, 18);
     window.draw(saveText);
       // Form fields
     sf::Text titleLabel = createText("Title:", 300, 160, 18);
@@ -1188,7 +1741,7 @@ void SFMLUIManager::renderEditMovie() {
     sf::Text titleText = createText(editMovieTitle, 410, 160, 18);
     window.draw(titleText);
     
-    sf::Text descLabel = createText("Description:", 300, 200, 18);
+    sf::Text descLabel = createText("Description:", 300, 220, 18);
     window.draw(descLabel);
     
     sf::RectangleShape descField = createButton(400, 220, 400, 80);
@@ -1204,31 +1757,21 @@ void SFMLUIManager::renderEditMovie() {
     sf::RectangleShape genreField = createButton(400, 330, 400, 40);
     genreField.setFillColor(isEditingGenre ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
     window.draw(genreField);
-    
-    sf::Text genreText = createText(editMovieGenre, 410, 340, 18);
+      sf::Text genreText = createText(editMovieGenre, 410, 340, 18);
     window.draw(genreText);
     
-    sf::Text durationLabel = createText("Duration:", 300, 390, 18);
-    window.draw(durationLabel);
+    sf::Text ratingLabel = createText("Rating:", 550, 400, 18);
+    window.draw(ratingLabel);
     
-    sf::RectangleShape durationField = createButton(400, 400, 200, 40);
-    durationField.setFillColor(isEditingDuration ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
-    window.draw(durationField);
+    sf::RectangleShape ratingField = createButton(620, 400, 180, 40);
+    ratingField.setFillColor(isEditingPrice ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
+    window.draw(ratingField);
     
-    sf::Text durationText = createText(editMovieDuration, 410, 410, 18);
-    window.draw(durationText);    sf::Text priceLabel = createText("Rating:", 620, 390, 18);
-    window.draw(priceLabel);
-    
-    sf::RectangleShape priceField = createButton(620, 400, 180, 40);
-    priceField.setFillColor(isEditingPrice ? sf::Color(100, 100, 255) : sf::Color(70, 70, 70));
-    window.draw(priceField);
-    
-    sf::Text priceText = createText(editMoviePrice, 630, 410, 18);
-    window.draw(priceText);
-    
-    // Showtime section (only show when adding new movie)
+    sf::Text ratingText = createText(editMoviePrice, 630, 410, 18);
+    window.draw(ratingText);
+      // Showtime section (only show when adding new movie)
     if (editingMovieId == -1) {
-        sf::Text showtimeLabel = createText("Initial Showtimes (Optional):", 300, 460, 20);
+        sf::Text showtimeLabel = createText("Initial Showtimes:", 300, 460, 20);
         showtimeLabel.setFillColor(sf::Color(200, 200, 255));
         window.draw(showtimeLabel);
         
@@ -1268,6 +1811,16 @@ void SFMLUIManager::renderEditMovie() {
         sf::Text endText = createText(newShowtimeEndTime.empty() ? "HH:MM" : newShowtimeEndTime, 750, 515, 14);
         endText.setFillColor(isEditingEndTime ? sf::Color::Black : sf::Color(100, 100, 100));
         window.draw(endText);
+        
+        // Add showtime button
+        sf::RectangleShape addShowtimeBtn = createStyledButton(850, 505, 120, 30, sf::Color(0, 100, 200));
+        window.draw(addShowtimeBtn);
+        
+        sf::Text addShowtimeText = createText("Add Showtime", 860, 515, 14);
+        window.draw(addShowtimeText);
+        
+        // Render the list of pending showtimes
+        renderPendingShowtimes();
     }
 }
 
@@ -1409,6 +1962,8 @@ void SFMLUIManager::loadMovies() {
     
     if (movieService) {
         movies = movieService->showAllMovies();
+        // Reset scroll offsets whenever movies are loaded
+        movieViewScrollOffset = 0;
     }
 }
 
@@ -1480,7 +2035,7 @@ void SFMLUIManager::createBooking() {
             std::string showTimeInfo = currentShowTimes[selectedShowTimeIndex].date + " " + 
                                      currentShowTimes[selectedShowTimeIndex].startTime;
             std::string seatsInfo = "";
-            for (size_t i = 0; i < selectedSeats.size(); ++i) {
+            for (size_t i = 0; i < selectedSeats.size(); i++) {
                 if (i > 0) seatsInfo += ", ";
                 seatsInfo += selectedSeats[i];
             }
@@ -1616,9 +2171,13 @@ void SFMLUIManager::addMovie() {
                 editMovieDescription.empty() ? "No description available" : editMovieDescription,
                 rating
             );
-            
-            // Collect showtime data from input fields
+              // Collect showtime data from input fields and pending showtimes list
             std::vector<std::string> movieShowTimes;
+
+            // Thêm các showtime từ danh sách chờ
+            movieShowTimes = pendingShowtimes; // Đã chuẩn bị sẵn danh sách
+
+            // Thêm showtime từ các trường nhập hiện tại (nếu có)
             if (!newShowtimeDate.empty() && !newShowtimeStartTime.empty() && !newShowtimeEndTime.empty()) {
                 // Corrected format: comma-separated
                 std::string showtime = newShowtimeDate + "," + newShowtimeStartTime + "," + newShowtimeEndTime;
@@ -1627,9 +2186,15 @@ void SFMLUIManager::addMovie() {
             
             movieManagerService->addMovie(newMovie, movieShowTimes);
             
-            showSuccessMessage("New movie \'" + editMovieTitle + "\' added successfully!" + 
-                (movieShowTimes.empty() ? "\\nTo add showtimes, edit the movie and add them during creation." : 
-                "\\nShowtime added: " + newShowtimeDate + " " + newShowtimeStartTime + "-" + newShowtimeEndTime)); // Keep user-facing message format
+            // Create success message showing the total number of showtimes
+            std::string showtimeMessage;
+            if (movieShowTimes.empty()) {
+                showtimeMessage = "\\nNo showtimes added. You can add them later.";
+            } else {
+                showtimeMessage = "\\n" + std::to_string(movieShowTimes.size()) + " showtime(s) added to the movie.";
+            }
+            
+            showSuccessMessage("New movie \'" + editMovieTitle + "\' added successfully!" + showtimeMessage); // Keep user-facing message format
             clearEditingFields();
             loadMovies(); // Reload the movie list
         } catch (const std::exception& e) {
@@ -1644,14 +2209,14 @@ void SFMLUIManager::resetEditingFlags() {
     isEditingTitle = false;
     isEditingDescription = false;
     isEditingGenre = false;
-    isEditingDuration = false;
+    // Removed: isEditingDuration = false;
     isEditingPrice = false;
     // Don't clear input fields here - only reset boolean flags
     // editingMovieId = -1;  // Keep this for new movies only
     // editMovieTitle.clear();  // Don't clear text
     // editMovieDescription.clear();  // Don't clear text
     // editMovieGenre.clear();  // Don't clear text
-    // editMovieDuration.clear();  // Don't clear text
+    // Removed Movie Duration
     // editMoviePrice.clear();  // Don't clear text
 }
 
@@ -1660,17 +2225,20 @@ void SFMLUIManager::clearEditingFields() {
     isEditingTitle = false;
     isEditingDescription = false;
     isEditingGenre = false;
-    isEditingDuration = false;
+    // Removed: isEditingDuration = false;
     isEditingPrice = false;
     editingMovieId = -1;
     editMovieTitle.clear();
     editMovieDescription.clear();
     editMovieGenre.clear();
-    editMovieDuration.clear();
+    // Removed Movie Duration
     editMoviePrice.clear();
     
     // Clear showtime fields as well
     clearShowtimeFields();
+    
+    // Clear pending showtimes
+    clearPendingShowtimes();
 }
 
 void SFMLUIManager::renderShowtimeManagement() {
@@ -1698,15 +2266,15 @@ void SFMLUIManager::renderShowtimeManagement() {
     infoLabel.setFillColor(sf::Color::White);
     window.draw(infoLabel);
     
-    sf::Text infoMessage1 = createText("• Showtimes can only be added when creating a new movie", 50, 180, 16);
+    sf::Text infoMessage1 = createText("* Showtimes can only be added when creating a new movie", 50, 180, 16);
     infoMessage1.setFillColor(sf::Color(200, 200, 0));
     window.draw(infoMessage1);
     
-    sf::Text infoMessage2 = createText("• Use 'Add Movie' in Movie Management to create movies with showtimes", 50, 200, 16);
+    sf::Text infoMessage2 = createText("* Use 'Add Movie' in Movie Management to create movies with showtimes", 50, 200, 16);
     infoMessage2.setFillColor(sf::Color(200, 200, 0));
     window.draw(infoMessage2);
     
-    sf::Text infoMessage3 = createText("• This screen allows you to view and delete existing showtimes only", 50, 220, 16);
+    sf::Text infoMessage3 = createText("* This screen allows you to view and delete existing showtimes only", 50, 220, 16);
     infoMessage3.setFillColor(sf::Color(200, 200, 0));
     window.draw(infoMessage3);
     
@@ -1790,7 +2358,6 @@ void SFMLUIManager::clearShowtimeFields() {
     isEditingStartTime = false;
     isEditingEndTime = false;
 }
-
 sf::RectangleShape SFMLUIManager::createStyledButton(float x, float y, float width, float height, sf::Color color) {
     sf::RectangleShape button;
     button.setSize(sf::Vector2f(width, height));
@@ -1855,11 +2422,7 @@ void SFMLUIManager::drawMovieCard(const MovieDTO& movie, float x, float y, bool 
     sf::Text movieId = createText("ID: " + std::to_string(movie.id), x + 10, y + 90, 14);
     movieId.setFillColor(sf::Color(180, 180, 180));
     window.draw(movieId);
-    
-    // Duration (placeholder)
-    sf::Text duration = createText("Duration: 120 min", x + 10, y + 115, 14);
-    duration.setFillColor(sf::Color(180, 180, 180));
-    window.draw(duration);
+      // Removed duration display
     
     // Price (placeholder)
     sf::Text price = createText("Price: $10.00", x + 10, y + 140, 16);

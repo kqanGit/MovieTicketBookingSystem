@@ -58,13 +58,24 @@ bool isValidDate(const std::string& date) {
 }
 
 bool isValidTime(const std::string& time) {
-    // Kiểm tra định dạng HH:MM:SS
-    std::regex pattern(R"(\d{2}:\d{2}:\d{2})");
-    return std::regex_match(time, pattern);
+    // Kiểm tra định dạng HH:MM:SS hoặc HH:MM
+    std::regex patternWithSeconds(R"(\d{2}:\d{2}:\d{2})");
+    std::regex patternWithoutSeconds(R"(\d{2}:\d{2})");
+    return std::regex_match(time, patternWithSeconds) || std::regex_match(time, patternWithoutSeconds);
 }
 
 void MovieRepositorySQL::addShowTime(int movieId, std::string& Date, std::string& StartTime, std::string& EndTime) {
-     // Validate định dạng ngày và giờ
+    // Tự động thêm giây nếu định dạng là HH:MM
+    auto addSeconds = [](std::string& time) {
+        if (std::regex_match(time, std::regex(R"(\d{2}:\d{2})"))) {
+            time += ":00";
+        }
+    };
+    
+    addSeconds(StartTime);
+    addSeconds(EndTime);
+    
+    // Validate định dạng ngày và giờ
     if (!isValidDate(Date) || !isValidTime(StartTime) || !isValidTime(EndTime)) {
         throw std::invalid_argument("Invalid date or time format");
     }
