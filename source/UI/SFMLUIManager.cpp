@@ -30,10 +30,9 @@ bool SFMLUIManager::initialize() {
     // Try to load font from various locations
     bool fontLoaded = false;
     std::vector<std::string> fontPaths = {
-        "arial.ttf",
-        "C:/Windows/Fonts/arial.ttf",
-        "C:/Windows/Fonts/calibri.ttf",
-        "C:/Windows/Fonts/tahoma.ttf"
+        "./fonts/arial.ttf",
+        "./fonts/calibri.ttf",
+        "./fonts/tahoma.ttf"
     };
     
     for (const auto& path : fontPaths) {

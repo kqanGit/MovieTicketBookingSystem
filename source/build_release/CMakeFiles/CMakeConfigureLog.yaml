@@ -23,10 +23,10 @@ events:
       
       The output was:
       0
-      MSBuild version 17.9.5+33de0b227 for .NET Framework
-      Build started 5/31/2025 8:18:19 PM.
+      MSBuild version 17.14.10+8b8e13593 for .NET Framework
+      Build started 6/4/2025 8:27:30 PM.
       
-      Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -35,25 +35,25 @@ events:
         Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
         CMakeCCompilerId.c
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdC\\CompilerIdC.exe
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.88
+      Time Elapsed 00:00:00.67
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -61,7 +61,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/4.0.2/CompilerIdC/CompilerIdC.exe
+        D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/4.0.1/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "message-v1"
@@ -78,10 +78,10 @@ events:
       
       The output was:
       0
-      MSBuild version 17.9.5+33de0b227 for .NET Framework
-      Build started 5/31/2025 8:18:20 PM.
+      MSBuild version 17.14.10+8b8e13593 for .NET Framework
+      Build started 6/4/2025 8:27:31 PM.
       
-      Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -90,25 +90,25 @@ events:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdCXX\\CompilerIdCXX.exe
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\4.0.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.70
+      Time Elapsed 00:00:00.72
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -116,7 +116,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/4.0.2/CompilerIdCXX/CompilerIdCXX.exe
+        D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/4.0.1/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-82d7tx"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-82d7tx"
+      source: "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-dfnxna"
+      binary: "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-dfnxna"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -137,40 +137,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-82d7tx'
+        Change Dir: 'D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-dfnxna'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b06b2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-        MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/31/2025 8:18:22 PM.
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_423b3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.10+8b8e13593 for .NET Framework
+        Build started 6/4/2025 8:27:32 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-82d7tx\\cmTC_b06b2.vcxproj" on node 1 (default targets).
+        Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-dfnxna\\cmTC_423b3.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_b06b2.dir\\Debug\\".
+          Creating directory "cmTC_423b3.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-82d7tx\\Debug\\".
-          Creating directory "cmTC_b06b2.dir\\Debug\\cmTC_b06b2.tlog\\".
+          Creating directory "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-dfnxna\\Debug\\".
+          Creating directory "cmTC_423b3.dir\\Debug\\cmTC_423b3.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_b06b2.dir\\Debug\\cmTC_b06b2.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_b06b2.dir\\Debug\\cmTC_b06b2.tlog\\unsuccessfulbuild".
+          Creating "cmTC_423b3.dir\\Debug\\cmTC_423b3.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_423b3.dir\\Debug\\cmTC_423b3.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b06b2.dir\\Debug\\\\" /Fd"cmTC_b06b2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_423b3.dir\\Debug\\\\" /Fd"cmTC_423b3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35208 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b06b2.dir\\Debug\\\\" /Fd"cmTC_b06b2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_423b3.dir\\Debug\\\\" /Fd"cmTC_423b3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-82d7tx\\Debug\\cmTC_b06b2.exe" /INCREMENTAL /ILK:"cmTC_b06b2.dir\\Debug\\cmTC_b06b2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-82d7tx/Debug/cmTC_b06b2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-82d7tx/Debug/cmTC_b06b2.lib" /MACHINE:X64  /machine:x64 cmTC_b06b2.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_b06b2.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-82d7tx\\Debug\\cmTC_b06b2.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-dfnxna\\Debug\\cmTC_423b3.exe" /INCREMENTAL /ILK:"cmTC_423b3.dir\\Debug\\cmTC_423b3.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-dfnxna/Debug/cmTC_423b3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-dfnxna/Debug/cmTC_423b3.lib" /MACHINE:X64  /machine:x64 cmTC_423b3.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_423b3.vcxproj -> D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-dfnxna\\Debug\\cmTC_423b3.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_b06b2.dir\\Debug\\cmTC_b06b2.tlog\\unsuccessfulbuild".
-          Touching "cmTC_b06b2.dir\\Debug\\cmTC_b06b2.tlog\\cmTC_b06b2.lastbuildstate".
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-82d7tx\\cmTC_b06b2.vcxproj" (default targets).
+          Deleting file "cmTC_423b3.dir\\Debug\\cmTC_423b3.tlog\\unsuccessfulbuild".
+          Touching "cmTC_423b3.dir\\Debug\\cmTC_423b3.tlog\\cmTC_423b3.lastbuildstate".
+        Done Building Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-dfnxna\\cmTC_423b3.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.65
+        Time Elapsed 00:00:00.61
         
       exitCode: 0
   -
@@ -183,7 +183,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -194,12 +194,12 @@ events:
     kind: "message-v1"
     backtrace:
       - "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
-      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:270 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:264 (cmake_determine_linker_id)"
       - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.39.33522.0
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35208.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
   -
     kind: "try_compile-v1"
@@ -210,8 +210,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-bqxbkc"
-      binary: "E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-bqxbkc"
+      source: "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-p46693"
+      binary: "D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-p46693"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -221,40 +221,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-bqxbkc'
+        Change Dir: 'D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-p46693'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_32f93.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-        MSBuild version 17.9.5+33de0b227 for .NET Framework
-        Build started 5/31/2025 8:18:23 PM.
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_976cb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.10+8b8e13593 for .NET Framework
+        Build started 6/4/2025 8:27:33 PM.
         
-        Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-bqxbkc\\cmTC_32f93.vcxproj" on node 1 (default targets).
+        Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-p46693\\cmTC_976cb.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_32f93.dir\\Debug\\".
+          Creating directory "cmTC_976cb.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-bqxbkc\\Debug\\".
-          Creating directory "cmTC_32f93.dir\\Debug\\cmTC_32f93.tlog\\".
+          Creating directory "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-p46693\\Debug\\".
+          Creating directory "cmTC_976cb.dir\\Debug\\cmTC_976cb.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_32f93.dir\\Debug\\cmTC_32f93.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_32f93.dir\\Debug\\cmTC_32f93.tlog\\unsuccessfulbuild".
+          Creating "cmTC_976cb.dir\\Debug\\cmTC_976cb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_976cb.dir\\Debug\\cmTC_976cb.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_32f93.dir\\Debug\\\\" /Fd"cmTC_32f93.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33522 for x64
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_976cb.dir\\Debug\\\\" /Fd"cmTC_976cb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35208 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_32f93.dir\\Debug\\\\" /Fd"cmTC_32f93.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_976cb.dir\\Debug\\\\" /Fd"cmTC_976cb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-bqxbkc\\Debug\\cmTC_32f93.exe" /INCREMENTAL /ILK:"cmTC_32f93.dir\\Debug\\cmTC_32f93.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-bqxbkc/Debug/cmTC_32f93.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/just write some code/OOP/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-bqxbkc/Debug/cmTC_32f93.lib" /MACHINE:X64  /machine:x64 cmTC_32f93.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_32f93.vcxproj -> E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-bqxbkc\\Debug\\cmTC_32f93.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-p46693\\Debug\\cmTC_976cb.exe" /INCREMENTAL /ILK:"cmTC_976cb.dir\\Debug\\cmTC_976cb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-p46693/Debug/cmTC_976cb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/OOP/LyThuyet/PROJECT/MovieTicketBookingSystem/source/build_release/CMakeFiles/CMakeScratch/TryCompile-p46693/Debug/cmTC_976cb.lib" /MACHINE:X64  /machine:x64 cmTC_976cb.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_976cb.vcxproj -> D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-p46693\\Debug\\cmTC_976cb.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_32f93.dir\\Debug\\cmTC_32f93.tlog\\unsuccessfulbuild".
-          Touching "cmTC_32f93.dir\\Debug\\cmTC_32f93.tlog\\cmTC_32f93.lastbuildstate".
-        Done Building Project "E:\\just write some code\\OOP\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-bqxbkc\\cmTC_32f93.vcxproj" (default targets).
+          Deleting file "cmTC_976cb.dir\\Debug\\cmTC_976cb.tlog\\unsuccessfulbuild".
+          Touching "cmTC_976cb.dir\\Debug\\cmTC_976cb.tlog\\cmTC_976cb.lastbuildstate".
+        Done Building Project "D:\\OOP\\LyThuyet\\PROJECT\\MovieTicketBookingSystem\\source\\build_release\\CMakeFiles\\CMakeScratch\\TryCompile-p46693\\cmTC_976cb.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.73
+        Time Elapsed 00:00:00.65
         
       exitCode: 0
   -
@@ -267,7 +267,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -278,11 +278,11 @@ events:
     kind: "message-v1"
     backtrace:
       - "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
-      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:270 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:264 (cmake_determine_linker_id)"
       - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.39.33522.0
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35208.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
 ...
